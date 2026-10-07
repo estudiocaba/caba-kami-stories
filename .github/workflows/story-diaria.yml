@@ -9,13 +9,15 @@ on:
 jobs:
   story:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: caba-kami-stories   # el código está en esta carpeta
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-      - run: npm ci --omit=dev
+      - run: npm install --omit=dev --no-audit --no-fund
       - run: node src/index.js
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -23,5 +25,5 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: story-${{ github.run_id }}
-          path: out/
+          path: caba-kami-stories/out/
           retention-days: 14
