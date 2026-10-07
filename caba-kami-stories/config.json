@@ -1,0 +1,18 @@
+{
+  "handle": "@caba.kami",
+  "brand": "Caba",
+  "timezone": "Europe/Madrid",
+  "timezoneLabel": "hora peninsular",
+  "maxItems": 7,
+  "minPopularity": 8000,
+  "countries": ["JP"],
+  "formats": ["TV", "TV_SHORT", "ONA"],
+  "colors": {
+    "background": "#0E090D",
+    "glow": "#3A1A2E",
+    "accent": "#F2667E",
+    "text": "#F4ECDC",
+    "muted": "#A8979E",
+    "line": "#2E2129"
+  }
+}

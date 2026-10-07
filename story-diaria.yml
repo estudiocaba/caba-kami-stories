@@ -1,0 +1,27 @@
+name: Story diaria de anime
+
+on:
+  schedule:
+    # 07:17 UTC = 08:17 en Canarias (09:17 península) en verano; una hora menos en invierno
+    - cron: "17 7 * * *"
+  workflow_dispatch: {}   # botón "Run workflow" para lanzarla a mano
+
+jobs:
+  story:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --omit=dev
+      - run: node src/index.js
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: story-${{ github.run_id }}
+          path: out/
+          retention-days: 14
