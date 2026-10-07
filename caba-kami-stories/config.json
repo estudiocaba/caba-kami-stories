@@ -13,6 +13,8 @@
     "Max": "Max",
     "HBO Max": "Max"
   },
+  "autoPublish": true,
+  "publishWhenEmpty": false,
   "maxItems": 7,
   "minPopularity": 8000,
   "countries": ["JP"],

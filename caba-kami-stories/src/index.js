@@ -25,13 +25,16 @@ const items = useSample
 console.log(`${ymd}: ${items.length} episodios seleccionados`);
 items.forEach(i => console.log(' -', i.title, 'ep', i.episode));
 
-const png = await renderStory(items, ymd, config);
+const { png, jpg } = await renderStory(items, ymd, config);
 const caption = buildCaption(items, ymd, config);
 
 mkdirSync('out', { recursive: true });
 const filename = `story-anime-${ymd}.png`;
 writeFileSync(`out/${filename}`, png);
 writeFileSync(`out/caption-${ymd}.txt`, caption);
+writeFileSync(`out/story-anime-${ymd}.jpg`, jpg);
+// Datos para el paso de publicación en Instagram.
+writeFileSync('out/latest.json', JSON.stringify({ date: ymd, jpg: `story-anime-${ymd}.jpg`, items: items.length }));
 console.log(`Guardado en out/${filename}`);
 
 const { TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID } = process.env;

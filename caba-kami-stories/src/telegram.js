@@ -20,3 +20,12 @@ export async function sendToTelegram({ token, chatId, png, filename, caption, te
     if (!r2.ok) throw new Error(`Telegram respondió ${r2.status}: ${await r2.text()}`);
   }
 }
+
+export async function sendText({ token, chatId, text }) {
+  const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ chat_id: chatId, text }),
+  });
+  if (!res.ok) throw new Error(`Telegram respondió ${res.status}: ${await res.text()}`);
+}

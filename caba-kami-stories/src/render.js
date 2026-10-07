@@ -2,6 +2,7 @@
 // Usa satori (diseño → SVG) y resvg (SVG → PNG): sin navegador, funciona en cualquier sitio.
 
 import { Resvg } from '@resvg/resvg-js';
+import jpeg from 'jpeg-js';
 import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import path from 'node:path';
@@ -134,7 +135,10 @@ export async function renderStory(items, ymd, config) {
   );
 
   const svg = await satori(tree, { width: 1080, height: 1920, fonts: FONTS });
-  return new Resvg(svg, { fitTo: { mode: 'width', value: 1080 } }).render().asPng();
+  const img = new Resvg(svg, { fitTo: { mode: 'width', value: 1080 } }).render();
+  // PNG para Telegram; JPG para Instagram, que solo acepta JPEG al publicar por API.
+  const jpg = jpeg.encode({ data: img.pixels, width: img.width, height: img.height }, 92).data;
+  return { png: img.asPng(), jpg };
 }
 
 // Texto para el caption y para el mensaje de Telegram.
