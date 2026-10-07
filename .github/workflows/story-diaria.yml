@@ -6,6 +6,9 @@ on:
     - cron: "17 7 * * *"
   workflow_dispatch: {}   # botón "Run workflow" para lanzarla a mano
 
+permissions:
+  contents: write   # para guardar la imagen del día en la rama "publico"
+
 jobs:
   story:
     runs-on: ubuntu-latest
@@ -18,11 +21,43 @@ jobs:
         with:
           node-version: 22
       - run: npm install --omit=dev --no-audit --no-fund
-      - run: node src/index.js
+
+      - name: Generar la story y mandarla a Telegram
+        run: node src/index.js
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+
+      # Instagram necesita descargar la imagen desde una URL pública.
+      # Se guarda en la rama "publico" de este repositorio (solo las últimas 14).
+      - name: Subir la imagen a la rama publico
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          FILE=$(node -p "require('./out/latest.json').jpg")
+          REPO_URL="https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git"
+          DEST="$RUNNER_TEMP/publico"
+          if ! git clone -q --depth 1 --branch publico "$REPO_URL" "$DEST" 2>/dev/null; then
+            mkdir -p "$DEST" && git -C "$DEST" init -q -b publico && git -C "$DEST" remote add origin "$REPO_URL"
+          fi
+          cp "out/$FILE" "$DEST/"
+          cd "$DEST"
+          ls -1 story-anime-*.jpg | sort -r | tail -n +15 | xargs -r rm -f
+          git add -A
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -q -m "Story $FILE" || echo "Sin cambios"
+          git push -q origin publico
+
+      - name: Publicar la story en Instagram
+        run: node src/publish.js
+        env:
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
+          PUBLIC_BASE_URL: https://raw.githubusercontent.com/${{ github.repository }}/publico
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: story-${{ github.run_id }}
           path: caba-kami-stories/out/
