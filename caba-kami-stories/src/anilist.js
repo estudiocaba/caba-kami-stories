@@ -20,6 +20,7 @@ query ($start: Int, $end: Int, $page: Int) {
         format
         episodes
         siteUrl
+        externalLinks { site type isDisabled language }
       }
     }
   }
@@ -88,6 +89,7 @@ export function selectItems(schedules, config) {
       totalEpisodes: s.media.episodes,
       airingAt: s.airingAt,
       url: s.media.siteUrl,
+      platforms: streamingPlatforms(s.media.externalLinks, config),
       tag: s.episode === 1 ? 'ESTRENO' : (s.media.episodes && s.episode === s.media.episodes ? 'FINAL' : null),
     }));
 }
@@ -97,4 +99,16 @@ function secondTitle(t) {
   if (!t.romaji || !t.english) return null;
   const norm = x => x.toLowerCase().replace(/[^a-z0-9]/g, '');
   return norm(t.romaji) === norm(t.english) ? null : t.english;
+}
+
+// Plataformas de streaming según AniList, solo las de la lista de config.json (las que existen en España).
+// Se descartan los enlaces marcados para un idioma que no sea inglés o español (p. ej. Netflix Japón).
+function streamingPlatforms(links = [], config) {
+  const allowed = config.platforms ?? {};
+  const okLang = l => !l || ['English', 'Spanish'].includes(l);
+  const labels = (links ?? [])
+    .filter(l => l.type === 'STREAMING' && !l.isDisabled && okLang(l.language) && allowed[l.site])
+    .map(l => allowed[l.site]);
+  const order = Object.values(allowed);
+  return [...new Set(labels)].sort((a, b) => order.indexOf(a) - order.indexOf(b)).slice(0, 3);
 }

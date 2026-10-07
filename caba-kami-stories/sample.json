@@ -1,8 +1,69 @@
 [
-  { "title": "Hoshikuzu no Majo", "titleEnglish": "The Stardust Witch", "episode": 1, "totalEpisodes": 12, "tag": "ESTRENO", "minutesFromMidnightUTC": 870 },
-  { "title": "Tsuki to Kodoku no Kishi", "titleEnglish": "The Moon and the Lonely Knight", "episode": 14, "totalEpisodes": 24, "tag": null, "minutesFromMidnightUTC": 900 },
-  { "title": "Akai Ito no Gakuen", "titleEnglish": "Red Thread Academy", "episode": 6, "totalEpisodes": 12, "tag": null, "minutesFromMidnightUTC": 930 },
-  { "title": "Shinigami Café Murasaki", "titleEnglish": null, "episode": 2, "totalEpisodes": 13, "tag": null, "minutesFromMidnightUTC": 960 },
-  { "title": "Kurogane no Ryūjin: Dai Ni Shō", "titleEnglish": "Dragon God of Black Steel Season 2", "episode": 12, "totalEpisodes": 12, "tag": "FINAL", "minutesFromMidnightUTC": 1005 },
-  { "title": "Yoru no Toshokan", "titleEnglish": "The Night Library", "episode": 3, "totalEpisodes": null, "tag": null, "minutesFromMidnightUTC": 1050 }
+  {
+    "title": "Hoshikuzu no Majo",
+    "titleEnglish": "The Stardust Witch",
+    "episode": 1,
+    "totalEpisodes": 12,
+    "tag": "ESTRENO",
+    "minutesFromMidnightUTC": 870,
+    "platforms": [
+      "Crunchyroll"
+    ]
+  },
+  {
+    "title": "Tsuki to Kodoku no Kishi",
+    "titleEnglish": "The Moon and the Lonely Knight",
+    "episode": 14,
+    "totalEpisodes": 24,
+    "tag": null,
+    "minutesFromMidnightUTC": 900,
+    "platforms": [
+      "Netflix"
+    ]
+  },
+  {
+    "title": "Akai Ito no Gakuen",
+    "titleEnglish": "Red Thread Academy",
+    "episode": 6,
+    "totalEpisodes": 12,
+    "tag": null,
+    "minutesFromMidnightUTC": 930,
+    "platforms": [
+      "Crunchyroll",
+      "Prime Video"
+    ]
+  },
+  {
+    "title": "Shinigami Café Murasaki",
+    "titleEnglish": null,
+    "episode": 2,
+    "totalEpisodes": 13,
+    "tag": null,
+    "minutesFromMidnightUTC": 960,
+    "platforms": []
+  },
+  {
+    "title": "Kurogane no Ryūjin: Dai Ni Shō",
+    "titleEnglish": "Dragon God of Black Steel Season 2",
+    "episode": 12,
+    "totalEpisodes": 12,
+    "tag": "FINAL",
+    "minutesFromMidnightUTC": 1005,
+    "platforms": [
+      "Crunchyroll",
+      "Netflix",
+      "Disney+"
+    ]
+  },
+  {
+    "title": "Yoru no Toshokan",
+    "titleEnglish": "The Night Library",
+    "episode": 3,
+    "totalEpisodes": null,
+    "tag": null,
+    "minutesFromMidnightUTC": 1050,
+    "platforms": [
+      "Crunchyroll"
+    ]
+  }
 ]

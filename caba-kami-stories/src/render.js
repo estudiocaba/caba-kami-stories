@@ -59,17 +59,28 @@ function row(item, c, s, tz) {
         plain(item.title)),
       item.titleEnglish && h('div', { fontFamily: 'Poppins', fontWeight: 400, fontSize: s.english, color: c.muted, marginTop: 4, display: 'block', overflow: 'hidden', lineClamp: 1 },
         plain(item.titleEnglish)),
-      h('div', { flexDirection: 'row', alignItems: 'center', marginTop: 10 },
+      h('div', { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', marginTop: 10 },
         h('div', { fontFamily: 'Poppins', fontWeight: 600, fontSize: s.meta, color: c.muted, letterSpacing: 2.5 },
           `EP. ${item.episode}${item.totalEpisodes ? ` / ${item.totalEpisodes}` : ''}`),
         item.tag && h('div', {
           marginLeft: 16, padding: '3px 14px', borderRadius: 999, backgroundColor: c.accent,
           fontFamily: 'Poppins', fontWeight: 700, fontSize: s.meta - 2, color: c.background, letterSpacing: 2,
         }, item.tag),
+        (item.platforms ?? []).map(name => h('div', {
+          marginLeft: 12, padding: '2px 13px', borderRadius: 999, border: `1.5px solid ${c.muted}`,
+          fontFamily: 'Poppins', fontWeight: 600, fontSize: s.meta - 2, color: c.text, letterSpacing: 0.5,
+        }, name)),
       ),
     ),
   );
 }
+
+// Bandera de España dibujada (rojo, amarillo doble, rojo), sin depender de emojis.
+const spainFlag = () => h('div', { width: 33, height: 22, flexDirection: 'column', borderRadius: 3, overflow: 'hidden' },
+  h('div', { height: 5.5, backgroundColor: '#C60B1E' }),
+  h('div', { height: 11, backgroundColor: '#FFC400' }),
+  h('div', { height: 5.5, backgroundColor: '#C60B1E' }),
+);
 
 export async function renderStory(items, ymd, config) {
   const c = config.colors;
@@ -86,7 +97,7 @@ export async function renderStory(items, ymd, config) {
     width: 1080, height: 1920, position: 'relative', flexDirection: 'column',
     backgroundColor: c.background,
     backgroundImage: `radial-gradient(circle at 90% 6%, ${c.glow} 0%, ${c.background} 58%)`,
-    padding: '220px 90px 0 90px', color: c.text,
+    padding: '220px 90px 270px 90px', color: c.text,
   },
     // 神 gigante de fondo, la marca de la cuenta
     h('div', { position: 'absolute', right: -60, top: 60, fontFamily: 'NotoJP', fontWeight: 700, fontSize: 620,
@@ -100,17 +111,25 @@ export async function renderStory(items, ymd, config) {
 
     list,
 
-    // Pie: logo + @ + aviso de hora. Queda por encima de la zona que tapa Instagram abajo.
-    h('div', { position: 'absolute', left: 90, right: 90, top: 1530, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
+    // Pie: logo + @ + aviso de hora + nota. Va pegado abajo, por encima de la zona que tapa Instagram.
+    h('div', { flex: 1 }),
+    h('div', { flexDirection: 'column', marginTop: 34 },
+    h('div', { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
       h('div', { flexDirection: 'row', alignItems: 'center' },
         h('div', { fontFamily: 'Fraunces', fontWeight: 800, fontSize: 54, color: c.text, letterSpacing: -1 }, config.brand ?? ''),
         h('div', { fontFamily: 'NotoJP', fontWeight: 700, fontSize: 46, color: c.text, marginLeft: 12, marginTop: 4 }, '神'),
       ),
       h('div', { flexDirection: 'column', alignItems: 'flex-end' },
         h('div', { fontFamily: 'Poppins', fontWeight: 600, fontSize: 28, color: c.text }, config.handle),
-        h('div', { fontFamily: 'Poppins', fontWeight: 400, fontSize: 20, color: c.muted, marginTop: 2 },
-          `Emisión en Japón · ${config.timezoneLabel ?? 'hora local'}`),
+        h('div', { flexDirection: 'row', alignItems: 'center', marginTop: 4 },
+          config.showSpainFlag && spainFlag(),
+          h('div', { fontFamily: 'Poppins', fontWeight: 400, fontSize: 20, color: c.muted, marginLeft: config.showSpainFlag ? 10 : 0 },
+            `Emisión en Japón* · ${config.timezoneLabel ?? 'hora local'}`),
+        ),
       ),
+    ),
+    h('div', { fontFamily: 'Poppins', fontWeight: 400, fontSize: 18, color: c.muted, marginTop: 14, lineHeight: 1.35 },
+      config.footnote ?? ''),
     ),
   );
 
@@ -123,11 +142,12 @@ export function buildCaption(items, ymd, config) {
   const { weekday, day, month } = formatDate(ymd);
   if (!items.length) return `📺 ${weekday} ${day} de ${month}: hoy no hay episodios destacados.`;
   const lines = items.map(i =>
-    `${formatTime(i.airingAt, config.timezone)} · ${i.title}${i.titleEnglish ? ` (${i.titleEnglish})` : ''} — ep. ${i.episode}${i.tag ? ` · ${i.tag.toLowerCase()}` : ''}`);
+    `${formatTime(i.airingAt, config.timezone)} · ${i.title}${i.titleEnglish ? ` (${i.titleEnglish})` : ''} — ep. ${i.episode}${i.tag ? ` · ${i.tag.toLowerCase()}` : ''}${i.platforms?.length ? ` · ${i.platforms.join(', ')}` : ''}`);
   return [
     `📺 Hoy se emite · ${weekday} ${day} de ${month}`, '',
     ...lines, '',
-    `Horas de emisión en Japón, en ${config.timezoneLabel ?? 'hora local'}.`,
+    `Horas de emisión en Japón, en ${config.timezoneLabel ?? 'hora local'}${config.showSpainFlag ? ' 🇪🇸' : ''}.`,
+    ...(config.footnote ? [config.footnote] : []),
     '¿Cuál vas a ver primero? 👇',
   ].join('\n');
 }

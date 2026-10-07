@@ -2,7 +2,17 @@
   "handle": "@caba.kami",
   "brand": "Caba",
   "timezone": "Europe/Madrid",
-  "timezoneLabel": "hora peninsular",
+  "timezoneLabel": "hora de España peninsular",
+  "showSpainFlag": false,
+  "footnote": "*En las plataformas puede tardar algo más. Plataformas según AniList; pueden variar en España.",
+  "platforms": {
+    "Crunchyroll": "Crunchyroll",
+    "Netflix": "Netflix",
+    "Amazon Prime Video": "Prime Video",
+    "Disney Plus": "Disney+",
+    "Max": "Max",
+    "HBO Max": "Max"
+  },
   "maxItems": 7,
   "minPopularity": 8000,
   "countries": ["JP"],

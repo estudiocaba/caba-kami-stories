@@ -54,7 +54,10 @@ Para cambiar la hora, edita la línea `cron` del archivo del workflow. Está en 
 |---|---|
 | `handle` | El @ que sale abajo en la story |
 | `brand` | El nombre del logo de abajo («Caba», va seguido de 神) |
-| `timezone` / `timezoneLabel` | Zona horaria de las horas (`Europe/Madrid`) y cómo se nombra en la story («hora peninsular»). Para Canarias: `Atlantic/Canary` y «hora canaria» |
+| `timezone` / `timezoneLabel` | Zona horaria de las horas (`Europe/Madrid`) y cómo se nombra en la story («hora de España (península)»). Para Canarias: `Atlantic/Canary` y «hora canaria» |
+| `showSpainFlag` | `true` dibuja la bandera de España junto a la hora; `false` la quita |
+| `footnote` | La nota pequeña con asterisco que sale abajo |
+| `platforms` | Plataformas que se muestran junto al episodio: nombre en AniList → cómo se escribe en la story. Si quitas una línea, esa plataforma deja de salir |
 | `maxItems` | Cuántos animes como máximo (7 es lo que cabe cómodo) |
 | `minPopularity` | Corte de popularidad en AniList. Súbelo si salen títulos muy desconocidos; bájalo si salen pocos |
 | `countries` | `["JP"]` solo anime japonés. Vacío `[]` incluye donghua chino y coreano |
@@ -67,7 +70,8 @@ El diseño está en `src/render.js`.
 
 - El título en inglés solo aparece si existe y es distinto del romaji.
 - Los episodios **1** salen marcados como **ESTRENO** y los últimos de la temporada como **FINAL**.
-- Las horas son las de **emisión en Japón** pasadas a hora peninsular. En Crunchyroll y otras plataformas suelen salir poco después, pero no siempre a la misma hora.
+- Junto al episodio salen hasta 3 plataformas donde verlo, según los enlaces de streaming de AniList. AniList no indica país, así que pueden no coincidir del todo con el catálogo español; se descartan los enlaces marcados solo para Japón u otros idiomas.
+- Las horas son las de **emisión en Japón** pasadas a hora de España peninsular. En Crunchyroll y otras plataformas suelen salir poco después, pero no siempre a la misma hora.
 - No usa portadas ni imágenes oficiales: el diseño es tipográfico, para evitar problemas de derechos.
 - Cada imagen generada también queda guardada 14 días en GitHub, en la ejecución correspondiente (*Actions → la ejecución → Artifacts*).
 
