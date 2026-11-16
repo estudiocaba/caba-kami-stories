@@ -13,7 +13,7 @@ import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { chromium } from 'playwright-core';
 import { fetchAnime, fetchCharacterByName, imageAsDataUri } from '../carrusel/anilist-media.js';
-import { buildReelLista, duracionLista } from './plantilla.js';
+import { buildReelLista, duracionLista, TIEMPOS } from './plantilla.js';
 import { sendText } from '../telegram.js';
 
 const args = process.argv.slice(2);
@@ -53,7 +53,16 @@ async function main() {
     } else if (media) {
       img = await imageAsDataUri(media.coverImage.extraLarge || media.coverImage.large).catch(() => null);
     }
-    items.push(fillTokens(it, media));
+    const lleno = fillTokens(it, media);
+    // Cifras que cuentan hacia arriba en el vídeo.
+    if (media && it.dato) {
+      lleno.datoHtml = it.dato
+        .replace('{nota}', media.averageScore != null ? `<span data-count="${(media.averageScore / 10).toFixed(1)}" data-dec="1">0</span>/10` : '—')
+        .replace('{episodios}', media.episodes != null ? `<span data-count="${media.episodes}">0</span>` : '—')
+        .replace('{horas}', media.episodes && media.duration ? `<span data-count="${Math.round(media.episodes * media.duration / 60)}">0</span>` : '—')
+        .replace(/\{(\w+)\}/g, (m, k) => fillTokens(m, media));
+    }
+    items.push(lleno);
     imgs.push(img);
   }
   const spec = { ...raw, items };
@@ -78,7 +87,7 @@ async function main() {
     await reel.screenshot({ path: path.join(frames, `${String(f).padStart(5, '0')}.jpg`), type: 'jpeg', quality: 88 });
   }
   // Portada del reel: el fotograma del primer elemento ya visible.
-  await page.evaluate(t => window.render(t), (spec.intro ?? 2.6) + 1.6);
+  await page.evaluate(t => window.render(t), TIEMPOS.intro + 2.6);
   await reel.screenshot({ path: path.join(outDir, `cabakami-${slug}-portada.jpg`), type: 'jpeg', quality: 92 });
   await browser.close();
 
