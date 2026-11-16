@@ -1,0 +1,38 @@
+name: Buscar recursos libres
+
+# Busca y descarga sonidos y texturas con licencia CC0 / dominio público (Openverse y The Met)
+# y los guarda con su licencia en la rama "recursos" para revisarlos antes de usarlos.
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  buscar:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: caba-kami-stories
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Buscar y descargar
+        run: node src/recursos/buscar.js
+      - name: Guardar en la rama recursos
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          REPO_URL="https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git"
+          DEST="$RUNNER_TEMP/recursos"
+          if ! git clone -q --depth 1 --branch recursos "$REPO_URL" "$DEST" 2>/dev/null; then
+            mkdir -p "$DEST" && git -C "$DEST" init -q -b recursos && git -C "$DEST" remote add origin "$REPO_URL"
+          fi
+          mkdir -p "$DEST/candidatos"
+          cp -r recursos/* "$DEST/candidatos/"
+          cd "$DEST"
+          git add -A
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -q -m "Candidatos de recursos libres" || echo "Sin cambios"
+          git push -q origin recursos
