@@ -18,6 +18,6 @@ Fan que sabe, con datos, humor, ironía y un poco de sarcasmo. Castellano neutro
 
 ## Diseño (para que tampoco parezca generado)
 - Títulos en IM Fell English, rótulos y datos en DotGothic16, texto en Zen Kaku Gothic New, japonés en Shippori Mincho.
-- Texturas reales (texturas/, ver LICENCIAS.md), nunca degradados ni brillos genéricos.
-- Cada diapositiva rompe la simetría por un lado distinto; nada de kanji gigante semitransparente de fondo.
+- Fondo de brocado y papel viejo reales (texturas/, ver LICENCIAS.md); nada de degradados ni brillos genéricos.
+- Cuadrícula estricta: márgenes de 72 px, 12 columnas, filas fijas; portada y cierre simétricos. Pocos elementos: puntilla, un arco y destellos en espejo. Nada de kanji gigante de fondo.
 - Ningún anime ni personaje se deja fuera por cómo es su imagen: la foto se integra con el tratamiento de la plantilla.

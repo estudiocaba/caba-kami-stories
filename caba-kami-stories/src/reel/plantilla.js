@@ -10,11 +10,11 @@
 //  · títulos letra a letra desde desenfoque con temblor de color; etiquetas a máquina;
 //    cifras que cuentan; subtítulos fansub palabra a palabra
 //  · eyecatch de anime de los 90 entre elementos; sello 神 estampado al final
-//  · encaje y luna grabados reales, humo en el cierre, papel viejo, polvo plata y líneas de barrido
+//  · puntilla que se desliza, fondo de brocado y papel viejo, polvo plata. Composición centrada.
 //
 // Todo se calcula en window.render(t) a partir del tiempo: el vídeo se graba fotograma a fotograma.
 
-import { CSS, FONTS, encaje, luna, humo, tex, arcoFoto, ojiva, enfasis } from '../carrusel/plantilla.js';
+import { CSS, FONTS, puntilla, tex, arcoFoto, ojiva, enfasis } from '../carrusel/plantilla.js';
 
 // Tiempos en PULSOS de la música: los cortes caen siempre en un golpe. La intro dura un compás
 // (la batería entra justo en el primer corte); cada elemento, 5 pulsos; el eyecatch, 1.
@@ -78,8 +78,6 @@ function arcoAnimado(x, y, w, h, img, t, dur) {
   </div>`;
 }
 
-const DAIJI = ['壱', '弐', '参', '肆', '伍', '陸', '漆', '捌', '玖', '拾'];
-
 // Líneas de velocidad (集中線): tres juegos de rayos que se alternan de a dos, como en el anime.
 function velocidad(cx, cy, t) {
   let seed = Math.round(cx + cy + t * 100);
@@ -126,8 +124,7 @@ export function buildReelLista(spec, imgs, bpm = 72) {
 
   // INTRO
   escenas.push(`<div class="esc" data-in="0" data-out="${T.intro}">
-    <div data-anim="ghost" data-t="0" style="position:absolute;left:190px;top:330px;width:700px;height:700px;opacity:0">${luna(0, 0, 700, 1)}</div>
-    <div data-anim="tate" data-t=".2" style="position:absolute;right:86px;top:420px;writing-mode:vertical-rl;font-family:var(--kanji);font-weight:700;font-size:54px;letter-spacing:.3em;color:var(--plata);clip-path:inset(0 0 100% 0)">${spec.tategaki ?? '今夜の気分'}</div>
+    <div data-anim="fade" data-t=".3" class="luna-c" style="left:521px;top:560px;opacity:0"></div>
     <div style="position:absolute;left:0;right:0;top:640px;text-align:center">
       ${maquina(spec.etiqueta ?? '', .15, .7, 'font-size:30px;color:var(--plata)')}
       <div style="margin-top:46px;font-size:150px">${letras(spec.titulo, .45)}</div>
@@ -145,7 +142,7 @@ export function buildReelLista(spec, imgs, bpm = 72) {
     const a = t, fin = t + T.item;
     escenas.push(`<div class="esc" data-in="${a}" data-out="${fin}">
       <div style="position:absolute;left:0;right:0;top:330px;text-align:center;font-size:32px">
-        <span data-anim="fade" data-t="${a + .2}" style="font-family:var(--kanji);font-weight:700;font-size:44px;color:var(--vino-vivo);opacity:0;display:inline-block">${DAIJI[i] ?? i + 1}</span>
+        <span class="mono" data-anim="fade" data-t="${a + .2}" style="color:var(--vino-vivo);opacity:0;display:inline-block">${String(i + 1).padStart(2, '0')}</span>
         <span class="mono" style="color:var(--plata)"> · </span>
         <span style="display:inline-block;min-width:420px;text-align:left">${maquina(it.etiqueta, a + .3, .55, 'color:var(--plata);display:inline-block')}</span>
       </div>
@@ -177,9 +174,8 @@ export function buildReelLista(spec, imgs, bpm = 72) {
   // CIERRE
   const o = t, final = o + T.outro, golpeSello = o + 2 * b;
   escenas.push(`<div class="esc" data-in="${o}" data-out="${final + 1}">
-    <div data-anim="humo" data-t="${o}" style="position:absolute;inset:0">${humo(.34)}</div>
     <svg width="900" height="1150" style="position:absolute;left:90px;top:380px;overflow:visible"><path data-anim="draw" data-t="${o + .05}" data-d="1" d="${ojiva(900, 1150)}" style="fill:none;stroke:var(--plata);stroke-width:3"/></svg>
-    <div data-anim="fade" data-t="${o + .5}" style="position:absolute;left:465px;top:470px;width:150px;height:150px;opacity:0">${luna(0, 0, 150, .95)}</div>
+    <div data-anim="fade" data-t="${o + .5}" class="luna-c" style="left:516px;top:330px;width:40px;height:40px;box-shadow:12px -3px 0 0 var(--plata);opacity:0"></div>
     <div style="position:absolute;left:110px;right:110px;top:820px;text-align:center;font-size:124px">${letras(spec.cierre.pregunta.map(enfasis), o + .35)}</div>
     <div style="position:absolute;left:0;right:0;top:1160px;text-align:center">${maquina(spec.cierre.cta, o + 1.05, .7, 'font-size:32px;color:var(--plata)')}</div>
     <div style="position:absolute;left:0;right:0;top:1400px;display:flex;justify-content:center;align-items:center;gap:30px">
@@ -209,7 +205,8 @@ ${FONTS.map(f => `<link rel="stylesheet" href="${f}">`).join('\n')}
 </svg>
 <div class="reel">
   <div class="contenido" id="contenido">
-    <div id="encaje" style="position:absolute;left:0;top:0;width:2400px;height:150px">${encaje({ alto: 150, op: .5, ancho: 2400 })}</div>
+    <div class="brocado"></div>
+    <div id="encaje" style="position:absolute;left:0;top:0;width:1200px">${puntilla(.38).replace('width="1080"', 'width="1200"').replace('<rect width="1080"', '<rect width="1200"')}</div>
     <div class="rec-v"><span class="p"></span>▶ PLAY&nbsp;&nbsp;@CABA.KAMI</div>
     ${escenas.join('\n')}
     ${particulas()}
@@ -349,7 +346,7 @@ window.render = tReal => {
   contenido.style.transform = 'translate(' + (Math.sin(tReal * .7) * 4 + jx) + 'px,' + (Math.cos(tReal * .5) * 3 + jy) + 'px) scale(' + (1.012 + .008 * Math.sin(tReal * .4) + (impacto ? .03 : 0)) + ')';
 
   // Puntilla que se desliza, grano, banda de tracking, piloto REC.
-  document.getElementById('encaje').style.transform = 'translateX(' + (-((tReal * 9) % 1140)) + 'px)';
+  document.getElementById('encaje').style.transform = 'translateX(' + (-((tReal * 22) % 48)) + 'px)';
   // Papel con vaivén de ventanilla de proyector (de a dos).
   document.querySelector('.grano-v').style.transform = 'translate(' + ((hash(t * 7) - .5) * 30) + 'px,' + ((hash(t * 9) - .5) * 30) + 'px)';
   document.querySelector('.rec-v .p').style.opacity = Math.floor(t * 2) % 2 ? .25 : 1;
