@@ -3,7 +3,13 @@ name: Buscar recursos libres
 # Busca y descarga sonidos y texturas con licencia CC0 / dominio público (Openverse y The Met)
 # y los guarda con su licencia en la rama "recursos" para revisarlos antes de usarlos.
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      modo:
+        description: "vacío = sonidos y texturas · --museo = encajes y grabados de museo"
+        required: false
+        default: ""
+
 
 permissions:
   contents: write
@@ -20,7 +26,7 @@ jobs:
         with:
           node-version: 22
       - name: Buscar y descargar
-        run: node src/recursos/buscar.js
+        run: node src/recursos/buscar.js ${{ inputs.modo }}
       - name: Guardar en la rama recursos
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -31,7 +37,8 @@ jobs:
             mkdir -p "$DEST" && git -C "$DEST" init -q -b recursos && git -C "$DEST" remote add origin "$REPO_URL"
           fi
           mkdir -p "$DEST/candidatos"
-          cp -r recursos/* "$DEST/candidatos/"
+          cp -r recursos/texturas recursos/sonidos "$DEST/candidatos/" 2>/dev/null || true
+          node -e "const fs=require('fs');const p='$DEST/candidatos/catalogo.json';const a=fs.existsSync(p)?JSON.parse(fs.readFileSync(p)):[];const b=JSON.parse(fs.readFileSync('recursos/catalogo.json'));fs.writeFileSync(p,JSON.stringify([...a.filter(x=>!b.some(y=>y.archivo===x.archivo)),...b],null,2))"
           cd "$DEST"
           git add -A
           git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -q -m "Candidatos de recursos libres" || echo "Sin cambios"

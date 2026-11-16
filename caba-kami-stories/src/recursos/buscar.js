@@ -117,8 +117,35 @@ async function texturas() {
   }
 }
 
-await sonidos();
-await met();
-await texturas();
+// Segunda ronda: piezas de museo indexadas en Openverse (encajes, brocados, grabados antiguos).
+const MUSEO = {
+  'encaje': 'lace', 'encaje-bolillos': 'bobbin lace', 'encaje-aguja': 'needle lace', 'puntilla': 'lace border',
+  'brocado': 'brocade silk', 'grabado-rosa': 'rose engraving', 'grabado-luna': 'moon engraving', 'ornamento': 'gothic ornament engraving',
+};
+async function museo() {
+  const dir = path.join(OUT, 'texturas');
+  mkdirSync(dir, { recursive: true });
+  for (const [clave, q] of Object.entries(MUSEO)) {
+    const d = await json(`https://api.openverse.org/v1/images/?q=${encodeURIComponent(q)}&license=cc0,pdm&page_size=20`);
+    const res = (d?.results ?? []).filter(x => (x.width ?? 0) >= 900).slice(0, 5);
+    let k = 0;
+    for (const x of res) {
+      const nombre = `${clave}-${++k}.jpg`;
+      if (await bajar(x.url, path.join(dir, nombre))) {
+        catalogo.push({ tipo: 'textura', archivo: `texturas/${nombre}`, titulo: x.title, autor: x.creator, licencia: x.license_url || x.license, fuente: x.foreign_landing_url, origen: x.source });
+      }
+      await sleep(300);
+    }
+    console.log(`${clave}: ${k}`);
+  }
+}
+
+if (process.argv.includes('--museo')) {
+  await museo();
+} else {
+  await sonidos();
+  await met();
+  await texturas();
+}
 writeFileSync(path.join(OUT, 'catalogo.json'), JSON.stringify(catalogo, null, 2));
 console.log(`${catalogo.length} recursos en ${OUT}`);
