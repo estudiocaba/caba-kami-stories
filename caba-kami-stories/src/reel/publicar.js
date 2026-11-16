@@ -1,7 +1,7 @@
 // Publica en Instagram un reel ya generado (el MP4 está en la rama "publico", carpeta reeles/<ficha>/).
 //   node src/reel/publicar.js reeles/2026-12-06-moods.json
 // Instagram descarga el vídeo desde su URL pública, lo procesa (puede tardar unos minutos) y se publica.
-// La música de la biblioteca de Instagram no se puede añadir por API: el reel sale con su pista en silencio.
+// El reel lleva su propia música (lofi original de la carpeta musica/).
 
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
@@ -46,7 +46,7 @@ async function main() {
   const published = await graph('POST', `/${igUserId}/media_publish`, { creation_id: container.id }, token);
   const info = await graph('GET', `/${published.id}`, { fields: 'permalink' }, token).catch(() => ({}));
   console.log(`Publicado: ${published.id} ${info.permalink ?? ''}`);
-  await notify(`✅ Reel publicado en Instagram: ${spec.pieza}${info.permalink ? `\n${info.permalink}` : ''}\n(Sale sin música: si quieres un audio en tendencia, edítalo desde la app.)`);
+  await notify(`✅ Reel publicado en Instagram: ${spec.pieza}${info.permalink ? `\n${info.permalink}` : ''}`);
 }
 
 main().catch(async err => {

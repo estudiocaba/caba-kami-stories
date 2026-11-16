@@ -4,8 +4,8 @@
 //
 // 1. Busca en AniList las fotos y datos de cada elemento.
 // 2. Monta la animación con la plantilla y la graba fotograma a fotograma con Chrome (30 fps).
-// 3. Une los fotogramas en un MP4 vertical 1080×1920 con ffmpeg (con pista de audio en silencio:
-//    la música se elige en Instagram) y lo manda por Telegram.
+// 3. Une los fotogramas en un MP4 vertical 1080×1920 con ffmpeg, con una pista de lofi propio
+//    (carpeta musica/), y lo manda por Telegram.
 
 import { readFileSync, writeFileSync, mkdirSync, rmSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
@@ -91,15 +91,23 @@ async function main() {
   await reel.screenshot({ path: path.join(outDir, `cabakami-${slug}-portada.jpg`), type: 'jpeg', quality: 92 });
   await browser.close();
 
+  // Música: lofi oscuro propio (musica/*.m4a, compuesto por musica/componer.py, sin derechos de terceros).
+  // La ficha puede elegir pista con "musica"; si no, se elige una fija según el nombre de la ficha.
+  const PISTAS = ['medianoche', 'luna-roja', 'niebla', 'vela'];
+  const pista = spec.musica ?? PISTAS[[...slug].reduce((a, c) => a + c.charCodeAt(0), 0) % PISTAS.length];
+  const audio = path.resolve('musica', `${pista}.m4a`);
   const mp4 = path.join(outDir, `cabakami-${slug}.mp4`);
   execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-framerate', String(FPS), '-i', path.join(frames, '%05d.jpg'),
-    '-f', 'lavfi', '-i', 'anullsrc=r=44100:cl=stereo', '-shortest',
+    '-stream_loop', '-1', '-i', audio,
+    '-af', `afade=t=in:d=0.6,afade=t=out:st=${(dur - 1.8).toFixed(2)}:d=1.8`, '-t', dur.toFixed(2),
+    '-map', '0:v', '-map', '1:a',
     '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '20', '-pix_fmt', 'yuv420p', '-r', String(FPS),
-    '-c:a', 'aac', '-b:a', '128k', '-movflags', '+faststart', mp4]);
+    '-c:a', 'aac', '-b:a', '160k', '-movflags', '+faststart', mp4]);
+  console.log(`Música: ${pista}`);
   rmSync(frames, { recursive: true, force: true });
 
   const caption = `${spec.copy}\n\n${spec.hashtags}`;
-  writeFileSync(path.join(outDir, 'copy.txt'), `${caption}\n\n— AUDIO —\n${spec.audio ?? 'Elegir un audio en tendencia al publicar.'}\n`);
+  writeFileSync(path.join(outDir, 'copy.txt'), `${caption}\n\n— AUDIO —\nLofi propio de caba.kami: ${pista}\n`);
   console.log(`Reel de ${dur.toFixed(1)} s en ${mp4}`);
 
   const { TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID } = process.env;
@@ -111,7 +119,7 @@ async function main() {
     form.append('supports_streaming', 'true');
     const res = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendVideo`, { method: 'POST', body: form });
     if (!res.ok) throw new Error(`Telegram respondió ${res.status}: ${await res.text()}`);
-    await sendText({ token: TELEGRAM_BOT_TOKEN, chatId: TELEGRAM_CHAT_ID, text: `${caption}\n\n🎵 ${spec.audio ?? 'Elige un audio en tendencia al publicar.'}` });
+    await sendText({ token: TELEGRAM_BOT_TOKEN, chatId: TELEGRAM_CHAT_ID, text: `${caption}\n\n🎵 Lofi propio: ${pista}` });
     console.log('Enviado por Telegram');
   }
 }
