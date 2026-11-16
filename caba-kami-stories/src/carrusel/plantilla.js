@@ -99,13 +99,18 @@ const grano = '<div class="grano"></div>';
 const vhs = t => `<div class="vhs"><span class="rec"></span>▶ PLAY&nbsp;&nbsp;${t}</div>`;
 const filas = rows => rows.map(([l, v, color]) =>
   `<div class="fila"><div class="lab">${l}</div><div class="val"${color ? ` style="color:var(--${color})"` : ''}>${v}</div></div>`).join('');
-// Tratamiento de las fotos para integrarlas en lo oscuro: menos saturación, un velo vino
-// muy suave, viñeta en los bordes y fundido a negro abajo. El grano general va por encima.
+// Tratamiento de las fotos: cualquier imagen (también las de estética muy distinta) pasa por el mismo
+// filtro para que parezca parte de la pieza y no pegada encima: menos saturación, velo vino,
+// trama de puntos tipo manga, grano propio, sombra interior, viñeta y fundido a negro abajo.
+const TRAMA = "radial-gradient(rgba(14,13,15,.55) 1px, transparent 1.6px)";
 const arcoFoto = (img, fallback = '') => img
-  ? `<img class="foto" src="${img}" style="object-position:center top;filter:saturate(.72) contrast(1.06) brightness(.9)">
-     <div style="position:absolute;inset:0;background:var(--vino);mix-blend-mode:soft-light;opacity:.35"></div>
-     <div style="position:absolute;inset:0;background:radial-gradient(ellipse 75% 70% at 50% 38%, rgba(14,13,15,0) 55%, rgba(14,13,15,.6) 100%)"></div>
-     <div style="position:absolute;left:0;right:0;bottom:0;height:22%;background:linear-gradient(to bottom, rgba(14,13,15,0), rgba(14,13,15,.55))"></div>`
+  ? `<img class="foto" src="${img}" style="object-position:center top;filter:saturate(.68) contrast(1.08) brightness(.88)">
+     <div style="position:absolute;inset:0;background:var(--vino);mix-blend-mode:soft-light;opacity:.4"></div>
+     <div style="position:absolute;inset:0;background-image:${TRAMA};background-size:5px 5px;mix-blend-mode:multiply;opacity:.35"></div>
+     <div class="grano" style="opacity:.14;z-index:1"></div>
+     <div style="position:absolute;inset:0;background:radial-gradient(ellipse 75% 70% at 50% 38%, rgba(14,13,15,0) 50%, rgba(14,13,15,.65) 100%)"></div>
+     <div style="position:absolute;left:0;right:0;bottom:0;height:25%;background:linear-gradient(to bottom, rgba(14,13,15,0), rgba(14,13,15,.6))"></div>
+     <div style="position:absolute;inset:0;box-shadow:inset 0 0 40px rgba(14,13,15,.75)"></div>`
   : fallback;
 
 function portada(s, img, media, total) {
