@@ -1,0 +1,31 @@
+name: Publicar reel
+
+# Publica en Instagram un reel ya generado (Actions → Publicar reel → Run workflow).
+# Lo lanza también la tarea diaria de la agencia cuando una pieza está en «Programado» en Notion.
+on:
+  workflow_dispatch:
+    inputs:
+      ficha:
+        description: "Ficha, por ejemplo 2026-12-06-moods (sin .json)"
+        required: true
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: caba-kami-stories
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --omit=dev --no-audit --no-fund
+      - name: Publicar en Instagram
+        run: node src/reel/publicar.js "reeles/${{ inputs.ficha }}.json"
+        env:
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
+          PUBLIC_BASE_URL: https://raw.githubusercontent.com/${{ github.repository }}/publico
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}

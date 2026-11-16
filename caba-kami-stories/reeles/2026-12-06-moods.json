@@ -1,0 +1,38 @@
+{
+  "pieza": "3 animes para diciembre según tu mood",
+  "fecha": "2026-12-06",
+  "plantilla": "lista",
+  "etiqueta": "RECOMENDACIONES · DICIEMBRE",
+  "titulo": ["3 animes", "para diciembre"],
+  "subtitulo": "según tu mood",
+  "items": [
+    {
+      "etiqueta": "MOOD MANTITA",
+      "nombre": "Frieren",
+      "anime": { "busqueda": "Sousou no Frieren" },
+      "dato": "{nota} · {episodios} EPISODIOS",
+      "subtitulo": "Una elfa, un viaje lento y mucho té. Abrazo en formato anime."
+    },
+    {
+      "etiqueta": "MOOD LLORAR",
+      "nombre": "Violet Evergarden",
+      "anime": { "busqueda": "Violet Evergarden" },
+      "dato": "{nota} · {episodios} EPISODIOS",
+      "subtitulo": "Ten pañuelos cerca. No es una sugerencia."
+    },
+    {
+      "etiqueta": "MOOD HUSBANDO",
+      "nombre": "Ouran High School Host Club",
+      "anime": { "busqueda": "Ouran Koukou Host Club" },
+      "dato": "{nota} · {episodios} EPISODIOS",
+      "subtitulo": "Literalmente un club lleno de husbandos. De nada."
+    }
+  ],
+  "cierre": {
+    "pregunta": ["¿Cuál es", "tu mood?"],
+    "cta": "GUÁRDALO PARA DICIEMBRE"
+  },
+  "audio": "Algo suave y nostálgico: un lo-fi o un piano en tendencia.",
+  "copy": "3 animes para diciembre según tu mood 🌙\n\nMood mantita: Frieren. Mood llorar: Violet Evergarden (con pañuelos). Mood husbando: Ouran High School Host Club, que es literalmente un club lleno de husbandos.\n\n¿Cuál es tu mood de diciembre? Te leo 👇",
+  "hashtags": "#anime #animeespañol #animelatino #otaku #recomendacionesanime #animerecomendaciones #frieren #violetevergarden #ouranhighschoolhostclub #husbando #animereels"
+}

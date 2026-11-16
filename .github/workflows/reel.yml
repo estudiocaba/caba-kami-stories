@@ -1,0 +1,84 @@
+name: Reel de anime
+
+# Genera un reel a partir de una ficha de la carpeta caba-kami-stories/reeles/.
+# - Al subir una ficha nueva o cambiada: genera el vídeo (sin mandarlo por Telegram).
+# - A mano (Actions → Reel de anime → Run workflow): eliges la ficha y si se manda por Telegram.
+on:
+  push:
+    paths:
+      - "caba-kami-stories/reeles/*.json"
+      - "caba-kami-stories/src/reel/**"
+      - ".github/workflows/reel.yml"
+  workflow_dispatch:
+    inputs:
+      ficha:
+        description: "Ficha, por ejemplo 2026-12-06-moods (sin .json)"
+        required: true
+      telegram:
+        description: "Mandar el reel por Telegram"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write   # para guardar el vídeo en la rama "publico"
+
+jobs:
+  reel:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: caba-kami-stories
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --omit=dev --no-audit --no-fund
+
+      - name: Elegir fichas
+        id: fichas
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "lista=reeles/${{ inputs.ficha }}.json" >> "$GITHUB_OUTPUT"
+          else
+            CHANGED=$(git diff --name-only HEAD~1 HEAD -- reeles/ 2>/dev/null | sed 's#^caba-kami-stories/##' | tr '\n' ' ')
+            echo "lista=${CHANGED:-$(ls -t reeles/*.json | head -1)}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Generar reel
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          EXTRA=""
+          if [ "${{ github.event_name }}" != "workflow_dispatch" ] || [ "${{ inputs.telegram }}" != "true" ]; then EXTRA="--sin-telegram"; fi
+          for f in ${{ steps.fichas.outputs.lista }}; do
+            [ -f "$f" ] && node src/reel/index.js "$f" $EXTRA
+          done
+
+      # El vídeo y su portada se guardan en la rama "publico" (carpeta reeles/): desde ahí se revisan
+      # y Instagram los descarga para publicarlos.
+      - name: Guardar en la rama publico
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          REPO_URL="https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git"
+          DEST="$RUNNER_TEMP/publico"
+          if ! git clone -q --depth 1 --branch publico "$REPO_URL" "$DEST" 2>/dev/null; then
+            mkdir -p "$DEST" && git -C "$DEST" init -q -b publico && git -C "$DEST" remote add origin "$REPO_URL"
+          fi
+          for d in out/reel-*/; do
+            name=$(basename "$d" | sed 's/^reel-//')
+            mkdir -p "$DEST/reeles/$name"
+            cp "$d"*.mp4 "$d"*-portada.jpg "$d"copy.txt "$DEST/reeles/$name/"
+          done
+          cd "$DEST"
+          git add -A
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -q -m "Reel ${{ steps.fichas.outputs.lista }}" || echo "Sin cambios"
+          for i in 1 2 3 4 5; do
+            git push -q origin publico && break
+            git pull -q --rebase origin publico || true
+            sleep 5
+          done
