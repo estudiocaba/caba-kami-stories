@@ -319,3 +319,6 @@ export function buildLista(spec, portadaImg, itemImgs) {
 ${FONTS.map(f => `<link rel="stylesheet" href="${f}">`).join('\n')}
 <style>${CSS}</style></head><body>${slides.join('\n')}</body></html>`;
 }
+
+// Piezas compartidas con el generador de reels.
+export { CSS, FONTS, puntilla, destellos, arco, arcoFoto, separador, ojiva };
