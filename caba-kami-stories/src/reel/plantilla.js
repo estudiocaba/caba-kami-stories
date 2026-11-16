@@ -5,7 +5,6 @@
 //  · animación «de a dos» como el anime de verdad: los elementos cambian 12 veces por segundo
 //    mientras la cámara se mueve fluida a 30 fps
 //  · cortes: medio segundo de fallo de VHS y dos fotogramas de impacto en negativo
-//  · líneas de velocidad (集中線) cuando entra cada nombre
 //  · el arco ojival se dibuja y la foto sube como un telón, con zoom lento y barrido de luz
 //  · títulos letra a letra desde desenfoque con temblor de color; etiquetas a máquina;
 //    cifras que cuentan; subtítulos fansub palabra a palabra
@@ -33,7 +32,6 @@ body{margin:0;background:#000;}
 .l{display:inline-block;white-space:pre;}
 .lineas{position:absolute;inset:0;pointer-events:none;z-index:30;opacity:.08;background:repeating-linear-gradient(to bottom, rgba(236,235,238,.55) 0 1px, transparent 1px 4px);}
 .grano-v{position:absolute;inset:-40px;pointer-events:none;z-index:31;opacity:.26;background:url("${tex('papel.jpg')}") center/cover;mix-blend-mode:overlay;}
-.velocidad{position:absolute;inset:0;z-index:4;pointer-events:none;opacity:0;}
 .flash{position:absolute;inset:0;z-index:32;background:var(--luna);opacity:0;pointer-events:none;}
 .vineta{position:absolute;inset:0;z-index:28;pointer-events:none;background:radial-gradient(ellipse 90% 75% at 50% 45%, rgba(14,13,15,0) 60%, rgba(14,13,15,.75) 100%);}
 .titulo-v{font-family:var(--display);font-weight:400;line-height:.92;}
@@ -51,11 +49,48 @@ body{margin:0;background:#000;}
 `;
 
 // ── Constructores (lado Node) ──────────────────────────────────────────────
+// Título letra a letra. Cada palabra va entera (nunca se parte por la mitad) y las líneas
+// las decide partirTitulo(), no el navegador.
 const letras = (lineas, t, extra = '') => {
   let i = 0;
-  const html = lineas.map(l => [...l].map(ch => `<span class="l" data-i="${i++}">${ch === ' ' ? '&nbsp;' : ch}</span>`).join('')).join('<br>');
+  const palabra = w => `<span style="display:inline-block;white-space:nowrap">${[...w].map(ch => `<span class="l" data-i="${i++}">${ch}</span>`).join('')}</span>`;
+  const linea = l => {
+    // Respeta <em>…</em> del énfasis: la cursiva envuelve palabras completas.
+    const partes = l.split(/(<em>|<\/em>)/);
+    let enEm = false, out = '';
+    for (const p of partes) {
+      if (p === '<em>') { enEm = true; continue; }
+      if (p === '</em>') { enEm = false; continue; }
+      const html = p.split(' ').filter(Boolean).map(palabra).join(' ');
+      out += (out && html && !out.endsWith(' ') ? ' ' : '') + (enEm ? `<em>${html}</em>` : html);
+    }
+    return out;
+  };
+  const html = lineas.map(linea).join('<br>');
   return `<div class="titulo-v" data-anim="letters" data-t="${t}" ${extra}>${html}</div>`;
 };
+
+// Reglas de composición del nombre: una línea si cabe (≤ 14 letras); si no, dos líneas cortadas
+// en el espacio que deja las dos más parejas. El tamaño sale de la línea más larga para que
+// ninguna pase de 900 px de ancho.
+function partirTitulo(nombre) {
+  const limpio = String(nombre).replace(/\*/g, '');
+  const palabras = String(nombre).split(' ');
+  let lineas = [String(nombre)];
+  if (limpio.length > 14 && palabras.length > 1) {
+    let mejor = null;
+    for (let k = 1; k < palabras.length; k++) {
+      const a = palabras.slice(0, k).join(' '), b = palabras.slice(k).join(' ');
+      const peor = Math.max(a.replace(/\*/g, '').length, b.replace(/\*/g, '').length);
+      if (!mejor || peor < mejor.peor) mejor = { a, b, peor };
+    }
+    lineas = [mejor.a, mejor.b];
+  }
+  const largo = Math.max(...lineas.map(l => l.replace(/\*/g, '').length));
+  const size = Math.min(108, Math.floor(900 / (0.5 * largo)));
+  return { lineas: lineas.map(enfasis), size };
+}
+
 const maquina = (texto, t, d, style = '') =>
   `<div class="mono" data-anim="type" data-t="${t}" data-d="${d}" data-text="${texto.replace(/"/g, '&quot;')}" style="${style}"></div>`;
 const palabras = (texto, t, style) =>
@@ -76,22 +111,6 @@ function arcoAnimado(x, y, w, h, img, t, dur) {
       <path data-anim="draw" data-t="${t}" data-d=".75" d="${ojiva(w, h)}" style="fill:none;stroke:var(--plata);stroke-width:3"/>
     </svg>
   </div>`;
-}
-
-// Líneas de velocidad (集中線): tres juegos de rayos que se alternan de a dos, como en el anime.
-function velocidad(cx, cy, t) {
-  let seed = Math.round(cx + cy + t * 100);
-  const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
-  const juego = k => {
-    let d = '';
-    for (let j = 0; j < 90; j++) {
-      const ang = rnd() * Math.PI * 2, r0 = 470 + rnd() * 260, w = .006 + rnd() * .014;
-      const p = (a, r) => `${(cx + Math.cos(a) * r).toFixed(0)},${(cy + Math.sin(a) * r).toFixed(0)}`;
-      d += `M${p(ang - w, 1500)} L${p(ang, r0)} L${p(ang + w, 1500)}Z`;
-    }
-    return `<path class="vjuego" data-k="${k}" d="${d}" style="fill:var(--luna);display:none"/>`;
-  };
-  return `<svg class="velocidad" data-anim="velocidad" data-t="${t}" width="1080" height="1920">${juego(0)}${juego(1)}${juego(2)}</svg>`;
 }
 
 function sello(t, size = 120) {
@@ -140,17 +159,19 @@ export function buildReelLista(spec, imgs, bpm = 72) {
 
   spec.items.forEach((it, i) => {
     const a = t, fin = t + T.item;
+    const nom = partirTitulo(it.nombre);
     escenas.push(`<div class="esc" data-in="${a}" data-out="${fin}">
       <div style="position:absolute;left:0;right:0;top:330px;text-align:center;font-size:32px">
         <span class="mono" data-anim="fade" data-t="${a + .2}" style="color:var(--vino-vivo);opacity:0;display:inline-block">${String(i + 1).padStart(2, '0')}</span>
         <span class="mono" style="color:var(--plata)"> · </span>
         <span style="display:inline-block;min-width:420px;text-align:left">${maquina(it.etiqueta, a + .3, .55, 'color:var(--plata);display:inline-block')}</span>
       </div>
-      ${velocidad(540, 820, a + b - .1)}
-      ${arcoAnimado(210, 410, 660, 820, imgs[i], a, T.item)}
-      <div style="position:absolute;left:60px;right:60px;top:1270px;text-align:center;font-size:${it.nombre.length > 16 ? 80 : 108}px">${letras([enfasis(it.nombre)], a + b - .08)}</div>
-      <div class="mono" data-anim="fade" data-t="${a + 1.5 * b}" style="position:absolute;left:0;right:0;top:${it.nombre.length > 16 ? 1380 : 1405}px;text-align:center;font-weight:500;font-size:34px;letter-spacing:.12em;color:var(--luna);opacity:0">${it.datoHtml ?? it.dato ?? ''}</div>
-      ${palabras(it.subtitulo ?? '', a + 2 * b, 'top:1490px')}
+      ${arcoAnimado(240, 380, 600, 760, imgs[i], a, T.item)}
+      <div style="position:absolute;left:90px;right:90px;top:1180px;display:flex;flex-direction:column;align-items:center;text-align:center">
+        <div style="font-size:${nom.size}px">${letras(nom.lineas, a + b - .08)}</div>
+        <div class="mono" data-anim="fade" data-t="${a + 1.5 * b}" style="margin-top:30px;font-size:34px;letter-spacing:.1em;color:var(--luna);opacity:0">${it.datoHtml ?? it.dato ?? ''}</div>
+        ${palabras(it.subtitulo ?? '', a + 2 * b, 'position:static;margin-top:34px;max-width:860px;text-wrap:balance')}
+      </div>
       ${i % 2 ? estrella(900, 720, 30, a + .8) : estrella(180, 520, 40, a + .5)}
     </div>`);
     eventos.push({ tipo: 'pagina', t: a + .12 }, { tipo: 'campana', t: a + b - .08, vol: .55 });
@@ -245,7 +266,7 @@ window.render = tReal => {
   document.querySelectorAll('[data-anim]').forEach(el => {
     const t0 = +el.dataset.t, d = +(el.dataset.d || .6);
     // Trazos, telón y zoom de la foto van fluidos (son «cámara»); el resto, de a dos.
-    const fluido = ['draw', 'reveal', 'kenburns', 'leak', 'humo'].includes(el.dataset.anim);
+    const fluido = ['draw', 'reveal', 'kenburns', 'leak'].includes(el.dataset.anim);
     const x = (fluido ? tReal : t) - t0;
     switch (el.dataset.anim) {
       case 'letters': {
@@ -291,16 +312,6 @@ window.render = tReal => {
         const p = clamp(x / .5);
         el.style.opacity = x < 0 ? 0 : p * (.55 + .45 * Math.abs(Math.sin(t * 2.4 + t0 * 3)));
         el.style.transform = 'scale(' + (outBack(p) * (.85 + .25 * Math.abs(Math.sin(t * 2.4 + t0 * 3)))) + ') rotate(' + (t * 40 + t0 * 50) + 'deg)';
-        break;
-      }
-      case 'ghost': { const p = outExpo(clamp(x / 1.6)); el.style.opacity = p * .28; el.style.transform = 'translateY(' + ((1 - p) * 120) + 'px) rotate(' + (-6 + 6 * p) + 'deg)'; break; }
-      case 'tate': { const p = outExpo(clamp(x / 1.2)); el.style.clipPath = 'inset(0 0 ' + ((1 - p) * 100) + '% 0)'; break; }
-      case 'humo': { el.style.transform = 'translateY(' + (-x * 40) + 'px) scale(1.15)'; el.style.opacity = clamp(x / .8); break; }
-      case 'velocidad': {
-        const vis = x >= 0 && x < .5;
-        el.style.opacity = vis ? (.5 * (1 - x / .5)) : 0;
-        const k = vis ? Math.floor(x * 12) % 3 : -1;
-        el.querySelectorAll('.vjuego').forEach(j => { j.style.display = +j.dataset.k === k ? 'block' : 'none'; });
         break;
       }
       case 'eyecatch': {

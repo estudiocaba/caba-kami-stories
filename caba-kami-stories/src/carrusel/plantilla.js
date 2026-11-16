@@ -145,12 +145,12 @@ const tamTitulo = (texto, base, largo = 12) => (String(texto ?? '').replace(/\*/
 
 // ── Portada (común a Entrega y Lista): todo sobre el eje central ──────────
 // Arco de 8 columnas centrado; rótulo, título y bajada centrados debajo; pie simétrico.
-function portadaComun({ etiquetaVhs, banda, bandaPlata, sobre, titulo, bajada, img, fallback }) {
+function portadaComun({ banda, bandaPlata, sobre, titulo, bajada, img, fallback }) {
   const ax = cx(2), aw = cw(8), ay = 150, ah = 580;
   return `
 <div class="slide">
   ${fondo}
-  ${cabecera(etiquetaVhs, '@CABA.KAMI', 'plata')}
+  ${cabecera('00:01', '@CABA.KAMI', 'plata')}
   <div class="luna-c" style="left:${540 - 19}px;top:104px"></div>
   ${arco(ax, ay, aw, ah, arcoFoto(img, fallback))}
   ${espejo(540, aw / 2 + 44, 380, 26)}${espejo(540, aw / 2 + 30, 600, 12, .7)}
@@ -170,7 +170,7 @@ function portada(s, img, media) {
   const p = s.portada;
   const fallback = `<div style="position:absolute;left:0;right:0;top:140px;text-align:center;font-family:var(--kanji);font-weight:700;font-size:260px;line-height:1;color:var(--plata)">${p.kanji ?? '夜'}</div>`;
   return portadaComun({
-    etiquetaVhs: `ENTREGA Nº ${s.numero}`, banda: p.banda ?? 'ENTREGA DE ANIME', sobre: p.romaji,
+    banda: p.banda ?? 'ENTREGA DE ANIME', sobre: p.romaji,
     titulo: p.titulo, bajada: p.bajada, img, fallback,
   });
 }
@@ -251,13 +251,14 @@ function husbando(s, img, total) {
 }
 
 // ── Cierre: simétrico, sobre vino ─────────────────────────────────────────
-function cierre(s) {
+function cierre(s, total) {
   const c = s.cierre;
+  const tc = `00:${String(total).padStart(2, '0')}`;
   return `
 <div class="slide" style="background:var(--vino)">
   ${fondo}
   ${puntilla(.4)}
-  <div class="vhs" style="color:var(--plata)"><span style="width:12px;height:12px;background:var(--plata)"></span>■ STOP&nbsp;&nbsp;FIN DE LA ENTREGA</div>
+  <div class="vhs" style="color:var(--plata)"><span style="width:12px;height:12px;background:var(--plata)"></span>■ STOP&nbsp;&nbsp;${tc}</div><div class="der" style="color:var(--plata)">${total} / ${total}</div>
   <svg width="${cw(12)}" height="800" style="position:absolute;left:${M}px;top:210px;overflow:visible"><path d="${ojiva(cw(12), 800)}" style="fill:none;stroke:var(--plata);stroke-width:2"/></svg>
   <div class="luna-c" style="left:${540 - 24}px;top:160px;width:40px;height:40px;box-shadow:12px -3px 0 0 var(--plata)"></div>
   ${espejo(540, 310, 560, 24)}${espejo(540, 290, 720, 11, .7)}
@@ -287,7 +288,7 @@ export function buildEntrega(spec, imgs, media) {
     deQueVa(spec, imgs.prota, total),
     porQue(spec, total),
     husbando(spec, imgs.husbando, total),
-    cierre(spec),
+    cierre(spec, total),
   ]);
 }
 
@@ -302,7 +303,7 @@ function listaPortada(s, img) {
   const k = p.kanji ?? KANJI[s.pilar] ?? '夜';
   const fallback = `<div style="position:absolute;left:0;right:0;top:140px;text-align:center;font-family:var(--kanji);font-weight:700;font-size:260px;line-height:1;color:var(--plata)">${k}</div>`;
   return portadaComun({
-    etiquetaVhs: p.etiqueta ?? '', banda: p.banda, bandaPlata: s.pilar === 'husbandos', sobre: p.sobretitulo,
+    banda: p.banda, bandaPlata: s.pilar === 'husbandos', sobre: p.sobretitulo,
     titulo: p.titulo, bajada: p.bajada, img, fallback,
   });
 }
@@ -333,7 +334,7 @@ export function buildLista(spec, portadaImg, itemImgs) {
   return documento([
     listaPortada(spec, portadaImg),
     ...spec.items.map((it, i) => listaItem(spec, it, itemImgs[i], i, total)),
-    cierre(spec),
+    cierre(spec, total),
   ]);
 }
 

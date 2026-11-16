@@ -1,6 +1,7 @@
 """Compositor de lofi oscuro para los reels de @caba.kami.
 
-Genera pistas originales (sin derechos de terceros) de 8 compases en bucle:
+Genera pistas originales (sin derechos de terceros) de 16 compases en cuatro secciones
+(A, A', B, A'') para que no se note la repetición dentro de un reel:
 piano eléctrico FM con acordes menores, bajo redondo, batería suave con swing,
 colchón oscuro, melodía de caja de música, crujido de vinilo y cinta que ondula.
 Todo pasa por un filtro paso bajo para el sonido apagado del lofi.
@@ -169,7 +170,7 @@ PISTAS = {
 }
 
 
-def componer(nombre, bpm, semilla, prog, escala, compases=8):
+def componer(nombre, bpm, semilla, prog, escala, compases=16):
     rng = np.random.default_rng(semilla)
     pulso = 60 / bpm
     compas = 4 * pulso
@@ -178,15 +179,21 @@ def componer(nombre, bpm, semilla, prog, escala, compases=8):
     piano = np.zeros(n); bajos = np.zeros(n); fondo = np.zeros(n); bat = np.zeros(n); mel = np.zeros(n)
 
     for c in range(compases):
-        raiz, octv, ints = prog[c % len(prog)]
+        seccion = c // 4
+        # B (compases 9-12): la progresión empieza por el tercer acorde, cambia el color armónico.
+        raiz, octv, ints = prog[(c + (2 if seccion == 2 else 0)) % len(prog)]
+        # A' y A'': el acorde se invierte (la nota grave sube una octava), mismo acorde, otra voz.
+        if seccion in (1, 3):
+            ints = ints[1:] + [ints[0] + 12]
         base = NOTAS[raiz] + 12 * (octv + 1)
         t0 = c * compas
         # Piano: acorde arpegiado suave en el 1 y un empuje en el "y" del 2.
         for k, it in enumerate(ints):
             f = midi_hz(base + 12 + it)
             poner(piano, piano_fm(f, compas * 0.95, 0.42 - 0.04 * k), t0 + 0.018 * k)
+        empuje = 2.5 if seccion != 2 else 3.0
         for k, it in enumerate(ints[1:4]):
-            poner(piano, piano_fm(midi_hz(base + 12 + it), pulso * 1.6, 0.22), t0 + 2.5 * pulso + 0.015 * k)
+            poner(piano, piano_fm(midi_hz(base + 12 + it), pulso * 1.6, 0.22), t0 + empuje * pulso + 0.015 * k)
         # Bajo
         fb = midi_hz(base - 12 if base > 45 else base)
         poner(bajos, bajo(fb, pulso * 1.8), t0)
@@ -199,15 +206,20 @@ def componer(nombre, bpm, semilla, prog, escala, compases=8):
             sw = pulso * 0.5 * 0.16
             poner(bat, bombo(0.75), t0)
             poner(bat, bombo(0.5), t0 + 1.75 * pulso)
-            poner(bat, bombo(0.6), t0 + 2.5 * pulso)
+            relleno = c % 4 == 3
+            if not relleno:
+                poner(bat, bombo(0.6), t0 + 2.5 * pulso)
             poner(bat, caja(rng, 0.3), t0 + pulso)
             poner(bat, caja(rng, 0.32), t0 + 3 * pulso)
+            if relleno:  # pequeño redoble al final de cada sección
+                poner(bat, caja(rng, 0.18), t0 + 3.5 * pulso)
+                poner(bat, caja(rng, 0.22), t0 + 3.75 * pulso)
             for h in range(8):
                 poner(bat, charles(rng, 0.09 + 0.03 * (h % 2 == 0), abierto=(h == 7 and c % 2)), t0 + h * pulso / 2 + (sw if h % 2 else 0))
         # Caja de música: pocas notas de la escala, a partir del compás 3.
         if c >= 2:
             for paso in range(8):
-                if rng.random() < 0.32:
+                if rng.random() < (0.22, 0.3, 0.38, 0.32)[seccion]:
                     m = 72 + escala[rng.integers(0, len(escala))] + (12 if rng.random() < 0.2 else 0)
                     poner(mel, caja_musica(midi_hz(m), 1.6), t0 + paso * pulso / 2)
 

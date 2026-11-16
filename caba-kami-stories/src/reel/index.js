@@ -110,12 +110,13 @@ async function main() {
   writeFileSync(wav, renderSfx(eventos, dur));
   // Mezcla: música con fundidos que baja en cada corte (como si la cinta tropezara) + efectos.
   const audio = path.resolve('musica', `${pista}.m4a`);
-  const duck = cortes.map(c => `between(t,${(c - .2).toFixed(2)},${(c + .2).toFixed(2)})`).join('+') || '0';
+  // Bajada suave (curva, no escalón) de la música en cada corte, para que no suene a salto.
+  const duck = cortes.map(c => `exp(-pow((t-${c.toFixed(2)})/0.14,2))`).join('+') || '0';
   const mp4 = path.join(outDir, `cabakami-${slug}.mp4`);
   execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-framerate', String(FPS), '-i', path.join(frames, '%05d.jpg'),
-    '-stream_loop', '-1', '-i', audio, '-i', wav,
+    '-i', audio, '-i', wav,
     '-filter_complex',
-    `[1:a]atrim=0:${dur.toFixed(2)},asetpts=PTS-STARTPTS,afade=t=in:d=0.4,afade=t=out:st=${(dur - 1.6).toFixed(2)}:d=1.6,volume='1-0.6*(${duck})':eval=frame[m];` +
+    `[1:a]atrim=0:${dur.toFixed(2)},asetpts=PTS-STARTPTS,afade=t=in:d=0.4,afade=t=out:st=${(dur - 1.6).toFixed(2)}:d=1.6,volume='1-0.3*min(1,${duck})':eval=frame[m];` +
     `[2:a]aformat=channel_layouts=stereo,volume=1.1[s];[m][s]amix=inputs=2:normalize=0:duration=first,alimiter=limit=0.95[a]`,
     '-map', '0:v', '-map', '[a]', '-t', dur.toFixed(2),
     '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '20', '-pix_fmt', 'yuv420p', '-r', String(FPS),
@@ -134,6 +135,13 @@ async function main() {
     form.append('video', new Blob([readFileSync(mp4)], { type: 'video/mp4' }), path.basename(mp4));
     form.append('caption', `Reel listo para revisar ✨ ${spec.pieza} (${spec.fecha})`.slice(0, 1000));
     form.append('supports_streaming', 'true');
+    // Sin ancho/alto Telegram puede mostrarlo cuadrado: se indican 1080×1920 y una miniatura vertical.
+    form.append('width', '1080');
+    form.append('height', '1920');
+    form.append('duration', String(Math.round(dur)));
+    const mini = path.join(outDir, 'miniatura.jpg');
+    execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-i', path.join(outDir, `cabakami-${slug}-portada.jpg`), '-vf', 'scale=180:320', '-q:v', '4', mini]);
+    form.append('thumbnail', new Blob([readFileSync(mini)], { type: 'image/jpeg' }), 'miniatura.jpg');
     const res = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendVideo`, { method: 'POST', body: form });
     if (!res.ok) throw new Error(`Telegram respondió ${res.status}: ${await res.text()}`);
     await sendText({ token: TELEGRAM_BOT_TOKEN, chatId: TELEGRAM_CHAT_ID, text: `${caption}\n\n🎵 Lofi propio: ${pista}` });
