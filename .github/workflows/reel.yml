@@ -67,21 +67,25 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           REPO_URL="https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git"
+          SRC="$PWD"
           DEST="$RUNNER_TEMP/publico"
-          if ! git clone -q --depth 1 --branch publico "$REPO_URL" "$DEST" 2>/dev/null; then
-            mkdir -p "$DEST" && git -C "$DEST" init -q -b publico && git -C "$DEST" remote add origin "$REPO_URL"
-          fi
-          for d in out/reel-*/; do
-            name=$(basename "$d" | sed 's/^reel-//')
-            mkdir -p "$DEST/reeles/$name"
-            cp "$d"*.mp4 "$d"*-portada.jpg "$d"copy.txt "$DEST/reeles/$name/"
-            cp "$d"datos.json "$DEST/reeles/$name/" 2>/dev/null || true
-          done
-          cd "$DEST"
-          git add -A
-          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -q -m "Reel ${{ steps.fichas.outputs.lista }}" || echo "Sin cambios"
-          for i in 1 2 3 4 5; do
-            git push -q origin publico && break
-            git pull -q --rebase origin publico || true
-            sleep 5
+          # Si otra ejecución guardó algo a la vez, se vuelve a partir de lo último y se copia de nuevo
+          # (en vez de rebasar un clon superficial, que puede fallar y perder la salida).
+          for i in 1 2 3 4 5 6 7 8; do
+            rm -rf "$DEST"
+            if ! git clone -q --depth 1 --branch publico "$REPO_URL" "$DEST" 2>/dev/null; then
+              mkdir -p "$DEST" && git -C "$DEST" init -q -b publico && git -C "$DEST" remote add origin "$REPO_URL"
+            fi
+            for d in "$SRC"/out/reel-*/; do
+              name=$(basename "$d" | sed 's/^reel-//')
+              mkdir -p "$DEST/reeles/$name"
+              cp "$d"*.mp4 "$d"*-portada.jpg "$d"copy.txt "$DEST/reeles/$name/"
+              cp "$d"datos.json "$DEST/reeles/$name/" 2>/dev/null || true
+            done
+            git -C "$DEST" add -A
+            git -C "$DEST" -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -q -m "Reel ${{ steps.fichas.outputs.lista }}" || { echo "Sin cambios"; break; }
+            git -C "$DEST" push -q origin publico && break
+            echo "Otra ejecución guardó a la vez; reintento ($i)"
+            sleep $((RANDOM % 8 + 3))
+            [ "$i" = 8 ] && { echo "No se pudo guardar en publico"; exit 1; }
           done
