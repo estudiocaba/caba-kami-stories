@@ -73,6 +73,7 @@ jobs:
             name=$(basename "$d" | sed 's/^carrusel-//')
             mkdir -p "$DEST/carruseles/$name"
             cp "$d"*.png "$d"*.jpg "$d"copy.txt "$DEST/carruseles/$name/"
+            cp "$d"datos.json "$DEST/carruseles/$name/" 2>/dev/null || true
           done
           cd "$DEST"
           git add -A

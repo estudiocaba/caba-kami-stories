@@ -18,6 +18,9 @@ const args = process.argv.slice(2);
 const specPath = args.find(a => !a.startsWith('--'));
 if (!specPath) { console.error('Uso: node src/carrusel/index.js carruseles/<ficha>.json'); process.exit(1); }
 const offline = args.includes('--sin-anilist');
+// --datos <archivo>: vuelve a montar el carrusel con los datos e imágenes guardados de una generación
+// anterior (datos.json), sin consultar AniList. Sirve para retocar el diseño sin repetir búsquedas.
+const datosPath = args.includes('--datos') ? args[args.indexOf('--datos') + 1] : null;
 
 const CHROME = process.env.CHROME_PATH || '/usr/bin/google-chrome';
 
@@ -60,8 +63,15 @@ async function main() {
   mkdirSync(outDir, { recursive: true });
   const htmlPath = path.join(outDir, 'carrusel.html');
   let spec;
+  const guardado = datosPath ? JSON.parse(readFileSync(datosPath, 'utf8')) : null;
 
-  if ((raw.plantilla ?? 'entrega') === 'lista') {
+  if (guardado?.tipo === 'lista') {
+    spec = guardado.spec;
+    writeFileSync(htmlPath, buildLista(spec, guardado.portadaImg, guardado.imgs));
+  } else if (guardado) {
+    spec = guardado.spec;
+    writeFileSync(htmlPath, buildEntrega(spec, guardado.imgs, guardado.media));
+  } else if ((raw.plantilla ?? 'entrega') === 'lista') {
     // Cada elemento puede traer su anime (portada y datos) o su personaje (foto).
     const items = [];
     const imgs = [];
@@ -85,6 +95,7 @@ async function main() {
     spec = { ...fillTokens(raw, null), items };
     const portadaImg = raw.portadaDe != null ? imgs[raw.portadaDe] : imgs[0];
     writeFileSync(htmlPath, buildLista(spec, portadaImg, imgs));
+    writeFileSync(path.join(outDir, 'datos.json'), JSON.stringify({ tipo: 'lista', spec, portadaImg, imgs }));
   } else {
     let media = null;
     if (!offline) {
@@ -99,6 +110,7 @@ async function main() {
       husbando: await pickImage(spec.imagenes?.husbando, media, 'Husbando'),
     };
     writeFileSync(htmlPath, buildEntrega(spec, imgs, media ?? { title: {} }));
+    writeFileSync(path.join(outDir, 'datos.json'), JSON.stringify({ tipo: 'entrega', spec, imgs, media: { title: media?.title ?? {} } }));
   }
 
   const browser = await chromium.launch({ executablePath: CHROME });
