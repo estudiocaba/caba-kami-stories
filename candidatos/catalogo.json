@@ -1,0 +1,616 @@
+[
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/vhs-insertar-1.mp3",
+    "titulo": "Sony SLV-N50 VCR Insert.wav",
+    "autor": "spottieleonard",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/spottieleonard/sounds/702700",
+    "duracion_ms": 8916,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/vhs-insertar-2.mp3",
+    "titulo": "Toshiba M-455 Insert",
+    "autor": "spottieleonard",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/spottieleonard/sounds/698642",
+    "duracion_ms": 10432,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/vhs-insertar-3.mp3",
+    "titulo": "insert_tape_in_camcorder.wav",
+    "autor": "collacot",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/collacot/sounds/697931",
+    "duracion_ms": 3000,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/vhs-expulsar-1.mp3",
+    "titulo": "Sony SLV-N50 VCR Eject.wav",
+    "autor": "spottieleonard",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/spottieleonard/sounds/702699",
+    "duracion_ms": 9195,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/vhs-rebobinar-1.mp3",
+    "titulo": "Cassette Tape Rewind",
+    "autor": "albertomarun",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/albertomarun/sounds/423874",
+    "duracion_ms": 13441,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/vhs-rebobinar-2.mp3",
+    "titulo": "Rewind 2",
+    "autor": "LuKaiX",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/LuKaiX/sounds/539928",
+    "duracion_ms": 16713,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/vhs-rebobinar-3.mp3",
+    "titulo": "cassette tape action 2.wav",
+    "autor": "cognito perceptu",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/cognito%20perceptu/sounds/98329",
+    "duracion_ms": 13470,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/vhs-ruido-1.mp3",
+    "titulo": "CRACKLE (9).wav",
+    "autor": "DefySolipsis",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/DefySolipsis/sounds/531279",
+    "duracion_ms": 2803,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/vhs-ruido-2.mp3",
+    "titulo": "Static Aux (Original Noise)",
+    "autor": "Latranz",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/Latranz/sounds/519241",
+    "duracion_ms": 2260,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/vhs-ruido-3.mp3",
+    "titulo": "CRACKLE (8).wav",
+    "autor": "DefySolipsis",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/DefySolipsis/sounds/531278",
+    "duracion_ms": 5028,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/vhs-ruido-4.mp3",
+    "titulo": "HUM (21).wav",
+    "autor": "DefySolipsis",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/DefySolipsis/sounds/531293",
+    "duracion_ms": 13202,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/cinta-stop-1.mp3",
+    "titulo": "Tape stop effect",
+    "autor": "not_yr",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/not_yr/sounds/680836",
+    "duracion_ms": 18994,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/cinta-stop-2.mp3",
+    "titulo": "Keyfall + Tape stop effect",
+    "autor": "trader_one",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/trader_one/sounds/685354",
+    "duracion_ms": 4591,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/cinta-stop-3.mp3",
+    "titulo": "cassette tape action.wav",
+    "autor": "cognito perceptu",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/cognito%20perceptu/sounds/98330",
+    "duracion_ms": 10645,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/cinta-stop-4.mp3",
+    "titulo": "tape cassette machine Marantz pmd-222 play stop.wav",
+    "autor": "AviZiv",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/AviZiv/sounds/504509",
+    "duracion_ms": 15740,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/maquina-escribir-1.mp3",
+    "titulo": "Typewriter's Key",
+    "autor": "PerMagnusLindborg",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/PerMagnusLindborg/sounds/335898",
+    "duracion_ms": 11113,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/maquina-escribir-2.mp3",
+    "titulo": "Typewriter - single key - type 2.wav",
+    "autor": "yottasounds",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/yottasounds/sounds/380137",
+    "duracion_ms": 274,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/maquina-escribir-3.mp3",
+    "titulo": "keyboard5.wav",
+    "autor": "jim-ph",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/jim-ph/sounds/194799",
+    "duracion_ms": 400,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/maquina-escribir-4.mp3",
+    "titulo": "Typewriter snippet 03",
+    "autor": "cabled_mess",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/cabled_mess/sounds/360601",
+    "duracion_ms": 685,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/pagina-1.mp3",
+    "titulo": "Page Turns, Book Close.MP3",
+    "autor": "FunWithSound",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/FunWithSound/sounds/361164",
+    "duracion_ms": 19423,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/pagina-2.mp3",
+    "titulo": "turnPage.mp3",
+    "autor": "partheeban",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/partheeban/sounds/457767",
+    "duracion_ms": 708,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/pagina-3.mp3",
+    "titulo": "Book Turn Page 2.wav",
+    "autor": "esperri",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/esperri/sounds/119127",
+    "duracion_ms": 1000,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/pagina-4.mp3",
+    "titulo": "page turning.wav",
+    "autor": "Bratok999",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/Bratok999/sounds/173563",
+    "duracion_ms": 12736,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/caja-musica-1.mp3",
+    "titulo": "Music Box Melody 1",
+    "autor": "DRFX",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/DRFX/sounds/338986",
+    "duracion_ms": 16053,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/caja-musica-2.mp3",
+    "titulo": "Music Box (G, 4/4, 60 BPM)",
+    "autor": "sonically_sound",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/sonically_sound/sounds/613178",
+    "duracion_ms": 19450,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/campana-1.mp3",
+    "titulo": "Small Bell",
+    "autor": "steffcaffrey",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/steffcaffrey/sounds/452371",
+    "duracion_ms": 2104,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/campana-2.mp3",
+    "titulo": "chimes_part_5.wav",
+    "autor": "dADDoiT",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/dADDoiT/sounds/50404",
+    "duracion_ms": 13351,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/campana-3.mp3",
+    "titulo": "chimes_part_3.wav",
+    "autor": "dADDoiT",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/dADDoiT/sounds/50402",
+    "duracion_ms": 17915,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/campana-4.mp3",
+    "titulo": "Bell ringing once.wav",
+    "autor": "Fenodyrie",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/Fenodyrie/sounds/583949",
+    "duracion_ms": 6349,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/sello-1.wav",
+    "titulo": "LL-Q1860 (eng)-Flame, not lame-rubber stamp",
+    "autor": "Speaker: Flame, not lame Recorder: Flame, not lame",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/deed.en/",
+    "fuente": "https://commons.wikimedia.org/w/index.php?curid=157028816",
+    "duracion_ms": 1120,
+    "origen": "wikimedia_audio"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/sello-2.mp3",
+    "titulo": "es-stamp.wav",
+    "autor": "eddies2000",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/eddies2000/sounds/448474",
+    "duracion_ms": 5234,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/sello-3.mp3",
+    "titulo": "Thump.mp3",
+    "autor": "mpuffenbarger",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/mpuffenbarger/sounds/683031",
+    "duracion_ms": 708,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/sello-4.mp3",
+    "titulo": "17_stamp, rubber, plastic.wav",
+    "autor": "15FPanska_KristynaHaupt",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/15FPanska_KristynaHaupt/sounds/461888",
+    "duracion_ms": 15577,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/cerilla-1.mp3",
+    "titulo": "Match - Strike and Light 02.wav",
+    "autor": "JarredGibb",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/JarredGibb/sounds/248236",
+    "duracion_ms": 6104,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/cerilla-2.mp3",
+    "titulo": "Match strike, light up cigarette, exhale.wav",
+    "autor": "AldebaranCW",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/AldebaranCW/sounds/453082",
+    "duracion_ms": 10962,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/cerilla-3.mp3",
+    "titulo": "Match strike 01",
+    "autor": "scalywhale",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/scalywhale/sounds/423809",
+    "duracion_ms": 1232,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/cerilla-4.mp3",
+    "titulo": "Match Strike 02.wav",
+    "autor": "squareal",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/squareal/sounds/237391",
+    "duracion_ms": 1999,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/vela-1.mp3",
+    "titulo": "Man Blowing Candle Out.wav",
+    "autor": "bbrocer",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/bbrocer/sounds/382667",
+    "duracion_ms": 11784,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/vela-2.mp3",
+    "titulo": "Match Ignite.aif",
+    "autor": "DiArchangeli",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/DiArchangeli/sounds/462111",
+    "duracion_ms": 7500,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/vela-3.mp3",
+    "titulo": "Candle lighting.wav",
+    "autor": "mfearnley",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/mfearnley/sounds/434145",
+    "duracion_ms": 6720,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/vela-4.mp3",
+    "titulo": "Match Ignite (No Strike)",
+    "autor": "brachern",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/brachern/sounds/398448",
+    "duracion_ms": 848,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/viento-1.mp3",
+    "titulo": "whislingwind.WAV",
+    "autor": "stomachache",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/stomachache/sounds/45642",
+    "duracion_ms": 11214,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/viento-2.mp3",
+    "titulo": "chimney wind 1.wav",
+    "autor": "Walter_Odington",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/Walter_Odington/sounds/26189",
+    "duracion_ms": 9500,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/cuervo-1.mp3",
+    "titulo": "Rooster crow",
+    "autor": "jsbarrett",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/jsbarrett/sounds/200339",
+    "duracion_ms": 4757,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/cuervo-2.mp3",
+    "titulo": "Rooster Crow 2",
+    "autor": "BenjaminNelan",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/BenjaminNelan/sounds/435507",
+    "duracion_ms": 2047,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/cuervo-3.mp3",
+    "titulo": "Rooster crows",
+    "autor": "jsbarrett",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/jsbarrett/sounds/200334",
+    "duracion_ms": 9007,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "sonido",
+    "archivo": "sonidos/cuervo-4.mp3",
+    "titulo": "Crows In Tree.wav",
+    "autor": "Kingcornz",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://freesound.org/people/Kingcornz/sounds/342129",
+    "duracion_ms": 10257,
+    "origen": "freesound"
+  },
+  {
+    "tipo": "textura",
+    "archivo": "texturas/papel-viejo-1.jpg",
+    "titulo": "Free old paper texture image",
+    "autor": null,
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://www.rawpixel.com/image/5913072/image-paper-texture-old",
+    "origen": "rawpixel"
+  },
+  {
+    "tipo": "textura",
+    "archivo": "texturas/papel-viejo-2.jpg",
+    "titulo": "Old paper texture background, simple",
+    "autor": "Teddy",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://www.rawpixel.com/image/6152524/old-paper-texture-background-simple-design",
+    "origen": "rawpixel"
+  },
+  {
+    "tipo": "textura",
+    "archivo": "texturas/papel-viejo-3.jpg",
+    "titulo": "Old paper texture mobile wallpaper",
+    "autor": "Ake",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://www.rawpixel.com/image/6169157/photo-image-background-wallpaper-paper",
+    "origen": "rawpixel"
+  },
+  {
+    "tipo": "textura",
+    "archivo": "texturas/papel-viejo-4.jpg",
+    "titulo": "Old paper texture background, simple",
+    "autor": "Teddy",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://www.rawpixel.com/image/6130364/old-paper-texture-background-simple-design",
+    "origen": "rawpixel"
+  },
+  {
+    "tipo": "textura",
+    "archivo": "texturas/terciopelo-negro-1.jpg",
+    "titulo": null,
+    "autor": null,
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://www.rawpixel.com/image/5948464/free-public-domain-cc0-photo",
+    "origen": "rawpixel"
+  },
+  {
+    "tipo": "textura",
+    "archivo": "texturas/terciopelo-negro-2.jpg",
+    "titulo": null,
+    "autor": null,
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://www.rawpixel.com/image/5963854/free-public-domain-cc0-photo",
+    "origen": "rawpixel"
+  },
+  {
+    "tipo": "textura",
+    "archivo": "texturas/terciopelo-negro-3.jpg",
+    "titulo": "Fragment",
+    "autor": "artinstitutechicago",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://www.rawpixel.com/image/9027213/fragment",
+    "origen": "rawpixel"
+  },
+  {
+    "tipo": "textura",
+    "archivo": "texturas/terciopelo-negro-4.jpg",
+    "titulo": "Elegant black floral fabric design",
+    "autor": "artinstitutechicago",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://www.rawpixel.com/image/9005768/fragment",
+    "origen": "rawpixel"
+  },
+  {
+    "tipo": "textura",
+    "archivo": "texturas/cera-1.jpg",
+    "titulo": "insectlike candle-wax splat",
+    "autor": "lisafree54",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://www.flickr.com/photos/136594255@N06/28534920004",
+    "origen": "flickr"
+  },
+  {
+    "tipo": "textura",
+    "archivo": "texturas/cera-2.jpg",
+    "titulo": "Weaving candle wax",
+    "autor": "Warmglow",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/deed.en/",
+    "fuente": "https://commons.wikimedia.org/w/index.php?curid=148181521",
+    "origen": "wikimedia"
+  },
+  {
+    "tipo": "textura",
+    "archivo": "texturas/cera-3.jpg",
+    "titulo": "Christmas - Creative Commons by gnuckx",
+    "autor": "gnuckx",
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://www.flickr.com/photos/34409164@N06/5343869097",
+    "origen": "flickr"
+  },
+  {
+    "tipo": "textura",
+    "archivo": "texturas/cera-4.jpg",
+    "titulo": "Melorheostosis Bone Disease",
+    "autor": "National Institutes of Health (NIH)",
+    "licencia": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "fuente": "https://www.flickr.com/photos/132318516@N08/27874857608",
+    "origen": "flickr"
+  },
+  {
+    "tipo": "textura",
+    "archivo": "texturas/humo-1.jpg",
+    "titulo": "Smoke black background",
+    "autor": null,
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://www.rawpixel.com/image/6016340/photo-image-background-public-domain-black",
+    "origen": "rawpixel"
+  },
+  {
+    "tipo": "textura",
+    "archivo": "texturas/humo-2.jpg",
+    "titulo": "Smoke black background",
+    "autor": null,
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://www.rawpixel.com/image/6031956/photo-image-background-public-domain-black",
+    "origen": "rawpixel"
+  },
+  {
+    "tipo": "textura",
+    "archivo": "texturas/humo-3.jpg",
+    "titulo": "Smoke black background",
+    "autor": null,
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://www.rawpixel.com/image/6018061/photo-image-background-public-domain-black",
+    "origen": "rawpixel"
+  },
+  {
+    "tipo": "textura",
+    "archivo": "texturas/humo-4.jpg",
+    "titulo": "Smoke black background",
+    "autor": null,
+    "licencia": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "fuente": "https://www.rawpixel.com/image/6019895/photo-image-background-public-domain-black",
+    "origen": "rawpixel"
+  }
+]
