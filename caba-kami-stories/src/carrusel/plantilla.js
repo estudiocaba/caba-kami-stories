@@ -99,8 +99,13 @@ const grano = '<div class="grano"></div>';
 const vhs = t => `<div class="vhs"><span class="rec"></span>▶ PLAY&nbsp;&nbsp;${t}</div>`;
 const filas = rows => rows.map(([l, v, color]) =>
   `<div class="fila"><div class="lab">${l}</div><div class="val"${color ? ` style="color:var(--${color})"` : ''}>${v}</div></div>`).join('');
+// Tratamiento de las fotos para integrarlas en lo oscuro: menos saturación, un velo vino
+// muy suave, viñeta en los bordes y fundido a negro abajo. El grano general va por encima.
 const arcoFoto = (img, fallback = '') => img
-  ? `<img class="foto" src="${img}" style="object-position:center top">`
+  ? `<img class="foto" src="${img}" style="object-position:center top;filter:saturate(.72) contrast(1.06) brightness(.9)">
+     <div style="position:absolute;inset:0;background:var(--vino);mix-blend-mode:soft-light;opacity:.35"></div>
+     <div style="position:absolute;inset:0;background:radial-gradient(ellipse 75% 70% at 50% 38%, rgba(14,13,15,0) 55%, rgba(14,13,15,.6) 100%)"></div>
+     <div style="position:absolute;left:0;right:0;bottom:0;height:22%;background:linear-gradient(to bottom, rgba(14,13,15,0), rgba(14,13,15,.55))"></div>`
   : fallback;
 
 function portada(s, img, media, total) {
