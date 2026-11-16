@@ -13,11 +13,13 @@
 
 import { CSS, FONTS, puntilla, arcoFoto, ojiva } from '../carrusel/plantilla.js';
 
-export const TIEMPOS = { intro: 2.8, item: 3.8, eyecatch: 0.7, outro: 3.4 };
+// Tiempos en PULSOS de la música: los cortes caen siempre en un golpe. La intro dura un compás
+// (la batería entra justo en el primer corte); cada elemento, 5 pulsos; el eyecatch, 1.
+export const PULSOS = { intro: 4, item: 5, eyecatch: 1, outro: 5 };
 
-export function duracionLista(spec) {
-  const n = spec.items.length;
-  return TIEMPOS.intro + n * TIEMPOS.item + (n - 1) * TIEMPOS.eyecatch + TIEMPOS.outro;
+export function duracionLista(spec, bpm = 72) {
+  const n = spec.items.length, b = 60 / bpm;
+  return (PULSOS.intro + n * PULSOS.item + (n - 1) * PULSOS.eyecatch + PULSOS.outro) * b;
 }
 
 const REEL_CSS = `
@@ -92,11 +94,16 @@ function particulas() {
   return out.join('');
 }
 
-export function buildReelLista(spec, imgs) {
-  const T = TIEMPOS;
+export function buildReelLista(spec, imgs, bpm = 72) {
+  const b = 60 / bpm;
+  const T = { intro: PULSOS.intro * b, item: PULSOS.item * b, eyecatch: PULSOS.eyecatch * b, outro: PULSOS.outro * b };
   const n = spec.items.length;
   const cortes = [];
   const escenas = [];
+  // Efectos de sonido sincronizados con cada gesto.
+  const eventos = [{ tipo: 'play', t: 0 }];
+  const teclas = (t0, d, texto) => { const k = [...texto].length; for (let i = 0; i < k; i++) if (texto[i] !== ' ') eventos.push({ tipo: 'tecla', t: t0 + (i / k) * d, vol: .8 + ((i * 37) % 5) / 10 }); };
+  const tics = (t0, veces = 9) => { for (let i = 0; i < veces; i++) eventos.push({ tipo: 'tic', t: t0 + 1.1 * (1 - Math.pow(1 - i / veces, 2)) }); };
   let t = 0;
 
   // INTRO
@@ -110,24 +117,29 @@ export function buildReelLista(spec, imgs) {
     </div>
     ${estrella(190, 590, 54, .6)}${estrella(890, 700, 36, .9)}${estrella(220, 1230, 26, 1.2)}${estrella(870, 1290, 46, 1.0)}
   </div>`);
+  teclas(.15, .7, spec.etiqueta ?? '');
+  eventos.push({ tipo: 'brillo', t: .45 }, { tipo: 'campana', t: .6 }, { tipo: 'campana', t: 1.0, vol: .6 });
   t = T.intro;
   cortes.push(t);
 
   spec.items.forEach((it, i) => {
-    const a = t, b = t + T.item;
-    escenas.push(`<div class="esc" data-in="${a}" data-out="${b}">
+    const a = t, fin = t + T.item;
+    escenas.push(`<div class="esc" data-in="${a}" data-out="${fin}">
       <div style="position:absolute;left:0;right:0;top:330px;text-align:center;font-size:32px">
         <span class="mono" data-anim="fade" data-t="${a + .2}" style="color:var(--vino-vivo);opacity:0;display:inline-block">${String(i + 1).padStart(2, '0')}</span>
         <span class="mono" style="color:var(--plata)"> · </span>
         <span style="display:inline-block;min-width:420px;text-align:left">${maquina(it.etiqueta, a + .3, .55, 'color:var(--plata);display:inline-block')}</span>
       </div>
       ${arcoAnimado(210, 410, 660, 820, imgs[i], a, T.item)}
-      <div style="position:absolute;left:60px;right:60px;top:1270px;text-align:center;font-size:${it.nombre.length > 16 ? 80 : 108}px">${letras([it.nombre], a + .75)}</div>
-      <div class="mono" data-anim="fade" data-t="${a + 1.05}" style="position:absolute;left:0;right:0;top:${it.nombre.length > 16 ? 1380 : 1405}px;text-align:center;font-weight:500;font-size:34px;letter-spacing:.12em;color:var(--luna);opacity:0">${it.datoHtml ?? it.dato ?? ''}</div>
-      ${palabras(it.subtitulo ?? '', a + 1.35, 'top:1490px')}
+      <div style="position:absolute;left:60px;right:60px;top:1270px;text-align:center;font-size:${it.nombre.length > 16 ? 80 : 108}px">${letras([it.nombre], a + b - .08)}</div>
+      <div class="mono" data-anim="fade" data-t="${a + 1.5 * b}" style="position:absolute;left:0;right:0;top:${it.nombre.length > 16 ? 1380 : 1405}px;text-align:center;font-weight:500;font-size:34px;letter-spacing:.12em;color:var(--luna);opacity:0">${it.datoHtml ?? it.dato ?? ''}</div>
+      ${palabras(it.subtitulo ?? '', a + 2 * b, 'top:1490px')}
       ${estrella(180, 520, 44, a + .5)}${estrella(900, 720, 28, a + .8)}${estrella(195, 1120, 20, a + 1.1)}
     </div>`);
-    t = b;
+    eventos.push({ tipo: 'whoosh', t: a + .25 }, { tipo: 'brillo', t: a + b - .08, vol: .8 }, { tipo: 'campana', t: a + .5, vol: .7 });
+    teclas(a + .3, .55, it.etiqueta);
+    if (it.datoHtml?.includes('data-count')) tics(a + 1.5 * b);
+    t = fin;
     cortes.push(t);
     if (i < n - 1) {
       const e = t;
@@ -136,25 +148,30 @@ export function buildReelLista(spec, imgs) {
         <div class="mono" style="position:absolute;left:0;right:0;top:1300px;text-align:center;font-size:30px;color:var(--plata)">▶ SIGUIENTE · ${String(i + 2).padStart(2, '0')}</div>
         <div style="position:absolute;left:0;right:0;top:1400px;text-align:center;font-family:var(--display);font-style:italic;font-weight:600;font-size:64px">caba.kami</div>
       </div>`);
+      eventos.push({ tipo: 'eyecatch', t: e });
       t = e + T.eyecatch;
       cortes.push(t);
     }
   });
 
   // CIERRE
-  const o = t, fin = o + T.outro;
-  escenas.push(`<div class="esc" data-in="${o}" data-out="${fin + 1}">
+  const o = t, final = o + T.outro, golpeSello = o + 2 * b;
+  escenas.push(`<div class="esc" data-in="${o}" data-out="${final + 1}">
     <svg width="900" height="1150" style="position:absolute;left:90px;top:380px;overflow:visible"><path data-anim="draw" data-t="${o + .05}" data-d="1" d="${ojiva(900, 1150)}" style="fill:none;stroke:var(--plata);stroke-width:3"/></svg>
     <div style="position:absolute;left:110px;right:110px;top:820px;text-align:center;font-size:124px">${letras(spec.cierre.pregunta, o + .35)}</div>
     <div style="position:absolute;left:0;right:0;top:1160px;text-align:center">${maquina(spec.cierre.cta, o + 1.05, .7, 'font-size:32px;color:var(--plata)')}</div>
     <div style="position:absolute;left:0;right:0;top:1400px;display:flex;justify-content:center;align-items:center;gap:30px">
       <div data-anim="fade" data-t="${o + 1.5}" style="font-family:var(--display);font-style:italic;font-weight:600;font-size:76px;opacity:0">caba<span style="color:var(--vino-vivo)">.</span>kami</div>
-      ${sello(o + 1.75)}
+      ${sello(golpeSello - .32)}
     </div>
     ${estrella(150, 800, 40, o + .6)}${estrella(930, 980, 30, o + .9)}${estrella(170, 1300, 22, o + 1.2)}
   </div>`);
+  eventos.push({ tipo: 'whoosh', t: o + .05, vol: .7 }, { tipo: 'brillo', t: o + .35 }, { tipo: 'sello', t: golpeSello }, { tipo: 'stop', t: final - .35 });
+  teclas(o + 1.05, .7, spec.cierre.cta);
+  // Cada corte con fallo de VHS suena centrado en el golpe.
+  cortes.forEach(c => eventos.push({ tipo: 'glitch', t: c - .2 }));
 
-  return `<!doctype html><html lang="es"><head><meta charset="utf-8">
+  const html = `<!doctype html><html lang="es"><head><meta charset="utf-8">
 ${FONTS.map(f => `<link rel="stylesheet" href="${f}">`).join('\n')}
 <style>${CSS}${REEL_CSS}</style></head><body>
 <svg width="0" height="0" style="position:absolute">
@@ -181,6 +198,7 @@ ${FONTS.map(f => `<link rel="stylesheet" href="${f}">`).join('\n')}
 const CORTES = ${JSON.stringify(cortes)};
 ${RENDER_JS}
 </script></body></html>`;
+  return { html, eventos, cortes, duracion: final };
 }
 
 // ── Motor de animación (lado navegador) ────────────────────────────────────

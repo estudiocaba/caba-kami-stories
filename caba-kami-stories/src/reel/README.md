@@ -18,7 +18,7 @@ Ficha de ejemplo: `reeles/2026-12-06-moods.json`.
 | `musica` | Pista de lofi propio: `medianoche`, `luna-roja`, `niebla` o `vela`. Si falta, se elige una según el nombre de la ficha. |
 | `copy`, `hashtags` | Texto de la publicación. |
 
-Opcionales: `intro`, `porElemento` y `outro`, en segundos (por defecto 2,6 · 3,6 · 3).
+El montaje se mide en pulsos de la pista elegida: intro de un compás (la batería entra en el primer corte), 5 pulsos por elemento, 1 de eyecatch y 5 de cierre. Así todos los cortes caen en el golpe.
 
 ## Cómo se usa
 
@@ -38,6 +38,10 @@ Cada reel sale con **lofi oscuro propio**, compuesto por código en `musica/comp
 | `vela` | Do menor | 70 bpm | La más oscura. |
 
 Para crear más pistas: añadir una entrada en `PISTAS` dentro de `componer.py` (tono, tempo, acordes y semilla) y ejecutar `python3 musica/componer.py <nombre>`.
+
+## Efectos de sonido
+
+`src/reel/sfx.js` sintetiza desde cero un efecto para cada gesto del motion graphics y los coloca en el tiempo exacto: play de VHS al empezar, fallo de cinta en cada corte (con la música bajando un instante), soplido cuando sube la foto, teclas de máquina en las etiquetas, campanitas en los destellos, brillo en los títulos, tic-tic de los contadores, golpe con campana en el eyecatch, golpe seco del sello y stop de cinta al final.
 
 ## Pendiente
 

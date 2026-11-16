@@ -13,7 +13,8 @@ import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { chromium } from 'playwright-core';
 import { fetchAnime, fetchCharacterByName, imageAsDataUri } from '../carrusel/anilist-media.js';
-import { buildReelLista, duracionLista, TIEMPOS } from './plantilla.js';
+import { buildReelLista, PULSOS } from './plantilla.js';
+import { renderSfx } from './sfx.js';
 import { sendText } from '../telegram.js';
 
 const args = process.argv.slice(2);
@@ -67,14 +68,21 @@ async function main() {
   }
   const spec = { ...raw, items };
 
+  // Música: lofi oscuro propio (musica/*.m4a, compuesto por musica/componer.py, sin derechos de terceros).
+  // La ficha puede elegir pista con "musica"; si no, se elige una fija según el nombre de la ficha.
+  // El montaje se cuenta en pulsos de esa pista para que los cortes caigan en el golpe.
+  const BPM = { medianoche: 72, 'luna-roja': 68, niebla: 76, vela: 70 };
+  const pista = spec.musica ?? Object.keys(BPM)[[...slug].reduce((a, c) => a + c.charCodeAt(0), 0) % 4];
+  const bpm = BPM[pista] ?? 72;
+
   const outDir = path.resolve('out', `reel-${slug}`);
   const frames = path.join(outDir, 'frames');
   rmSync(frames, { recursive: true, force: true });
   mkdirSync(frames, { recursive: true });
   const htmlPath = path.join(outDir, 'reel.html');
-  writeFileSync(htmlPath, buildReelLista(spec, imgs));
+  const { html, eventos, cortes, duracion: dur } = buildReelLista(spec, imgs, bpm);
+  writeFileSync(htmlPath, html);
 
-  const dur = duracionLista(spec);
   const n = Math.round(dur * FPS);
   const browser = await chromium.launch({ executablePath: CHROME });
   const page = await browser.newPage({ viewport: { width: 1080, height: 1920 } });
@@ -87,20 +95,23 @@ async function main() {
     await reel.screenshot({ path: path.join(frames, `${String(f).padStart(5, '0')}.jpg`), type: 'jpeg', quality: 88 });
   }
   // Portada del reel: el fotograma del primer elemento ya visible.
-  await page.evaluate(t => window.render(t), TIEMPOS.intro + 2.6);
+  await page.evaluate(t => window.render(t), (PULSOS.intro + 3) * 60 / bpm);
   await reel.screenshot({ path: path.join(outDir, `cabakami-${slug}-portada.jpg`), type: 'jpeg', quality: 92 });
   await browser.close();
 
-  // Música: lofi oscuro propio (musica/*.m4a, compuesto por musica/componer.py, sin derechos de terceros).
-  // La ficha puede elegir pista con "musica"; si no, se elige una fija según el nombre de la ficha.
-  const PISTAS = ['medianoche', 'luna-roja', 'niebla', 'vela'];
-  const pista = spec.musica ?? PISTAS[[...slug].reduce((a, c) => a + c.charCodeAt(0), 0) % PISTAS.length];
+  // Efectos de sonido sincronizados con el motion graphics.
+  const wav = path.join(outDir, 'efectos.wav');
+  writeFileSync(wav, renderSfx(eventos, dur));
+  // Mezcla: música con fundidos que baja en cada corte (como si la cinta tropezara) + efectos.
   const audio = path.resolve('musica', `${pista}.m4a`);
+  const duck = cortes.map(c => `between(t,${(c - .2).toFixed(2)},${(c + .2).toFixed(2)})`).join('+') || '0';
   const mp4 = path.join(outDir, `cabakami-${slug}.mp4`);
   execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-framerate', String(FPS), '-i', path.join(frames, '%05d.jpg'),
-    '-stream_loop', '-1', '-i', audio,
-    '-af', `afade=t=in:d=0.6,afade=t=out:st=${(dur - 1.8).toFixed(2)}:d=1.8`, '-t', dur.toFixed(2),
-    '-map', '0:v', '-map', '1:a',
+    '-stream_loop', '-1', '-i', audio, '-i', wav,
+    '-filter_complex',
+    `[1:a]atrim=0:${dur.toFixed(2)},asetpts=PTS-STARTPTS,afade=t=in:d=0.4,afade=t=out:st=${(dur - 1.6).toFixed(2)}:d=1.6,volume='1-0.6*(${duck})':eval=frame[m];` +
+    `[2:a]aformat=channel_layouts=stereo,volume=1.1[s];[m][s]amix=inputs=2:normalize=0:duration=first,alimiter=limit=0.95[a]`,
+    '-map', '0:v', '-map', '[a]', '-t', dur.toFixed(2),
     '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '20', '-pix_fmt', 'yuv420p', '-r', String(FPS),
     '-c:a', 'aac', '-b:a', '160k', '-movflags', '+faststart', mp4]);
   console.log(`Música: ${pista}`);
