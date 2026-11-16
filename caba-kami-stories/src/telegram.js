@@ -21,6 +21,21 @@ export async function sendToTelegram({ token, chatId, png, filename, caption, te
   }
 }
 
+// Manda varias imágenes juntas (hasta 10) como documentos, para que Telegram no las comprima.
+export async function sendDocumentGroup({ token, chatId, files, caption }) {
+  const form = new FormData();
+  form.append('chat_id', chatId);
+  const media = files.slice(0, 10).map((f, i) => ({
+    type: 'document',
+    media: `attach://f${i}`,
+    ...(i === files.length - 1 && caption ? { caption: caption.slice(0, 1000) } : {}),
+  }));
+  form.append('media', JSON.stringify(media));
+  files.slice(0, 10).forEach((f, i) => form.append(`f${i}`, new Blob([f.data], { type: 'image/png' }), f.name));
+  const res = await fetch(`https://api.telegram.org/bot${token}/sendMediaGroup`, { method: 'POST', body: form });
+  if (!res.ok) throw new Error(`Telegram respondió ${res.status}: ${await res.text()}`);
+}
+
 export async function sendText({ token, chatId, text }) {
   const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
     method: 'POST',

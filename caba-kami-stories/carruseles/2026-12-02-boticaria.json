@@ -1,0 +1,114 @@
+{
+  "pieza": "Entrega: Los diarios de la boticaria",
+  "fecha": "2026-12-02",
+  "plantilla": "entrega",
+  "numero": "01",
+  "anime": {
+    "busqueda": "Kusuriya no Hitorigoto",
+    "anio": 2026
+  },
+  "imagenes": {
+    "portada": {
+      "de": "portada"
+    },
+    "prota": {
+      "personaje": "Maomao"
+    },
+    "husbando": {
+      "personaje": "Jinshi"
+    }
+  },
+  "portada": {
+    "kanji": "薬",
+    "romaji": "KUSURIYA NO HITORIGOTO",
+    "titulo": [
+      "Los diarios",
+      "de la boticaria"
+    ],
+    "bajada": "venenos, intrigas de palacio y un eunuco sospechosamente guapo"
+  },
+  "ficha": {
+    "cifraArriba": "PARA PONERTE AL DÍA",
+    "cifra": "19",
+    "cifraUnidad": "HORAS",
+    "cifraAbajo": [
+      "T1 + T2 = 48 EPISODIOS",
+      "DE 24 MINUTOS"
+    ],
+    "filas": [
+      [
+        "ESTUDIO",
+        "OLM · TOHO animation"
+      ],
+      [
+        "TEMPORADA 3",
+        "Desde el 2 oct. 2026"
+      ],
+      [
+        "NOTA ANILIST",
+        "{nota}"
+      ],
+      [
+        "PARTE 2",
+        "Abril 2027"
+      ],
+      [
+        "DÓNDE VERLA",
+        "Crunchyroll"
+      ]
+    ],
+    "frase": "Basada en las novelas de Natsu Hyuuga. Misterio, política de palacio y una protagonista que prefiere un veneno nuevo a un novio. <b>Te la dejo por aquí.</b>",
+    "fuente": "FUENTES: ANILIST · CRUNCHYROLL · ANN"
+  },
+  "deQueVa": {
+    "kanji": "毒",
+    "etiquetaProta": "LA PROTA · MAOMAO",
+    "parrafo": "Maomao, hija de un boticario del barrio del placer, termina secuestrada y vendida como criada al palacio del emperador. Su plan: pasar desapercibida.",
+    "remate": "<b>Spoiler: no lo consigue.</b> Resuelve un envenenamiento y desde entonces nadie la deja en paz."
+  },
+  "porQue": {
+    "items": [
+      "Misterios cortos dentro de una intriga de palacio larga: cada episodio te da una respuesta y dos preguntas nuevas.",
+      "Una protagonista que se emociona más con un veneno raro que con cualquier hombre. <b>Revolucionario.</b>",
+      "La temporada 2 ganó <b>Mejor Drama</b> y <b>Mejor Personaje Principal</b> en los Crunchyroll Anime Awards 2026."
+    ],
+    "fuente": "FUENTE (03): FANDOMWIRE"
+  },
+  "husbando": {
+    "nombre": "Jinshi",
+    "bajada": "la ficha que nadie pidió (todas la pedimos)",
+    "filas": [
+      [
+        "CARGO",
+        "Supervisor del palacio interior"
+      ],
+      [
+        "NIVEL DE GUAPURA",
+        "Sospechoso",
+        "vino-vivo"
+      ],
+      [
+        "GREEN FLAG",
+        "Valora el cerebro de Maomao"
+      ],
+      [
+        "RED FLAG",
+        "Sabe lo guapo que es y lo usa"
+      ],
+      [
+        "CÓMO LO MIRA MAOMAO",
+        "Como a un bicho raro"
+      ]
+    ]
+  },
+  "cierre": {
+    "pregunta": [
+      "¿Team Maomao",
+      "o team Jinshi?"
+    ],
+    "texto": "Guárdalo para tu maratón: la parte 1 termina a mediados de diciembre y la 2 vuelve en abril."
+  },
+  "copy": "Entrega Nº 01: Los diarios de la boticaria (Kusuriya no Hitorigoto) 🌙\n\nUna boticaria que prefiere un veneno raro antes que un novio, intrigas de palacio y un eunuco que debería venir con advertencia sanitaria. Si buscas un anime de misterio con romance a fuego lentísimo, es este.\n\nLa temporada 3 está en emisión en Crunchyroll y la segunda ganó Mejor Drama en los Crunchyroll Anime Awards 2026, por si necesitabas una excusa.\n\nTe faltan 19 horas para ponerte al día. Te las dejo por aquí.\n\n¿Team Maomao o team Jinshi? Te leo en comentarios 👇",
+  "hashtags": "#anime #animeespañol #animelatino #otaku #recomendacionesanime #animerecomendaciones #husbando #kusuriyanohitorigoto #theapothecarydiaries #maomao #jinshi #crunchyroll",
+  "alt": "Carrusel de seis diapositivas en tonos negro, gris humo y vino sobre Los diarios de la boticaria: portada con el póster oficial dentro de un arco gótico, ficha técnica, de qué va con Maomao, tres motivos para verla, ficha de husbando de Jinshi y la pregunta final ¿Team Maomao o team Jinshi?"
+}
