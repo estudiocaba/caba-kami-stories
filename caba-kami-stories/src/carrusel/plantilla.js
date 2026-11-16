@@ -1,5 +1,5 @@
 // Plantilla «Entrega de anime» de @caba.kami: 6 diapositivas de 1080×1350.
-// Identidad: noche, ciruela, vino y plata; Cormorant Garamond, Zen Kaku Gothic New, IBM Plex Mono y Shippori Mincho.
+// Identidad: negro, gris humo, vino y plata; Cormorant Garamond, Zen Kaku Gothic New, IBM Plex Mono y Shippori Mincho.
 
 import { createRequire } from 'node:module';
 import path from 'node:path';
@@ -20,7 +20,7 @@ const FONTS = [
 ];
 
 const CSS = `
-:root{--noche:#0d0b10;--ciruela:#2a1630;--ciruela-alta:#3d2147;--vino:#6b1528;--vino-vivo:#b8304d;--plata:#c8c4cf;--luna:#ece8f0;--niebla:#8a8494;--rosa-seca:#c99aa8;--filete:#5a4663;
+:root{--noche:#0e0d0f;--humo:#201e21;--humo-alto:#2e2b2f;--vino:#6b1528;--vino-vivo:#b8304d;--plata:#c9c7cb;--luna:#ecebee;--niebla:#8c8a90;--filete:#3d3a3f;
 --display:"Cormorant Garamond",Georgia,serif;--kanji:"Shippori Mincho","Noto Serif CJK JP",serif;--texto:"Zen Kaku Gothic New",sans-serif;--dato:"IBM Plex Mono",monospace;}
 body{margin:0;background:#000;}
 .slide{width:1080px;height:1350px;position:relative;overflow:hidden;background:var(--noche);color:var(--luna);margin-bottom:20px;}
@@ -30,11 +30,11 @@ body{margin:0;background:#000;}
 .rec{width:14px;height:14px;border-radius:50%;background:var(--vino-vivo);}
 .der{position:absolute;right:72px;top:72px;font-family:var(--dato);font-size:20px;letter-spacing:.14em;color:var(--niebla);}
 .arco{position:absolute;border:2px solid var(--plata);border-bottom:0;border-radius:999px 999px 0 0;padding:12px 12px 0;box-sizing:border-box;}
-.arco .in{width:100%;height:100%;border:1px solid var(--filete);border-bottom:0;border-radius:999px 999px 0 0;background:var(--ciruela-alta);position:relative;overflow:hidden;}
+.arco .in{width:100%;height:100%;border:1px solid var(--filete);border-bottom:0;border-radius:999px 999px 0 0;background:var(--humo-alto);position:relative;overflow:hidden;}
 .foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
 .luna-c{position:absolute;width:30px;height:30px;border-radius:50%;box-shadow:9px -2px 0 0 var(--plata);}
 .banda{display:inline-block;background:var(--vino);color:var(--luna);font-family:var(--dato);font-size:20px;letter-spacing:.16em;padding:10px 18px;}
-.banda.rosa{background:var(--rosa-seca);color:var(--noche);}
+.banda.plata{background:var(--plata);color:var(--noche);}
 h1{margin:0;font-family:var(--display);font-style:italic;font-weight:600;font-size:104px;line-height:.95;}
 h2{margin:0;font-family:var(--display);font-style:italic;font-weight:600;font-size:72px;line-height:1;}
 .bajada{font-family:var(--display);font-style:italic;font-weight:500;font-size:40px;line-height:1.15;color:var(--plata);}
@@ -84,7 +84,7 @@ function portada(s, img, media, total) {
 function ficha(s, total) {
   const f = s.ficha;
   return `
-<div class="slide" style="background:var(--ciruela)">
+<div class="slide" style="background:var(--humo)">
   <div class="fantasma" style="left:-60px;bottom:-90px;font-size:560px">夜</div>
   ${vhs('00:02')}<div class="der">2 / ${total}</div>
   <h2 style="position:absolute;left:72px;top:140px">La ficha técnica</h2>
@@ -131,7 +131,7 @@ function porQue(s, total) {
       <div class="cuerpo" style="font-size:36px">${t}</div>
     </div>`).join('');
   return `
-<div class="slide" style="background:var(--ciruela)">
+<div class="slide" style="background:var(--humo)">
   <div class="fantasma" style="right:-60px;bottom:-90px;font-size:560px">夜</div>
   ${vhs('00:04')}<div class="der">4 / ${total}</div>
   <h2 style="position:absolute;left:72px;top:150px">Por qué engancha</h2>
@@ -147,10 +147,10 @@ function husbando(s, img, total) {
 <div class="slide">
   <div class="fantasma" style="right:-60px;bottom:-80px;font-size:600px">恋</div>
   ${vhs('00:05')}<div class="der">5 / ${total}</div>
-  <div style="position:absolute;left:72px;top:170px"><div class="banda rosa">ALERTA HUSBANDO</div></div>
+  <div style="position:absolute;left:72px;top:170px"><div class="banda plata">ALERTA HUSBANDO</div></div>
   <div class="arco" style="left:700px;top:150px;width:308px;height:420px"><div class="in">${arcoFoto(img)}</div></div>
   <h2 style="position:absolute;left:72px;top:250px;font-size:120px">${hb.nombre}</h2>
-  <div class="bajada" style="position:absolute;left:72px;top:390px;width:580px;color:var(--rosa-seca)">${hb.bajada}</div>
+  <div class="bajada" style="position:absolute;left:72px;top:390px;width:580px;color:var(--plata)">${hb.bajada}</div>
   <div style="position:absolute;left:72px;right:72px;top:610px">${filas(hb.filas)}</div>
   ${grano}
 </div>`;
