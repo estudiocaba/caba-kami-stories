@@ -252,3 +252,65 @@ export function buildEntrega(spec, imgs, media) {
 ${FONTS.map(f => `<link rel="stylesheet" href="${f}">`).join('\n')}
 <style>${CSS}</style></head><body>${slides.join('\n')}</body></html>`;
 }
+
+// ── Plantilla «Lista»: portada + 1 a 8 elementos + cierre ─────────────────
+// Sirve para rankings, tops de husbandos, novedades y estrenos.
+const KANJI = { husbandos: '恋', ranking: '血', estrenos: '新', actualidad: '新' };
+
+function listaPortada(s, img) {
+  const p = s.portada;
+  const k = p.kanji ?? KANJI[s.pilar] ?? '夜';
+  const fallback = `<div style="position:absolute;left:0;right:0;top:120px;text-align:center;font-family:var(--kanji);font-weight:700;font-size:290px;line-height:1;color:var(--plata)">${k}</div>`;
+  return `
+<div class="slide">
+  ${puntilla()}
+  <div class="vhs"><span class="rec"></span>▶ PLAY&nbsp;&nbsp;${p.etiqueta ?? ''}</div>
+  <div class="der" style="color:var(--plata)">@CABA.KAMI</div>
+  <div class="luna-c" style="left:520px;top:104px"></div>
+  ${arco(270, 150, 540, 600, arcoFoto(img, fallback))}
+  ${destellos([[226, 330, 30], [858, 446, 20], [214, 540, 12, .7], [872, 262, 13, .7]])}
+  <div style="position:absolute;left:72px;right:200px;bottom:150px">
+    <div class="banda${s.pilar === 'husbandos' ? ' plata' : ''}">${p.banda}</div>
+    ${p.sobretitulo ? `<div class="etq" style="margin:26px 0 14px">${p.sobretitulo}</div>` : '<div style="height:26px"></div>'}
+    <h1>${p.titulo.join('<br>')}</h1>
+    <div class="bajada" style="margin-top:22px">${p.bajada}</div>
+  </div>
+  <div class="etq" style="position:absolute;left:72px;bottom:72px;font-size:18px">DESLIZA →</div>
+  <div class="sello"><span>神</span></div>
+  ${grano}
+</div>`;
+}
+
+function listaItem(s, it, img, i, total) {
+  const k = it.kanji ?? KANJI[s.pilar] ?? '夜';
+  const num = String(it.numero ?? i + 1).padStart(2, '0');
+  return `
+<div class="slide"${i % 2 ? ' style="background:var(--humo)"' : ''}>
+  <div class="fantasma" style="right:-60px;bottom:-80px;font-size:600px">${k}</div>
+  ${puntilla()}
+  ${vhs(`00:${String(i + 2).padStart(2, '0')}`)}<div class="der">${i + 2} / ${total}</div>
+  <div style="position:absolute;left:72px;top:150px;font-family:var(--dato);font-weight:500;font-size:96px;line-height:1;color:var(--vino-vivo)">${num}</div>
+  ${arco(700, 150, 308, 420, arcoFoto(img))}
+  ${destellos([[686, 200, 26], [1024, 330, 16], [690, 470, 11, .7]])}
+  <h2 style="position:absolute;left:72px;top:270px;width:600px;font-size:${(it.nombre?.length ?? 0) > 14 ? 72 : 96}px;line-height:1">${it.nombre}</h2>
+  <div class="etq" style="position:absolute;left:72px;top:${(it.nombre?.length ?? 0) > 14 ? 440 : 400}px;width:600px;color:var(--plata);line-height:1.5">${it.subtitulo ?? ''}</div>
+  <div style="position:absolute;left:72px;right:72px;top:620px">
+    ${filas(it.filas ?? [])}
+    ${it.comentario ? `<div style="margin:56px 0 0">${separador(240)}</div><div class="cuerpo" style="margin-top:40px;font-size:38px;line-height:1.45">${it.comentario}</div>` : ''}
+  </div>
+  ${it.fuente ? `<div class="fuente">${it.fuente}</div>` : ''}
+  ${grano}
+</div>`;
+}
+
+export function buildLista(spec, portadaImg, itemImgs) {
+  const total = spec.items.length + 2;
+  const slides = [
+    listaPortada(spec, portadaImg),
+    ...spec.items.map((it, i) => listaItem(spec, it, itemImgs[i], i, total)),
+    cierre(spec),
+  ];
+  return `<!doctype html><html lang="es"><head><meta charset="utf-8">
+${FONTS.map(f => `<link rel="stylesheet" href="${f}">`).join('\n')}
+<style>${CSS}</style></head><body>${slides.join('\n')}</body></html>`;
+}

@@ -1,0 +1,121 @@
+{
+  "pieza": "Jump Festa 2027: qué series estarán y qué esperar",
+  "fecha": "2026-12-11",
+  "plantilla": "lista",
+  "pilar": "actualidad",
+  "portada": {
+    "etiqueta": "19-20 DIC · MAKUHARI MESSE",
+    "banda": "ACTUALIDAD",
+    "sobretitulo": "JUMP FESTA 2027",
+    "titulo": [
+      "Lo que se viene",
+      "en la Jump Festa"
+    ],
+    "bajada": "el finde en que Japón anuncia medio año de anime"
+  },
+  "portadaDe": 1,
+  "items": [
+    {
+      "nombre": "One Piece",
+      "subtitulo": "ESCENARIO PRINCIPAL",
+      "anime": {
+        "busqueda": "One Piece"
+      },
+      "filas": [
+        [
+          "ESTARÁ EN",
+          "Jump Festa 2027"
+        ],
+        [
+          "NOTA ANILIST",
+          "{nota}"
+        ]
+      ],
+      "comentario": "Nunca falta. <b>Nosotras tampoco.</b>",
+      "fuente": "FUENTE: FINAL WEAPON · ANILIST"
+    },
+    {
+      "nombre": "Sakamoto Days",
+      "subtitulo": "ESCENARIO PRINCIPAL",
+      "anime": {
+        "busqueda": "Sakamoto Days"
+      },
+      "filas": [
+        [
+          "ESTARÁ EN",
+          "Jump Festa 2027"
+        ],
+        [
+          "LO QUE SABEMOS",
+          "Temporada 2 en enero, en Netflix"
+        ]
+      ],
+      "comentario": "Llega a la Jump Festa con el estreno a la vuelta de la esquina.",
+      "fuente": "FUENTE: FINAL WEAPON · NERDSNACK"
+    },
+    {
+      "nombre": "Jujutsu Kaisen",
+      "subtitulo": "JUMP SUPER STAGE",
+      "anime": {
+        "busqueda": "Jujutsu Kaisen"
+      },
+      "filas": [
+        [
+          "ESTARÁ EN",
+          "Jump Super Stage"
+        ],
+        [
+          "NOTA ANILIST",
+          "{nota}"
+        ]
+      ],
+      "comentario": "Escenario grande para una de las grandes. <b>Ojo a los anuncios.</b>",
+      "fuente": "FUENTE: FANDOMWIRE · ANILIST"
+    },
+    {
+      "nombre": "Haikyu!!",
+      "subtitulo": "ESCENARIO PRINCIPAL",
+      "anime": {
+        "busqueda": "Haikyuu!!"
+      },
+      "filas": [
+        [
+          "ESTARÁ EN",
+          "Jump Festa 2027"
+        ],
+        [
+          "NOTA ANILIST",
+          "{nota}"
+        ]
+      ],
+      "comentario": "El vóley más emocionante del anime vuelve a escena.",
+      "fuente": "FUENTE: FINAL WEAPON · ANILIST"
+    },
+    {
+      "nombre": "Dragon Ball",
+      "subtitulo": "LA GRAN AUSENCIA",
+      "anime": {
+        "busqueda": "Dragon Ball Super"
+      },
+      "filas": [
+        [
+          "ESTARÁ EN",
+          "No tendrá presentación",
+          "vino-vivo"
+        ]
+      ],
+      "comentario": "Este año no sube al escenario principal. <b>Se notará.</b>",
+      "fuente": "FUENTE: FANDOMWIRE"
+    }
+  ],
+  "cierre": {
+    "pregunta": [
+      "¿Qué anuncio",
+      "esperas tú?"
+    ],
+    "texto": "Guárdalo: el 21 de diciembre te cuento todo lo que anunciaron."
+  },
+  "copy": "Jump Festa 2027: lo que se viene 🌙\n\nEl 19 y 20 de diciembre, en Makuhari Messe (Japón), Shueisha presenta lo nuevo de sus series. Estarán One Piece, Sakamoto Days, Jujutsu Kaisen y Haikyu!!, entre otras. La gran ausencia: Dragon Ball no tendrá presentación en el escenario principal.\n\nEl 21 te cuento todo lo que anunciaron. ¿Qué esperas tú? 👇",
+  "hashtags": "#anime #animeespañol #animelatino #otaku #jumpfesta #jumpfesta2027 #onepiece #sakamotodays #jujutsukaisen #haikyuu #shonenjump #noticiasanime",
+  "alt": "Carrusel en negro, gris humo y vino sobre la Jump Festa 2027 (19 y 20 de diciembre): One Piece, Sakamoto Days, Jujutsu Kaisen y Haikyu!! con sus pósters en arcos góticos, y la ausencia de Dragon Ball."
+}
