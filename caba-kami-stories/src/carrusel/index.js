@@ -112,6 +112,7 @@ async function main() {
   for (let i = 0; i < n; i++) {
     const file = path.join(outDir, `cabakami-${slug}-${i + 1}.png`);
     await slides.nth(i).screenshot({ path: file });
+    await slides.nth(i).screenshot({ path: file.replace(/\.png$/, '.jpg'), type: 'jpeg', quality: 92 });
     files.push(file);
   }
   await browser.close();

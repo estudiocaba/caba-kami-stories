@@ -5,7 +5,7 @@
 const BASE = process.env.GRAPH_BASE || 'https://graph.facebook.com';
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-async function graph(method, path, params, token) {
+export async function graph(method, path, params, token) {
   const url = new URL(BASE + path);
   const init = { method, headers: { Authorization: `Bearer ${token}` } };
   if (method === 'GET') {

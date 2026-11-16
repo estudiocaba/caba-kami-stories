@@ -72,9 +72,14 @@ jobs:
           for d in out/carrusel-*/; do
             name=$(basename "$d" | sed 's/^carrusel-//')
             mkdir -p "$DEST/carruseles/$name"
-            cp "$d"*.png "$d"copy.txt "$DEST/carruseles/$name/"
+            cp "$d"*.png "$d"*.jpg "$d"copy.txt "$DEST/carruseles/$name/"
           done
           cd "$DEST"
           git add -A
           git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -q -m "Carrusel ${{ steps.fichas.outputs.lista }}" || echo "Sin cambios"
-          git push -q origin publico
+          # Si otra ejecución subió algo a la vez, se reintenta sobre lo último.
+          for i in 1 2 3 4 5; do
+            git push -q origin publico && break
+            git pull -q --rebase origin publico || true
+            sleep 5
+          done
