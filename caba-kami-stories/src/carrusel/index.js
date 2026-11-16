@@ -89,7 +89,7 @@ async function main() {
         console.log(`  ${it.nombre}: ${media.title.romaji} · nota ${media.averageScore ?? '—'}`);
         img = await imageAsDataUri(media.coverImage.extraLarge || media.coverImage.large).catch(() => null);
       }
-      items.push(fillTokens(it, media));
+      items.push({ ...fillTokens(it, media), ...(media?.title?.native && !it.nativo ? { nativo: media.title.native } : {}) });
       imgs.push(img);
     }
     spec = { ...fillTokens(raw, null), items };

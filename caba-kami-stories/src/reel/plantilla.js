@@ -1,17 +1,20 @@
 // Plantilla de reel «Lista» de @caba.kami — motion graphics gótico romántico noventero.
 // Vídeo vertical 1080×1920, ~18 s: intro → [elemento → eyecatch] × n → cierre.
 //
-// Lenguaje de movimiento:
-//  · cortes con fallo de VHS (separación RGB + desplazamiento en franjas + destello)
+// Lenguaje de movimiento (v3, noviembre 2026):
+//  · animación «de a dos» como el anime de verdad: los elementos cambian 12 veces por segundo
+//    mientras la cámara se mueve fluida a 30 fps
+//  · cortes: medio segundo de fallo de VHS y dos fotogramas de impacto en negativo
+//  · líneas de velocidad (集中線) cuando entra cada nombre
 //  · el arco ojival se dibuja y la foto sube como un telón, con zoom lento y barrido de luz
 //  · títulos letra a letra desde desenfoque con temblor de color; etiquetas a máquina;
 //    cifras que cuentan; subtítulos fansub palabra a palabra
 //  · eyecatch de anime de los 90 entre elementos; sello 神 estampado al final
-//  · puntilla que se desliza, pétalos vino y polvo plata, grano y banda de tracking
+//  · encaje y luna grabados reales, humo en el cierre, papel viejo, polvo plata y líneas de barrido
 //
 // Todo se calcula en window.render(t) a partir del tiempo: el vídeo se graba fotograma a fotograma.
 
-import { CSS, FONTS, puntilla, arcoFoto, ojiva } from '../carrusel/plantilla.js';
+import { CSS, FONTS, encaje, luna, humo, tex, arcoFoto, ojiva, enfasis } from '../carrusel/plantilla.js';
 
 // Tiempos en PULSOS de la música: los cortes caen siempre en un golpe. La intro dura un compás
 // (la batería entra justo en el primer corte); cada elemento, 5 pulsos; el eyecatch, 1.
@@ -29,16 +32,17 @@ body{margin:0;background:#000;}
 .esc{position:absolute;inset:0;display:none;}
 .l{display:inline-block;white-space:pre;}
 .lineas{position:absolute;inset:0;pointer-events:none;z-index:30;opacity:.08;background:repeating-linear-gradient(to bottom, rgba(236,235,238,.55) 0 1px, transparent 1px 4px);}
-.grano-v{position:absolute;inset:-40px;pointer-events:none;z-index:31;opacity:.1;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");}
-.tracking{position:absolute;left:0;right:0;height:70px;z-index:29;pointer-events:none;opacity:.07;background:repeating-linear-gradient(90deg, rgba(236,235,238,.9) 0 3px, transparent 3px 9px);filter:blur(1px);}
+.grano-v{position:absolute;inset:-40px;pointer-events:none;z-index:31;opacity:.26;background:url("${tex('papel.jpg')}") center/cover;mix-blend-mode:overlay;}
+.velocidad{position:absolute;inset:0;z-index:4;pointer-events:none;opacity:0;}
 .flash{position:absolute;inset:0;z-index:32;background:var(--luna);opacity:0;pointer-events:none;}
 .vineta{position:absolute;inset:0;z-index:28;pointer-events:none;background:radial-gradient(ellipse 90% 75% at 50% 45%, rgba(14,13,15,0) 60%, rgba(14,13,15,.75) 100%);}
-.titulo-v{font-family:var(--display);font-style:italic;font-weight:600;line-height:.95;}
-.mono{font-family:var(--dato);letter-spacing:.18em;}
+.titulo-v{font-family:var(--display);font-weight:400;line-height:.92;}
+.titulo-v em{font-style:italic;color:var(--plata);}
+.mono{font-family:var(--dato);letter-spacing:.06em;}
 .fansub{position:absolute;left:90px;right:90px;text-align:center;font-family:var(--texto);font-weight:700;font-size:46px;line-height:1.35;color:var(--luna);
   text-shadow:-3px -3px 0 var(--noche),3px -3px 0 var(--noche),-3px 3px 0 var(--noche),3px 3px 0 var(--noche),0 0 18px rgba(14,13,15,.9);}
 .fansub .w{display:inline-block;opacity:0;}
-.rec-v{position:absolute;left:72px;top:250px;font-family:var(--dato);font-size:26px;letter-spacing:.14em;color:var(--niebla);display:flex;gap:18px;align-items:center;z-index:5;}
+.rec-v{position:absolute;left:72px;top:250px;font-family:var(--dato);font-size:30px;letter-spacing:.06em;color:var(--niebla);display:flex;gap:18px;align-items:center;z-index:5;}
 .rec-v .p{width:18px;height:18px;border-radius:50%;background:var(--vino-vivo);}
 .particula{position:absolute;pointer-events:none;z-index:6;}
 .petalo{border-radius:60% 0 60% 0;background:var(--vino-vivo);}
@@ -74,19 +78,33 @@ function arcoAnimado(x, y, w, h, img, t, dur) {
   </div>`;
 }
 
+const DAIJI = ['壱', '弐', '参', '肆', '伍', '陸', '漆', '捌', '玖', '拾'];
+
+// Líneas de velocidad (集中線): tres juegos de rayos que se alternan de a dos, como en el anime.
+function velocidad(cx, cy, t) {
+  let seed = Math.round(cx + cy + t * 100);
+  const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const juego = k => {
+    let d = '';
+    for (let j = 0; j < 90; j++) {
+      const ang = rnd() * Math.PI * 2, r0 = 470 + rnd() * 260, w = .006 + rnd() * .014;
+      const p = (a, r) => `${(cx + Math.cos(a) * r).toFixed(0)},${(cy + Math.sin(a) * r).toFixed(0)}`;
+      d += `M${p(ang - w, 1500)} L${p(ang, r0)} L${p(ang + w, 1500)}Z`;
+    }
+    return `<path class="vjuego" data-k="${k}" d="${d}" style="fill:var(--luna);display:none"/>`;
+  };
+  return `<svg class="velocidad" data-anim="velocidad" data-t="${t}" width="1080" height="1920">${juego(0)}${juego(1)}${juego(2)}</svg>`;
+}
+
 function sello(t, size = 120) {
   return `<div data-anim="stamp" data-t="${t}" style="width:${size}px;height:${size}px;background:var(--vino);border-radius:6px;display:grid;place-items:center;box-shadow:inset 0 0 0 4px var(--vino),inset 0 0 0 6px var(--plata);opacity:0"><span style="font-family:var(--kanji);font-weight:700;font-size:${size * .6}px;line-height:1;color:var(--luna)">神</span></div>`;
 }
 
-// Partículas deterministas (pétalos vino y polvo plata).
+// Partículas deterministas: polvo plata (sin pétalos: menos cosas a la vez).
 function particulas() {
   let seed = 7;
   const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
   const out = [];
-  for (let k = 0; k < 16; k++) {
-    const s = 14 + rnd() * 16;
-    out.push(`<div class="particula petalo" data-p="${rnd()},${rnd()},${30 + rnd() * 50},${rnd() * 6},${(rnd() - .5) * 120}" style="width:${s}px;height:${s * .7}px;opacity:${.35 + rnd() * .3}"></div>`);
-  }
   for (let k = 0; k < 26; k++) {
     const s = 3 + rnd() * 4;
     out.push(`<div class="particula polvo" data-p="${rnd()},${rnd()},${15 + rnd() * 35},${rnd() * 6},0" style="width:${s}px;height:${s}px;opacity:${.3 + rnd() * .5}"></div>`);
@@ -108,17 +126,18 @@ export function buildReelLista(spec, imgs, bpm = 72) {
 
   // INTRO
   escenas.push(`<div class="esc" data-in="0" data-out="${T.intro}">
-    <div data-anim="ghost" data-t="0" style="position:absolute;left:0;right:0;top:420px;text-align:center;font-family:var(--kanji);font-weight:700;font-size:900px;line-height:1;color:var(--plata);opacity:0">${spec.kanji ?? '夜'}</div>
+    <div data-anim="ghost" data-t="0" style="position:absolute;left:190px;top:330px;width:700px;height:700px;opacity:0">${luna(0, 0, 700, 1)}</div>
+    <div data-anim="tate" data-t=".2" style="position:absolute;right:86px;top:420px;writing-mode:vertical-rl;font-family:var(--kanji);font-weight:700;font-size:54px;letter-spacing:.3em;color:var(--plata);clip-path:inset(0 0 100% 0)">${spec.tategaki ?? '今夜の気分'}</div>
     <div style="position:absolute;left:0;right:0;top:640px;text-align:center">
       ${maquina(spec.etiqueta ?? '', .15, .7, 'font-size:30px;color:var(--plata)')}
       <div style="margin-top:46px;font-size:150px">${letras(spec.titulo, .45)}</div>
       <div data-anim="line" data-t="1.25" style="width:420px;height:2px;background:var(--plata);margin:44px auto 0;transform:scaleX(0)"></div>
-      <div data-anim="fade" data-t="1.45" style="font-family:var(--display);font-style:italic;font-weight:500;font-size:62px;color:var(--plata);margin-top:30px;opacity:0">${spec.subtitulo ?? ''}</div>
+      <div data-anim="fade" data-t="1.45" style="font-family:var(--display);font-style:italic;font-size:64px;color:var(--plata);margin-top:30px;opacity:0">${spec.subtitulo ?? ''}</div>
     </div>
-    ${estrella(190, 590, 54, .6)}${estrella(890, 700, 36, .9)}${estrella(220, 1230, 26, 1.2)}${estrella(870, 1290, 46, 1.0)}
+    ${estrella(190, 590, 54, .6)}${estrella(220, 1230, 26, 1.2)}
   </div>`);
   teclas(.15, .7, spec.etiqueta ?? '');
-  eventos.push({ tipo: 'brillo', t: .45 }, { tipo: 'campana', t: .6 }, { tipo: 'campana', t: 1.0, vol: .6 });
+  eventos.push({ tipo: 'campana', t: .6, vol: .8 });
   t = T.intro;
   cortes.push(t);
 
@@ -126,17 +145,18 @@ export function buildReelLista(spec, imgs, bpm = 72) {
     const a = t, fin = t + T.item;
     escenas.push(`<div class="esc" data-in="${a}" data-out="${fin}">
       <div style="position:absolute;left:0;right:0;top:330px;text-align:center;font-size:32px">
-        <span class="mono" data-anim="fade" data-t="${a + .2}" style="color:var(--vino-vivo);opacity:0;display:inline-block">${String(i + 1).padStart(2, '0')}</span>
+        <span data-anim="fade" data-t="${a + .2}" style="font-family:var(--kanji);font-weight:700;font-size:44px;color:var(--vino-vivo);opacity:0;display:inline-block">${DAIJI[i] ?? i + 1}</span>
         <span class="mono" style="color:var(--plata)"> · </span>
         <span style="display:inline-block;min-width:420px;text-align:left">${maquina(it.etiqueta, a + .3, .55, 'color:var(--plata);display:inline-block')}</span>
       </div>
+      ${velocidad(540, 820, a + b - .1)}
       ${arcoAnimado(210, 410, 660, 820, imgs[i], a, T.item)}
-      <div style="position:absolute;left:60px;right:60px;top:1270px;text-align:center;font-size:${it.nombre.length > 16 ? 80 : 108}px">${letras([it.nombre], a + b - .08)}</div>
+      <div style="position:absolute;left:60px;right:60px;top:1270px;text-align:center;font-size:${it.nombre.length > 16 ? 80 : 108}px">${letras([enfasis(it.nombre)], a + b - .08)}</div>
       <div class="mono" data-anim="fade" data-t="${a + 1.5 * b}" style="position:absolute;left:0;right:0;top:${it.nombre.length > 16 ? 1380 : 1405}px;text-align:center;font-weight:500;font-size:34px;letter-spacing:.12em;color:var(--luna);opacity:0">${it.datoHtml ?? it.dato ?? ''}</div>
       ${palabras(it.subtitulo ?? '', a + 2 * b, 'top:1490px')}
-      ${estrella(180, 520, 44, a + .5)}${estrella(900, 720, 28, a + .8)}${estrella(195, 1120, 20, a + 1.1)}
+      ${i % 2 ? estrella(900, 720, 30, a + .8) : estrella(180, 520, 40, a + .5)}
     </div>`);
-    eventos.push({ tipo: 'whoosh', t: a + .25 }, { tipo: 'brillo', t: a + b - .08, vol: .8 }, { tipo: 'campana', t: a + .5, vol: .7 });
+    eventos.push({ tipo: 'pagina', t: a + .12 }, { tipo: 'campana', t: a + b - .08, vol: .55 });
     teclas(a + .3, .55, it.etiqueta);
     if (it.datoHtml?.includes('data-count')) tics(a + 1.5 * b);
     t = fin;
@@ -146,7 +166,7 @@ export function buildReelLista(spec, imgs, bpm = 72) {
       escenas.push(`<div class="esc" data-in="${e}" data-out="${e + T.eyecatch}" style="background:var(--vino)">
         <div data-anim="eyecatch" data-t="${e}" style="position:absolute;left:0;right:0;top:560px;text-align:center;font-family:var(--kanji);font-weight:700;font-size:620px;line-height:1;color:var(--luna)">${it.kanji ?? spec.kanji ?? '夜'}</div>
         <div class="mono" style="position:absolute;left:0;right:0;top:1300px;text-align:center;font-size:30px;color:var(--plata)">▶ SIGUIENTE · ${String(i + 2).padStart(2, '0')}</div>
-        <div style="position:absolute;left:0;right:0;top:1400px;text-align:center;font-family:var(--display);font-style:italic;font-weight:600;font-size:64px">caba.kami</div>
+        <div style="position:absolute;left:0;right:0;top:1400px;text-align:center;font-family:var(--display);font-style:italic;font-size:70px">caba.kami</div>
       </div>`);
       eventos.push({ tipo: 'eyecatch', t: e });
       t = e + T.eyecatch;
@@ -157,19 +177,21 @@ export function buildReelLista(spec, imgs, bpm = 72) {
   // CIERRE
   const o = t, final = o + T.outro, golpeSello = o + 2 * b;
   escenas.push(`<div class="esc" data-in="${o}" data-out="${final + 1}">
+    <div data-anim="humo" data-t="${o}" style="position:absolute;inset:0">${humo(.34)}</div>
     <svg width="900" height="1150" style="position:absolute;left:90px;top:380px;overflow:visible"><path data-anim="draw" data-t="${o + .05}" data-d="1" d="${ojiva(900, 1150)}" style="fill:none;stroke:var(--plata);stroke-width:3"/></svg>
-    <div style="position:absolute;left:110px;right:110px;top:820px;text-align:center;font-size:124px">${letras(spec.cierre.pregunta, o + .35)}</div>
+    <div data-anim="fade" data-t="${o + .5}" style="position:absolute;left:465px;top:470px;width:150px;height:150px;opacity:0">${luna(0, 0, 150, .95)}</div>
+    <div style="position:absolute;left:110px;right:110px;top:820px;text-align:center;font-size:124px">${letras(spec.cierre.pregunta.map(enfasis), o + .35)}</div>
     <div style="position:absolute;left:0;right:0;top:1160px;text-align:center">${maquina(spec.cierre.cta, o + 1.05, .7, 'font-size:32px;color:var(--plata)')}</div>
     <div style="position:absolute;left:0;right:0;top:1400px;display:flex;justify-content:center;align-items:center;gap:30px">
-      <div data-anim="fade" data-t="${o + 1.5}" style="font-family:var(--display);font-style:italic;font-weight:600;font-size:76px;opacity:0">caba<span style="color:var(--vino-vivo)">.</span>kami</div>
+      <div data-anim="fade" data-t="${o + 1.5}" style="font-family:var(--display);font-style:italic;font-size:84px;opacity:0">caba<span style="color:var(--vino-vivo)">.</span>kami</div>
       ${sello(golpeSello - .32)}
     </div>
-    ${estrella(150, 800, 40, o + .6)}${estrella(930, 980, 30, o + .9)}${estrella(170, 1300, 22, o + 1.2)}
+    ${estrella(150, 800, 40, o + .6)}${estrella(930, 980, 30, o + .9)}
   </div>`);
-  eventos.push({ tipo: 'whoosh', t: o + .05, vol: .7 }, { tipo: 'brillo', t: o + .35 }, { tipo: 'sello', t: golpeSello }, { tipo: 'stop', t: final - .35 });
+  eventos.push({ tipo: 'cerilla', t: o + .1 }, { tipo: 'sello', t: golpeSello }, { tipo: 'stop', t: final - .7 });
   teclas(o + 1.05, .7, spec.cierre.cta);
   // Cada corte con fallo de VHS suena centrado en el golpe.
-  cortes.forEach(c => eventos.push({ tipo: 'glitch', t: c - .2 }));
+  cortes.forEach(c => eventos.push({ tipo: 'glitch', t: c - .14 }, { tipo: 'impacto', t: c }));
 
   const html = `<!doctype html><html lang="es"><head><meta charset="utf-8">
 ${FONTS.map(f => `<link rel="stylesheet" href="${f}">`).join('\n')}
@@ -187,12 +209,12 @@ ${FONTS.map(f => `<link rel="stylesheet" href="${f}">`).join('\n')}
 </svg>
 <div class="reel">
   <div class="contenido" id="contenido">
-    <div id="encaje" style="position:absolute;left:0;top:0;width:1200px">${puntilla(.38).replace('width="1080"', 'width="1200"').replace('<rect width="1080"', '<rect width="1200"')}</div>
+    <div id="encaje" style="position:absolute;left:0;top:0;width:2400px;height:150px">${encaje({ alto: 150, op: .5, ancho: 2400 })}</div>
     <div class="rec-v"><span class="p"></span>▶ PLAY&nbsp;&nbsp;@CABA.KAMI</div>
     ${escenas.join('\n')}
     ${particulas()}
   </div>
-  <div class="vineta"></div><div class="tracking" id="tracking"></div><div class="lineas"></div><div class="grano-v"></div><div class="flash" id="flash"></div>
+  <div class="vineta"></div><div class="lineas"></div><div class="grano-v"></div><div class="flash" id="flash"></div>
 </div>
 <script>
 const CORTES = ${JSON.stringify(cortes)};
@@ -214,15 +236,20 @@ document.querySelectorAll('[data-anim="draw"]').forEach(p => {
   const L = p.getTotalLength(); p.dataset.len = L; p.style.strokeDasharray = L; p.style.strokeDashoffset = L;
 });
 
-window.render = t => {
+window.render = tReal => {
   const contenido = document.getElementById('contenido');
+  // De a dos: los dibujos cambian 12 veces por segundo; la cámara usa el tiempo real.
+  const t = Math.floor(tReal * 12 + 1e-6) / 12;
   // Escenas: cortes secos (el fallo de VHS los tapa).
   document.querySelectorAll('.esc').forEach(e => {
-    e.style.display = (t >= +e.dataset.in && t < +e.dataset.out) ? 'block' : 'none';
+    e.style.display = (tReal >= +e.dataset.in && tReal < +e.dataset.out) ? 'block' : 'none';
   });
 
   document.querySelectorAll('[data-anim]').forEach(el => {
-    const t0 = +el.dataset.t, d = +(el.dataset.d || .6), x = t - t0;
+    const t0 = +el.dataset.t, d = +(el.dataset.d || .6);
+    // Trazos, telón y zoom de la foto van fluidos (son «cámara»); el resto, de a dos.
+    const fluido = ['draw', 'reveal', 'kenburns', 'leak', 'humo'].includes(el.dataset.anim);
+    const x = (fluido ? tReal : t) - t0;
     switch (el.dataset.anim) {
       case 'letters': {
         const ls = el.querySelectorAll('.l');
@@ -269,7 +296,16 @@ window.render = t => {
         el.style.transform = 'scale(' + (outBack(p) * (.85 + .25 * Math.abs(Math.sin(t * 2.4 + t0 * 3)))) + ') rotate(' + (t * 40 + t0 * 50) + 'deg)';
         break;
       }
-      case 'ghost': { const p = outExpo(clamp(x / 1.4)); el.style.opacity = p * .07; el.style.transform = 'scale(' + (1.35 - .35 * p) + ')'; break; }
+      case 'ghost': { const p = outExpo(clamp(x / 1.6)); el.style.opacity = p * .28; el.style.transform = 'translateY(' + ((1 - p) * 120) + 'px) rotate(' + (-6 + 6 * p) + 'deg)'; break; }
+      case 'tate': { const p = outExpo(clamp(x / 1.2)); el.style.clipPath = 'inset(0 0 ' + ((1 - p) * 100) + '% 0)'; break; }
+      case 'humo': { el.style.transform = 'translateY(' + (-x * 40) + 'px) scale(1.15)'; el.style.opacity = clamp(x / .8); break; }
+      case 'velocidad': {
+        const vis = x >= 0 && x < .5;
+        el.style.opacity = vis ? (.5 * (1 - x / .5)) : 0;
+        const k = vis ? Math.floor(x * 12) % 3 : -1;
+        el.querySelectorAll('.vjuego').forEach(j => { j.style.display = +j.dataset.k === k ? 'block' : 'none'; });
+        break;
+      }
       case 'eyecatch': {
         const p = outExpo(clamp(x / .25));
         el.style.transform = 'scale(' + (1.25 - .25 * p) + ') translate(' + ((hash(t * 30) - .5) * 10) + 'px,' + ((hash(t * 31) - .5) * 10) + 'px)';
@@ -288,28 +324,34 @@ window.render = t => {
   let shake = 0;
   document.querySelectorAll('[data-anim="stamp"]').forEach(s => { const x = t - s.dataset.t; if (x > .3 && x < .5) shake = (1 - (x - .3) / .2) * 7; });
 
-  // Corte con fallo de VHS.
-  let g = 0;
-  CORTES.forEach(c => { g = Math.max(g, 1 - Math.abs(t - c) / .2); });
+  // Corte: fallo de VHS que crece hasta el golpe y dos fotogramas de impacto en negativo justo después.
+  let g = 0, impacto = false;
+  CORTES.forEach(c => {
+    const dx = tReal - c;
+    if (dx >= -.3 && dx < 0) g = Math.max(g, 1 + dx / .3);
+    if (dx >= 0 && dx < .07) impacto = true;
+    if (dx >= .07 && dx < .2) g = Math.max(g, 1 - (dx - .07) / .13);
+  });
   g = clamp(g);
-  if (g > 0) {
+  if (impacto) contenido.style.filter = 'grayscale(1) invert(1) contrast(2.4) brightness(1.1)';
+  else if (g > 0) {
     contenido.style.filter = 'url(#vhs)';
-    document.getElementById('vhs-disp').setAttribute('scale', 90 * g);
-    document.getElementById('vhs-turb').setAttribute('seed', Math.floor(t * 30) % 50);
-    document.getElementById('vhs-r').setAttribute('dx', 16 * g);
-    document.getElementById('vhs-c').setAttribute('dx', -16 * g);
+    document.getElementById('vhs-disp').setAttribute('scale', 80 * g);
+    document.getElementById('vhs-turb').setAttribute('seed', Math.floor(tReal * 30) % 50);
+    document.getElementById('vhs-r').setAttribute('dx', 14 * g);
+    document.getElementById('vhs-c').setAttribute('dx', -14 * g);
   } else contenido.style.filter = 'none';
-  document.getElementById('flash').style.opacity = g > .8 ? (g - .8) * .6 : 0;
+  document.getElementById('flash').style.opacity = 0;
 
   // Cámara: deriva suave + temblor del sello + sacudida del corte.
-  const jx = (hash(t * 30) - .5) * 26 * g + (hash(t * 47) - .5) * shake;
+  const jx = (hash(t * 30) - .5) * 18 * g + (hash(t * 47) - .5) * shake + (impacto ? 12 : 0);
   const jy = (hash(t * 33) - .5) * shake;
-  contenido.style.transform = 'translate(' + (Math.sin(t * .7) * 4 + jx) + 'px,' + (Math.cos(t * .5) * 3 + jy) + 'px) scale(' + (1.012 + .008 * Math.sin(t * .4)) + ')';
+  contenido.style.transform = 'translate(' + (Math.sin(tReal * .7) * 4 + jx) + 'px,' + (Math.cos(tReal * .5) * 3 + jy) + 'px) scale(' + (1.012 + .008 * Math.sin(tReal * .4) + (impacto ? .03 : 0)) + ')';
 
   // Puntilla que se desliza, grano, banda de tracking, piloto REC.
-  document.getElementById('encaje').style.transform = 'translateX(' + (-((t * 22) % 48)) + 'px)';
-  document.querySelector('.grano-v').style.transform = 'translate(' + ((t * 997) % 40 - 20) + 'px,' + ((t * 613) % 40 - 20) + 'px)';
-  document.getElementById('tracking').style.top = (((t * 520) % 2300) - 200) + 'px';
+  document.getElementById('encaje').style.transform = 'translateX(' + (-((tReal * 9) % 1140)) + 'px)';
+  // Papel con vaivén de ventanilla de proyector (de a dos).
+  document.querySelector('.grano-v').style.transform = 'translate(' + ((hash(t * 7) - .5) * 30) + 'px,' + ((hash(t * 9) - .5) * 30) + 'px)';
   document.querySelector('.rec-v .p').style.opacity = Math.floor(t * 2) % 2 ? .25 : 1;
 
   // Pétalos y polvo.
@@ -317,7 +359,7 @@ window.render = t => {
     const [x0, y0, v, ph, rot] = p.dataset.p.split(',').map(Number);
     const y = ((y0 * 2100 + t * v) % 2100) - 100;
     const x = x0 * 1080 + Math.sin(t * .8 + ph) * 34;
-    p.style.transform = 'translate(' + x + 'px,' + y + 'px) rotate(' + (rot * t + ph * 60) + 'deg)';
+    p.style.transform = 'translate(' + x + 'px,' + y + 'px)';
   });
 };
 `;
