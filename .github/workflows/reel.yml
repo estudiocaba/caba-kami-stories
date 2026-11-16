@@ -75,6 +75,7 @@ jobs:
             name=$(basename "$d" | sed 's/^reel-//')
             mkdir -p "$DEST/reeles/$name"
             cp "$d"*.mp4 "$d"*-portada.jpg "$d"copy.txt "$DEST/reeles/$name/"
+            cp "$d"datos.json "$DEST/reeles/$name/" 2>/dev/null || true
           done
           cd "$DEST"
           git add -A

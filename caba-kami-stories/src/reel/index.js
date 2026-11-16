@@ -21,6 +21,8 @@ const args = process.argv.slice(2);
 const specPath = args.find(a => !a.startsWith('--'));
 if (!specPath) { console.error('Uso: node src/reel/index.js reeles/<ficha>.json'); process.exit(1); }
 const offline = args.includes('--sin-anilist');
+// --datos <archivo>: reutiliza datos e imágenes guardados de una generación anterior (datos.json).
+const datosPath = args.includes('--datos') ? args[args.indexOf('--datos') + 1] : null;
 const FPS = 30;
 const CHROME = process.env.CHROME_PATH || '/usr/bin/google-chrome';
 
@@ -41,8 +43,9 @@ function fillTokens(value, media) {
 async function main() {
   const raw = JSON.parse(readFileSync(specPath, 'utf8'));
   const slug = path.basename(specPath, '.json');
-  const items = [], imgs = [];
-  for (const it of raw.items) {
+  const guardado = datosPath ? JSON.parse(readFileSync(datosPath, 'utf8')) : null;
+  const items = guardado?.items ?? [], imgs = guardado?.imgs ?? [];
+  for (const it of guardado ? [] : raw.items) {
     let media = null, img = null;
     if (!offline && it.anime) {
       try { media = await fetchAnime(it.anime); console.log(`  ${it.nombre}: ${media.title.romaji} · nota ${media.averageScore ?? '—'}`); }
@@ -63,6 +66,7 @@ async function main() {
         .replace('{horas}', media.episodes && media.duration ? `<span data-count="${Math.round(media.episodes * media.duration / 60)}">0</span>` : '—')
         .replace(/\{(\w+)\}/g, (m, k) => fillTokens(m, media));
     }
+    if (media?.title?.native) lleno.nativo = media.title.native;
     items.push(lleno);
     imgs.push(img);
   }
@@ -76,6 +80,8 @@ async function main() {
   const bpm = BPM[pista] ?? 72;
 
   const outDir = path.resolve('out', `reel-${slug}`);
+  mkdirSync(outDir, { recursive: true });
+  writeFileSync(path.join(outDir, 'datos.json'), JSON.stringify({ items, imgs }));
   const frames = path.join(outDir, 'frames');
   rmSync(frames, { recursive: true, force: true });
   mkdirSync(frames, { recursive: true });

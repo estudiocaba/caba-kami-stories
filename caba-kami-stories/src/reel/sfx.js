@@ -1,11 +1,48 @@
-// Efectos de sonido de los reels, sintetizados desde cero (sin muestras de terceros).
-// Cada efecto acompaña a un gesto del motion graphics: play de VHS, cortes con fallo de cinta,
-// soplido del telón, teclas de máquina, campanitas de los destellos, tic de los contadores,
-// golpe del eyecatch, golpe del sello y stop de cinta.
+// Efectos de sonido de los reels. Cada efecto acompaña a un gesto del motion graphics.
+// v3: grabaciones reales de dominio público (carpeta sonidos/, ver LICENCIAS.md) para lo que se
+// reconoce de oído —un vídeo Sony metiendo y expulsando la cinta, teclas de máquina de escribir,
+// sello de goma, cerilla, página, campanita, crepitar de cinta— y síntesis solo para lo abstracto
+// (golpe de impacto, eyecatch, tic de los contadores).
 //
 // renderSfx(eventos, duracion) → WAV mono 44,1 kHz (Buffer), listo para mezclar con la música.
 
+import { readFileSync } from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
 const SR = 44100;
+const SONIDOS = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../sonidos');
+
+// Lee un WAV PCM de 16 bits mono a 44,1 kHz (como los deja el recorte de sonidos/).
+const cache = {};
+function muestra(nombre) {
+  if (cache[nombre]) return cache[nombre];
+  const b = readFileSync(path.join(SONIDOS, `${nombre}.wav`));
+  let o = 12, datos = null;
+  while (o + 8 <= b.length) {
+    const id = b.toString('ascii', o, o + 4), len = b.readUInt32LE(o + 4);
+    if (id === 'data') { datos = b.subarray(o + 8, o + 8 + len); break; }
+    o += 8 + len + (len % 2);
+  }
+  const out = new Float32Array(datos.length >> 1);
+  for (let i = 0; i < out.length; i++) out[i] = datos.readInt16LE(i * 2) / 32768;
+  return (cache[nombre] = out);
+}
+
+// [archivo, ancla (s hasta el golpe principal, que cae justo en el evento), volumen]
+// una: se alterna entre variantes · todas: capas superpuestas.
+const MUESTRAS = {
+  play: { una: [['vhs-insertar', 0, .85]] },
+  stop: { una: [['vhs-expulsar', .68, .8]] },
+  tecla: { una: [['tecla-1', .04, .32], ['tecla-2', .058, .3], ['tecla-3', .211, .26]] },
+  sello: { todas: [['sello-goma', .19, .8], ['sello-golpe', .097, .7]] },
+  cerilla: { una: [['cerilla', .2, .75]] },
+  pagina: { una: [['pagina', .085, .5]] },
+  campana: { una: [['campanita', .117, .22]] },
+  glitch: { una: [['crepitar', .088, .55]] },
+};
+// Efectos que además llevan una capa sintetizada.
+const CON_SINTESIS = new Set(['glitch', 'eyecatch', 'tic', 'impacto']);
 
 // Ruido determinista para que cada reel suene igual al regenerarlo.
 function rng(seed) {
@@ -97,6 +134,11 @@ const EFECTOS = {
     const papel = env(lp(ruido(.12, r), 1600), .001, 35);
     return mezclar([[golpe, 0, 1], [papel, 0, .6]]);
   },
+  // Fotograma de impacto: golpe grave y seco.
+  impacto(r) {
+    const click = env(hp(ruido(.03, r), 2500), .001, 120);
+    return mezclar([[seno(52, .45, 8), 0, .9], [seno(104, .2, 16), 0, .3], [click, 0, .35]]);
+  },
   // Stop de cinta al final.
   stop(r) {
     const click = env(hp(ruido(.04, r), 1500), .001, 90);
@@ -122,16 +164,27 @@ function reverb(x, mezcla = .18) {
   return out;
 }
 
-const VOL = { play: .8, glitch: .95, whoosh: .5, tecla: .26, campana: .17, brillo: .13, tic: .12, eyecatch: .7, sello: .85, stop: .6 };
+const VOL = { glitch: .35, tic: .12, eyecatch: .6, impacto: .65 };
 
 export function renderSfx(eventos, duracion) {
   const pista = new Float32Array(n(duracion + 1));
   const r = rng(20261206);
+  const turno = {};
+  const poner = (x, t, vol) => {
+    let o = Math.round(t * SR), i0 = 0;
+    if (o < 0) { i0 = -o; o = 0; }
+    for (let i = i0; i < x.length && o + i - i0 < pista.length; i++) pista[o + i - i0] += x[i] * vol;
+  };
   for (const ev of eventos) {
-    const sonido = EFECTOS[ev.tipo]?.(r);
-    if (!sonido) continue;
-    const o = n(Math.max(0, ev.t)), vol = (VOL[ev.tipo] ?? .3) * (ev.vol ?? 1);
-    for (let i = 0; i < sonido.length && o + i < pista.length; i++) pista[o + i] += sonido[i] * vol;
+    const m = MUESTRAS[ev.tipo];
+    if (m) {
+      const lista = m.todas ?? [m.una[(turno[ev.tipo] = (turno[ev.tipo] ?? -1) + 1) % m.una.length]];
+      for (const [archivo, ancla, vol] of lista) poner(muestra(archivo), ev.t - ancla, vol * (ev.vol ?? 1));
+    }
+    if (!m || CON_SINTESIS.has(ev.tipo)) {
+      const sonido = EFECTOS[ev.tipo]?.(r);
+      if (sonido) poner(sonido, Math.max(0, ev.t), (VOL[ev.tipo] ?? .3) * (ev.vol ?? 1));
+    }
   }
   const mezclado = reverb(pista).subarray(0, n(duracion));
   // WAV PCM 16 bits mono.
