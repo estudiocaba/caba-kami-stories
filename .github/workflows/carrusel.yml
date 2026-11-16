@@ -8,6 +8,7 @@ on:
     paths:
       - "caba-kami-stories/carruseles/*.json"
       - "caba-kami-stories/src/carrusel/**"
+      - ".github/workflows/carrusel.yml"
   workflow_dispatch:
     inputs:
       ficha:
@@ -17,6 +18,9 @@ on:
         description: "Mandar el carrusel por Telegram"
         type: boolean
         default: true
+
+permissions:
+  contents: write   # para guardar las diapositivas en la rama "publico"
 
 jobs:
   carrusel:
@@ -54,8 +58,23 @@ jobs:
             [ -f "$f" ] && node src/carrusel/index.js "$f" $EXTRA
           done
 
-      - uses: actions/upload-artifact@v4
-        with:
-          name: carrusel
-          path: caba-kami-stories/out/carrusel-*/
-          retention-days: 14
+      # Las diapositivas se guardan en la rama "publico" (carpeta carruseles/): desde ahí se revisan
+      # y, más adelante, Instagram las descarga para publicarlas.
+      - name: Guardar en la rama publico
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          REPO_URL="https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git"
+          DEST="$RUNNER_TEMP/publico"
+          if ! git clone -q --depth 1 --branch publico "$REPO_URL" "$DEST" 2>/dev/null; then
+            mkdir -p "$DEST" && git -C "$DEST" init -q -b publico && git -C "$DEST" remote add origin "$REPO_URL"
+          fi
+          for d in out/carrusel-*/; do
+            name=$(basename "$d" | sed 's/^carrusel-//')
+            mkdir -p "$DEST/carruseles/$name"
+            cp "$d"*.png "$d"copy.txt "$DEST/carruseles/$name/"
+          done
+          cd "$DEST"
+          git add -A
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -q -m "Carrusel ${{ steps.fichas.outputs.lista }}" || echo "Sin cambios"
+          git push -q origin publico
