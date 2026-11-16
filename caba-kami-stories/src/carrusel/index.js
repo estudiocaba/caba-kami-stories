@@ -10,8 +10,8 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { chromium } from 'playwright-core';
-import { fetchAnime, findCharacter, imageAsDataUri } from './anilist-media.js';
-import { buildEntrega } from './plantilla.js';
+import { fetchAnime, findCharacter, fetchCharacterByName, imageAsDataUri } from './anilist-media.js';
+import { buildEntrega, buildLista } from './plantilla.js';
 import { sendDocumentGroup, sendText } from '../telegram.js';
 
 const args = process.argv.slice(2);
@@ -29,6 +29,7 @@ function fillTokens(value, media) {
     estudio: media.studios?.nodes?.map(s => s.name).join(' · ') || '—',
     anio: media.seasonYear ?? '—',
     popularidad: media.popularity?.toLocaleString('es-ES') ?? '—',
+    horas: media.episodes && media.duration ? Math.round(media.episodes * media.duration / 60) : '—',
   } : {};
   if (typeof value === 'string') return value.replace(/\{(\w+)\}/g, (m, k) => (k in tokens ? String(tokens[k]) : m));
   if (Array.isArray(value)) return value.map(v => fillTokens(v, media));
@@ -55,24 +56,50 @@ async function main() {
   const raw = JSON.parse(readFileSync(specPath, 'utf8'));
   const slug = path.basename(specPath, '.json');
 
-  let media = null;
-  if (!offline) {
-    media = await fetchAnime(raw.anime);
-    console.log(`AniList: ${media.title.romaji} (${media.seasonYear}) · nota ${media.averageScore ?? '—'} · ${media.episodes ?? '?'} eps · ${media.studios.nodes.map(s => s.name).join(', ')}`);
-    console.log(`  ${media.siteUrl}`);
-  }
-  const spec = fillTokens(raw, media);
-
-  const imgs = {
-    portada: await pickImage(spec.imagenes?.portada, media, 'Portada'),
-    prota: await pickImage(spec.imagenes?.prota, media, 'Prota'),
-    husbando: await pickImage(spec.imagenes?.husbando, media, 'Husbando'),
-  };
-
   const outDir = path.resolve('out', `carrusel-${slug}`);
   mkdirSync(outDir, { recursive: true });
   const htmlPath = path.join(outDir, 'carrusel.html');
-  writeFileSync(htmlPath, buildEntrega(spec, imgs, media ?? { title: {} }));
+  let spec;
+
+  if ((raw.plantilla ?? 'entrega') === 'lista') {
+    // Cada elemento puede traer su anime (portada y datos) o su personaje (foto).
+    const items = [];
+    const imgs = [];
+    for (const it of raw.items) {
+      let media = null, img = null;
+      if (!offline && it.anime) {
+        try { media = await fetchAnime(it.anime); } catch (e) { console.warn(`  ⚠ ${e.message}`); }
+      }
+      if (!offline && it.personaje) {
+        try {
+          const c = await fetchCharacterByName(it.personaje, it.animeDelPersonaje);
+          if (c) { console.log(`  ${it.personaje}: ${c.name.full} (${c.favourites} favoritos)`); img = await imageAsDataUri(c.image.large); }
+        } catch (e) { console.warn(`  ⚠ ${it.personaje}: ${e.message}`); }
+      } else if (media) {
+        console.log(`  ${it.nombre}: ${media.title.romaji} · nota ${media.averageScore ?? '—'}`);
+        img = await imageAsDataUri(media.coverImage.extraLarge || media.coverImage.large).catch(() => null);
+      }
+      items.push(fillTokens(it, media));
+      imgs.push(img);
+    }
+    spec = { ...fillTokens(raw, null), items };
+    const portadaImg = raw.portadaDe != null ? imgs[raw.portadaDe] : imgs[0];
+    writeFileSync(htmlPath, buildLista(spec, portadaImg, imgs));
+  } else {
+    let media = null;
+    if (!offline) {
+      media = await fetchAnime(raw.anime);
+      console.log(`AniList: ${media.title.romaji} (${media.seasonYear}) · nota ${media.averageScore ?? '—'} · ${media.episodes ?? '?'} eps · ${media.studios.nodes.map(s => s.name).join(', ')}`);
+      console.log(`  ${media.siteUrl}`);
+    }
+    spec = fillTokens(raw, media);
+    const imgs = {
+      portada: await pickImage(spec.imagenes?.portada, media, 'Portada'),
+      prota: await pickImage(spec.imagenes?.prota, media, 'Prota'),
+      husbando: await pickImage(spec.imagenes?.husbando, media, 'Husbando'),
+    };
+    writeFileSync(htmlPath, buildEntrega(spec, imgs, media ?? { title: {} }));
+  }
 
   const browser = await chromium.launch({ executablePath: CHROME });
   const page = await browser.newPage({ viewport: { width: 1080, height: 1350 } });

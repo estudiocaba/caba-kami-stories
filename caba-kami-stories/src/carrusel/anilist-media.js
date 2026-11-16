@@ -72,3 +72,31 @@ export async function imageAsDataUri(url) {
   const buf = Buffer.from(await res.arrayBuffer());
   return `data:${type};base64,${buf.toString('base64')}`;
 }
+
+// Busca un personaje por nombre (con el anime opcional para desambiguar) y devuelve nombre, imagen y favoritos.
+const CHAR_QUERY = `
+query ($search: String) {
+  Page(perPage: 10) {
+    characters(search: $search, sort: [SEARCH_MATCH, FAVOURITES_DESC]) {
+      name { full native } image { large } favourites
+      media(perPage: 5, sort: [POPULARITY_DESC]) { nodes { title { romaji english } type } }
+    }
+  }
+}`;
+
+export async function fetchCharacterByName(nombre, anime) {
+  const res = await fetch(ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify({ query: CHAR_QUERY, variables: { search: nombre } }),
+  });
+  if (!res.ok) throw new Error(`AniList respondió ${res.status}`);
+  const list = (await res.json()).data?.Page?.characters ?? [];
+  if (anime) {
+    const a = anime.toLowerCase();
+    const hit = list.find(c => c.media.nodes.some(m =>
+      [m.title.romaji, m.title.english].some(t => t?.toLowerCase().includes(a))));
+    if (hit) return hit;
+  }
+  return list[0];
+}

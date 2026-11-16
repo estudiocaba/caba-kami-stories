@@ -1,0 +1,101 @@
+{
+  "pieza": "Green flags y red flags de husbandos (con pruebas)",
+  "fecha": "2026-12-04",
+  "plantilla": "lista",
+  "pilar": "husbandos",
+  "portada": {
+    "etiqueta": "HUSBANDOS 2D",
+    "banda": "ALERTA HUSBANDO",
+    "sobretitulo": "CON PRUEBAS",
+    "titulo": [
+      "Green flags",
+      "y red flags"
+    ],
+    "bajada": "porque amar en 2D también es tomar decisiones"
+  },
+  "portadaDe": 2,
+  "items": [
+    {
+      "nombre": "Levi Ackerman",
+      "subtitulo": "ATTACK ON TITAN",
+      "personaje": "Levi",
+      "animeDelPersonaje": "Shingeki no Kyojin",
+      "filas": [
+        [
+          "GREEN FLAG",
+          "Tu casa, siempre impecable"
+        ],
+        [
+          "RED FLAG",
+          "Su cariño llega en forma de patada",
+          "vino-vivo"
+        ]
+      ],
+      "comentario": "Prueba: el juicio de Eren. <b>Igual lo perdonamos.</b>"
+    },
+    {
+      "nombre": "Sesshomaru",
+      "subtitulo": "INUYASHA",
+      "personaje": "Sesshoumaru",
+      "animeDelPersonaje": "InuYasha",
+      "filas": [
+        [
+          "GREEN FLAG",
+          "Protege a Rin sin decir ni una palabra"
+        ],
+        [
+          "RED FLAG",
+          "Te mira como si fueras un insecto",
+          "vino-vivo"
+        ]
+      ],
+      "comentario": "Elegancia noventera, pelo plateado y cero ganas de hablar. <b>Nos sirve.</b>"
+    },
+    {
+      "nombre": "Howl",
+      "subtitulo": "EL CASTILLO AMBULANTE",
+      "personaje": "Howl",
+      "animeDelPersonaje": "Howl no Ugoku Shiro",
+      "filas": [
+        [
+          "GREEN FLAG",
+          "Su castillo tiene una puerta a cualquier lugar"
+        ],
+        [
+          "RED FLAG",
+          "Si el tinte le sale mal, se derrite",
+          "vino-vivo"
+        ]
+      ],
+      "comentario": "Literal: en baba verde. <b>Dramático, pero con estilo.</b>"
+    },
+    {
+      "nombre": "Kaname Kuran",
+      "subtitulo": "VAMPIRE KNIGHT",
+      "personaje": "Kaname Kuran",
+      "animeDelPersonaje": "Vampire Knight",
+      "filas": [
+        [
+          "GREEN FLAG",
+          "Lo daría todo por Yuki"
+        ],
+        [
+          "RED FLAG",
+          "Más secretos que un palacio entero",
+          "vino-vivo"
+        ]
+      ],
+      "comentario": "Vampiro sangre pura, que en este perfil es casi un requisito. <b>Sin comentarios.</b>"
+    }
+  ],
+  "cierre": {
+    "pregunta": [
+      "¿Con cuál",
+      "te arriesgas?"
+    ],
+    "texto": "Cuéntamelo en comentarios y etiqueta a quien tiene el mismo gusto (malo) que tú."
+  },
+  "copy": "Green flags y red flags de husbandos, con pruebas 🌙\n\nPorque amar en 2D también es tomar decisiones: Levi te deja la casa impecable, Sesshomaru protege a Rin sin decir ni una palabra, Howl tiene una puerta a cualquier lugar y Kaname… bueno, Kaname es vampiro, que aquí suma puntos.\n\n¿Con cuál te arriesgas? Te leo 👇",
+  "hashtags": "#anime #animeespañol #animelatino #otaku #husbando #husbandos #leviackerman #sesshomaru #inuyasha #howl #kanamekuran #vampireknight #animerecomendaciones",
+  "alt": "Carrusel de seis diapositivas en negro, gris humo y vino: green flags y red flags de cuatro husbandos de anime (Levi Ackerman, Sesshomaru, Howl y Kaname Kuran), cada uno con su foto en un arco gótico."
+}

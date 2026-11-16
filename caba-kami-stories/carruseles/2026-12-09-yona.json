@@ -1,0 +1,113 @@
+{
+  "pieza": "Entrega: Akatsuki no Yona",
+  "fecha": "2026-12-09",
+  "plantilla": "entrega",
+  "numero": "02",
+  "anime": {
+    "busqueda": "Akatsuki no Yona"
+  },
+  "imagenes": {
+    "portada": {
+      "de": "portada"
+    },
+    "prota": {
+      "personaje": "Yona"
+    },
+    "husbando": {
+      "personaje": "Hak"
+    }
+  },
+  "portada": {
+    "kanji": "暁",
+    "romaji": "AKATSUKI NO YONA",
+    "titulo": [
+      "Yona,",
+      "princesa del alba"
+    ],
+    "bajada": "una princesa que deja de ser decorativa (y un harén de dragones)"
+  },
+  "ficha": {
+    "cifraArriba": "PARA VERLA ENTERA",
+    "cifra": "{horas}",
+    "cifraUnidad": "HORAS",
+    "cifraAbajo": [
+      "{episodios} EPISODIOS",
+      "UN FINDE BIEN APROVECHADO"
+    ],
+    "filas": [
+      [
+        "ESTUDIO",
+        "{estudio}"
+      ],
+      [
+        "AÑO",
+        "{anio}"
+      ],
+      [
+        "NOTA ANILIST",
+        "{nota}"
+      ],
+      [
+        "ORIGEN",
+        "Manga de Mizuho Kusanagi"
+      ],
+      [
+        "GÉNERO",
+        "Fantasía · aventura · romance"
+      ]
+    ],
+    "frase": "Fantasía de reinos, viaje de crecimiento y romance a fuego lento. De esas que terminas y buscas el manga a las 3 de la mañana. <b>Te la dejo por aquí.</b>",
+    "fuente": "FUENTE: ANILIST"
+  },
+  "deQueVa": {
+    "kanji": "龍",
+    "etiquetaProta": "LA PROTA · YONA",
+    "parrafo": "Yona es la princesa mimada del reino de Kouka. Una traición la noche de su cumpleaños la saca del palacio con lo puesto.",
+    "remate": "<b>Spoiler: le sienta genial.</b> Para recuperar su reino tiene que encontrar a cuatro guerreros dragón."
+  },
+  "porQue": {
+    "items": [
+      "Una protagonista que pasa de decorativa a aprender a disparar con arco. <b>Desarrollo de personaje de verdad.</b>",
+      "Cuatro guerreros dragón más su guardaespaldas. Es un harén, pero con trama.",
+      "Lleva años con fans pidiendo segunda temporada: verla ahora es entrar al club."
+    ],
+    "fuente": ""
+  },
+  "husbando": {
+    "nombre": "Hak",
+    "bajada": "el guardaespaldas que todas queremos",
+    "filas": [
+      [
+        "CARGO",
+        "Guardaespaldas de la princesa"
+      ],
+      [
+        "NIVEL DE GUAPURA",
+        "Peligroso",
+        "vino-vivo"
+      ],
+      [
+        "GREEN FLAG",
+        "Lleva toda la vida protegiéndola"
+      ],
+      [
+        "RED FLAG",
+        "Coquetea a base de sarcasmo"
+      ],
+      [
+        "APODO",
+        "La bestia del trueno"
+      ]
+    ]
+  },
+  "cierre": {
+    "pregunta": [
+      "¿Team Hak",
+      "o team dragones?"
+    ],
+    "texto": "Guárdalo para tu próximo maratón y mándaselo a quien todavía no la vio."
+  },
+  "copy": "Entrega Nº 02: Akatsuki no Yona (Yona, princesa del alba) 🌙\n\nUna princesa mimada, una traición la noche de su cumpleaños y un viaje para encontrar a cuatro guerreros dragón. Fantasía, crecimiento y un guardaespaldas que deberían estudiar en las escuelas.\n\nSe ve entera en un finde. Te la dejo por aquí.\n\n¿Team Hak o team dragones? Te leo 👇",
+  "hashtags": "#anime #animeespañol #animelatino #otaku #akatsukinoyona #yonaofthedawn #shoujo #animeromance #husbando #hak #recomendacionesanime #animerecomendaciones",
+  "alt": "Carrusel de seis diapositivas en negro, gris humo y vino sobre Akatsuki no Yona: portada con el póster oficial en un arco gótico, ficha técnica, de qué va con Yona, tres motivos para verla, ficha de husbando de Hak y la pregunta final."
+}
