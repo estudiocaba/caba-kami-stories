@@ -1,0 +1,49 @@
+{
+  "cuenta": "zs-peluqueros",
+  "semana": "2026-12-07",
+  "video": true,
+  "stories": [
+    {
+      "fecha": "2026-12-07",
+      "plantilla": "frase",
+      "archivo": "zs-peluqueros-story-2026-12-07.mp4",
+      "portada": "zs-peluqueros-story-2026-12-07.jpg"
+    },
+    {
+      "fecha": "2026-12-08",
+      "plantilla": "dato",
+      "archivo": "zs-peluqueros-story-2026-12-08.mp4",
+      "portada": "zs-peluqueros-story-2026-12-08.jpg"
+    },
+    {
+      "fecha": "2026-12-09",
+      "plantilla": "pregunta",
+      "archivo": "zs-peluqueros-story-2026-12-09.mp4",
+      "portada": "zs-peluqueros-story-2026-12-09.jpg"
+    },
+    {
+      "fecha": "2026-12-10",
+      "plantilla": "frase",
+      "archivo": "zs-peluqueros-story-2026-12-10.mp4",
+      "portada": "zs-peluqueros-story-2026-12-10.jpg"
+    },
+    {
+      "fecha": "2026-12-11",
+      "plantilla": "cuentaatras",
+      "archivo": "zs-peluqueros-story-2026-12-11.mp4",
+      "portada": "zs-peluqueros-story-2026-12-11.jpg"
+    },
+    {
+      "fecha": "2026-12-12",
+      "plantilla": "promo",
+      "archivo": "zs-peluqueros-story-2026-12-12.mp4",
+      "portada": "zs-peluqueros-story-2026-12-12.jpg"
+    },
+    {
+      "fecha": "2026-12-13",
+      "plantilla": "frase",
+      "archivo": "zs-peluqueros-story-2026-12-13.mp4",
+      "portada": "zs-peluqueros-story-2026-12-13.jpg"
+    }
+  ]
+}
