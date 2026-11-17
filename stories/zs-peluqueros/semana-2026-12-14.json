@@ -7,43 +7,50 @@
       "fecha": "2026-12-14",
       "plantilla": "pregunta",
       "archivo": "zs-peluqueros-story-2026-12-14.mp4",
-      "portada": "zs-peluqueros-story-2026-12-14.jpg"
+      "portada": "zs-peluqueros-story-2026-12-14.jpg",
+      "creditos": "Fotos: Pexels"
     },
     {
       "fecha": "2026-12-15",
-      "plantilla": "frase",
+      "plantilla": "tip",
       "archivo": "zs-peluqueros-story-2026-12-15.mp4",
-      "portada": "zs-peluqueros-story-2026-12-15.jpg"
+      "portada": "zs-peluqueros-story-2026-12-15.jpg",
+      "creditos": "Fotos: Pexels"
     },
     {
       "fecha": "2026-12-16",
-      "plantilla": "cuentaatras",
+      "plantilla": "portada",
       "archivo": "zs-peluqueros-story-2026-12-16.mp4",
-      "portada": "zs-peluqueros-story-2026-12-16.jpg"
+      "portada": "zs-peluqueros-story-2026-12-16.jpg",
+      "creditos": "Fotos: Pexels"
     },
     {
       "fecha": "2026-12-17",
-      "plantilla": "frase",
+      "plantilla": "tip",
       "archivo": "zs-peluqueros-story-2026-12-17.mp4",
-      "portada": "zs-peluqueros-story-2026-12-17.jpg"
+      "portada": "zs-peluqueros-story-2026-12-17.jpg",
+      "creditos": "Fotos: Pexels"
     },
     {
       "fecha": "2026-12-18",
       "plantilla": "pregunta",
       "archivo": "zs-peluqueros-story-2026-12-18.mp4",
-      "portada": "zs-peluqueros-story-2026-12-18.jpg"
+      "portada": "zs-peluqueros-story-2026-12-18.jpg",
+      "creditos": "Fotos: Pexels"
     },
     {
       "fecha": "2026-12-19",
-      "plantilla": "promo",
+      "plantilla": "cierre",
       "archivo": "zs-peluqueros-story-2026-12-19.mp4",
-      "portada": "zs-peluqueros-story-2026-12-19.jpg"
+      "portada": "zs-peluqueros-story-2026-12-19.jpg",
+      "creditos": "Fotos: Pexels"
     },
     {
       "fecha": "2026-12-20",
-      "plantilla": "frase",
+      "plantilla": "tip",
       "archivo": "zs-peluqueros-story-2026-12-20.mp4",
-      "portada": "zs-peluqueros-story-2026-12-20.jpg"
+      "portada": "zs-peluqueros-story-2026-12-20.jpg",
+      "creditos": "Fotos: Pexels"
     }
   ]
 }
