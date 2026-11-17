@@ -143,16 +143,44 @@ function tam(texto = '', max, min) {
 
 export const PLANTILLAS = Object.keys(P);
 
-export function htmlStory(story, marca) {
+// Animación para las stories en video: cortina de entrada, textos que suben uno detrás de otro,
+// fotos con zoom lento y cortina de salida (la transición hacia la story siguiente).
+// Las animaciones quedan en pausa y el generador las mueve fotograma a fotograma (window.irA).
+function animCss(m, dur) {
+  const c = m.colores, ms = Math.round(dur * 1000);
+  return `
+.cortina{position:absolute;inset:0;z-index:20;pointer-events:none;}
+.cortina.entra{background:${c.acento};animation:cortinaIn 700ms cubic-bezier(.7,0,.2,1) both;}
+.cortina.sale{background:${c.texto};animation:cortinaOut 520ms cubic-bezier(.7,0,.2,1) ${ms - 520}ms both;}
+@keyframes cortinaIn{0%{transform:translateY(0)}100%{transform:translateY(-100%)}}
+@keyframes cortinaOut{0%{transform:translateY(100%)}100%{transform:translateY(0)}}
+.sube{animation:sube 720ms cubic-bezier(.2,.8,.2,1) both;}
+@keyframes sube{0%{opacity:0;transform:translateY(60px)}100%{opacity:1;transform:none}}
+.foto{animation:zoom ${ms}ms linear both;}
+@keyframes zoom{0%{transform:scale(1.07)}100%{transform:scale(1)}}
+.marca{animation:sube 600ms ease-out 900ms both;}
+`;
+}
+
+const ANIM_JS = `
+(() => {
+  const els = [...document.querySelectorAll('.zona > *')].flatMap(e =>
+    e.children.length > 1 && !e.classList.contains('titulo') && !e.classList.contains('texto') ? [...e.children] : [e]);
+  els.forEach((e, i) => { e.classList.add('sube'); e.style.animationDelay = (350 + i * 140) + 'ms'; });
+  window.irA = ms => document.getAnimations().forEach(a => { a.pause(); a.currentTime = ms; });
+  window.irA(0);
+})();`;
+
+export function htmlStory(story, marca, video = 0) {
   const f = P[story.plantilla];
   if (!f) throw new Error(`Plantilla de story desconocida: ${story.plantilla}. Hay: ${PLANTILLAS.join(', ')}`);
   const fuentes = [...new Set([marca.fuentes.titulo, marca.fuentes.texto])].flatMap(n => fuenteCss(n));
   const pie = story.plantilla === 'foto' ? '' : marcaPie(marca);
   return `<!doctype html><html lang="es"><head><meta charset="utf-8">
 ${fuentes.map(u => `<link rel="stylesheet" href="${u}">`).join('\n')}
-<style>${css(marca)}</style></head><body>
-<div class="story">${f({ ...story, _fecha: story.fecha }, marca)}${pie}</div>
-</body></html>`;
+<style>${css(marca)}${video ? animCss(marca, video) : ''}</style></head><body>
+<div class="story">${f({ ...story, _fecha: story.fecha }, marca)}${pie}${video ? '<div class="cortina entra"></div><div class="cortina sale"></div>' : ''}</div>
+${video ? `<script>${ANIM_JS}</script>` : ''}</body></html>`;
 }
 
 // Fotos: ruta relativa a la carpeta del cliente o URL. Se incrustan para que Chrome no dependa de la red.

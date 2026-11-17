@@ -1,0 +1,60 @@
+{
+  "semana": "2026-12-21",
+  "stories": [
+    {
+      "fecha": "2026-12-21",
+      "plantilla": "cuentaatras",
+      "etiqueta": "Nochebuena",
+      "hasta": "2026-12-24",
+      "texto": "¡Ya casi! ¿Lista tu melena?"
+    },
+    {
+      "fecha": "2026-12-22",
+      "plantilla": "pregunta",
+      "etiqueta": "Nochevieja",
+      "pregunta": "¿Lazo, perlas o *brillo*?",
+      "opciones": [
+        "Lazo",
+        "Perlas",
+        "Brillo"
+      ],
+      "pie": "Respóndenos por mensaje"
+    },
+    {
+      "fecha": "2026-12-23",
+      "plantilla": "frase",
+      "etiqueta": "Gracias",
+      "texto": "Gracias por este año con nosotros. Nos vemos en los *dos salones*."
+    },
+    {
+      "fecha": "2026-12-24",
+      "plantilla": "frase",
+      "etiqueta": "Nochebuena",
+      "texto": "¡Feliz *Nochebuena* de parte de todo el equipo de ZS!"
+    },
+    {
+      "fecha": "2026-12-25",
+      "plantilla": "frase",
+      "etiqueta": "Navidad",
+      "texto": "¡Feliz *Navidad*! Hoy toca descansar… y lucir el peinado de anoche."
+    },
+    {
+      "fecha": "2026-12-26",
+      "plantilla": "frase",
+      "etiqueta": "Después de las fiestas",
+      "texto": "Agua tibia, mascarilla y descanso de plancha: tu cabello lo *agradece*."
+    },
+    {
+      "fecha": "2026-12-27",
+      "plantilla": "pregunta",
+      "etiqueta": "2027",
+      "pregunta": "¿Qué color te quieres probar en *2027*?",
+      "opciones": [
+        "Chocolate",
+        "Rubio cremoso",
+        "Cobre suave"
+      ],
+      "pie": "Respóndenos por mensaje"
+    }
+  ]
+}

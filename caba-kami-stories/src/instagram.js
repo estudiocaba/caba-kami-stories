@@ -49,9 +49,10 @@ export async function publishingLimit(token, igUserId) {
   return res.data?.[0];
 }
 
-// Publica una imagen (JPEG en una URL pública) como story.
-export async function publishStory({ token, igUserId, imageUrl, log = console.log }) {
-  const container = await graph('POST', `/${igUserId}/media`, { media_type: 'STORIES', image_url: imageUrl }, token);
+// Publica una imagen (JPEG) o un video (MP4) en una URL pública como story.
+export async function publishStory({ token, igUserId, imageUrl, videoUrl, log = console.log }) {
+  const media = videoUrl ? { media_type: 'STORIES', video_url: videoUrl } : { media_type: 'STORIES', image_url: imageUrl };
+  const container = await graph('POST', `/${igUserId}/media`, media, token);
   log(`Contenedor creado: ${container.id}`);
 
   // Meta procesa la imagen; se comprueba cada 15 s durante un máximo de 5 min.

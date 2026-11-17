@@ -35,13 +35,14 @@ for (const cuenta of clientes) {
   const dir = path.join(publico, 'stories', cuenta);
   if (!lineas(path.join(dir, 'aprobadas.txt')).includes(hoy)) { console.log(`${cuenta}: la story de hoy no está aprobada.`); continue; }
   if (lineas(path.join(dir, 'publicadas.txt')).includes(hoy)) { console.log(`${cuenta}: ya publicada.`); continue; }
-  const jpg = `${cuenta}-story-${hoy}.jpg`;
-  if (!existsSync(path.join(dir, jpg))) { await avisar(`⚠️ ${marca.nombre}: la story de hoy está aprobada pero no encuentro la imagen.`); continue; }
+  const jpg = `${cuenta}-story-${hoy}.jpg`, mp4 = `${cuenta}-story-${hoy}.mp4`;
+  const esVideo = existsSync(path.join(dir, mp4));
+  if (!esVideo && !existsSync(path.join(dir, jpg))) { await avisar(`⚠️ ${marca.nombre}: la story de hoy está aprobada pero no encuentro el archivo.`); continue; }
   const token = secretos[marca.instagram?.secretoToken ?? ''];
   const igUserId = secretos[marca.instagram?.secretoUsuario ?? ''];
   if (!token || !igUserId) { await avisar(`⚠️ ${marca.nombre}: faltan los secretos de Instagram, no se publicó la story.`); continue; }
   try {
-    const id = await publishStory({ token, igUserId, imageUrl: `${base}/stories/${cuenta}/${jpg}` });
+    const id = await publishStory({ token, igUserId, ...(esVideo ? { videoUrl: `${base}/stories/${cuenta}/${mp4}` } : { imageUrl: `${base}/stories/${cuenta}/${jpg}` }) });
     appendFileSync(path.join(dir, 'publicadas.txt'), `${hoy}\n`);
     console.log(`${cuenta}: story publicada (${id}).`);
     await avisar(`✅ Story de ${marca.nombre} publicada.`);

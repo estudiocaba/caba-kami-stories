@@ -1,15 +1,23 @@
 {
   "nombre": "ZS Peluqueros",
-  "handle": "PENDIENTE",
-  "colores": { "fondo": "#F5F3F0", "texto": "#1C1C1C", "acento": "#1C1C1C", "suave": "#6E6A66", "linea": "#DAD5CF" },
+  "handle": "@zspeluqueros",
+  "colores": { "fondo": "#F3EFEA", "texto": "#171514", "acento": "#9C7A4B", "suave": "#6F665E", "linea": "#DCD3C8" },
   "fuentes": { "titulo": "Fraunces", "texto": "Poppins" },
-  "pesoTitulo": 500,
-  "esquinas": 16,
+  "pesoTitulo": 400,
+  "esquinas": 18,
   "logo": null,
-  "plantillas": ["frase", "dato", "pregunta", "foto", "antesdespues", "cuentaatras"],
-  "prohibido": ["Precios de servicios o productos", "Agenda: horarios, huecos libres o disponibilidad", "Ofertas o promociones con precio"],
-  "voz": "Español de Canarias, cercano",
-  "stories": { "activo": false, "hora": "09:30" },
+  "plantillas": ["frase", "dato", "pregunta", "promo", "foto", "antesdespues", "cuentaatras"],
+  "reglas": {
+    "evitar": { "pelo": "cabello", "pelos": "cabellos", "pelazo": "cabellazo", "peluco": "cabello" },
+    "sinPrecios": true,
+    "sinHorarios": true,
+    "peninsular": false
+  },
+  "prohibido": ["La palabra «pelo»: siempre «cabello»", "Precios de servicios o productos", "Horarios, agenda o huecos libres", "Vocabulario peninsular (vosotros, os, vuestro, tío, mola)", "Competencia"],
+  "cta": "Pide tu cita por teléfono: los números están en la bio",
+  "voz": "Español de Canarias, cercano. Se promocionan los dos salones.",
+  "musica": ["brillo", "seda", "verano"],
+  "stories": { "activo": false, "video": true, "duracion": 8, "hora": "09:30" },
   "instagram": { "secretoToken": "IG_TOKEN_ZS_PELUQUEROS", "secretoUsuario": "IG_USER_ZS_PELUQUEROS" },
-  "nota": "BORRADOR: colores, tipografías, logo y handle provisionales hasta tener los de la marca. Ficha completa en Notion: Ficha de marca · ZS Peluqueros."
+  "nota": "Colores, tipografías y logo PROVISIONALES hasta tener los de la marca. Ficha completa en Notion: Ficha de marca · ZS Peluqueros."
 }

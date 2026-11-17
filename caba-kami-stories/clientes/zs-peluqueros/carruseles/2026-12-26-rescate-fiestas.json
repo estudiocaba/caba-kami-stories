@@ -1,0 +1,31 @@
+{
+  "fecha": "2026-12-26",
+  "pieza": "Tu cabello después de las fiestas",
+  "diapositivas": [
+    {
+      "tipo": "portada",
+      "etiqueta": "Después de las fiestas",
+      "titulo": "Tu cabello después de las *fiestas*",
+      "bajada": "Plan de rescate en cuatro pasos."
+    },
+    {
+      "tipo": "lista",
+      "titulo": "Plan de *rescate*",
+      "items": [
+        "Lava con agua tibia y un champú suave",
+        "Deja la mascarilla unos minutos más de lo normal",
+        "Dale un descanso a la plancha y a las tenacillas",
+        "Sanea las puntas si las fiestas se notaron"
+      ]
+    },
+    {
+      "tipo": "cierre",
+      "titulo": "¿Tu cabello pide un *rescate*?",
+      "texto": "Te esperamos en nuestros dos salones para dejarlo como nuevo."
+    }
+  ],
+  "copy": "Las fiestas se notan… también en el cabello 😅 Agua tibia, mascarilla con calma, descanso de plancha y, si hace falta, sanear puntas.\n\n¿El tuyo pide un rescate?\n\nPide tu cita por teléfono: los números están en la bio 📞",
+  "hashtags": "#cuidadodelcabello #cabellosano #tipsdecabello #peluquerialaspalmas #laspalmasdegrancanaria #grancanaria #zspeluqueros",
+  "fuentes": "Consejos del equipo de ZS Peluqueros.",
+  "alt": "Carrusel de tres diapositivas en tonos crema y negro con un plan de cuatro pasos para cuidar el cabello después de las fiestas."
+}
