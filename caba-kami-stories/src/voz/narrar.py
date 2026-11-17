@@ -11,6 +11,9 @@ Motores:
          500.000 caracteres al mes). Necesita AZURE_SPEECH_KEY y AZURE_SPEECH_REGION.
   edge   Las mismas voces por el servicio de lectura de Edge (gratis, no oficial). Para pruebas.
   piper  Daniela (es_AR), voz libre (dataset OpenSLR 61, CC BY-SA 4.0). Funciona sin ninguna cuenta.
+  elevenlabs  Voces de ElevenLabs (modelo multilingüe). Necesita ELEVENLABS_API_KEY; "voz" es el
+         voice_id de la voz elegida en su biblioteca. En el plan gratuito, solo uso no comercial y
+         con atribución a ElevenLabs (el copy la añade solo); el plan Starter quita las dos cosas.
 """
 import asyncio, json, os, re, subprocess, sys, urllib.request, wave
 from pathlib import Path
@@ -64,6 +67,16 @@ def piper(texto, dst):
     a_wav(str(dst) + '.raw.wav', dst)
 
 
+def elevenlabs(texto, dst):
+    key = os.environ['ELEVENLABS_API_KEY']
+    cuerpo = json.dumps({'text': texto, 'model_id': conf.get('modelo', 'eleven_multilingual_v2'),
+                         'voice_settings': {'stability': conf.get('estabilidad', 0.45), 'similarity_boost': 0.8, 'style': conf.get('estilo', 0.25)}}).encode()
+    req = urllib.request.Request(f'https://api.elevenlabs.io/v1/text-to-speech/{voz}?output_format=mp3_44100_128', data=cuerpo,
+                                 headers={'xi-api-key': key, 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'})
+    Path(str(dst) + '.mp3').write_bytes(urllib.request.urlopen(req, timeout=120).read())
+    a_wav(str(dst) + '.mp3', dst)
+
+
 def envolvente(dst):
     with wave.open(str(dst)) as w:
         x = np.frombuffer(w.readframes(w.getnframes()), dtype=np.int16).astype(float) / 32768
@@ -77,7 +90,9 @@ salida = {}
 for item in conf['textos']:
     clave, texto = item['clave'], pronunciar(item['texto'])
     dst = OUT / f'{clave}.wav'
-    if motor == 'azure':
+    if motor == 'elevenlabs':
+        elevenlabs(texto, dst)
+    elif motor == 'azure':
         azure(texto, dst)
     elif motor == 'piper':
         piper(texto, dst)

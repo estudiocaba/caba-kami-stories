@@ -176,7 +176,9 @@ async function main() {
   console.log(`Música: ${pista}`);
   rmSync(frames, { recursive: true, force: true });
 
-  const caption = `${spec.copy}\n\n${spec.hashtags}`;
+  // Plan gratuito de ElevenLabs: la publicación tiene que nombrarlo.
+  const atribucion = explicativo && spec.voz?.motor === 'elevenlabs' && spec.voz?.atribucion !== false ? '\n\nVoz: ElevenLabs (elevenlabs.io)' : '';
+  const caption = `${spec.copy}${atribucion}\n\n${spec.hashtags}`;
   writeFileSync(path.join(outDir, 'copy.txt'), `${caption}\n\n— AUDIO —\n${explicativo ? 'Vals propio de caba.kami' : 'Lofi propio de caba.kami'}: ${pista}${explicativo ? ' · voz en off sintetizada' : ''}\n`);
   console.log(`Reel de ${dur.toFixed(1)} s en ${mp4}`);
 

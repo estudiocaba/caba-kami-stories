@@ -55,7 +55,7 @@ Ficha de ejemplo: `reeles/2026-12-03-cour.json`.
 |---|---|
 | `plantilla` | `explicativo`. |
 | `musica` | `caldero` (vals en re menor, 96 bpm) o `hechizo` (la menor, 88 bpm), de `musica/grimorio.py`. |
-| `voz` | `{motor, voz, velocidad}`. Motor `azure` (oficial, con `AZURE_SPEECH_KEY` y `AZURE_SPEECH_REGION` en los secretos), `edge` (las mismas voces, para pruebas) o `piper` (Daniela, libre). |
+| `voz` | `{motor, voz, velocidad}`. Motor `elevenlabs` (`voz` = voice_id; necesita `ELEVENLABS_API_KEY`; en el plan gratuito el copy añade la atribución), `azure` (oficial, con `AZURE_SPEECH_KEY` y `AZURE_SPEECH_REGION`), `edge` (voces de Microsoft, para pruebas) o `piper` (Daniela, libre). |
 | `pronunciacion` | Palabras que la voz debe leer distinto: `{"cour": "cur"}`. Solo cambia el audio, no el texto. |
 | `narradora`, `tema` | Nombre en la caja de diálogo y tema que sale en la cabecera de cada lección. |
 | `etiqueta`, `titulo` (2 líneas), `subtitulo`, `intro.voz` | La portada con la bruja en escoba cruzando la luna. |
