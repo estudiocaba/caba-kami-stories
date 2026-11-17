@@ -61,8 +61,9 @@ const letras = (lineas, t, extra = '') => {
     for (const p of partes) {
       if (p === '<em>') { enEm = true; continue; }
       if (p === '</em>') { enEm = false; continue; }
-      const html = p.split(' ').filter(Boolean).map(palabra).join(' ');
-      out += (out && html && !out.endsWith(' ') ? ' ' : '') + (enEm ? `<em>${html}</em>` : html);
+      // Los espacios quedan donde estaban: «un *cour*?» no separa el signo de la palabra.
+      const html = p.split(' ').map(w => (w ? palabra(w) : '')).join(' ');
+      out += enEm ? `<em>${html}</em>` : html;
     }
     return out;
   };
@@ -210,9 +211,16 @@ export function buildReelLista(spec, imgs, bpm = 72) {
   // Cada corte con fallo de VHS suena centrado en el golpe.
   cortes.forEach(c => eventos.push({ tipo: 'glitch', t: c - .14 }, { tipo: 'impacto', t: c }));
 
-  const html = `<!doctype html><html lang="es"><head><meta charset="utf-8">
+  const html = paginaReel(escenas.join('\n'), cortes);
+  return { html, eventos, cortes, duracion: final };
+}
+
+// Página completa del reel: filtro de VHS, fondo, puntilla, cabecera, escenas, partículas y motor.
+// extraCss / extraJs permiten a otras plantillas (explicativo) sumar lo suyo al mismo motor.
+export function paginaReel(escenasHtml, cortes, extraCss = '', extraJs = '') {
+  return `<!doctype html><html lang="es"><head><meta charset="utf-8">
 ${FONTS.map(f => `<link rel="stylesheet" href="${f}">`).join('\n')}
-<style>${CSS}${REEL_CSS}</style></head><body>
+<style>${CSS}${REEL_CSS}${extraCss}</style></head><body>
 <svg width="0" height="0" style="position:absolute">
   <filter id="vhs" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
     <feTurbulence id="vhs-turb" type="fractalNoise" baseFrequency="0.0008 0.09" numOctaves="1" seed="3" result="ruido"/>
@@ -229,7 +237,7 @@ ${FONTS.map(f => `<link rel="stylesheet" href="${f}">`).join('\n')}
     <div class="brocado"></div>
     <div id="encaje" style="position:absolute;left:0;top:0;width:1200px">${puntilla(.38).replace('width="1080"', 'width="1200"').replace('<rect width="1080"', '<rect width="1200"')}</div>
     <div class="rec-v"><span class="p"></span>▶ PLAY&nbsp;&nbsp;@CABA.KAMI</div>
-    ${escenas.join('\n')}
+    ${escenasHtml}
     ${particulas()}
   </div>
   <div class="vineta"></div><div class="lineas"></div><div class="grano-v"></div><div class="flash" id="flash"></div>
@@ -237,9 +245,12 @@ ${FONTS.map(f => `<link rel="stylesheet" href="${f}">`).join('\n')}
 <script>
 const CORTES = ${JSON.stringify(cortes)};
 ${RENDER_JS}
+${extraJs}
 </script></body></html>`;
-  return { html, eventos, cortes, duracion: final };
 }
+
+// Piezas compartidas con la plantilla explicativa.
+export { letras, maquina, palabras, estrella, sello, partirTitulo };
 
 // ── Motor de animación (lado navegador) ────────────────────────────────────
 const RENDER_JS = `
