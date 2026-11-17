@@ -5,27 +5,31 @@
   "stories": [
     {
       "fecha": "2026-12-28",
-      "plantilla": "cuentaatras",
+      "plantilla": "portada",
       "archivo": "zs-peluqueros-story-2026-12-28.mp4",
-      "portada": "zs-peluqueros-story-2026-12-28.jpg"
+      "portada": "zs-peluqueros-story-2026-12-28.jpg",
+      "creditos": "Fotos: Pexels"
     },
     {
       "fecha": "2026-12-29",
-      "plantilla": "frase",
+      "plantilla": "tip",
       "archivo": "zs-peluqueros-story-2026-12-29.mp4",
-      "portada": "zs-peluqueros-story-2026-12-29.jpg"
+      "portada": "zs-peluqueros-story-2026-12-29.jpg",
+      "creditos": "Fotos: Pexels"
     },
     {
       "fecha": "2026-12-30",
-      "plantilla": "promo",
+      "plantilla": "cierre",
       "archivo": "zs-peluqueros-story-2026-12-30.mp4",
-      "portada": "zs-peluqueros-story-2026-12-30.jpg"
+      "portada": "zs-peluqueros-story-2026-12-30.jpg",
+      "creditos": "Fotos: Pexels"
     },
     {
       "fecha": "2026-12-31",
-      "plantilla": "frase",
+      "plantilla": "tip",
       "archivo": "zs-peluqueros-story-2026-12-31.mp4",
-      "portada": "zs-peluqueros-story-2026-12-31.jpg"
+      "portada": "zs-peluqueros-story-2026-12-31.jpg",
+      "creditos": "Fotos: Pexels"
     }
   ]
 }
