@@ -14,7 +14,8 @@ import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync, rmSync
 import { execFileSync } from 'node:child_process';
 import path from 'node:path';
 import { chromium } from 'playwright-core';
-import { htmlStory } from './plantillas.js';
+import { htmlStory, htmlStoryEditorial } from './plantillas.js';
+import { resolverFotos } from '../clientes/fotos.js';
 import { cargarMarca, fotoSrc, revisar, RAIZ } from '../clientes/marca.js';
 import { sendDocumentGroup, sendText } from '../telegram.js';
 
@@ -54,11 +55,20 @@ function musica(fechaStory) {
   return { pista, inicio };
 }
 
+// Fotos de internet (estilo editorial): se buscan y se fijan antes de generar
+const creditos = {};
+for (const s of stories) {
+  const dirFotos = path.join(OUT, `fotos-${s.fecha}`); mkdirSync(dirFotos, { recursive: true });
+  const r = await resolverFotos(s, dirFotos);
+  if (r.textoCreditos) creditos[s.fecha] = r.textoCreditos;
+}
+
 const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH || '/usr/bin/google-chrome' });
 const page = await browser.newPage({ viewport: { width: 1080, height: 1920 } });
 const hechas = [];
 for (const s of stories) {
-  const html = htmlStory(s, marca, video).replace(/data-foto="([^"]*)"/g, (_, ref) => (ref ? `style="background-image:url('${fotoSrc(ref, dirCliente)}')"` : ''));
+  const html = (marca.estilo === 'editorial' ? htmlStoryEditorial : htmlStory)(s, marca, video).replace(/data-foto="([^"]*)"/g, (_, ref) => (ref ? `style="background-image:url('${fotoSrc(ref, dirCliente)}')"` : ''))
+    .replace(/url\('(fotos\/[^']+)'\)/g, (_, ref) => `url('${fotoSrc(ref, dirCliente)}')`);
   const tmp = path.join(OUT, `${s.fecha}.html`);
   writeFileSync(tmp, html);
   await page.goto('file://' + tmp, { waitUntil: 'networkidle' });
@@ -67,7 +77,7 @@ for (const s of stories) {
   const story = page.locator('.story');
   if (!video) {
     await story.screenshot({ path: `${base}.jpg`, type: 'jpeg', quality: 92 });
-    hechas.push({ fecha: s.fecha, plantilla: s.plantilla, archivo: path.basename(`${base}.jpg`) });
+    hechas.push({ fecha: s.fecha, plantilla: s.plantilla, archivo: path.basename(`${base}.jpg`), creditos: creditos[s.fecha] });
   } else {
     const frames = path.join(OUT, `frames-${s.fecha}`);
     rmSync(frames, { recursive: true, force: true }); mkdirSync(frames);
@@ -85,7 +95,7 @@ for (const s of stories) {
       '-map', '0:v', '-map', '[a]', '-t', String(video), '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '20', '-pix_fmt', 'yuv420p',
       '-c:a', 'aac', '-b:a', '160k', '-movflags', '+faststart', `${base}.mp4`]);
     rmSync(frames, { recursive: true, force: true });
-    hechas.push({ fecha: s.fecha, plantilla: s.plantilla, archivo: path.basename(`${base}.mp4`), portada: path.basename(`${base}.jpg`) });
+    hechas.push({ fecha: s.fecha, plantilla: s.plantilla, archivo: path.basename(`${base}.mp4`), portada: path.basename(`${base}.jpg`), creditos: creditos[s.fecha] });
   }
   console.log(`  ${s.fecha} · ${s.plantilla}${video ? ' · video' : ''}`);
 }

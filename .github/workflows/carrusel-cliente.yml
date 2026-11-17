@@ -36,6 +36,7 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
         run: |
           EXTRA=""; [ "${{ inputs.telegram }}" = "true" ] || EXTRA="--sin-telegram"
           n=0
@@ -59,6 +60,7 @@ jobs:
             for d in "$SRC"/*/; do
               n=$(basename "$d"); mkdir -p "$DEST/clientes/${{ inputs.cuenta }}/carruseles/$n"
               cp "$d"*.jpg "$d"copy.txt "$DEST/clientes/${{ inputs.cuenta }}/carruseles/$n/"
+              cp "$d"fotos.json "$DEST/clientes/${{ inputs.cuenta }}/carruseles/$n/" 2>/dev/null || true
             done
             git -C "$DEST" add -A
             git -C "$DEST" -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -q -m "Carruseles ${{ inputs.cuenta }} ${{ inputs.ficha }}" || { echo "Sin cambios"; break; }

@@ -4,28 +4,50 @@
   "diapositivas": [
     {
       "tipo": "portada",
-      "etiqueta": "Después de las fiestas",
-      "titulo": "Tu cabello después de las *fiestas*",
-      "bajada": "Plan de rescate en cuatro pasos."
+      "foto": {
+        "buscar": "woman tired hair morning"
+      },
+      "titulo": [
+        "Después de",
+        "las *fiestas*"
+      ],
+      "etiqueta": "Plan de rescate"
     },
     {
-      "tipo": "lista",
-      "titulo": "Plan de *rescate*",
-      "items": [
-        "Lava con agua tibia y un champú suave",
-        "Deja la mascarilla unos minutos más de lo normal",
-        "Dale un descanso a la plancha y a las tenacillas",
-        "Sanea las puntas si las fiestas se notaron"
-      ]
+      "tipo": "tip",
+      "foto": {
+        "buscar": "gentle shampoo washing hair"
+      },
+      "titulo": "Lavado suave",
+      "texto": "Agua tibia y un champú suave para quitar restos de laca y producto."
+    },
+    {
+      "tipo": "tip",
+      "foto": {
+        "buscar": "hair mask woman"
+      },
+      "titulo": "Mascarilla con calma",
+      "texto": "Unos minutos más de lo normal: tu cabello lo agradece."
+    },
+    {
+      "tipo": "tip",
+      "foto": {
+        "buscar": "hair straightener flat iron"
+      },
+      "titulo": "Descanso de calor",
+      "texto": "Unos días sin plancha ni tenacillas.",
+      "consejo": "si se notan las puntas, pásate a sanearlas."
     },
     {
       "tipo": "cierre",
-      "titulo": "¿Tu cabello pide un *rescate*?",
-      "texto": "Te esperamos en nuestros dos salones para dejarlo como nuevo."
+      "foto": {
+        "buscar": "shiny healthy hair"
+      },
+      "pregunta": "¿Tu cabello pide un rescate?"
     }
   ],
-  "copy": "Las fiestas se notan… también en el cabello 😅 Agua tibia, mascarilla con calma, descanso de plancha y, si hace falta, sanear puntas.\n\n¿El tuyo pide un rescate?\n\nPide tu cita por teléfono: los números están en la bio 📞",
+  "copy": "Las fiestas se notan… también en el cabello 😅 Agua tibia, mascarilla con calma, descanso de calor y, si hace falta, sanear puntas.\n\n¿El tuyo pide un rescate?\n\nPide tu cita por teléfono: los números están en la bio 📞",
   "hashtags": "#cuidadodelcabello #cabellosano #tipsdecabello #peluquerialaspalmas #laspalmasdegrancanaria #grancanaria #zspeluqueros",
   "fuentes": "Consejos del equipo de ZS Peluqueros.",
-  "alt": "Carrusel de tres diapositivas en tonos crema y negro con un plan de cuatro pasos para cuidar el cabello después de las fiestas."
+  "alt": "Carrusel de cinco diapositivas con fotos y un plan de cuidados para el cabello después de las fiestas."
 }

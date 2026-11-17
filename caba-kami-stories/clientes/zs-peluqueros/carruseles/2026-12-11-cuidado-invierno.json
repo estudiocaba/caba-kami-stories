@@ -1,45 +1,64 @@
 {
   "fecha": "2026-12-11",
-  "pieza": "Cómo cuidar tu cabello en invierno",
+  "pieza": "4 gestos para tu cabello en invierno",
   "diapositivas": [
     {
       "tipo": "portada",
-      "etiqueta": "Tips",
-      "titulo": "Cómo cuidar tu *cabello* en invierno",
-      "bajada": "Cuatro gestos que se notan."
+      "foto": {
+        "buscar": "woman brushing long hair"
+      },
+      "titulo": [
+        "4 *gestos*",
+        "para tu cabello"
+      ],
+      "etiqueta": "En invierno"
     },
     {
-      "tipo": "punto",
-      "numero": "01",
-      "titulo": "Agua *tibia*",
-      "texto": "El agua muy caliente reseca el cabello y apaga el color antes de tiempo."
+      "tipo": "tip",
+      "foto": {
+        "buscar": "washing hair shower"
+      },
+      "titulo": "1. Agua tibia",
+      "texto": "El agua muy caliente reseca el cabello y apaga el color antes de tiempo.",
+      "consejo": "termina con un chorrito de agua fresca."
     },
     {
-      "tipo": "punto",
-      "numero": "02",
-      "titulo": "Protector térmico, *siempre*",
-      "texto": "Antes del secador o la plancha. Tu cabello lo agradece."
+      "tipo": "tip",
+      "foto": {
+        "buscar": "woman hair dryer"
+      },
+      "titulo": "2. Protector térmico",
+      "texto": "Antes del secador o la plancha, siempre.",
+      "consejo": "aplícalo de medios a puntas, sin cargar la raíz."
     },
     {
-      "tipo": "punto",
-      "numero": "03",
-      "titulo": "Hidratación *extra*",
-      "texto": "Una mascarilla a la semana compensa el secador y los cambios de temperatura."
+      "tipo": "tip",
+      "foto": {
+        "buscar": "hair mask treatment"
+      },
+      "titulo": "3. Hidratación extra",
+      "texto": "Una mascarilla a la semana compensa el secador y los cambios de temperatura.",
+      "consejo": "déjala actuar unos minutos más de lo que marca el envase si tu cabello está muy seco."
     },
     {
-      "tipo": "punto",
-      "numero": "04",
-      "titulo": "Sanea las *puntas*",
-      "texto": "Las puntas abiertas suben. Mejor cortarlas a tiempo."
+      "tipo": "tip",
+      "foto": {
+        "buscar": "hairdresser cutting hair ends"
+      },
+      "titulo": "4. Sanea las puntas",
+      "texto": "Las puntas abiertas suben. Mejor cortarlas a tiempo.",
+      "consejo": "no esperes a verlas: si el cabello se enreda más de lo normal, es el momento."
     },
     {
       "tipo": "cierre",
-      "titulo": "¿Cuál de estos se te *olvida*?",
-      "texto": "Si tu cabello pide ayuda, te esperamos en nuestros dos salones."
+      "foto": {
+        "buscar": "healthy shiny hair woman"
+      },
+      "pregunta": "¿Tu cabello pide un mimo?"
     }
   ],
   "copy": "Cuatro gestos que se notan en tu cabello este invierno 💧\n\nAgua tibia, protector térmico siempre, una mascarilla a la semana y sanear las puntas a tiempo. Cuéntanos: ¿cuál se te olvida?\n\nPide tu cita por teléfono: los números están en la bio 📞",
   "hashtags": "#cuidadodelcabello #tipsdecabello #cabellosano #rutinacapilar #peluquerialaspalmas #laspalmasdegrancanaria #grancanaria #zspeluqueros",
-  "fuentes": "Consejos de cuidado del equipo de ZS Peluqueros.",
-  "alt": "Carrusel de seis diapositivas en tonos crema y negro con cuatro consejos para cuidar el cabello en invierno."
+  "fuentes": "Consejos del equipo de ZS Peluqueros.",
+  "alt": "Carrusel de seis diapositivas con fotos y cuatro consejos para cuidar el cabello en invierno."
 }

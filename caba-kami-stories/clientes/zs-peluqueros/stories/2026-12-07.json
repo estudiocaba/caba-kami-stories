@@ -2,58 +2,74 @@
   "semana": "2026-12-07",
   "stories": [
     {
+      "plantilla": "tip",
+      "titulo": "Lunes de tips",
+      "texto": "El flequillo no se corta en casa. *Nosotros* te lo dejamos perfecto.",
       "fecha": "2026-12-07",
-      "plantilla": "frase",
-      "etiqueta": "Lunes de tips",
-      "texto": "El flequillo no se corta en casa. *Nosotros* te lo dejamos perfecto."
+      "foto": {
+        "buscar": "bangs haircut woman"
+      }
     },
     {
-      "fecha": "2026-12-08",
-      "plantilla": "dato",
-      "etiqueta": "Tendencia de color",
-      "cifra": "Nº 1",
-      "unidad": "",
+      "plantilla": "tip",
+      "titulo": "Nº 1 en color",
       "texto": "El castaño cálido con notas de *chocolate y café* encabeza las tendencias de color de L’Oréal Professionnel para 2026.",
-      "fuente": "Marie Claire"
+      "fuente": "Marie Claire",
+      "fecha": "2026-12-08",
+      "foto": {
+        "buscar": "dark brown hair woman"
+      }
     },
     {
-      "fecha": "2026-12-09",
       "plantilla": "pregunta",
-      "etiqueta": "Para ellos",
       "pregunta": "¿Quiff o *pompadour*?",
       "opciones": [
         "Quiff",
         "Pompadour"
       ],
-      "pie": "Respóndenos por mensaje"
+      "pie": "Respóndenos por mensaje",
+      "fecha": "2026-12-09",
+      "foto": {
+        "buscar": "men hairstyle barber"
+      }
     },
     {
+      "plantilla": "tip",
+      "titulo": "Tip del día",
+      "texto": "Lava con agua *tibia*: la muy caliente apaga el color.",
       "fecha": "2026-12-10",
-      "plantilla": "frase",
-      "etiqueta": "Tip del día",
-      "texto": "Lava con agua *tibia*: la muy caliente apaga el color."
+      "foto": {
+        "buscar": "washing hair"
+      }
     },
     {
+      "plantilla": "portada",
+      "titulo": [
+        "*20* días",
+        "para Nochevieja"
+      ],
+      "bajada": "¿Peinado pensado?",
       "fecha": "2026-12-11",
-      "plantilla": "cuentaatras",
-      "etiqueta": "Nochevieja",
-      "hasta": "2026-12-31",
-      "texto": "para despedir el año. ¿Peinado pensado?"
+      "foto": {
+        "buscar": "new year party woman"
+      }
     },
     {
+      "plantilla": "cierre",
+      "pregunta": "Cortes para *todos*",
       "fecha": "2026-12-12",
-      "plantilla": "promo",
-      "etiqueta": "Para ellas y para ellos",
-      "titulo": "Cortes para *todos*",
-      "detalle": "Cortes femeninos y masculinos de temporada.",
-      "cta": "Pide tu cita por teléfono: los números están en la bio",
-      "valido": "En nuestros dos salones"
+      "foto": {
+        "buscar": "hairdresser cutting hair"
+      }
     },
     {
+      "plantilla": "tip",
+      "titulo": "Domingo",
+      "texto": "Domingo de *mascarilla*: tu cabello también merece descanso.",
       "fecha": "2026-12-13",
-      "plantilla": "frase",
-      "etiqueta": "Domingo",
-      "texto": "Domingo de *mascarilla*: tu cabello también merece descanso."
+      "foto": {
+        "buscar": "hair mask"
+      }
     }
   ]
 }

@@ -23,7 +23,7 @@ export function fotoSrc(ref, dir) {
 }
 
 // Todos los textos de una pieza (recorre el JSON), para revisarlos.
-function textos(obj, fuera = new Set(['fecha', 'plantilla', 'tipo', 'foto', 'antes', 'despues', 'hasta', 'hex', 'fuentes', 'alt'])) {
+function textos(obj, fuera = new Set(['fecha', 'plantilla', 'tipo', 'foto', 'fotos', 'buscar', 'antes', 'despues', 'hasta', 'hex', 'tonos', 'fuentes', 'alt'])) {
   if (typeof obj === 'string') return [obj];
   if (Array.isArray(obj)) return obj.flatMap(o => textos(o, fuera));
   if (obj && typeof obj === 'object') return Object.entries(obj).filter(([k]) => !fuera.has(k)).flatMap(([, v]) => textos(v, fuera));

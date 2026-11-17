@@ -146,7 +146,7 @@ export const PLANTILLAS = Object.keys(P);
 // Animación para las stories en video: cortina de entrada, textos que suben uno detrás de otro,
 // fotos con zoom lento y cortina de salida (la transición hacia la story siguiente).
 // Las animaciones quedan en pausa y el generador las mueve fotograma a fotograma (window.irA).
-function animCss(m, dur) {
+export function animCss(m, dur) {
   const c = m.colores, ms = Math.round(dur * 1000);
   return `
 .cortina{position:absolute;inset:0;z-index:20;pointer-events:none;}
@@ -162,7 +162,7 @@ function animCss(m, dur) {
 `;
 }
 
-const ANIM_JS = `
+export const ANIM_JS = `
 (() => {
   const els = [...document.querySelectorAll('.zona > *')].flatMap(e =>
     e.children.length > 1 && !e.classList.contains('titulo') && !e.classList.contains('texto') ? [...e.children] : [e]);
@@ -195,4 +195,15 @@ export function resolverFotos(html, dirCliente) {
     }
     return `style="background-image:url('${src}')"`;
   });
+}
+
+// Stories del estilo editorial (fotos a sangre, serif condensada): ver src/clientes/editorial.js
+import { cssEditorial, seccionEditorial } from '../clientes/editorial.js';
+export function htmlStoryEditorial(story, marca, video = 0) {
+  const fuentes = [...new Set([marca.fuentes.titulo, marca.fuentes.texto])].flatMap(n => fuenteCss(n, [300, 400, 500, 600, 700, 800, 900]));
+  return `<!doctype html><html lang="es"><head><meta charset="utf-8">
+${fuentes.map(u => `<link rel="stylesheet" href="${u}">`).join('\n')}
+<style>${cssEditorial(marca, 1920)}${video ? animCss(marca, video) : ''}</style></head><body>
+<div class="story ed">${seccionEditorial({ ...story, tipo: story.plantilla }, marca, 1920)}${video ? '<div class="cortina entra"></div><div class="cortina sale"></div>' : ''}</div>
+${video ? `<script>${ANIM_JS}</script>` : ''}</body></html>`;
 }

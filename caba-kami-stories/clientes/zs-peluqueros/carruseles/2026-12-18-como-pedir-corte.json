@@ -1,37 +1,55 @@
 {
   "fecha": "2026-12-18",
-  "pieza": "Cómo pedir tu corte y salir feliz",
+  "pieza": "Cómo pedir tu corte sin sustos",
   "diapositivas": [
     {
       "tipo": "portada",
-      "etiqueta": "Tips",
-      "titulo": "Cómo pedir tu corte y salir *feliz*",
-      "bajada": "Adiós al «un poquito nada más»."
+      "foto": {
+        "buscar": "hairdresser talking client salon"
+      },
+      "titulo": [
+        "Cómo *pedir*",
+        "tu corte"
+      ],
+      "etiqueta": "Sin sustos"
     },
     {
-      "tipo": "lista",
-      "titulo": "Antes de sentarte en el *sillón*",
-      "items": [
-        "Trae una foto de lo que te gusta (y una de lo que no)",
-        "Habla en centímetros, no en «un poquito»",
-        "Cuéntanos tu rutina: si te secas al aire o con secador",
-        "Dinos qué no quieres perder: largo, flequillo, volumen"
-      ]
+      "tipo": "tip",
+      "foto": {
+        "buscar": "woman showing phone photo"
+      },
+      "titulo": "1. Trae una foto",
+      "texto": "De lo que te gusta y, si puedes, de lo que no.",
+      "consejo": "una imagen nos ahorra mil palabras."
     },
     {
-      "tipo": "punto",
-      "numero": "",
-      "titulo": "La foto *manda*",
-      "texto": "Una imagen nos ahorra mil palabras y a ti te ahorra sustos."
+      "tipo": "tip",
+      "foto": {
+        "buscar": "hair cutting scissors comb"
+      },
+      "titulo": "2. Habla en centímetros",
+      "texto": "«Un poquito» no es lo mismo para todo el mundo.",
+      "consejo": "dinos cuánto quieres cortar y te lo enseñamos antes de empezar."
+    },
+    {
+      "tipo": "tip",
+      "foto": {
+        "buscar": "woman drying hair towel"
+      },
+      "titulo": "3. Cuéntanos tu rutina",
+      "texto": "Si te secas al aire o con secador, si te peinas cada día o nunca.",
+      "consejo": "el mejor corte es el que puedes llevar en casa."
     },
     {
       "tipo": "cierre",
-      "titulo": "¿Eres de foto o de «un *poquito*»?",
-      "texto": "Sea como sea, en nuestros dos salones te escuchamos."
+      "foto": {
+        "buscar": "happy woman new haircut"
+      },
+      "pregunta": "¿Eres de foto o de «un poquito»?"
     }
   ],
-  "copy": "El «un poquito nada más» es el clásico de la peluquería 😅\n\nPara salir feliz: trae una foto, habla en centímetros, cuéntanos tu rutina y dinos qué no quieres perder. ¿Tú eres de foto o de «un poquito»?\n\nPide tu cita por teléfono: los números están en la bio 📞",
+  "copy": "El «un poquito nada más» es el clásico de la peluquería 😅\n\nPara salir feliz: trae una foto, habla en centímetros y cuéntanos tu rutina. ¿Tú eres de foto o de «un poquito»?\n\nPide tu cita por teléfono: los números están en la bio 📞",
   "hashtags": "#tipsdepeluqueria #cortedecabello #cambiodelook #peluquerialaspalmas #laspalmasdegrancanaria #grancanaria #zspeluqueros",
   "fuentes": "Consejos del equipo de ZS Peluqueros.",
-  "alt": "Carrusel de cuatro diapositivas en tonos crema y negro con consejos para pedir un corte en la peluquería."
+  "alt": "Carrusel de cinco diapositivas con fotos y consejos para pedir un corte en la peluquería."
 }

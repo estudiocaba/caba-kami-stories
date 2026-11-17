@@ -2,32 +2,42 @@
   "semana": "2026-12-28",
   "stories": [
     {
+      "plantilla": "portada",
+      "titulo": [
+        "*3* días",
+        "para Nochevieja"
+      ],
+      "bajada": "¿Lo celebramos con un buen peinado?",
       "fecha": "2026-12-28",
-      "plantilla": "cuentaatras",
-      "etiqueta": "Nochevieja",
-      "hasta": "2026-12-31",
-      "texto": "para despedir el año. ¿Lo celebramos con un buen peinado?"
+      "foto": {
+        "buscar": "new year fireworks"
+      }
     },
     {
+      "plantilla": "tip",
+      "titulo": "Propósito 2027",
+      "texto": "Protector térmico *de verdad*. No a veces.",
       "fecha": "2026-12-29",
-      "plantilla": "frase",
-      "etiqueta": "Propósito 2027",
-      "texto": "Protector térmico *de verdad*. No a veces."
+      "foto": {
+        "buscar": "woman blow dry hair"
+      }
     },
     {
+      "plantilla": "cierre",
+      "pregunta": "El último peinado *del año*",
       "fecha": "2026-12-30",
-      "plantilla": "promo",
-      "etiqueta": "Último del año",
-      "titulo": "El último peinado *del año*",
-      "detalle": "Te dejamos lista para recibir 2027.",
-      "cta": "Pide tu cita por teléfono: los números están en la bio",
-      "valido": "En nuestros dos salones"
+      "foto": {
+        "buscar": "glamorous hairstyle"
+      }
     },
     {
+      "plantilla": "tip",
+      "titulo": "Nochevieja",
+      "texto": "¡Feliz *2027*! Gracias por confiar en ZS.",
       "fecha": "2026-12-31",
-      "plantilla": "frase",
-      "etiqueta": "Nochevieja",
-      "texto": "¡Feliz *2027*! Gracias por confiar en ZS."
+      "foto": {
+        "buscar": "new year celebration"
+      }
     }
   ]
 }

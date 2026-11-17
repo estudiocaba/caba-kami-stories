@@ -1,23 +1,70 @@
 {
   "nombre": "ZS Peluqueros",
   "handle": "@zspeluqueros",
-  "colores": { "fondo": "#F3EFEA", "texto": "#171514", "acento": "#9C7A4B", "suave": "#6F665E", "linea": "#DCD3C8" },
-  "fuentes": { "titulo": "Fraunces", "texto": "Poppins" },
+  "colores": {
+    "fondo": "#1E1714",
+    "texto": "#FFFFFF",
+    "acento": "#B07A52",
+    "suave": "#D9CFC7",
+    "linea": "#3A2E28"
+  },
+  "fuentes": {
+    "titulo": "Instrument Serif",
+    "texto": "Poppins"
+  },
   "pesoTitulo": 400,
   "esquinas": 18,
   "logo": null,
-  "plantillas": ["frase", "dato", "pregunta", "promo", "foto", "antesdespues", "cuentaatras"],
+  "plantillas": [
+    "portada",
+    "tip",
+    "pregunta",
+    "collage",
+    "fototexto",
+    "duo",
+    "tira",
+    "cierre"
+  ],
   "reglas": {
-    "evitar": { "pelo": "cabello", "pelos": "cabellos", "pelazo": "cabellazo", "peluco": "cabello" },
+    "evitar": {
+      "pelo": "cabello",
+      "pelos": "cabellos",
+      "pelazo": "cabellazo",
+      "peluco": "cabello"
+    },
     "sinPrecios": true,
     "sinHorarios": true,
     "peninsular": false
   },
-  "prohibido": ["La palabra «pelo»: siempre «cabello»", "Precios de servicios o productos", "Horarios, agenda o huecos libres", "Vocabulario peninsular (vosotros, os, vuestro, tío, mola)", "Competencia"],
+  "prohibido": [
+    "La palabra «pelo»: siempre «cabello»",
+    "Precios de servicios o productos",
+    "Horarios, agenda o huecos libres",
+    "Vocabulario peninsular (vosotros, os, vuestro, tío, mola)",
+    "Competencia"
+  ],
   "cta": "Pide tu cita por teléfono: los números están en la bio",
   "voz": "Español de Canarias, cercano. Se promocionan los dos salones.",
-  "musica": ["brillo", "seda", "verano"],
-  "stories": { "activo": false, "video": true, "duracion": 8, "hora": "09:30" },
-  "instagram": { "secretoToken": "IG_TOKEN_ZS_PELUQUEROS", "secretoUsuario": "IG_USER_ZS_PELUQUEROS" },
-  "nota": "Colores, tipografías y logo PROVISIONALES hasta tener los de la marca. Ficha completa en Notion: Ficha de marca · ZS Peluqueros."
+  "musica": [
+    "brillo",
+    "seda",
+    "verano"
+  ],
+  "stories": {
+    "activo": false,
+    "video": true,
+    "duracion": 8,
+    "hora": "09:30"
+  },
+  "instagram": {
+    "secretoToken": "IG_TOKEN_ZS_PELUQUEROS",
+    "secretoUsuario": "IG_USER_ZS_PELUQUEROS"
+  },
+  "nota": "Estética copiada de su Instagram (capturas de Camila, 17 nov. 2026). Logo PENDIENTE: mientras tanto, versión tipográfica. Fotos de tendencias: bancos con licencia comercial (Pexels/Openverse); nunca antes y después de internet.",
+  "estilo": "editorial",
+  "web": "www.zspeluqueros.com",
+  "sigla": "ZS",
+  "logoTexto": "Zeben Santana|peluqueros",
+  "ctaCorta": "Pide tu cita",
+  "ctaDetalle": "Llámanos: los teléfonos están en la bio"
 }
