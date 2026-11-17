@@ -58,7 +58,7 @@ jobs:
             git clone -q --depth 1 --branch publico "$REPO_URL" "$DEST"
             mkdir -p "$DEST/clientes/${{ inputs.cuenta }}/carruseles"
             for d in "$SRC"/*/; do
-              n=$(basename "$d"); mkdir -p "$DEST/clientes/${{ inputs.cuenta }}/carruseles/$n"
+              n=$(basename "$d"); rm -rf "$DEST/clientes/${{ inputs.cuenta }}/carruseles/$n"; mkdir -p "$DEST/clientes/${{ inputs.cuenta }}/carruseles/$n"
               cp "$d"*.jpg "$d"copy.txt "$DEST/clientes/${{ inputs.cuenta }}/carruseles/$n/"
               cp "$d"fotos.json "$DEST/clientes/${{ inputs.cuenta }}/carruseles/$n/" 2>/dev/null || true
             done
