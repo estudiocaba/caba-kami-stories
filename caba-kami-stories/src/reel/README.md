@@ -47,6 +47,8 @@ Para crear más pistas: añadir una entrada en `PISTAS` dentro de `componer.py` 
 
 Los reels explicativos tienen su propio mundo, distinto del de las listas: **pixel art** de juego de los 90 (escena de 180×320 píxeles ampliada a 1080×1920), las **brujitas del Aquelarre** en una torre con caldero, **voz en off** de la Vidente y **vals de bruja** en lugar de lofi. Código en `src/reel/grimorio.js`; la voz, en `src/voz/narrar.py`.
 
+Las portadas de anime van en una capa aparte a resolución completa: se ven nítidas aunque la escena sea pixel art.
+
 Habla el idioma del anime y de las redes a la vez:
 - **Gancho en el primer segundo**: la voz arranca enseguida y un espejo mágico pasa portadas de anime reales.
 - **Subtítulos grandes palabra por palabra**, sincronizados con la voz (el motor da el momento de cada palabra); la que suena, en vino.
@@ -62,7 +64,7 @@ Ficha de ejemplo: `reeles/2026-12-03-cour.json`.
 |---|---|
 | `plantilla` | `explicativo`. |
 | `musica` | `caldero` (vals en re menor, 96 bpm) o `hechizo` (la menor, 88 bpm), de `musica/grimorio.py`. |
-| `voz` | `{motor, voz, velocidad, tono}` (por defecto `+10%` y `+5Hz`, con energía). Motor `elevenlabs` (`voz` = voice_id; necesita `ELEVENLABS_API_KEY`; en el plan gratuito el copy añade la atribución), `azure` (oficial, con `AZURE_SPEECH_KEY` y `AZURE_SPEECH_REGION`), `edge` (voces de Microsoft, para pruebas) o `piper` (Daniela, libre). |
+| `voz` | `{motor, voz, velocidad, tono}`. Motor `gemini` (`voz` = Laomedeia, Zephyr…; necesita `GEMINI_API_KEY`; se le pide entusiasmo con `estilo_gemini`), motor `elevenlabs` (`voz` = voice_id; necesita `ELEVENLABS_API_KEY`; en el plan gratuito el copy añade la atribución), `azure` (oficial, con `AZURE_SPEECH_KEY` y `AZURE_SPEECH_REGION`), `edge` (voces de Microsoft, para pruebas) o `piper` (Daniela, libre). |
 | `pronunciacion` | Palabras que la voz debe leer distinto: `{"cour": "cur"}`. Solo cambia el audio, no el texto. Sirve también para tildes de apoyo: `{"abran": "ábran"}` (las más comunes ya vienen puestas). |
 | `tema` | Tema que sale en la cabecera de cada lección. |
 | `etiqueta`, `titulo` (1 línea corta), `intro` | El gancho: `voz` (una pregunta o una queja, nunca un saludo), `fotos` (claves de `fotos` que pasan por el espejo), `onomatopeya` y `brujas`. |
