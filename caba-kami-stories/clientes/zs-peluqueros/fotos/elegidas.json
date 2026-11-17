@@ -1,0 +1,706 @@
+{
+ "2026-12-01-colores-invierno": [
+  {
+   "url": "https://images.pexels.com/photos/17278854/pexels-photo-17278854.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/17278854/",
+   "alt": "A Portrait of a Brown Haired Woman"
+  },
+  {
+   "url": "https://images.pexels.com/photos/19096834/pexels-photo-19096834.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/19096834/",
+   "alt": "High Angle Portrait of a Woman with Long Brown Hair"
+  },
+  {
+   "url": "https://images.pexels.com/photos/7578228/pexels-photo-7578228.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/7578228/",
+   "alt": "Peaceful ethnic female with long dark hair wearing white shirt sitting with cup of hot beverage and looking down"
+  },
+  {
+   "url": "https://images.pexels.com/photos/16461911/pexels-photo-16461911.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/16461911/",
+   "alt": "A Young Woman with Highlights in her Hair"
+  },
+  {
+   "url": "https://images.pexels.com/photos/20249986/pexels-photo-20249986.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/20249986/",
+   "alt": "Free stock photo of bikini, blonde girl, bodysuit"
+  },
+  {
+   "url": "https://images.pexels.com/photos/5448538/pexels-photo-5448538.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/5448538/",
+   "alt": "Serious young female with red hair in casual clothes standing on grassy terrain in summer evening time and looking at camera"
+  },
+  {
+   "url": "https://images.pexels.com/photos/18339031/pexels-photo-18339031.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/18339031/",
+   "alt": "Brunette Woman Dancing against City Red Light"
+  },
+  {
+   "url": "https://images.pexels.com/photos/19378057/pexels-photo-19378057.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/19378057/",
+   "alt": "Brunette Woman on Stairs in a Narrow Alley "
+  },
+  {
+   "url": "https://images.pexels.com/photos/19403464/pexels-photo-19403464.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/19403464/",
+   "alt": "Portrait of Brunette Woman in a Park "
+  },
+  {
+   "url": "https://images.pexels.com/photos/19770712/pexels-photo-19770712.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/19770712/",
+   "alt": "Brunette Woman Posing in Leopard Print Dress"
+  },
+  {
+   "url": "https://images.pexels.com/photos/17398341/pexels-photo-17398341.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/17398341/",
+   "alt": "Woman with Long, Brown Hair"
+  },
+  {
+   "url": "https://images.pexels.com/photos/17879048/pexels-photo-17879048.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/17879048/",
+   "alt": "Woman with Long, Brown Hair"
+  },
+  {
+   "url": "https://images.pexels.com/photos/18697351/pexels-photo-18697351.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/18697351/",
+   "alt": "Redhead Woman in Shirt Standing by Vintage Car"
+  },
+  {
+   "url": "https://images.pexels.com/photos/19556458/pexels-photo-19556458.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/19556458/",
+   "alt": "Redhead Woman Wearing a Sweater and a Short Skirt, Standing on a Escalator"
+  },
+  {
+   "url": "https://images.pexels.com/photos/15405998/pexels-photo-15405998.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/15405998/",
+   "alt": "Redhead Woman with Freckles"
+  },
+  {
+   "url": "https://images.pexels.com/photos/18163714/pexels-photo-18163714.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/18163714/",
+   "alt": "Young Redhead Woman Posing in Black Long Sleeved Crop Top"
+  },
+  {
+   "url": "https://images.pexels.com/photos/18201345/pexels-photo-18201345.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/18201345/",
+   "alt": "Portrait of Redhead Woman with Eyes Closed"
+  },
+  {
+   "url": "https://images.pexels.com/photos/19516155/pexels-photo-19516155.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/19516155/",
+   "alt": "Rushes behind Redhead Woman Standing with Suitcase"
+  },
+  {
+   "url": "https://images.pexels.com/photos/13347121/pexels-photo-13347121.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/13347121/",
+   "alt": "Blonde Woman Wearing a White Shirt Sitting Cross-legged"
+  },
+  {
+   "url": "https://images.pexels.com/photos/18703145/pexels-photo-18703145.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/18703145/",
+   "alt": "Portrait of Woman with Brown Hair"
+  }
+ ],
+ "2026-12-04-cortes-invierno": [
+  {
+   "url": "https://images.pexels.com/photos/16548326/pexels-photo-16548326.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/16548326/",
+   "alt": "Stylish portrait of a woman with a bob haircut in a bold orange blazer, exuding confidence."
+  },
+  {
+   "url": "https://images.pexels.com/photos/6314131/pexels-photo-6314131.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/6314131/",
+   "alt": "A Woman with Messy Hair Projecting on the Camera"
+  },
+  {
+   "url": "https://images.pexels.com/photos/20066824/pexels-photo-20066824.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/20066824/",
+   "alt": ""
+  },
+  {
+   "url": "https://images.pexels.com/photos/17836212/pexels-photo-17836212.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/17836212/",
+   "alt": "A young woman with long hair and a white shirt"
+  },
+  {
+   "url": "https://images.pexels.com/photos/20201115/pexels-photo-20201115.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/20201115/",
+   "alt": ""
+  },
+  {
+   "url": "https://images.pexels.com/photos/8563458/pexels-photo-8563458.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/8563458/",
+   "alt": "Beautiful Woman with Long Hair Posing at the Camera"
+  },
+  {
+   "url": "https://images.pexels.com/photos/17992266/pexels-photo-17992266.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/17992266/",
+   "alt": "Smiling Woman with Flowers in Long, Brown Hair"
+  },
+  {
+   "url": "https://images.pexels.com/photos/15685404/pexels-photo-15685404.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/15685404/",
+   "alt": "A woman with long blonde hair blowing in the wind"
+  },
+  {
+   "url": "https://images.pexels.com/photos/17839285/pexels-photo-17839285.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/17839285/",
+   "alt": "A woman with long curly hair and a hat"
+  },
+  {
+   "url": "https://images.pexels.com/photos/12900365/pexels-photo-12900365.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/12900365/",
+   "alt": "Portrait of a smiling woman with a pixie cut and floral tattoo in a casual setting."
+  },
+  {
+   "url": "https://images.pexels.com/photos/19239103/pexels-photo-19239103.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/19239103/",
+   "alt": "Young beautiful woman having her hair cut at the hairdresser. Scissors cut the girls hair"
+  }
+ ],
+ "2026-12-08-cortes-masculinos": [
+  {
+   "url": "https://images.pexels.com/photos/7129416/pexels-photo-7129416.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/7129416/",
+   "alt": "Young ethnic focused male in blue hoodie having meal with metal fork on blurred background"
+  },
+  {
+   "url": "https://images.pexels.com/photos/6303684/pexels-photo-6303684.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/6303684/",
+   "alt": "Positive male with hairstyle in trendy hoodie demonstrating condom in hand and looking at camera against pink wall in studio"
+  },
+  {
+   "url": "https://images.pexels.com/photos/4526480/pexels-photo-4526480.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/4526480/",
+   "alt": "Back view of anonymous cheerful ethnic male in black wear with creative haircut listening to music in earphones in town"
+  },
+  {
+   "url": "https://images.pexels.com/photos/17943619/pexels-photo-17943619.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/17943619/",
+   "alt": "Man Looking in the Mirror and Fixing His Hair "
+  },
+  {
+   "url": "https://images.pexels.com/photos/17553848/pexels-photo-17553848.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/17553848/",
+   "alt": "Man Sitting on Barber Chair"
+  }
+ ],
+ "2026-12-11-cuidado-invierno": [
+  {
+   "url": "https://images.pexels.com/photos/7020309/pexels-photo-7020309.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/7020309/",
+   "alt": "Woman in White Bath Towe Brushing her Hair"
+  },
+  {
+   "url": "https://images.pexels.com/photos/3993451/pexels-photo-3993451.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/3993451/",
+   "alt": "Woman Having Her Hair Rinse"
+  },
+  {
+   "url": "https://images.pexels.com/photos/7755553/pexels-photo-7755553.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/7755553/",
+   "alt": "Woman in White Long Sleeve Shirt Using a Hair Dryer on Customer"
+  },
+  {
+   "url": "https://images.pexels.com/photos/5240730/pexels-photo-5240730.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/5240730/",
+   "alt": "Woman Using Sustainable Products to Wash Her Hair "
+  },
+  {
+   "url": "https://images.pexels.com/photos/7755226/pexels-photo-7755226.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/7755226/",
+   "alt": "A Woman Doing Hair Cut"
+  },
+  {
+   "url": "https://images.pexels.com/photos/4947762/pexels-photo-4947762.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/4947762/",
+   "alt": "Shiny and wavy long blond hair covering face of sleeping young slender woman"
+  }
+ ],
+ "2026-12-15-peinados-navidad": [
+  {
+   "url": "https://images.pexels.com/photos/10587227/pexels-photo-10587227.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/10587227/",
+   "alt": "Bride holding orchid bouquet, wearing lace gown, updo hairstyle against geometric background."
+  },
+  {
+   "url": "https://images.pexels.com/photos/19079455/pexels-photo-19079455.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/19079455/",
+   "alt": "Attentive Woman in Blue Strapless Top "
+  },
+  {
+   "url": "https://images.pexels.com/photos/16700326/pexels-photo-16700326.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/16700326/",
+   "alt": "A Woman in a Yellow Dress Sitting on a Wall"
+  },
+  {
+   "url": "https://images.pexels.com/photos/16896289/pexels-photo-16896289.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/16896289/",
+   "alt": "Woman Posing in White Clothes"
+  },
+  {
+   "url": "https://images.pexels.com/photos/15705518/pexels-photo-15705518.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/15705518/",
+   "alt": "Profile of a Woman with Braided Hair Holding a Bouquet"
+  },
+  {
+   "url": "https://images.pexels.com/photos/7275394/pexels-photo-7275394.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/7275394/",
+   "alt": "Self assured of young African American female millennial with long dark braids in stylish outfit sitting on chair and reading interesting illustrated book"
+  },
+  {
+   "url": "https://images.pexels.com/photos/13733538/pexels-photo-13733538.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/13733538/",
+   "alt": "Sepia Portrait of a Woman with Braided Hair"
+  },
+  {
+   "url": "https://images.pexels.com/photos/7012194/pexels-photo-7012194.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/7012194/",
+   "alt": "Young alluring woman in elegant wear with wavy hair and artificial roses looking at camera against fabric"
+  },
+  {
+   "url": "https://images.pexels.com/photos/6940646/pexels-photo-6940646.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/6940646/",
+   "alt": "Charming female model with wavy hair wearing blue dress and hat looking away dreamily"
+  },
+  {
+   "url": "https://images.pexels.com/photos/4814642/pexels-photo-4814642.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/4814642/",
+   "alt": "Side view of young sensual female with long wavy hair and closed eyes hanging head out of window in old city on sunny day"
+  },
+  {
+   "url": "https://images.pexels.com/photos/19151593/pexels-photo-19151593.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/19151593/",
+   "alt": "Laughing Woman with Wavy Hair and Tattoos"
+  },
+  {
+   "url": "https://images.pexels.com/photos/4184298/pexels-photo-4184298.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/4184298/",
+   "alt": "Back view of anonymous young dreamy female with closed eyes and wavy hair under cloudy sky"
+  },
+  {
+   "url": "https://images.pexels.com/photos/4969918/pexels-photo-4969918.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/4969918/",
+   "alt": "Young contemplative female in black outfit with wavy brown hair looking away on gray background"
+  },
+  {
+   "url": "https://images.pexels.com/photos/10521447/pexels-photo-10521447.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/10521447/",
+   "alt": "A Beautiful Woman with Braided Hair"
+  },
+  {
+   "url": "https://images.pexels.com/photos/10810397/pexels-photo-10810397.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/10810397/",
+   "alt": "Portrait of Woman in Ponytail"
+  },
+  {
+   "url": "https://images.pexels.com/photos/26648607/pexels-photo-26648607.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/26648607/",
+   "alt": "Stunning evening dress in an elegant fashion shoot set in Argentina."
+  }
+ ],
+ "2026-12-18-como-pedir-corte": [
+  {
+   "url": "https://images.pexels.com/photos/8834047/pexels-photo-8834047.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/8834047/",
+   "alt": "Hairdresser Fixing the Hair of an Elderly Client"
+  },
+  {
+   "url": "https://images.pexels.com/photos/17724747/pexels-photo-17724747.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/17724747/",
+   "alt": "A woman showing her coworker a social media post on her phone"
+  },
+  {
+   "url": "https://images.pexels.com/photos/4792667/pexels-photo-4792667.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/4792667/",
+   "alt": "Fabric bag near wooden comb on tiled floor"
+  },
+  {
+   "url": "https://images.pexels.com/photos/1586999/pexels-photo-1586999.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/1586999/",
+   "alt": "Side profile of an elegant woman with long hair wrapped in a towel, capturing natural beauty."
+  },
+  {
+   "url": "https://images.pexels.com/photos/6567418/pexels-photo-6567418.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/6567418/",
+   "alt": "Side view of cheerful ethnic young female shopper with flying curly hair carrying paper shopping bags running on city road"
+  }
+ ],
+ "2026-12-22-peinados-nochevieja": [
+  {
+   "url": "https://images.pexels.com/photos/4577193/pexels-photo-4577193.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/4577193/",
+   "alt": "Glamorous young woman in trendy wearing sitting on chair"
+  },
+  {
+   "url": "https://images.pexels.com/photos/20002997/pexels-photo-20002997.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/20002997/",
+   "alt": "A woman with a white dress and a bow in her hair"
+  },
+  {
+   "url": "https://images.pexels.com/photos/20039802/pexels-photo-20039802.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/20039802/",
+   "alt": "A woman with pink hair and pink bows on her fur"
+  },
+  {
+   "url": "https://images.pexels.com/photos/15575170/pexels-photo-15575170.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/15575170/",
+   "alt": "Portrait of a Brunette Girl Wearing a White Dress with Decollete and a Hair Bow"
+  },
+  {
+   "url": "https://images.pexels.com/photos/15964272/pexels-photo-15964272.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/15964272/",
+   "alt": "A woman with red hair and a bow on her head"
+  },
+  {
+   "url": "https://images.pexels.com/photos/247297/pexels-photo-247297.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/247297/",
+   "alt": "Close-up portrait of a stylish woman with glamorous makeup and pink lipstick, indoors."
+  },
+  {
+   "url": "https://images.pexels.com/photos/12793759/pexels-photo-12793759.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/12793759/",
+   "alt": "Glamorous woman in stylish black dress with a hat and gloves poses with a cat in a studio setting."
+  },
+  {
+   "url": "https://images.pexels.com/photos/4217283/pexels-photo-4217283.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/4217283/",
+   "alt": "Thoughtful woman with wet hair leaning on hand"
+  },
+  {
+   "url": "https://images.pexels.com/photos/17707262/pexels-photo-17707262.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/17707262/",
+   "alt": "Blonde Woman with Clips in Hair"
+  },
+  {
+   "url": "https://images.pexels.com/photos/13330554/pexels-photo-13330554.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/13330554/",
+   "alt": "Woman in a Party Dress and Makeup Dancing Among Disco Balls "
+  }
+ ],
+ "2026-12-26-rescate-fiestas": [
+  {
+   "url": "https://images.pexels.com/photos/4407713/pexels-photo-4407713.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/4407713/",
+   "alt": "Thoughtful young woman lying on bed"
+  },
+  {
+   "url": "https://images.pexels.com/photos/5241036/pexels-photo-5241036.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/5241036/",
+   "alt": "Woman Washing Her Hair"
+  },
+  {
+   "url": "https://images.pexels.com/photos/3993444/pexels-photo-3993444.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/3993444/",
+   "alt": "Woman Getting Her Hair Shampoo"
+  },
+  {
+   "url": "https://images.pexels.com/photos/15874635/pexels-photo-15874635.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/15874635/",
+   "alt": "Young Woman in a Pink Dress Holding a Hair Straightener "
+  },
+  {
+   "url": "https://images.pexels.com/photos/4838738/pexels-photo-4838738.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/4838738/",
+   "alt": "Side view of young mindful female with closed eyes in sundress with floral ornament touching long hair in sunshine"
+  }
+ ],
+ "2026-12-29-propositos-2027": [
+  {
+   "url": "https://images.pexels.com/photos/4588907/pexels-photo-4588907.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/4588907/",
+   "alt": "Alluring young woman decorating home during New Year celebration"
+  },
+  {
+   "url": "https://images.pexels.com/photos/8834020/pexels-photo-8834020.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/8834020/",
+   "alt": "Confident hairdresser with blow dryers standing in front of a salon mirror."
+  },
+  {
+   "url": "https://images.pexels.com/photos/19821706/pexels-photo-19821706.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/19821706/",
+   "alt": "Studio Shot of a Young Woman with Bangs Wearing a Strapless Top"
+  },
+  {
+   "url": "https://images.pexels.com/photos/14526198/pexels-photo-14526198.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/14526198/",
+   "alt": "A Woman with Dyed Hair Wearing a Crop Top"
+  },
+  {
+   "url": "https://images.pexels.com/photos/11608881/pexels-photo-11608881.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/11608881/",
+   "alt": "Young Smiling Woman with Long Brown Hair Posing Outdoors"
+  }
+ ],
+ "stories": {
+  "1": {
+   "url": "https://images.pexels.com/photos/6925163/pexels-photo-6925163.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/6925163/",
+   "alt": "A Woman Sitting at the Table"
+  },
+  "2": {
+   "url": "https://images.pexels.com/photos/20240626/pexels-photo-20240626.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/20240626/",
+   "alt": ""
+  },
+  "3": {
+   "url": "https://images.pexels.com/photos/19364200/pexels-photo-19364200.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/19364200/",
+   "alt": "Young Woman Standing on the Background of Christmas Lights and Holding a Lantern "
+  },
+  "4": {
+   "url": "https://images.pexels.com/photos/15464978/pexels-photo-15464978.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/15464978/",
+   "alt": "A woman holding a hair dryer in front of a disco ball"
+  },
+  "5": {
+   "url": "https://images.pexels.com/photos/15461411/pexels-photo-15461411.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/15461411/",
+   "alt": "Chair by a Mirror in a Hair Salon"
+  },
+  "6": {
+   "url": "https://images.pexels.com/photos/19865346/pexels-photo-19865346.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/19865346/",
+   "alt": "Brunette Woman with Updo Hair"
+  },
+  "7": {
+   "url": "https://images.pexels.com/photos/18068328/pexels-photo-18068328.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/18068328/",
+   "alt": "Portrait of a Woman with Black Bangs"
+  },
+  "8": {
+   "url": "https://images.pexels.com/photos/7006922/pexels-photo-7006922.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/7006922/",
+   "alt": "Serene Asian female with long dark hair wearing casual clothes leaning on boulder and looking at camera"
+  },
+  "9": {
+   "url": "https://images.pexels.com/photos/19664867/pexels-photo-19664867.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/19664867/",
+   "alt": "A man getting his hair cut in a barber shop"
+  },
+  "10": {
+   "url": "https://images.pexels.com/photos/5240790/pexels-photo-5240790.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/5240790/",
+   "alt": "Woman Washing Her Hair"
+  },
+  "11": {
+   "url": "https://images.pexels.com/photos/19331367/pexels-photo-19331367.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/19331367/",
+   "alt": "A woman in a white jacket holding a sparkler"
+  },
+  "12": {
+   "url": "https://images.pexels.com/photos/7755175/pexels-photo-7755175.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/7755175/",
+   "alt": "A Hairdresser Talking to her Client"
+  },
+  "13": {
+   "url": "https://images.pexels.com/photos/8834050/pexels-photo-8834050.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/8834050/",
+   "alt": "Woman Getting a Hair Wash in a Hair Salon"
+  },
+  "14": {
+   "url": "https://images.pexels.com/photos/20046793/pexels-photo-20046793.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/20046793/",
+   "alt": "A woman with long hair sitting in a salon"
+  },
+  "15": {
+   "url": "https://images.pexels.com/photos/19163430/pexels-photo-19163430.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/19163430/",
+   "alt": "Model with Updo and Glamour Makeup"
+  },
+  "16": {
+   "url": "https://images.pexels.com/photos/10442901/pexels-photo-10442901.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/10442901/",
+   "alt": "A Woman Posing at the Camera while Standing Near a Christmas Tree"
+  },
+  "17": {
+   "url": "https://images.pexels.com/photos/11142409/pexels-photo-11142409.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/11142409/",
+   "alt": "A Woman in White Off Shoulder Top Smiling while Holding Her Mobile Phone"
+  },
+  "18": {
+   "url": "https://images.pexels.com/photos/7147638/pexels-photo-7147638.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/7147638/",
+   "alt": "Focused trendy young ethnic female sewer with dark hair cutting piece of fabric with scissors while creating new dress in workshop"
+  },
+  "19": {
+   "url": "https://images.pexels.com/photos/6113231/pexels-photo-6113231.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/6113231/",
+   "alt": "Woman with curly hair and glass of champagne"
+  },
+  "20": {
+   "url": "https://images.pexels.com/photos/7034630/pexels-photo-7034630.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/7034630/",
+   "alt": "Calm young female bookworm with long wavy hair in casual outfit and eyeglasses eating yummy ice cream while reading interesting book with concentration standing in light kitchen"
+  },
+  "21": {
+   "url": "https://images.pexels.com/photos/19384333/pexels-photo-19384333.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/19384333/",
+   "alt": "Christmas Tree with Light Ornaments and String Lights Decoration"
+  },
+  "22": {
+   "url": "https://images.pexels.com/photos/16185700/pexels-photo-16185700.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/16185700/",
+   "alt": "Portrait of a Pretty Brunette Wearing a Hair Bow"
+  },
+  "23": {
+   "url": "https://images.pexels.com/photos/14484717/pexels-photo-14484717.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/14484717/",
+   "alt": "Woman in White Long Sleeve Shirt Sitting Beside Woman in Red and Brown Plaid Long Sleeve"
+  },
+  "24": {
+   "url": "https://images.pexels.com/photos/6062020/pexels-photo-6062020.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/6062020/",
+   "alt": "Christmas Brownies Served on Dinner Table"
+  },
+  "25": {
+   "url": "https://images.pexels.com/photos/19213924/pexels-photo-19213924.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/19213924/",
+   "alt": "Tray with Morning Coffee in Bed Decorated with Christmas Lights​"
+  },
+  "26": {
+   "url": "https://images.pexels.com/photos/13173400/pexels-photo-13173400.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/13173400/",
+   "alt": "Woman Sitting and Relaxing with Eyes Closed Wearing Orange Long Sleeve Crop Top"
+  },
+  "27": {
+   "url": "https://images.pexels.com/photos/14526045/pexels-photo-14526045.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/14526045/",
+   "alt": "A Tattooed Woman with Dyed Hair Wearing a Crop Top"
+  },
+  "28": {
+   "url": "https://images.pexels.com/photos/18741661/pexels-photo-18741661.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/18741661/",
+   "alt": "Fireworks in Valencia"
+  },
+  "29": {
+   "url": "https://images.pexels.com/photos/10024237/pexels-photo-10024237.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/10024237/",
+   "alt": "A Barber Drying the Hair of a Customer Using Blow Dryer"
+  },
+  "30": {
+   "url": "https://images.pexels.com/photos/4088118/pexels-photo-4088118.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/4088118/",
+   "alt": "Side view of young lady with long curls wearing trendy denim jacket standing near blooming tree and closing eyes while relaxing in garden on spring sun"
+  },
+  "31": {
+   "url": "https://images.pexels.com/photos/19593958/pexels-photo-19593958.jpeg?auto=compress&cs=tinysrgb&w=1600",
+   "credito": "Pexels",
+   "pagina": "https://www.pexels.com/photo/19593958/",
+   "alt": "New Years Eve Celebration"
+  }
+ }
+}
