@@ -105,6 +105,18 @@ async function unsplash(q, cuantas) {
   return (cache[q] = fotos);
 }
 
+// Índice de Pexels: una sola consulta para todos los huecos
+import { execFileSync } from 'node:child_process';
+const pedidosIndice = [...new Map(pedidos.map(p => [p.q, { q: p.q, cuantas: p.n > 1 ? Math.max(14, p.n * 2 + 2) : 10 }])).values()];
+writeFileSync(path.join(OUT, 'pedidos.json'), JSON.stringify(pedidosIndice));
+execFileSync('python3', ['src/clientes/indice_pexels.py', path.join(OUT, 'pedidos.json'), path.join(OUT, 'indice.json')], { stdio: 'inherit' });
+const indice = JSON.parse(readFileSync(path.join(OUT, 'indice.json'), 'utf8'));
+for (const [q, lista] of Object.entries(indice)) cache[q] = lista.map(x => {
+  const base = `https://images.pexels.com/photos/${x.id}/pexels-photo-${x.id}.jpeg`;
+  return { id: x.id, url: `${base}?auto=compress&cs=tinysrgb&w=1600`, mini: `${base}?auto=compress&cs=tinysrgb&w=300`,
+    credito: 'Pexels', pagina: `https://www.pexels.com/photo/${x.id}/`, alt: x.alt };
+});
+
 const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH || '/usr/bin/google-chrome' });
 const page = await browser.newPage({ viewport: { width: 1000, height: 600 } });
 const todas = {};

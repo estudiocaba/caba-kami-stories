@@ -28,6 +28,7 @@ jobs:
         with:
           node-version: 22
       - run: npm install --omit=dev --no-audit --no-fund
+      - run: pip install --quiet duckdb
       - run: node src/clientes/candidatas.js "${{ inputs.cuenta }}" "${{ inputs.prefijo }}"
       - name: Guardar en la rama publico
         env:
