@@ -2,56 +2,939 @@
  "2026-12-01-colores-invierno__01": {
   "q": "chocolate brown hair woman",
   "n": 1,
-  "fotos": []
+  "fotos": [
+   {
+    "id": 17753789,
+    "url": "https://images.pexels.com/photos/17753789/pexels-photo-17753789.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/17753789/pexels-photo-17753789.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/17753789/",
+    "alt": "looking hot in kurta"
+   },
+   {
+    "id": 5593617,
+    "url": "https://images.pexels.com/photos/5593617/pexels-photo-5593617.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/5593617/pexels-photo-5593617.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/5593617/",
+    "alt": "Woman in Blue and Yellow Dress Sitting on Brown Wooden Chair"
+   },
+   {
+    "id": 16962740,
+    "url": "https://images.pexels.com/photos/16962740/pexels-photo-16962740.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/16962740/pexels-photo-16962740.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/16962740/",
+    "alt": "Young Blonde Woman Posing by a Black SUV"
+   },
+   {
+    "id": 14756354,
+    "url": "https://images.pexels.com/photos/14756354/pexels-photo-14756354.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/14756354/pexels-photo-14756354.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/14756354/",
+    "alt": "Back View of a Woman Sitting on a Sofa and Watching Television"
+   },
+   {
+    "id": 6657523,
+    "url": "https://images.pexels.com/photos/6657523/pexels-photo-6657523.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/6657523/pexels-photo-6657523.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/6657523/",
+    "alt": "Woman in Blue Long Sleeve Shirt and Blue Denim Jeans Sitting on Brown Chair"
+   },
+   {
+    "id": 10971490,
+    "url": "https://images.pexels.com/photos/10971490/pexels-photo-10971490.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/10971490/pexels-photo-10971490.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/10971490/",
+    "alt": "Young Woman Posing Outside "
+   },
+   {
+    "id": 8759802,
+    "url": "https://images.pexels.com/photos/8759802/pexels-photo-8759802.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/8759802/pexels-photo-8759802.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/8759802/",
+    "alt": "Woman in Brown Bathing Suit Standing Near Rocks"
+   },
+   {
+    "id": 17244618,
+    "url": "https://images.pexels.com/photos/17244618/pexels-photo-17244618.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/17244618/pexels-photo-17244618.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/17244618/",
+    "alt": "A woman in a skirt and sunglasses leaning against an atm"
+   },
+   {
+    "id": 16314579,
+    "url": "https://images.pexels.com/photos/16314579/pexels-photo-16314579.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/16314579/pexels-photo-16314579.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/16314579/",
+    "alt": "Woman in Oversized Shirt Standing under Skyscrapers"
+   },
+   {
+    "id": 11726710,
+    "url": "https://images.pexels.com/photos/11726710/pexels-photo-11726710.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/11726710/pexels-photo-11726710.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/11726710/",
+    "alt": "Woman Standing on Concrete Stairs"
+   }
+  ]
  },
  "2026-12-01-colores-invierno__02": {
   "q": "dark chocolate brown hair",
   "n": 1,
-  "fotos": []
+  "fotos": [
+   {
+    "id": 8468843,
+    "url": "https://images.pexels.com/photos/8468843/pexels-photo-8468843.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/8468843/pexels-photo-8468843.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/8468843/",
+    "alt": "Stainless Steel Frame on Brown Wooden Table"
+   },
+   {
+    "id": 18659938,
+    "url": "https://images.pexels.com/photos/18659938/pexels-photo-18659938.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/18659938/pexels-photo-18659938.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/18659938/",
+    "alt": "A woman in black and white posing on a rock"
+   },
+   {
+    "id": 16249346,
+    "url": "https://images.pexels.com/photos/16249346/pexels-photo-16249346.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/16249346/pexels-photo-16249346.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/16249346/",
+    "alt": "A man with his eyes closed and his hands on his face"
+   },
+   {
+    "id": 10156125,
+    "url": "https://images.pexels.com/photos/10156125/pexels-photo-10156125.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/10156125/pexels-photo-10156125.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/10156125/",
+    "alt": "Chocolate Chip Cookies on Brown Textile"
+   },
+   {
+    "id": 7015114,
+    "url": "https://images.pexels.com/photos/7015114/pexels-photo-7015114.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/7015114/pexels-photo-7015114.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/7015114/",
+    "alt": "Thoughtful short haired woman standing with professional photo camera near window and looking away"
+   },
+   {
+    "id": 19732383,
+    "url": "https://images.pexels.com/photos/19732383/pexels-photo-19732383.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/19732383/pexels-photo-19732383.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/19732383/",
+    "alt": "incense and decorations"
+   },
+   {
+    "id": 18232477,
+    "url": "https://images.pexels.com/photos/18232477/pexels-photo-18232477.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/18232477/pexels-photo-18232477.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/18232477/",
+    "alt": "A shirtless man is taking a selfie in the water"
+   },
+   {
+    "id": 18301848,
+    "url": "https://images.pexels.com/photos/18301848/pexels-photo-18301848.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/18301848/pexels-photo-18301848.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/18301848/",
+    "alt": "Bolo de Café"
+   },
+   {
+    "id": 18530986,
+    "url": "https://images.pexels.com/photos/18530986/pexels-photo-18530986.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/18530986/pexels-photo-18530986.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/18530986/",
+    "alt": "A woman with red hair wearing a veil and headdress"
+   },
+   {
+    "id": 20028913,
+    "url": "https://images.pexels.com/photos/20028913/pexels-photo-20028913.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/20028913/pexels-photo-20028913.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/20028913/",
+    "alt": "Chihuahua"
+   }
+  ]
  },
  "2026-12-01-colores-invierno__03": {
   "q": "espresso dark brown hair woman",
   "n": 1,
-  "fotos": []
+  "fotos": [
+   {
+    "id": 18659938,
+    "url": "https://images.pexels.com/photos/18659938/pexels-photo-18659938.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/18659938/pexels-photo-18659938.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/18659938/",
+    "alt": "A woman in black and white posing on a rock"
+   },
+   {
+    "id": 16249346,
+    "url": "https://images.pexels.com/photos/16249346/pexels-photo-16249346.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/16249346/pexels-photo-16249346.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/16249346/",
+    "alt": "A man with his eyes closed and his hands on his face"
+   },
+   {
+    "id": 7015114,
+    "url": "https://images.pexels.com/photos/7015114/pexels-photo-7015114.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/7015114/pexels-photo-7015114.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/7015114/",
+    "alt": "Thoughtful short haired woman standing with professional photo camera near window and looking away"
+   },
+   {
+    "id": 18232477,
+    "url": "https://images.pexels.com/photos/18232477/pexels-photo-18232477.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/18232477/pexels-photo-18232477.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/18232477/",
+    "alt": "A shirtless man is taking a selfie in the water"
+   },
+   {
+    "id": 18530986,
+    "url": "https://images.pexels.com/photos/18530986/pexels-photo-18530986.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/18530986/pexels-photo-18530986.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/18530986/",
+    "alt": "A woman with red hair wearing a veil and headdress"
+   },
+   {
+    "id": 19829338,
+    "url": "https://images.pexels.com/photos/19829338/pexels-photo-19829338.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/19829338/pexels-photo-19829338.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/19829338/",
+    "alt": "A coffee cup sits on top of a table"
+   },
+   {
+    "id": 18607736,
+    "url": "https://images.pexels.com/photos/18607736/pexels-photo-18607736.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/18607736/pexels-photo-18607736.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/18607736/",
+    "alt": "A woman with red hair is sitting on a rock"
+   },
+   {
+    "id": 15237440,
+    "url": "https://images.pexels.com/photos/15237440/pexels-photo-15237440.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/15237440/pexels-photo-15237440.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/15237440/",
+    "alt": "A woman in a bikini smoking on a bed"
+   },
+   {
+    "id": 19797388,
+    "url": "https://images.pexels.com/photos/19797388/pexels-photo-19797388.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/19797388/pexels-photo-19797388.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/19797388/",
+    "alt": "Beautiful Model in Oregon wearing a forest green linen dress, Portrait taken by Portland Photographer Lance Reis on my Sonya7iii on location."
+   },
+   {
+    "id": 15591929,
+    "url": "https://images.pexels.com/photos/15591929/pexels-photo-15591929.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/15591929/pexels-photo-15591929.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/15591929/",
+    "alt": "Coffee Maker"
+   }
+  ]
  },
  "2026-12-01-colores-invierno__04": {
   "q": "bronde balayage hair",
   "n": 1,
-  "fotos": []
+  "fotos": [
+   {
+    "id": 19473579,
+    "url": "https://images.pexels.com/photos/19473579/pexels-photo-19473579.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/19473579/pexels-photo-19473579.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/19473579/",
+    "alt": "balayage hair color 🌈"
+   }
+  ]
  },
  "2026-12-01-colores-invierno__05": {
   "q": "honey blonde hair woman",
   "n": 1,
-  "fotos": []
+  "fotos": [
+   {
+    "id": 14902226,
+    "url": "https://images.pexels.com/photos/14902226/pexels-photo-14902226.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/14902226/pexels-photo-14902226.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/14902226/",
+    "alt": "Woman with Her Hair Tangled by the Wind "
+   },
+   {
+    "id": 18652439,
+    "url": "https://images.pexels.com/photos/18652439/pexels-photo-18652439.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/18652439/pexels-photo-18652439.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/18652439/",
+    "alt": "Model Posing with Arms Raised"
+   },
+   {
+    "id": 7938321,
+    "url": "https://images.pexels.com/photos/7938321/pexels-photo-7938321.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/7938321/pexels-photo-7938321.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/7938321/",
+    "alt": "Stunning studio portrait of a woman with long blonde hair in stylish fashion attire, exuding elegance."
+   },
+   {
+    "id": 19993175,
+    "url": "https://images.pexels.com/photos/19993175/pexels-photo-19993175.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/19993175/pexels-photo-19993175.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/19993175/",
+    "alt": "Free stock photo of bikini, blonde girl, bodysuit"
+   },
+   {
+    "id": 8935613,
+    "url": "https://images.pexels.com/photos/8935613/pexels-photo-8935613.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/8935613/pexels-photo-8935613.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/8935613/",
+    "alt": "A Woman Tying Her Hair "
+   },
+   {
+    "id": 19467674,
+    "url": "https://images.pexels.com/photos/19467674/pexels-photo-19467674.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/19467674/pexels-photo-19467674.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/19467674/",
+    "alt": "Do blonded have more fun?"
+   },
+   {
+    "id": 13088592,
+    "url": "https://images.pexels.com/photos/13088592/pexels-photo-13088592.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/13088592/pexels-photo-13088592.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/13088592/",
+    "alt": "A Low Angle Shot of a Woman in Floral Off Shoulder Dress with Her Hand on Her Neck"
+   },
+   {
+    "id": 6923379,
+    "url": "https://images.pexels.com/photos/6923379/pexels-photo-6923379.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/6923379/pexels-photo-6923379.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/6923379/",
+    "alt": "Woman in Brown and Black Long Sleeve Shirt Sitting on White Plastic Chair"
+   },
+   {
+    "id": 17225775,
+    "url": "https://images.pexels.com/photos/17225775/pexels-photo-17225775.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/17225775/pexels-photo-17225775.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/17225775/",
+    "alt": "Portrait of a Pretty Blonde Cosplaying the Mad Hatter Sitting at a Table with a Teapot in Hand"
+   },
+   {
+    "id": 12176115,
+    "url": "https://images.pexels.com/photos/12176115/pexels-photo-12176115.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/12176115/pexels-photo-12176115.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/12176115/",
+    "alt": "Woman With Long Blonde Hair"
+   }
+  ]
  },
  "2026-12-01-colores-invierno__06": {
   "q": "copper hair woman",
   "n": 1,
-  "fotos": []
+  "fotos": [
+   {
+    "id": 15799472,
+    "url": "https://images.pexels.com/photos/15799472/pexels-photo-15799472.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/15799472/pexels-photo-15799472.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/15799472/",
+    "alt": "Ouroboros Earrings"
+   },
+   {
+    "id": 15743967,
+    "url": "https://images.pexels.com/photos/15743967/pexels-photo-15743967.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/15743967/pexels-photo-15743967.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/15743967/",
+    "alt": "Ouroboros Earrings"
+   },
+   {
+    "id": 15799248,
+    "url": "https://images.pexels.com/photos/15799248/pexels-photo-15799248.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/15799248/pexels-photo-15799248.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/15799248/",
+    "alt": "Ouroboros Earrings"
+   },
+   {
+    "id": 15743957,
+    "url": "https://images.pexels.com/photos/15743957/pexels-photo-15743957.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/15743957/pexels-photo-15743957.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/15743957/",
+    "alt": "Ouroboros Earrings"
+   },
+   {
+    "id": 15964272,
+    "url": "https://images.pexels.com/photos/15964272/pexels-photo-15964272.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/15964272/pexels-photo-15964272.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/15964272/",
+    "alt": "A woman with red hair and a bow on her head"
+   },
+   {
+    "id": 16219618,
+    "url": "https://images.pexels.com/photos/16219618/pexels-photo-16219618.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/16219618/pexels-photo-16219618.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/16219618/",
+    "alt": "Praying Mantis Pin"
+   },
+   {
+    "id": 13550752,
+    "url": "https://images.pexels.com/photos/13550752/pexels-photo-13550752.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/13550752/pexels-photo-13550752.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/13550752/",
+    "alt": "Woman in Black Long Sleeve Dress Standing Beside Gray Concrete Wall"
+   },
+   {
+    "id": 15799261,
+    "url": "https://images.pexels.com/photos/15799261/pexels-photo-15799261.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/15799261/pexels-photo-15799261.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/15799261/",
+    "alt": "Ouroboros Earrings"
+   },
+   {
+    "id": 15799252,
+    "url": "https://images.pexels.com/photos/15799252/pexels-photo-15799252.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/15799252/pexels-photo-15799252.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/15799252/",
+    "alt": "Ouroboros Earrings"
+   },
+   {
+    "id": 15799257,
+    "url": "https://images.pexels.com/photos/15799257/pexels-photo-15799257.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/15799257/pexels-photo-15799257.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/15799257/",
+    "alt": "Ouroboros Earrings"
+   }
+  ]
  },
  "2026-12-01-colores-invierno__07": {
   "q": "chocolate brown hair",
   "n": 6,
-  "fotos": []
+  "fotos": [
+   {
+    "id": 20028913,
+    "url": "https://images.pexels.com/photos/20028913/pexels-photo-20028913.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/20028913/pexels-photo-20028913.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/20028913/",
+    "alt": "Chihuahua"
+   },
+   {
+    "id": 17753789,
+    "url": "https://images.pexels.com/photos/17753789/pexels-photo-17753789.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/17753789/pexels-photo-17753789.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/17753789/",
+    "alt": "looking hot in kurta"
+   },
+   {
+    "id": 5593617,
+    "url": "https://images.pexels.com/photos/5593617/pexels-photo-5593617.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/5593617/pexels-photo-5593617.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/5593617/",
+    "alt": "Woman in Blue and Yellow Dress Sitting on Brown Wooden Chair"
+   },
+   {
+    "id": 16962740,
+    "url": "https://images.pexels.com/photos/16962740/pexels-photo-16962740.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/16962740/pexels-photo-16962740.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/16962740/",
+    "alt": "Young Blonde Woman Posing by a Black SUV"
+   },
+   {
+    "id": 5194828,
+    "url": "https://images.pexels.com/photos/5194828/pexels-photo-5194828.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/5194828/pexels-photo-5194828.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/5194828/",
+    "alt": "Brown Wooden Chair With Red Flowers"
+   },
+   {
+    "id": 8468843,
+    "url": "https://images.pexels.com/photos/8468843/pexels-photo-8468843.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/8468843/pexels-photo-8468843.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/8468843/",
+    "alt": "Stainless Steel Frame on Brown Wooden Table"
+   },
+   {
+    "id": 14756354,
+    "url": "https://images.pexels.com/photos/14756354/pexels-photo-14756354.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/14756354/pexels-photo-14756354.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/14756354/",
+    "alt": "Back View of a Woman Sitting on a Sofa and Watching Television"
+   },
+   {
+    "id": 6657523,
+    "url": "https://images.pexels.com/photos/6657523/pexels-photo-6657523.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/6657523/pexels-photo-6657523.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/6657523/",
+    "alt": "Woman in Blue Long Sleeve Shirt and Blue Denim Jeans Sitting on Brown Chair"
+   },
+   {
+    "id": 10971490,
+    "url": "https://images.pexels.com/photos/10971490/pexels-photo-10971490.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/10971490/pexels-photo-10971490.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/10971490/",
+    "alt": "Young Woman Posing Outside "
+   },
+   {
+    "id": 8759802,
+    "url": "https://images.pexels.com/photos/8759802/pexels-photo-8759802.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/8759802/pexels-photo-8759802.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/8759802/",
+    "alt": "Woman in Brown Bathing Suit Standing Near Rocks"
+   },
+   {
+    "id": 17244618,
+    "url": "https://images.pexels.com/photos/17244618/pexels-photo-17244618.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/17244618/pexels-photo-17244618.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/17244618/",
+    "alt": "A woman in a skirt and sunglasses leaning against an atm"
+   },
+   {
+    "id": 7532644,
+    "url": "https://images.pexels.com/photos/7532644/pexels-photo-7532644.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/7532644/pexels-photo-7532644.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/7532644/",
+    "alt": "Cute spotted dog running on white snowy ground in woods with tall trees on cold winter day on blurred background"
+   },
+   {
+    "id": 19889848,
+    "url": "https://images.pexels.com/photos/19889848/pexels-photo-19889848.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/19889848/pexels-photo-19889848.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/19889848/",
+    "alt": "A horse with white and brown spots is looking at the camera"
+   },
+   {
+    "id": 16314579,
+    "url": "https://images.pexels.com/photos/16314579/pexels-photo-16314579.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/16314579/pexels-photo-16314579.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/16314579/",
+    "alt": "Woman in Oversized Shirt Standing under Skyscrapers"
+   }
+  ]
  },
  "2026-12-01-colores-invierno__08": {
   "q": "copper red hair",
   "n": 6,
-  "fotos": []
+  "fotos": [
+   {
+    "id": 15964272,
+    "url": "https://images.pexels.com/photos/15964272/pexels-photo-15964272.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/15964272/pexels-photo-15964272.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/15964272/",
+    "alt": "A woman with red hair and a bow on her head"
+   },
+   {
+    "id": 13550752,
+    "url": "https://images.pexels.com/photos/13550752/pexels-photo-13550752.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/13550752/pexels-photo-13550752.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/13550752/",
+    "alt": "Woman in Black Long Sleeve Dress Standing Beside Gray Concrete Wall"
+   },
+   {
+    "id": 14118998,
+    "url": "https://images.pexels.com/photos/14118998/pexels-photo-14118998.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/14118998/pexels-photo-14118998.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/14118998/",
+    "alt": "Woman in Black Long Sleeve Shirt and Black Pants"
+   },
+   {
+    "id": 12995530,
+    "url": "https://images.pexels.com/photos/12995530/pexels-photo-12995530.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/12995530/pexels-photo-12995530.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/12995530/",
+    "alt": "Woman in Green Tank Top"
+   },
+   {
+    "id": 14118994,
+    "url": "https://images.pexels.com/photos/14118994/pexels-photo-14118994.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/14118994/pexels-photo-14118994.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/14118994/",
+    "alt": "Woman in Black Long Sleeve Shirt Sitting on Stairs"
+   },
+   {
+    "id": 9388387,
+    "url": "https://images.pexels.com/photos/9388387/pexels-photo-9388387.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/9388387/pexels-photo-9388387.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/9388387/",
+    "alt": "Man in Red and White Striped Polo Shirt Holding Knife"
+   },
+   {
+    "id": 15355237,
+    "url": "https://images.pexels.com/photos/15355237/pexels-photo-15355237.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/15355237/pexels-photo-15355237.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/15355237/",
+    "alt": "A woman in white jumpsuit posing for a photo"
+   },
+   {
+    "id": 14118997,
+    "url": "https://images.pexels.com/photos/14118997/pexels-photo-14118997.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/14118997/pexels-photo-14118997.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/14118997/",
+    "alt": "Woman in Black Long Sleeve Shirt and Black and White Striped Skirt Sitting on Brown Wooden"
+   },
+   {
+    "id": 15355235,
+    "url": "https://images.pexels.com/photos/15355235/pexels-photo-15355235.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/15355235/pexels-photo-15355235.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/15355235/",
+    "alt": "A woman with red hair posing in a white jumpsuit"
+   },
+   {
+    "id": 15355236,
+    "url": "https://images.pexels.com/photos/15355236/pexels-photo-15355236.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/15355236/pexels-photo-15355236.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/15355236/",
+    "alt": "A woman with red hair and a red lipstick"
+   },
+   {
+    "id": 8525497,
+    "url": "https://images.pexels.com/photos/8525497/pexels-photo-8525497.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/8525497/pexels-photo-8525497.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/8525497/",
+    "alt": "Portrait of a confident black woman in a wheelchair, wearing a plaid dress and red turtleneck, showing empowerment."
+   },
+   {
+    "id": 4320746,
+    "url": "https://images.pexels.com/photos/4320746/pexels-photo-4320746.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/4320746/pexels-photo-4320746.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/4320746/",
+    "alt": "Full body unrecognizable long haired young hipster in casual clothes and hat closing face bending and pulling skateboard forward while running on asphalt road in sunny town"
+   },
+   {
+    "id": 7230025,
+    "url": "https://images.pexels.com/photos/7230025/pexels-photo-7230025.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/7230025/pexels-photo-7230025.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/7230025/",
+    "alt": "Homeless cat sitting on sidewalk"
+   },
+   {
+    "id": 6460532,
+    "url": "https://images.pexels.com/photos/6460532/pexels-photo-6460532.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/6460532/pexels-photo-6460532.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/6460532/",
+    "alt": "A Woman in Beige Bodysuit Bending Her Body"
+   }
+  ]
  },
  "2026-12-01-colores-invierno__09": {
   "q": "creamy blonde hair woman",
   "n": 1,
-  "fotos": []
+  "fotos": [
+   {
+    "id": 18652439,
+    "url": "https://images.pexels.com/photos/18652439/pexels-photo-18652439.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/18652439/pexels-photo-18652439.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/18652439/",
+    "alt": "Model Posing with Arms Raised"
+   },
+   {
+    "id": 7938321,
+    "url": "https://images.pexels.com/photos/7938321/pexels-photo-7938321.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/7938321/pexels-photo-7938321.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/7938321/",
+    "alt": "Stunning studio portrait of a woman with long blonde hair in stylish fashion attire, exuding elegance."
+   },
+   {
+    "id": 19993175,
+    "url": "https://images.pexels.com/photos/19993175/pexels-photo-19993175.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/19993175/pexels-photo-19993175.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/19993175/",
+    "alt": "Free stock photo of bikini, blonde girl, bodysuit"
+   },
+   {
+    "id": 8935613,
+    "url": "https://images.pexels.com/photos/8935613/pexels-photo-8935613.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/8935613/pexels-photo-8935613.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/8935613/",
+    "alt": "A Woman Tying Her Hair "
+   },
+   {
+    "id": 19467674,
+    "url": "https://images.pexels.com/photos/19467674/pexels-photo-19467674.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/19467674/pexels-photo-19467674.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/19467674/",
+    "alt": "Do blonded have more fun?"
+   },
+   {
+    "id": 13088592,
+    "url": "https://images.pexels.com/photos/13088592/pexels-photo-13088592.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/13088592/pexels-photo-13088592.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/13088592/",
+    "alt": "A Low Angle Shot of a Woman in Floral Off Shoulder Dress with Her Hand on Her Neck"
+   },
+   {
+    "id": 6923379,
+    "url": "https://images.pexels.com/photos/6923379/pexels-photo-6923379.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/6923379/pexels-photo-6923379.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/6923379/",
+    "alt": "Woman in Brown and Black Long Sleeve Shirt Sitting on White Plastic Chair"
+   },
+   {
+    "id": 17225775,
+    "url": "https://images.pexels.com/photos/17225775/pexels-photo-17225775.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/17225775/pexels-photo-17225775.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/17225775/",
+    "alt": "Portrait of a Pretty Blonde Cosplaying the Mad Hatter Sitting at a Table with a Teapot in Hand"
+   },
+   {
+    "id": 12176115,
+    "url": "https://images.pexels.com/photos/12176115/pexels-photo-12176115.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/12176115/pexels-photo-12176115.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/12176115/",
+    "alt": "Woman With Long Blonde Hair"
+   },
+   {
+    "id": 20250082,
+    "url": "https://images.pexels.com/photos/20250082/pexels-photo-20250082.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/20250082/pexels-photo-20250082.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/20250082/",
+    "alt": "Free stock photo of bikini, blonde girl, bodysuit"
+   }
+  ]
  },
  "2026-12-01-colores-invierno__10": {
   "q": "brown hair woman portrait",
   "n": 1,
-  "fotos": []
+  "fotos": [
+   {
+    "id": 17244618,
+    "url": "https://images.pexels.com/photos/17244618/pexels-photo-17244618.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/17244618/pexels-photo-17244618.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/17244618/",
+    "alt": "A woman in a skirt and sunglasses leaning against an atm"
+   },
+   {
+    "id": 15647564,
+    "url": "https://images.pexels.com/photos/15647564/pexels-photo-15647564.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/15647564/pexels-photo-15647564.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/15647564/",
+    "alt": "A woman sitting on a bench in the park"
+   },
+   {
+    "id": 19985542,
+    "url": "https://images.pexels.com/photos/19985542/pexels-photo-19985542.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/19985542/pexels-photo-19985542.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/19985542/",
+    "alt": "A woman wearing a brown hijab"
+   },
+   {
+    "id": 6923379,
+    "url": "https://images.pexels.com/photos/6923379/pexels-photo-6923379.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/6923379/pexels-photo-6923379.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/6923379/",
+    "alt": "Woman in Brown and Black Long Sleeve Shirt Sitting on White Plastic Chair"
+   },
+   {
+    "id": 17244586,
+    "url": "https://images.pexels.com/photos/17244586/pexels-photo-17244586.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/17244586/pexels-photo-17244586.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/17244586/",
+    "alt": "A person riding a skateboard in the air"
+   },
+   {
+    "id": 11113310,
+    "url": "https://images.pexels.com/photos/11113310/pexels-photo-11113310.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/11113310/pexels-photo-11113310.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/11113310/",
+    "alt": "Woman with Brown Curly Hair"
+   },
+   {
+    "id": 18659938,
+    "url": "https://images.pexels.com/photos/18659938/pexels-photo-18659938.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/18659938/pexels-photo-18659938.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/18659938/",
+    "alt": "A woman in black and white posing on a rock"
+   },
+   {
+    "id": 16249346,
+    "url": "https://images.pexels.com/photos/16249346/pexels-photo-16249346.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/16249346/pexels-photo-16249346.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/16249346/",
+    "alt": "A man with his eyes closed and his hands on his face"
+   },
+   {
+    "id": 18627547,
+    "url": "https://images.pexels.com/photos/18627547/pexels-photo-18627547.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/18627547/pexels-photo-18627547.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/18627547/",
+    "alt": "Smiling Girl!"
+   },
+   {
+    "id": 18264954,
+    "url": "https://images.pexels.com/photos/18264954/pexels-photo-18264954.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/18264954/pexels-photo-18264954.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/18264954/",
+    "alt": "Portrait of Woman"
+   }
+  ]
  },
  "stories__01": {
   "q": "copper brown hair woman",
   "n": 1,
-  "fotos": []
+  "fotos": [
+   {
+    "id": 14118997,
+    "url": "https://images.pexels.com/photos/14118997/pexels-photo-14118997.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/14118997/pexels-photo-14118997.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/14118997/",
+    "alt": "Woman in Black Long Sleeve Shirt and Black and White Striped Skirt Sitting on Brown Wooden"
+   },
+   {
+    "id": 10971490,
+    "url": "https://images.pexels.com/photos/10971490/pexels-photo-10971490.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/10971490/pexels-photo-10971490.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/10971490/",
+    "alt": "Young Woman Posing Outside "
+   },
+   {
+    "id": 8759802,
+    "url": "https://images.pexels.com/photos/8759802/pexels-photo-8759802.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/8759802/pexels-photo-8759802.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/8759802/",
+    "alt": "Woman in Brown Bathing Suit Standing Near Rocks"
+   },
+   {
+    "id": 17244618,
+    "url": "https://images.pexels.com/photos/17244618/pexels-photo-17244618.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/17244618/pexels-photo-17244618.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/17244618/",
+    "alt": "A woman in a skirt and sunglasses leaning against an atm"
+   },
+   {
+    "id": 16314579,
+    "url": "https://images.pexels.com/photos/16314579/pexels-photo-16314579.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/16314579/pexels-photo-16314579.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/16314579/",
+    "alt": "Woman in Oversized Shirt Standing under Skyscrapers"
+   },
+   {
+    "id": 11726710,
+    "url": "https://images.pexels.com/photos/11726710/pexels-photo-11726710.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/11726710/pexels-photo-11726710.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/11726710/",
+    "alt": "Woman Standing on Concrete Stairs"
+   },
+   {
+    "id": 15647564,
+    "url": "https://images.pexels.com/photos/15647564/pexels-photo-15647564.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/15647564/pexels-photo-15647564.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/15647564/",
+    "alt": "A woman sitting on a bench in the park"
+   },
+   {
+    "id": 19985542,
+    "url": "https://images.pexels.com/photos/19985542/pexels-photo-19985542.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/19985542/pexels-photo-19985542.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/19985542/",
+    "alt": "A woman wearing a brown hijab"
+   },
+   {
+    "id": 6923379,
+    "url": "https://images.pexels.com/photos/6923379/pexels-photo-6923379.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/6923379/pexels-photo-6923379.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/6923379/",
+    "alt": "Woman in Brown and Black Long Sleeve Shirt Sitting on White Plastic Chair"
+   },
+   {
+    "id": 9032118,
+    "url": "https://images.pexels.com/photos/9032118/pexels-photo-9032118.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "mini": "https://images.pexels.com/photos/9032118/pexels-photo-9032118.jpeg?auto=compress&cs=tinysrgb&w=300",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/9032118/",
+    "alt": "Woman in Brown Shirt Thinking"
+   }
+  ]
  }
 }
