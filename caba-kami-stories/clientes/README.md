@@ -19,6 +19,8 @@ clientes/<cuenta>/
 | `fuentes` | `titulo` y `texto`: cualquier fuente de Google Fonts por su nombre. |
 | `pesoTitulo`, `esquinas` | Grosor del titular (400–700) y redondeo de cajas y fotos en px (0 = rectas). |
 | `logo` | Ruta dentro de la carpeta (`logo.png`) o `null` para escribir el nombre. |
+| `plantillas` | Lista de plantillas que el cliente permite (si falta, todas). Si la semana usa otra, no se genera nada. |
+| `prohibido` | Lo que nunca se publica de este cliente, en frases cortas (lo lee La Escriba). |
 | `stories` | `{"activo": true}` para que se publiquen solas cada mañana (si están aprobadas). |
 | `instagram` | Nombres de los secretos de GitHub con el token y el id de la cuenta: `{"secretoToken": "IG_TOKEN_<CUENTA>", "secretoUsuario": "IG_USER_<CUENTA>"}`. Nunca el token en sí. |
 
