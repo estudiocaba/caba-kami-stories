@@ -14,6 +14,7 @@ import { pathToFileURL } from 'node:url';
 import { chromium } from 'playwright-core';
 import { fetchAnime, fetchCharacterByName, imageAsDataUri } from '../carrusel/anilist-media.js';
 import { buildReelLista, PULSOS } from './plantilla.js';
+import { buildReelExplicativo, PULSOS_EXP } from './explicativo.js';
 import { renderSfx } from './sfx.js';
 import { sendText } from '../telegram.js';
 
@@ -44,8 +45,19 @@ async function main() {
   const raw = JSON.parse(readFileSync(specPath, 'utf8'));
   const slug = path.basename(specPath, '.json');
   const guardado = datosPath ? JSON.parse(readFileSync(datosPath, 'utf8')) : null;
-  const items = guardado?.items ?? [], imgs = guardado?.imgs ?? [];
-  for (const it of guardado ? [] : raw.items) {
+  const explicativo = raw.plantilla === 'explicativo';
+  const items = guardado?.items ?? [], imgs = guardado?.imgs ?? (explicativo ? {} : []);
+  // Explicativo: las fotos son opcionales y se piden por nombre en "fotos" ({clave: {anime}}).
+  if (explicativo && !guardado && !offline) {
+    for (const [clave, def] of Object.entries(raw.fotos ?? {})) {
+      try {
+        const media = await fetchAnime(def.anime);
+        imgs[clave] = await imageAsDataUri(media.coverImage.extraLarge || media.coverImage.large);
+        console.log(`  foto «${clave}»: ${media.title.romaji}`);
+      } catch (e) { console.warn(`  ⚠ foto «${clave}»: ${e.message}`); }
+    }
+  }
+  for (const it of guardado || explicativo ? [] : raw.items) {
     let media = null, img = null;
     if (!offline && it.anime) {
       try { media = await fetchAnime(it.anime); console.log(`  ${it.nombre}: ${media.title.romaji} · nota ${media.averageScore ?? '—'}`); }
@@ -86,7 +98,7 @@ async function main() {
   rmSync(frames, { recursive: true, force: true });
   mkdirSync(frames, { recursive: true });
   const htmlPath = path.join(outDir, 'reel.html');
-  const { html, eventos, cortes, duracion: dur } = buildReelLista(spec, imgs, bpm);
+  const { html, eventos, cortes, duracion: dur } = explicativo ? buildReelExplicativo(spec, imgs, bpm) : buildReelLista(spec, imgs, bpm);
   writeFileSync(htmlPath, html);
 
   const n = Math.round(dur * FPS);
@@ -101,7 +113,8 @@ async function main() {
     await reel.screenshot({ path: path.join(frames, `${String(f).padStart(5, '0')}.jpg`), type: 'jpeg', quality: 88 });
   }
   // Portada del reel: el fotograma del primer elemento ya visible.
-  await page.evaluate(t => window.render(t), (PULSOS.intro + 3) * 60 / bpm);
+  // (explicativo: la primera escena ya con su objeto dibujado y el bocadillo a la vista)
+  await page.evaluate(t => window.render(t), (explicativo ? PULSOS_EXP.intro + 3.5 : PULSOS.intro + 3) * 60 / bpm);
   await reel.screenshot({ path: path.join(outDir, `cabakami-${slug}-portada.jpg`), type: 'jpeg', quality: 92 });
   await browser.close();
 

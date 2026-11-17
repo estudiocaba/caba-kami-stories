@@ -43,6 +43,23 @@ Para crear más pistas: añadir una entrada en `PISTAS` dentro de `componer.py` 
 
 `src/reel/sfx.js` sintetiza desde cero un efecto para cada gesto del motion graphics y los coloca en el tiempo exacto: play de VHS al empezar, fallo de cinta en cada corte (con la música bajando un instante), soplido cuando sube la foto, teclas de máquina en las etiquetas, campanitas en los destellos, brillo en los títulos, tic-tic de los contadores, golpe con campana en el eyecatch, golpe seco del sello y stop de cinta al final.
 
-## Pendiente
+## Plantilla «explicativo»
 
-La plantilla «explicativo» (muñequitos de palo que explican un concepto) todavía no existe.
+Monigotes que explican un concepto de anime, en unos 30-40 segundos: intro con una fan que saluda → 3 a 5 escenas → el mismo cierre con sello 神. Código en `src/reel/explicativo.js`.
+
+Ficha de ejemplo: `reeles/2026-12-03-cour.json`.
+
+| Campo | Qué es |
+|---|---|
+| `plantilla` | `explicativo`. |
+| `etiqueta`, `titulo` (2 líneas), `subtitulo` | La intro. `anfitriona`: papel del monigote que saluda (por defecto `fan`). |
+| `fotos` | Opcional: `{clave: {anime: {busqueda, anio}}}`. La portada oficial de AniList, para mostrarla en una tele. |
+| `escenas[]` | Cada una: `rotulo` (MAYÚSCULAS, corto), `objeto`, `monigotes`, `bocadillo`, `dato` y `texto`. `pulsos` opcional (8 por defecto). |
+| `objeto.tipo` | `calendario` (`marca`: 0-3 o `todas`), `tira` (`episodios`, `corte`), `tele` (`pantalla` y, con `foto` en la escena, la portada), `tijeras` (`izquierda`, `derecha`, `pausa`), `reloj` (`texto`), `estudio` (`letrero`). |
+| `monigotes[]` | 1 o 2: `rol` (`fan`, `estudio`, `cadena`, `autor`), `x` (200-880), `poses` (se reparten en la escena), `mira: "izq"` para girarlo y `camina` (x desde la que entra andando). |
+| poses | `parado`, `saluda`, `senala`, `senalaIzq`, `pensar`, `encoge`, `sorpresa`, `celebra`, `llora`, `triste`, `espera`. |
+| `bocadillo` | `{de: índice del monigote, texto}`. Máximo unas 45 letras: dos líneas. |
+| `dato` | Cifra o idea en grande (admite `*énfasis*`). |
+| `texto` | Lo que se explica, 25 palabras como máximo. |
+
+Reglas de composición fijas: rótulo arriba, objeto en la franja de 400 a 670 px, bocadillo al lado de la cabeza del monigote, suelo a 1240 px y debajo el dato y el texto centrados. Los monigotes se animan de a dos, como el resto del reel.
