@@ -10,8 +10,13 @@
 //   {"buscar": "copper hair woman"}         la primera foto buena que no se haya usado ya en la pieza
 //   {"buscar": "...", "n": 5}               (en collages y tiras) varias fotos de la misma búsqueda
 // Lo elegido se guarda en fotos.json junto a la salida, para repetir la generación sin volver a buscar.
+//
+// Fotos elegidas a mano: si existe la carpeta del cliente fotos/<pieza>/ (por ejemplo
+// clientes/zs-peluqueros/fotos/2026-12-01-colores-invierno/), cada hueco de foto usa su archivo numerado
+// en orden (1.jpg, 2.jpg…; también .jpeg, .png o .webp) antes de buscar nada. Camila las elige y las deja
+// en la carpeta de Drive del cliente; se copian al repositorio antes de generar.
 
-import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 
 const env = process.env;
@@ -46,7 +51,12 @@ async function aDataUri(url) {
 }
 
 // Recorre la pieza y sustituye cada {"buscar": …} por fotos reales (data URI). Devuelve los créditos.
-export async function resolverFotos(pieza, salida, { orientacion = 'portrait' } = {}) {
+export async function resolverFotos(pieza, salida, { orientacion = 'portrait', dirLocal = null, numero = null } = {}) {
+  // numero: para stories, la carpeta es una sola (fotos/stories/) y cada archivo es el día del mes (01.jpg…31.jpg)
+  const archivos = dirLocal && existsSync(dirLocal) ? readdirSync(dirLocal).filter(f => /^\d+\.(jpe?g|png|webp)$/i.test(f)) : [];
+  const locales = Object.fromEntries(archivos.map(f => [Number(f.split('.')[0]), path.join(dirLocal, f)]));
+  const deLaPieza = numero != null ? (locales[numero] ? [locales[numero]] : []) : Object.values(locales);
+  let hueco = 0;
   const guardado = existsSync(path.join(salida, 'fotos.json')) ? JSON.parse(readFileSync(path.join(salida, 'fotos.json'), 'utf8')) : {};
   const elegidas = {}, usadas = new Set(), creditos = [];
   const cache = {};
@@ -58,6 +68,10 @@ export async function resolverFotos(pieza, salida, { orientacion = 'portrait' } 
     return (cache[q] = lista);
   };
   const una = async (q, clave) => {
+    hueco++;
+    const deArchivo = f => `data:image/${path.extname(f).slice(1).toLowerCase().replace('jpg', 'jpeg')};base64,${readFileSync(f).toString('base64')}`;
+    if (numero != null && deLaPieza.length) return deArchivo(deLaPieza[0]);
+    if (numero == null && locales[hueco]) return deArchivo(locales[hueco]);
     const previa = guardado[clave];
     const prueba = previa ? [previa] : [];
     for (const c of [...prueba, ...(await candidatas(q))]) {
@@ -68,6 +82,7 @@ export async function resolverFotos(pieza, salida, { orientacion = 'portrait' } 
         return data;
       } catch { /* siguiente */ }
     }
+    if (deLaPieza.length) return deArchivo(deLaPieza[(hueco - 1) % deLaPieza.length]);
     console.log(`  ⚠ sin foto para «${q}»`);
     return null;
   };

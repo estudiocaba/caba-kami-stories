@@ -59,7 +59,7 @@ function musica(fechaStory) {
 const creditos = {};
 for (const s of stories) {
   const dirFotos = path.join(OUT, `fotos-${s.fecha}`); mkdirSync(dirFotos, { recursive: true });
-  const r = await resolverFotos(s, dirFotos);
+  const r = await resolverFotos(s, dirFotos, { dirLocal: path.join(dirCliente, 'fotos', 'stories'), numero: Number(s.fecha.slice(8, 10)) });
   if (r.textoCreditos) creditos[s.fecha] = r.textoCreditos;
 }
 
