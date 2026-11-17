@@ -5,45 +5,52 @@
   "stories": [
     {
       "fecha": "2026-12-07",
-      "plantilla": "frase",
+      "plantilla": "tip",
       "archivo": "zs-peluqueros-story-2026-12-07.mp4",
-      "portada": "zs-peluqueros-story-2026-12-07.jpg"
+      "portada": "zs-peluqueros-story-2026-12-07.jpg",
+      "creditos": "Fotos: Pexels"
     },
     {
       "fecha": "2026-12-08",
-      "plantilla": "dato",
+      "plantilla": "tip",
       "archivo": "zs-peluqueros-story-2026-12-08.mp4",
-      "portada": "zs-peluqueros-story-2026-12-08.jpg"
+      "portada": "zs-peluqueros-story-2026-12-08.jpg",
+      "creditos": "Fotos: Pexels"
     },
     {
       "fecha": "2026-12-09",
       "plantilla": "pregunta",
       "archivo": "zs-peluqueros-story-2026-12-09.mp4",
-      "portada": "zs-peluqueros-story-2026-12-09.jpg"
+      "portada": "zs-peluqueros-story-2026-12-09.jpg",
+      "creditos": "Fotos: Pexels"
     },
     {
       "fecha": "2026-12-10",
-      "plantilla": "frase",
+      "plantilla": "tip",
       "archivo": "zs-peluqueros-story-2026-12-10.mp4",
-      "portada": "zs-peluqueros-story-2026-12-10.jpg"
+      "portada": "zs-peluqueros-story-2026-12-10.jpg",
+      "creditos": "Fotos: Pexels"
     },
     {
       "fecha": "2026-12-11",
-      "plantilla": "cuentaatras",
+      "plantilla": "portada",
       "archivo": "zs-peluqueros-story-2026-12-11.mp4",
-      "portada": "zs-peluqueros-story-2026-12-11.jpg"
+      "portada": "zs-peluqueros-story-2026-12-11.jpg",
+      "creditos": "Fotos: Pexels"
     },
     {
       "fecha": "2026-12-12",
-      "plantilla": "promo",
+      "plantilla": "cierre",
       "archivo": "zs-peluqueros-story-2026-12-12.mp4",
-      "portada": "zs-peluqueros-story-2026-12-12.jpg"
+      "portada": "zs-peluqueros-story-2026-12-12.jpg",
+      "creditos": "Fotos: Pexels"
     },
     {
       "fecha": "2026-12-13",
-      "plantilla": "frase",
+      "plantilla": "tip",
       "archivo": "zs-peluqueros-story-2026-12-13.mp4",
-      "portada": "zs-peluqueros-story-2026-12-13.jpg"
+      "portada": "zs-peluqueros-story-2026-12-13.jpg",
+      "creditos": "Fotos: Pexels"
     }
   ]
 }
