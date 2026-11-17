@@ -5,7 +5,7 @@
     {
       "tipo": "portada",
       "foto": {
-        "buscar": "chocolate brown hair woman"
+        "buscar": "woman brown hair"
       },
       "titulo": [
         "*Tendencia*",
@@ -17,19 +17,19 @@
       "tipo": "tira",
       "fotos": [
         {
-          "buscar": "dark chocolate brown hair"
+          "buscar": "woman long brown hair"
         },
         {
-          "buscar": "espresso dark brown hair woman"
+          "buscar": "woman dark hair"
         },
         {
-          "buscar": "bronde balayage hair"
+          "buscar": "woman highlights hair"
         },
         {
-          "buscar": "honey blonde hair woman"
+          "buscar": "woman blonde hair"
         },
         {
-          "buscar": "copper hair woman"
+          "buscar": "woman red hair"
         }
       ],
       "nombres": [
@@ -49,7 +49,7 @@
     {
       "tipo": "collage",
       "fotos": {
-        "buscar": "chocolate brown hair",
+        "buscar": "brunette woman",
         "n": 6
       },
       "titulo": "Mechas *chocolate*"
@@ -57,7 +57,7 @@
     {
       "tipo": "collage",
       "fotos": {
-        "buscar": "copper red hair",
+        "buscar": "redhead woman",
         "n": 6
       },
       "titulo": "Cobre *suave*"
@@ -65,7 +65,7 @@
     {
       "tipo": "fototexto",
       "foto": {
-        "buscar": "creamy blonde hair woman"
+        "buscar": "blonde woman"
       },
       "texto": [
         "Los rubios muy fríos se despiden: este invierno se lleva el rubio con matiz de mantequilla.",
@@ -75,7 +75,7 @@
     {
       "tipo": "cierre",
       "foto": {
-        "buscar": "brown hair woman portrait"
+        "buscar": "woman brown hair portrait"
       },
       "pregunta": "¿Te animas con el color más cálido del invierno?"
     }

@@ -5,7 +5,7 @@
     {
       "tipo": "portada",
       "foto": {
-        "buscar": "glamorous hairstyle party night"
+        "buscar": "woman glamorous"
       },
       "titulo": [
         "*Nochevieja*",
@@ -16,7 +16,7 @@
     {
       "tipo": "collage",
       "fotos": {
-        "buscar": "half up hairstyle bow",
+        "buscar": "woman hair bow",
         "n": 6
       },
       "titulo": "Semirrecogido *con lazo*"
@@ -24,7 +24,7 @@
     {
       "tipo": "fototexto",
       "foto": {
-        "buscar": "wet look hairstyle"
+        "buscar": "woman wet hair"
       },
       "texto": [
         "Efecto mojado con perlas: acabado glam para quien se atreve, con perlitas entre el cabello."
@@ -33,7 +33,7 @@
     {
       "tipo": "fototexto",
       "foto": {
-        "buscar": "pearl hair clips accessories"
+        "buscar": "hair clip"
       },
       "texto": [
         "Accesorios que brillan: horquillas con perlitas o pinzas brillantes para destacar sin complicarte."
@@ -42,7 +42,7 @@
     {
       "tipo": "cierre",
       "foto": {
-        "buscar": "woman party hairstyle"
+        "buscar": "woman party"
       },
       "pregunta": "¿Lazo, perlas o brillo?"
     }

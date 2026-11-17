@@ -5,7 +5,7 @@
     {
       "tipo": "portada",
       "foto": {
-        "buscar": "woman brushing long hair"
+        "buscar": "woman brushing hair"
       },
       "titulo": [
         "4 *gestos*",
@@ -16,7 +16,7 @@
     {
       "tipo": "tip",
       "foto": {
-        "buscar": "washing hair shower"
+        "buscar": "woman washing hair"
       },
       "titulo": "1. Agua tibia",
       "texto": "El agua muy caliente reseca el cabello y apaga el color antes de tiempo.",
@@ -25,7 +25,7 @@
     {
       "tipo": "tip",
       "foto": {
-        "buscar": "woman hair dryer"
+        "buscar": "hair dryer"
       },
       "titulo": "2. Protector térmico",
       "texto": "Antes del secador o la plancha, siempre.",
@@ -34,7 +34,7 @@
     {
       "tipo": "tip",
       "foto": {
-        "buscar": "hair mask treatment"
+        "buscar": "hair treatment"
       },
       "titulo": "3. Hidratación extra",
       "texto": "Una mascarilla a la semana compensa el secador y los cambios de temperatura.",
@@ -43,7 +43,7 @@
     {
       "tipo": "tip",
       "foto": {
-        "buscar": "hairdresser cutting hair ends"
+        "buscar": "hairdresser cutting"
       },
       "titulo": "4. Sanea las puntas",
       "texto": "Las puntas abiertas suben. Mejor cortarlas a tiempo.",
@@ -52,7 +52,7 @@
     {
       "tipo": "cierre",
       "foto": {
-        "buscar": "healthy shiny hair woman"
+        "buscar": "woman shiny hair"
       },
       "pregunta": "¿Tu cabello pide un mimo?"
     }
