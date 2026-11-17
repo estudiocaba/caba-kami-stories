@@ -7,8 +7,8 @@
   "voz": {
     "motor": "edge",
     "voz": "es-MX-DaliaNeural",
-    "velocidad": "+12%",
-    "tono": "+6Hz"
+    "velocidad": "+4%",
+    "tono": "+2Hz"
   },
   "pronunciacion": {
     "split-cour": "split cur",
@@ -17,46 +17,124 @@
   },
   "tema": "EL COUR",
   "etiqueta": "EL GRIMORIO DEL AQUELARRE",
-  "titulo": ["¿Qué es un *cour*?"],
+  "titulo": [
+    "¿Qué es un *cour*?"
+  ],
   "intro": {
     "voz": "¿Tu anime se cortó en el capítulo 12, justo en lo mejor? No es mala suerte. Tiene nombre: cour.",
-    "fotos": ["titan", "spy", "mushoku", "boticaria"],
+    "fotos": [
+      "titan",
+      "spy",
+      "mushoku",
+      "boticaria"
+    ],
     "onomatopeya": "ゴゴゴ",
-    "brujas": [{ "id": "vidente", "poses": ["varita", "enfado"] }]
+    "brujas": [
+      {
+        "id": "vidente",
+        "poses": [
+          "varita",
+          "enfado"
+        ]
+      }
+    ]
   },
   "fotos": {
-    "titan": { "anime": { "busqueda": "Shingeki no Kyojin: The Final Season", "anio": 2020 } },
-    "spy": { "anime": { "busqueda": "SPY×FAMILY", "anio": 2022 } },
-    "mushoku": { "anime": { "busqueda": "Mushoku Tensei", "anio": 2021 } },
-    "boticaria": { "anime": { "busqueda": "Kusuriya no Hitorigoto", "anio": 2026 } }
+    "titan": {
+      "anime": {
+        "busqueda": "Shingeki no Kyojin: The Final Season",
+        "anio": 2020
+      }
+    },
+    "spy": {
+      "anime": {
+        "busqueda": "SPY×FAMILY",
+        "anio": 2022
+      }
+    },
+    "mushoku": {
+      "anime": {
+        "busqueda": "Mushoku Tensei",
+        "anio": 2021
+      }
+    },
+    "boticaria": {
+      "anime": {
+        "busqueda": "Kusuriya no Hitorigoto",
+        "anio": 2026
+      }
+    }
   },
   "escenas": [
     {
       "titulo": "La tele japonesa",
-      "objeto": { "tipo": "calendario", "marca": "todas" },
+      "objeto": {
+        "tipo": "calendario",
+        "marca": "todas"
+      },
       "onomatopeya": "ドン！",
-      "brujas": [{ "id": "vidente", "poses": ["varita", "senala"] }],
+      "brujas": [
+        {
+          "id": "vidente",
+          "poses": [
+            "varita",
+            "senala"
+          ]
+        }
+      ],
       "dato": "1 *cour* = 3 meses",
       "voz": "En Japón, la tele divide el año en cuatro bloques de tres meses. Cada bloque es un cour. Así de simple."
     },
     {
       "titulo": "¿Cuántos episodios?",
-      "objeto": { "tipo": "tira", "episodios": 12 },
+      "objeto": {
+        "tipo": "tira",
+        "episodios": 12
+      },
       "onomatopeya": "ジャーン",
       "brujas": [
-        { "id": "vidente", "poses": ["varita", "senala"] },
-        { "id": "mensajera", "poses": ["pensar", "sorpresa"] }
+        {
+          "id": "vidente",
+          "poses": [
+            "varita",
+            "senala"
+          ]
+        },
+        {
+          "id": "mensajera",
+          "poses": [
+            "pensar",
+            "sorpresa"
+          ]
+        }
       ],
       "dato": "12 o 13 episodios",
       "voz": "Un episodio por semana durante tres meses: salen 12 o 13. Por eso tantos animes mueren en el capítulo 12."
     },
     {
       "titulo": "El *split-cour*",
-      "objeto": { "tipo": "tijeras", "izquierda": "CAP. 1–12", "derecha": "CAP. 13–24", "pausa": "MESES DE PAUSA" },
+      "objeto": {
+        "tipo": "tijeras",
+        "izquierda": "CAP. 1–12",
+        "derecha": "CAP. 13–24",
+        "pausa": "MESES DE PAUSA"
+      },
       "onomatopeya": "ガーン",
       "brujas": [
-        { "id": "vidente", "poses": ["varita", "encoge"] },
-        { "id": "cronista", "poses": ["enfado", "llora"] }
+        {
+          "id": "vidente",
+          "poses": [
+            "varita",
+            "encoge"
+          ]
+        },
+        {
+          "id": "cronista",
+          "poses": [
+            "enfado",
+            "llora"
+          ]
+        }
       ],
       "dato": "2 *cours* con pausa",
       "voz": "Y el split-cour es peor: parten la temporada en dos y te dejan meses esperando. El estudio respira. Nosotras sufrimos."
@@ -64,11 +142,26 @@
     {
       "titulo": "Ejemplo *fresquito*",
       "foto": "boticaria",
-      "objeto": { "tipo": "tele", "pantalla": "PARTE 2: ABRIL 2027" },
+      "objeto": {
+        "tipo": "tele",
+        "pantalla": "PARTE 2: ABRIL 2027"
+      },
       "onomatopeya": "キラッ",
       "brujas": [
-        { "id": "vidente", "poses": ["senala", "pensar"] },
-        { "id": "escriba", "poses": ["sorpresa", "triste"] }
+        {
+          "id": "vidente",
+          "poses": [
+            "senala",
+            "pensar"
+          ]
+        },
+        {
+          "id": "escriba",
+          "poses": [
+            "sorpresa",
+            "triste"
+          ]
+        }
       ],
       "dato": "24 episodios en *dos partes*",
       "voz": "Los diarios de la boticaria: la temporada 3 arrancó en octubre y la segunda parte llega en abril de 2027. A esperar."
@@ -76,7 +169,10 @@
   ],
   "cierre": {
     "etiqueta": "¿QUÉ ESPERA DOLIÓ MÁS?",
-    "pregunta": ["¿Boticaria o", "*Spy x Family*?"],
+    "pregunta": [
+      "¿Boticaria o",
+      "*Spy x Family*?"
+    ],
     "cta": "GUÁRDALO PARA EL PRÓXIMO PARÓN",
     "voz": "Ahora tú: ¿qué espera te dolió más, la de la boticaria o la de Spy x Family?"
   },

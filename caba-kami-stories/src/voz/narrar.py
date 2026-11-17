@@ -10,6 +10,9 @@ Escribe <clave>.wav (44,1 kHz, mono, 16 bits) y voces.json con, para cada clip: 
 La voz no se recorta al principio, para que los tiempos de cada palabra sigan valiendo.
 
 Motores:
+  gemini Voces de Google Gemini (TTS con indicaciones de estilo: suenan naturales y se les puede pedir
+         entusiasmo). GEMINI_API_KEY (gratis en Google AI Studio); "voz" es el nombre (Laomedeia, Zephyr…)
+         y "estilo_gemini" cómo decirlo. Modelo por defecto: gemini-3.1-flash-tts-preview (tiene plan gratuito).
   elevenlabs  Voces de ElevenLabs (modelo multilingüe), las más expresivas. ELEVENLABS_API_KEY; "voz"
          es el voice_id. Plan gratuito: uso no comercial y con atribución (el copy la añade sola).
   azure  Voces neuronales de Microsoft por la vía oficial (plan gratuito de 500.000 caracteres al
@@ -29,8 +32,8 @@ conf = json.loads(Path(sys.argv[1]).read_text())
 OUT = Path(sys.argv[2]); OUT.mkdir(parents=True, exist_ok=True)
 motor = conf.get('motor') or ('azure' if os.environ.get('AZURE_SPEECH_KEY') else 'edge')
 voz = conf.get('voz', 'es-MX-DaliaNeural')
-vel = conf.get('velocidad', '+10%')
-tono = conf.get('tono', '+5Hz')
+vel = conf.get('velocidad', '+0%')
+tono = conf.get('tono', '+0Hz')
 
 # Ayudas de pronunciación que valen para cualquier ficha: imperativos y palabras que los motores
 # suelen acentuar mal. La ficha puede añadir las suyas.
@@ -109,6 +112,32 @@ def elevenlabs(texto, dst):
     return palabras
 
 
+ESTILO_GEMINI = ('Read this aloud in natural Latin American Spanish, like an excited anime fan telling a friend '
+                 'something juicy on TikTok: upbeat, warm, playful, fast-paced but clear, with real enthusiasm and '
+                 'natural pauses. Stress Spanish words correctly. Text')
+
+
+def gemini(texto, dst):
+    key = os.environ['GEMINI_API_KEY']
+    modelo = conf.get('modelo', 'gemini-3.1-flash-tts-preview')
+    estilo = conf.get('estilo_gemini', ESTILO_GEMINI)
+    cuerpo = json.dumps({'contents': [{'role': 'user', 'parts': [{'text': f'{estilo}: {texto}'}]}],
+                         'generationConfig': {'responseModalities': ['AUDIO'],
+                                              'speechConfig': {'voiceConfig': {'prebuiltVoiceConfig': {'voiceName': voz}}}}}).encode()
+    req = urllib.request.Request(f'https://generativelanguage.googleapis.com/v1beta/models/{modelo}:generateContent', data=cuerpo,
+                                 headers={'x-goog-api-key': key, 'Content-Type': 'application/json'})
+    r = json.loads(urllib.request.urlopen(req, timeout=180).read())
+    datos = base64.b64decode(r['candidates'][0]['content']['parts'][0]['inlineData']['data'])
+    crudo = Path(str(dst) + '.raw.wav')
+    if datos[:4] == b'RIFF':
+        crudo.write_bytes(datos)
+    else:   # PCM de 16 bits, 24 kHz, mono, sin cabecera
+        with wave.open(str(crudo), 'wb') as w:
+            w.setnchannels(1); w.setsampwidth(2); w.setframerate(24000); w.writeframes(datos)
+    a_wav(crudo, dst)
+    return []
+
+
 def piper(texto, dst):
     base = 'https://huggingface.co/rhasspy/piper-voices/resolve/main/es/es_AR/daniela/high/es_AR-daniela-high'
     if not Path('/tmp/daniela.onnx').exists():
@@ -157,7 +186,9 @@ for item in conf['textos']:
     clave, original = item['clave'], item['texto']
     texto = pronunciar(original)
     dst = OUT / f'{clave}.wav'
-    if motor == 'elevenlabs':
+    if motor == 'gemini':
+        palabras = gemini(texto, dst)
+    elif motor == 'elevenlabs':
         palabras = elevenlabs(texto, dst)
     elif motor == 'azure':
         palabras = azure(texto, dst)

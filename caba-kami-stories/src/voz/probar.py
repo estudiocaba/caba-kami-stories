@@ -1,33 +1,43 @@
-"""Genera muestras de voces femeninas en español para elegir la narradora del grimorio.
+"""Genera muestras de narradora para el grimorio, con el mismo código que usan los reels (narrar.py).
 Uso (en GitHub Actions): python3 src/voz/probar.py out/voces
+
+Siempre: voces de Microsoft (sin cuenta), incluidas las «multilingües», que suenan más conversacionales.
+Con GEMINI_API_KEY: voces de Google Gemini a las que se les pide entusiasmo.
+Con ELEVENLABS_API_KEY y ELEVENLABS_VOCES ("nombre=voice_id,nombre=voice_id"): voces de ElevenLabs.
 """
-import asyncio, json, subprocess, sys, urllib.request
+import json, os, subprocess, sys
 from pathlib import Path
 
 OUT = Path(sys.argv[1] if len(sys.argv) > 1 else 'out/voces')
 OUT.mkdir(parents=True, exist_ok=True)
-TEXTO = ("En Japón, la tele reparte el año en cuatro bloques de tres meses. Cada bloque es un cur. "
-         "Así que no: tu anime no se cortó por capricho. Se cortó por calendario.")
+TEXTO = ("¿Tu anime se cortó en el capítulo 12, justo en lo mejor? No es mala suerte. Tiene nombre: cour. "
+         "Un episodio por semana durante tres meses: salen 12 o 13. Por eso tantos animes mueren en el capítulo 12.")
+NARRAR = Path(__file__).with_name('narrar.py')
 
-def a_m4a(wav, nombre):
-    subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', str(wav), '-af', 'highpass=f=70,loudnorm=I=-16:TP=-1.5',
-                    '-c:a', 'aac', '-b:a', '128k', str(OUT / f'{nombre}.m4a')], check=True)
+MUESTRAS = [
+    ('edge', 'es-MX-DaliaNeural', '01-dalia-mexico-actual', {}),
+    ('edge', 'en-US-AvaMultilingualNeural', '02-ava-multilingue', {}),
+    ('edge', 'en-US-EmmaMultilingualNeural', '03-emma-multilingue', {}),
+    ('edge', 'es-US-PalomaNeural', '04-paloma-latina', {}),
+]
+if os.environ.get('GEMINI_API_KEY'):
+    for n, v in enumerate(['Laomedeia', 'Zephyr', 'Autonoe', 'Leda', 'Aoede'], 5):
+        MUESTRAS.append(('gemini', v, f'{n:02d}-gemini-{v.lower()}', {}))
+for n, par in enumerate(filter(None, os.environ.get('ELEVENLABS_VOCES', '').split(',')), 20):
+    nombre, vid = par.split('=')
+    if os.environ.get('ELEVENLABS_API_KEY'):
+        MUESTRAS.append(('elevenlabs', vid.strip(), f'{n:02d}-elevenlabs-{nombre.strip().lower()}', {}))
 
-# 1) Piper · Daniela (es_AR), voz libre (dataset OpenSLR 61, CC BY-SA 4.0)
-base = 'https://huggingface.co/rhasspy/piper-voices/resolve/main/es/es_AR/daniela/high/es_AR-daniela-high'
-for ext in ('.onnx', '.onnx.json'):
-    urllib.request.urlretrieve(base + ext, f'/tmp/daniela{ext}')
-subprocess.run(['python3', '-m', 'piper', '-m', '/tmp/daniela.onnx', '-f', '/tmp/daniela.wav'], input=TEXTO.encode(), check=True)
-a_m4a('/tmp/daniela.wav', '1-daniela-argentina-libre')
-
-# 2) Voces neuronales de Microsoft (las mismas que Azure Speech)
-import edge_tts
-VOCES = [('es-MX-DaliaNeural', '2-dalia-mexico'), ('es-UY-ValentinaNeural', '3-valentina-uruguay'),
-         ('es-AR-ElenaNeural', '4-elena-argentina'), ('es-CO-SalomeNeural', '5-salome-colombia'),
-         ('es-ES-ElviraNeural', '6-elvira-espana'), ('es-US-PalomaNeural', '7-paloma-latina-neutra')]
-async def edge():
-    for voz, nombre in VOCES:
-        await edge_tts.Communicate(TEXTO, voz, rate='-4%').save(f'/tmp/{nombre}.mp3')
-        a_m4a(f'/tmp/{nombre}.mp3', nombre)
-asyncio.run(edge())
+for motor, voz, nombre, extra in MUESTRAS:
+    tmp = Path('/tmp/muestra') / nombre
+    tmp.mkdir(parents=True, exist_ok=True)
+    conf = tmp / 'conf.json'
+    conf.write_text(json.dumps({'motor': motor, 'voz': voz, 'pronunciacion': {'cour': 'cur'},
+                                'textos': [{'clave': 'muestra', 'texto': TEXTO}], **extra}, ensure_ascii=False))
+    try:
+        subprocess.run(['python3', str(NARRAR), str(conf), str(tmp)], check=True)
+        subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', str(tmp / 'muestra.wav'), '-c:a', 'aac', '-b:a', '128k',
+                        str(OUT / f'{nombre}.m4a')], check=True)
+    except Exception as e:
+        print(f'  ⚠ {nombre}: {e}')
 print('\n'.join(sorted(p.name for p in OUT.iterdir())))

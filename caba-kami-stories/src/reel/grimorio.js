@@ -149,6 +149,14 @@ ${FONTS.map(f => `<link rel="stylesheet" href="${f}">`).join('\n')}
 <style>${CSS}${G_CSS}</style></head><body>
 <div class="reel"><div class="camara" id="camara">
   <canvas class="px" id="lienzo" width="${W}" height="${H}"></canvas>
+  <div class="capa" id="nitidas"><div id="foto-rev" style="position:absolute;left:0;right:0;overflow:hidden;display:none">
+    <div id="foto-caja" style="position:absolute;overflow:hidden">
+      <img id="foto-img" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%">
+      <div style="position:absolute;inset:0;background:rgba(107,21,40,.05)"></div>
+      <div id="foto-scan" style="position:absolute;inset:0;background:repeating-linear-gradient(rgba(0,0,0,.07) 0 6px,transparent 6px 12px)"></div>
+      <div id="foto-banda" style="position:absolute;left:0;right:0;bottom:0;background:rgba(14,13,15,.85)"></div>
+      <div id="foto-flash" style="position:absolute;inset:0;background:#ecebee;opacity:0"></div>
+    </div></div></div>
   <div class="capa">${htmlPartes}</div>
 </div>
   <canvas class="px" id="iris" width="${W}" height="${H}"></canvas>
@@ -194,12 +202,23 @@ const outBack = x => { const c1 = 1.9, c3 = c1 + 1; return 1 + c3 * Math.pow(x -
 
 const IMGS = {};
 Object.entries(FOTOS).forEach(([k, src]) => { const im = new Image(); im.src = src; IMGS[k] = im; });
-function foto(k, x, y, w, h) {
-  const im = IMGS[k];
-  if (!im || !im.complete || !im.naturalWidth) { px(x, y, w, h, C.alto); return; }
-  const ar = w / h, iw = im.naturalWidth, ih = im.naturalHeight, sw = Math.min(iw, ih * ar), sh = sw / ar;
-  ctx.imageSmoothingEnabled = true; ctx.drawImage(im, (iw - sw) / 2, Math.max(0, (ih - sh) * .25), sw, sh, x, y, w, h); ctx.imageSmoothingEnabled = false;
-  ctx.fillStyle = 'rgba(107,21,40,.12)'; ctx.fillRect(x, y, w, h);
+// Las portadas no se pixelan: se piden a una capa HTML a resolución completa (#nitidas).
+let pedido = null;
+function foto(k, x, y, w, h, extra) {
+  if (!IMGS[k]) { px(x, y, w, h, C.alto); return; }
+  pedido = Object.assign({ k, x, y, w, h }, extra || {});
+}
+function aplicarFoto() {
+  const rev = document.getElementById('foto-rev');
+  if (!pedido) { rev.style.display = 'none'; return; }
+  const E = 6, P = pedido, caja = document.getElementById('foto-caja'), img = document.getElementById('foto-img');
+  rev.style.display = 'block';
+  rev.style.top = (P.revY * E) + 'px'; rev.style.height = (P.revH * E) + 'px';
+  Object.assign(caja.style, { left: (P.x * E) + 'px', top: ((P.y - P.revY) * E) + 'px', width: (P.w * E) + 'px', height: (P.h * E) + 'px', clipPath: P.forma || 'none' });
+  if (img.dataset.k !== P.k) { img.src = FOTOS[P.k]; img.dataset.k = P.k; }
+  document.getElementById('foto-scan').style.display = P.scan ? 'block' : 'none';
+  const banda = document.getElementById('foto-banda'); banda.style.display = P.banda ? 'block' : 'none'; if (P.banda) banda.style.height = (P.banda * E) + 'px';
+  document.getElementById('foto-flash').style.opacity = P.flash || 0;
 }
 
 // ── Brujas con cara de anime ──
@@ -321,6 +340,7 @@ function objeto(o, t, p, tc, fotoClave) {
   if (!o || p <= 0) return;
   const cx = 90, cy = 96;
   ctx.save(); ctx.beginPath(); ctx.rect(0, cy - 62, W, 124 * p); ctx.clip();
+  const antes = pedido;
   if (o.tipo !== 'espejo') {
     ctx.fillStyle = 'rgba(14,13,15,.9)'; ctx.fillRect(cx - 66, cy - 44, 132, 88);
     for (let i = 0; i < 132; i += 2) { px(cx - 66 + i, cy - 44, 1, 1, C.filete); px(cx - 66 + i, cy + 43, 1, 1, C.filete); }
@@ -335,8 +355,10 @@ function objeto(o, t, p, tc, fotoClave) {
       ctx.clip();
       const lista = (o.fotos || []).filter(k => IMGS[k]);
       const paso = .5, k = lista.length ? lista[Math.floor(Math.max(0, tc) / paso) % lista.length] : null;
-      if (k) foto(k, x0, y0, fw, fh); else px(x0, y0, fw, fh, C.alto);
-      if ((Math.max(0, tc) % paso) < .07) { ctx.fillStyle = 'rgba(236,235,238,.75)'; ctx.fillRect(x0, y0, fw, fh); }
+      const pts = [];
+      for (let y = 0; y <= fh; y += 2) pts.push((borde(y) / fw * 100).toFixed(2) + '% ' + (y / fh * 100).toFixed(2) + '%');
+      for (let y = fh; y >= 0; y -= 2) pts.push((100 - borde(y) / fw * 100).toFixed(2) + '% ' + (y / fh * 100).toFixed(2) + '%');
+      if (k) foto(k, x0, y0, fw, fh, { forma: 'polygon(' + pts.join(',') + ')', flash: (Math.max(0, tc) % paso) < .07 ? .75 : 0 }); else px(x0, y0, fw, fh, C.alto);
       ctx.restore();
       for (let y = 0; y < fh; y++) { const xx = borde(y); px(x0 + xx - 2, y0 + y, 2, 1, C.plata); px(x0 + fw - xx, y0 + y, 2, 1, C.plata); }
       px(x0 - 3, y0 + fh, fw + 6, 3, C.plata); px(cx - 2, y0 - 3, 4, 3, C.vivo);
@@ -358,9 +380,8 @@ function objeto(o, t, p, tc, fotoClave) {
     case 'tele': {
       px(cx - 34, cy - 34, 1, 8, C.plata); px(cx + 10, cy - 34, 1, 8, C.plata);
       px(cx - 46, cy - 27, 92, 62, C.plata); px(cx - 45, cy - 26, 90, 60, C.alto); px(cx - 41, cy - 22, 68, 52, C.negro);
-      if (fotoClave) foto(fotoClave, cx - 40, cy - 21, 66, 50);
-      for (let y = 0; y < 50; y += 2) { ctx.fillStyle = 'rgba(0,0,0,.18)'; ctx.fillRect(cx - 40, cy - 21 + y, 66, 1); }
-      if (o.pantalla) { ctx.fillStyle = 'rgba(14,13,15,.85)'; ctx.fillRect(cx - 40, cy + 15, 66, 13); }
+      if (fotoClave) foto(fotoClave, cx - 40, cy - 21, 66, 50, { scan: true, banda: o.pantalla ? 13 : 0 });
+      else if (o.pantalla) { ctx.fillStyle = 'rgba(14,13,15,.85)'; ctx.fillRect(cx - 40, cy + 15, 66, 13); }
       px(cx + 32, cy - 12, 6, 6, C.filete); px(cx + 33, cy + 2, 4, 4, C.filete);
       break;
     }
@@ -389,6 +410,7 @@ function objeto(o, t, p, tc, fotoClave) {
     }
   }
   ctx.restore();
+  if (pedido && pedido !== antes) { pedido.revY = cy - 62; pedido.revH = 124 * p; }
 }
 
 function conjuro(tc) {
@@ -432,6 +454,7 @@ window.render = tReal => {
   const parte = DATOS.partes.find(p => tReal >= p.t0 && tReal < p.t1) || DATOS.partes[DATOS.partes.length - 1];
   document.querySelectorAll('.esc').forEach(e => { e.style.display = (tReal >= +e.dataset.in && tReal < +e.dataset.out) ? 'block' : 'none'; });
   const tc = parte.conjuro != null ? t - parte.conjuro : -1;
+  pedido = null;
   cuarto(t, parte.tipo === 'cierre' ? 1 : clamp(tc / .2));
   if (parte.tipo !== 'cierre') { impacto(tc); conjuro(tc); objeto(parte.objeto, t, clamp(tc / .2), tc, parte.foto); }
   const habla = bocaAbierta(parte.voz, tReal);
@@ -464,6 +487,7 @@ window.render = tReal => {
   });
   document.querySelectorAll('[data-anim="stamp"]').forEach(s => { const x = tReal - s.dataset.t, p = clamp(x / .32);
     s.style.opacity = clamp(p * 4); s.style.transform = 'scale(' + (x < .32 ? 1.9 - .9 * (1 - Math.pow(2, -10 * p)) : 1) + ') rotate(' + (x < .32 ? -8 * (1 - p) : 0) + 'deg)'; });
+  aplicarFoto();
   corte(tReal);
 };
 `;

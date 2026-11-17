@@ -16,8 +16,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
-      - run: pip install -q piper-tts edge-tts
+      - run: pip install -q numpy edge-tts
       - run: python3 src/voz/probar.py out/voces
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          ELEVENLABS_VOCES: ${{ vars.ELEVENLABS_VOCES }}
       - name: Guardar en la rama publico
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -26,7 +30,7 @@ jobs:
           SRC="$PWD"; DEST="$RUNNER_TEMP/publico"
           for i in 1 2 3 4 5 6; do
             rm -rf "$DEST"; git clone -q --depth 1 --branch publico "$REPO_URL" "$DEST"
-            mkdir -p "$DEST/voces" && cp "$SRC"/out/voces/* "$DEST/voces/"
+            rm -rf "$DEST/voces" && mkdir -p "$DEST/voces" && cp "$SRC"/out/voces/* "$DEST/voces/"
             git -C "$DEST" add -A
             git -C "$DEST" -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -q -m "Muestras de voces" || break
             git -C "$DEST" push -q origin publico && break
