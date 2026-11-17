@@ -1,0 +1,50 @@
+name: Fotos candidatas (cliente)
+
+# Busca fotos gratuitas de Unsplash para cada hueco de foto de las piezas de un cliente y guarda
+# hojas de contacto numeradas en la rama "publico" (candidatas/<cuenta>/) para elegir.
+on:
+  workflow_dispatch:
+    inputs:
+      cuenta:
+        description: "Carpeta del cliente en clientes/, por ejemplo zs-peluqueros"
+        required: true
+      prefijo:
+        description: "Prefijo de fecha de las piezas, por ejemplo 2026-12"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+jobs:
+  candidatas:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: caba-kami-stories
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --omit=dev --no-audit --no-fund
+      - run: node src/clientes/candidatas.js "${{ inputs.cuenta }}" "${{ inputs.prefijo }}"
+      - name: Guardar en la rama publico
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          REPO_URL="https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git"
+          SRC="$PWD/out/candidatas/${{ inputs.cuenta }}"
+          DEST="$RUNNER_TEMP/publico"
+          for i in 1 2 3 4 5 6 7 8; do
+            rm -rf "$DEST"
+            git clone -q --depth 1 --branch publico "$REPO_URL" "$DEST"
+            rm -rf "$DEST/candidatas/${{ inputs.cuenta }}"
+            mkdir -p "$DEST/candidatas/${{ inputs.cuenta }}"
+            cp "$SRC"/* "$DEST/candidatas/${{ inputs.cuenta }}/"
+            git -C "$DEST" add -A
+            git -C "$DEST" -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -q -m "Fotos candidatas ${{ inputs.cuenta }}" || { echo "Sin cambios"; break; }
+            git -C "$DEST" push -q origin publico && break
+            sleep $((RANDOM % 8 + 3))
+            [ "$i" = 8 ] && { echo "No se pudo guardar en publico"; exit 1; }
+          done

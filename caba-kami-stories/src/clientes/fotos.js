@@ -15,6 +15,10 @@
 // clientes/zs-peluqueros/fotos/2026-12-01-colores-invierno/), cada hueco de foto usa su archivo numerado
 // en orden (1.jpg, 2.jpg…; también .jpeg, .png o .webp) antes de buscar nada. Camila las elige y las deja
 // en la carpeta de Drive del cliente; se copian al repositorio antes de generar.
+//
+// Fotos elegidas de un banco libre: clientes/<cuenta>/fotos/elegidas.json guarda, por pieza, la foto de
+// cada hueco en orden ({"<pieza>": [{url, credito, pagina}, …], "stories": {"1": {…}, …}}). Se arma con
+// las hojas de src/clientes/candidatas.js y va después de los archivos numerados y antes de buscar.
 
 import { existsSync, readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
@@ -56,6 +60,10 @@ export async function resolverFotos(pieza, salida, { orientacion = 'portrait', d
   const archivos = dirLocal && existsSync(dirLocal) ? readdirSync(dirLocal).filter(f => /^\d+\.(jpe?g|png|webp)$/i.test(f)) : [];
   const locales = Object.fromEntries(archivos.map(f => [Number(f.split('.')[0]), path.join(dirLocal, f)]));
   const deLaPieza = numero != null ? (locales[numero] ? [locales[numero]] : []) : Object.values(locales);
+  const fichero = dirLocal ? path.join(path.dirname(dirLocal), 'elegidas.json') : null;
+  const todasElegidas = fichero && existsSync(fichero) ? JSON.parse(readFileSync(fichero, 'utf8')) : {};
+  const mias = todasElegidas[dirLocal ? path.basename(dirLocal) : ''] ?? null;
+  const elegidaPara = h => !mias ? null : Array.isArray(mias) ? mias[h - 1] : mias[String(numero)];
   let hueco = 0;
   const guardado = existsSync(path.join(salida, 'fotos.json')) ? JSON.parse(readFileSync(path.join(salida, 'fotos.json'), 'utf8')) : {};
   const elegidas = {}, usadas = new Set(), creditos = [];
@@ -72,8 +80,9 @@ export async function resolverFotos(pieza, salida, { orientacion = 'portrait', d
     const deArchivo = f => `data:image/${path.extname(f).slice(1).toLowerCase().replace('jpg', 'jpeg')};base64,${readFileSync(f).toString('base64')}`;
     if (numero != null && deLaPieza.length) return deArchivo(deLaPieza[0]);
     if (numero == null && locales[hueco]) return deArchivo(locales[hueco]);
+    const elegida = elegidaPara(hueco);
     const previa = guardado[clave];
-    const prueba = previa ? [previa] : [];
+    const prueba = elegida ? [elegida] : previa ? [previa] : [];
     for (const c of [...prueba, ...(await candidatas(q))]) {
       if (usadas.has(c.url)) continue;
       try {
