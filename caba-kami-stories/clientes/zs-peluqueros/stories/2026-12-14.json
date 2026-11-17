@@ -1,0 +1,62 @@
+{
+  "semana": "2026-12-14",
+  "stories": [
+    {
+      "fecha": "2026-12-14",
+      "plantilla": "pregunta",
+      "etiqueta": "Antes de las fiestas",
+      "pregunta": "¿Cambio de *look* antes de Navidad?",
+      "opciones": [
+        "Sí, uno grande",
+        "Solo sanear puntas",
+        "Me lo estoy pensando"
+      ],
+      "pie": "Respóndenos por mensaje"
+    },
+    {
+      "fecha": "2026-12-15",
+      "plantilla": "frase",
+      "etiqueta": "Idea de peinado",
+      "texto": "Moño bajo y horquillas con brillo: cena de empresa *resuelta*."
+    },
+    {
+      "fecha": "2026-12-16",
+      "plantilla": "cuentaatras",
+      "etiqueta": "Nochebuena",
+      "hasta": "2026-12-24",
+      "texto": "¿Ya tienes tu peinado de Nochebuena?"
+    },
+    {
+      "fecha": "2026-12-17",
+      "plantilla": "frase",
+      "etiqueta": "Tip del día",
+      "texto": "Trae una foto de referencia: nos ahorra *mil palabras*."
+    },
+    {
+      "fecha": "2026-12-18",
+      "plantilla": "pregunta",
+      "etiqueta": "Confiesa",
+      "pregunta": "¿Eres de foto o de «un *poquito* nada más»?",
+      "opciones": [
+        "De foto",
+        "De «un poquito»"
+      ],
+      "pie": "Respóndenos por mensaje"
+    },
+    {
+      "fecha": "2026-12-19",
+      "plantilla": "promo",
+      "etiqueta": "Fiestas",
+      "titulo": "Peinados de *fiesta*",
+      "detalle": "Para Nochebuena, Navidad y Nochevieja.",
+      "cta": "Pide tu cita por teléfono: los números están en la bio",
+      "valido": "En nuestros dos salones"
+    },
+    {
+      "fecha": "2026-12-20",
+      "plantilla": "frase",
+      "etiqueta": "Idea de peinado",
+      "texto": "Ondas *suaves*: el peinado que va con todo."
+    }
+  ]
+}

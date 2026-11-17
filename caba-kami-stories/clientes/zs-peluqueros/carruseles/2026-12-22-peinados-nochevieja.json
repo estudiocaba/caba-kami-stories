@@ -1,0 +1,42 @@
+{
+  "fecha": "2026-12-22",
+  "pieza": "Peinados para despedir el año",
+  "diapositivas": [
+    {
+      "tipo": "portada",
+      "etiqueta": "Nochevieja",
+      "titulo": "Peinados para *despedir* el año",
+      "bajada": "Tres ideas con brillo para la última noche."
+    },
+    {
+      "tipo": "punto",
+      "numero": "01",
+      "titulo": "Semirrecogido con *lazo*",
+      "texto": "Romántico, cómodo y con un detalle que lo cambia todo.",
+      "fuente": "El Universo"
+    },
+    {
+      "tipo": "punto",
+      "numero": "02",
+      "titulo": "Efecto mojado con *perlas*",
+      "texto": "Para quien se atreve: acabado glam y perlitas entre el cabello.",
+      "fuente": "Marie Claire"
+    },
+    {
+      "tipo": "punto",
+      "numero": "03",
+      "titulo": "Accesorios que *brillan*",
+      "texto": "Horquillas con perlitas o pinzas brillantes para destacar sin complicarte.",
+      "fuente": "Treatwell"
+    },
+    {
+      "tipo": "cierre",
+      "titulo": "¿Lazo, perlas o *brillo*?",
+      "texto": "Te esperamos para el último peinado del año."
+    }
+  ],
+  "copy": "Para la última noche del año, un peinado con brillo ✨ Semirrecogido con lazo, efecto mojado con perlas o accesorios que brillan: ¿cuál eliges?\n\nPide tu cita por teléfono: los números están en la bio 📞",
+  "hashtags": "#peinadosnochevieja #nochevieja #semirrecogido #peinadosdefiesta #peluquerialaspalmas #laspalmasdegrancanaria #grancanaria #zspeluqueros",
+  "fuentes": "El Universo (semirrecogidos con lazo); Marie Claire (melena efecto mojado con perlas, peinados de Nochevieja); Treatwell (accesorios con perlitas y brillo).",
+  "alt": "Carrusel de cinco diapositivas en tonos crema y negro con tres peinados para Nochevieja."
+}

@@ -2,7 +2,7 @@
 
 Todos los recursos de `texturas/` y `sonidos/` son de **dominio público (CC0 o Public Domain Mark)**: se pueden usar, modificar y publicar sin pedir permiso ni citar. Aun así se registra el origen de cada uno.
 
-Las texturas se retocaron (recorte, paso a plata sobre transparente, contraste) y los sonidos se recortaron y normalizaron. La música de `musica/` es original, compuesta por código (`musica/componer.py`).
+Las texturas se retocaron (recorte, paso a plata sobre transparente, contraste) y los sonidos se recortaron y normalizaron. La música de `musica/` es original, compuesta por código: los lofi con `musica/componer.py`, los valses del grimorio con `musica/grimorio.py` y las pistas luminosas de las stories de clientes (`brillo`, `seda`, `verano`) con `musica/luminosa.py`.
 
 | Archivo | Original | Autor | Licencia | Fuente |
 |---|---|---|---|---|

@@ -1,0 +1,37 @@
+{
+  "fecha": "2026-12-18",
+  "pieza": "Cómo pedir tu corte y salir feliz",
+  "diapositivas": [
+    {
+      "tipo": "portada",
+      "etiqueta": "Tips",
+      "titulo": "Cómo pedir tu corte y salir *feliz*",
+      "bajada": "Adiós al «un poquito nada más»."
+    },
+    {
+      "tipo": "lista",
+      "titulo": "Antes de sentarte en el *sillón*",
+      "items": [
+        "Trae una foto de lo que te gusta (y una de lo que no)",
+        "Habla en centímetros, no en «un poquito»",
+        "Cuéntanos tu rutina: si te secas al aire o con secador",
+        "Dinos qué no quieres perder: largo, flequillo, volumen"
+      ]
+    },
+    {
+      "tipo": "punto",
+      "numero": "",
+      "titulo": "La foto *manda*",
+      "texto": "Una imagen nos ahorra mil palabras y a ti te ahorra sustos."
+    },
+    {
+      "tipo": "cierre",
+      "titulo": "¿Eres de foto o de «un *poquito*»?",
+      "texto": "Sea como sea, en nuestros dos salones te escuchamos."
+    }
+  ],
+  "copy": "El «un poquito nada más» es el clásico de la peluquería 😅\n\nPara salir feliz: trae una foto, habla en centímetros, cuéntanos tu rutina y dinos qué no quieres perder. ¿Tú eres de foto o de «un poquito»?\n\nPide tu cita por teléfono: los números están en la bio 📞",
+  "hashtags": "#tipsdepeluqueria #cortedecabello #cambiodelook #peluquerialaspalmas #laspalmasdegrancanaria #grancanaria #zspeluqueros",
+  "fuentes": "Consejos del equipo de ZS Peluqueros.",
+  "alt": "Carrusel de cuatro diapositivas en tonos crema y negro con consejos para pedir un corte en la peluquería."
+}

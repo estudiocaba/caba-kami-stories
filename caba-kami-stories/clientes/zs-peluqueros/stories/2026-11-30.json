@@ -1,0 +1,56 @@
+{
+  "semana": "2026-11-30",
+  "stories": [
+    {
+      "fecha": "2026-12-01",
+      "plantilla": "frase",
+      "etiqueta": "Tendencia",
+      "texto": "Este invierno el color viene *cálido*: chocolate, espresso y cobre suave."
+    },
+    {
+      "fecha": "2026-12-02",
+      "plantilla": "pregunta",
+      "etiqueta": "Tú eliges",
+      "pregunta": "¿Castaño *chocolate* o rubio cremoso?",
+      "opciones": [
+        "Chocolate",
+        "Rubio cremoso"
+      ],
+      "pie": "Respóndenos por mensaje"
+    },
+    {
+      "fecha": "2026-12-03",
+      "plantilla": "cuentaatras",
+      "etiqueta": "Nochebuena",
+      "hasta": "2026-12-24",
+      "texto": "¿Ya sabes qué te vas a hacer en el cabello?"
+    },
+    {
+      "fecha": "2026-12-04",
+      "plantilla": "frase",
+      "etiqueta": "Tip del día",
+      "texto": "Protector térmico antes del secador. *Siempre.*"
+    },
+    {
+      "fecha": "2026-12-05",
+      "plantilla": "promo",
+      "etiqueta": "Temporada de fiestas",
+      "titulo": "Tu look de fiestas, *en dos salones*",
+      "detalle": "Color, cortes y peinados para llegar a las cenas como quieres.",
+      "cta": "Pide tu cita por teléfono: los números están en la bio",
+      "valido": "En nuestros dos salones"
+    },
+    {
+      "fecha": "2026-12-06",
+      "plantilla": "pregunta",
+      "etiqueta": "Fin de semana",
+      "pregunta": "¿Cuál es tu peinado de *fiesta*?",
+      "opciones": [
+        "Moño bajo con brillo",
+        "Ondas suaves",
+        "Coleta alta"
+      ],
+      "pie": "Respóndenos por mensaje"
+    }
+  ]
+}

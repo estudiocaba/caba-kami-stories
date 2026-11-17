@@ -1,0 +1,31 @@
+name: Carrusel de cliente (publicar)
+
+# Publica un carrusel de cliente ya generado. Solo lo lanza La Mensajera con piezas en «Programado».
+on:
+  workflow_dispatch:
+    inputs:
+      cuenta:
+        description: "Carpeta del cliente en clientes/"
+        required: true
+      ficha:
+        description: "Ficha sin .json"
+        required: true
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: caba-kami-stories
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --omit=dev --no-audit --no-fund
+      - run: node src/clientes/publicar-carrusel.js "${{ inputs.cuenta }}" "${{ inputs.ficha }}"
+        env:
+          SECRETOS: ${{ toJSON(secrets) }}
+          PUBLIC_BASE_URL: https://raw.githubusercontent.com/${{ github.repository }}/publico
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}

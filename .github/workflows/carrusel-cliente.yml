@@ -1,0 +1,68 @@
+name: Carrusel de cliente (generar)
+
+# Genera carruseles de un cliente (caba-kami-stories/clientes/<cuenta>/carruseles/<ficha>.json),
+# los guarda en la rama "publico" (clientes/<cuenta>/carruseles/<ficha>/) y los manda a Telegram.
+# En "ficha" vale un nombre exacto o un prefijo: "2026-12" genera todos los de diciembre.
+on:
+  workflow_dispatch:
+    inputs:
+      cuenta:
+        description: "Carpeta del cliente en clientes/, por ejemplo zs-peluqueros"
+        required: true
+      ficha:
+        description: "Ficha sin .json, o prefijo (2026-12) para varias"
+        required: true
+      telegram:
+        description: "Mandar por Telegram"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+jobs:
+  carrusel:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: caba-kami-stories
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --omit=dev --no-audit --no-fund
+      - name: Generar
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          EXTRA=""; [ "${{ inputs.telegram }}" = "true" ] || EXTRA="--sin-telegram"
+          n=0
+          for f in clientes/${{ inputs.cuenta }}/carruseles/${{ inputs.ficha }}*.json; do
+            [ -e "$f" ] || continue
+            node src/clientes/carrusel.js "${{ inputs.cuenta }}" "$(basename "$f" .json)" $EXTRA
+            n=$((n+1))
+          done
+          [ "$n" -gt 0 ] || { echo "No hay fichas que empiecen por ${{ inputs.ficha }}"; exit 1; }
+      - name: Guardar en la rama publico
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          REPO_URL="https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git"
+          SRC="$PWD/out/clientes/${{ inputs.cuenta }}/carruseles"
+          DEST="$RUNNER_TEMP/publico"
+          for i in 1 2 3 4 5 6 7 8; do
+            rm -rf "$DEST"
+            git clone -q --depth 1 --branch publico "$REPO_URL" "$DEST"
+            mkdir -p "$DEST/clientes/${{ inputs.cuenta }}/carruseles"
+            for d in "$SRC"/*/; do
+              n=$(basename "$d"); mkdir -p "$DEST/clientes/${{ inputs.cuenta }}/carruseles/$n"
+              cp "$d"*.jpg "$d"copy.txt "$DEST/clientes/${{ inputs.cuenta }}/carruseles/$n/"
+            done
+            git -C "$DEST" add -A
+            git -C "$DEST" -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -q -m "Carruseles ${{ inputs.cuenta }} ${{ inputs.ficha }}" || { echo "Sin cambios"; break; }
+            git -C "$DEST" push -q origin publico && break
+            sleep $((RANDOM % 8 + 3))
+            [ "$i" = 8 ] && { echo "No se pudo guardar en publico"; exit 1; }
+          done

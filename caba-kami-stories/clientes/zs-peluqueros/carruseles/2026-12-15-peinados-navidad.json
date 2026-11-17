@@ -1,0 +1,49 @@
+{
+  "fecha": "2026-12-15",
+  "pieza": "Peinados para las cenas de Navidad",
+  "diapositivas": [
+    {
+      "tipo": "portada",
+      "etiqueta": "Temporada de fiestas",
+      "titulo": "Peinados para las cenas de *Navidad*",
+      "bajada": "Elegantes, cómodos y que aguantan toda la noche."
+    },
+    {
+      "tipo": "punto",
+      "numero": "01",
+      "titulo": "Moño bajo con *brillo*",
+      "texto": "Un clásico que se renueva con horquillas o detalles brillantes.",
+      "fuente": "Grazia"
+    },
+    {
+      "tipo": "punto",
+      "numero": "02",
+      "titulo": "Ondas *suaves*",
+      "texto": "Relajadas pero con glamour. Van con todo.",
+      "fuente": "Grazia"
+    },
+    {
+      "tipo": "punto",
+      "numero": "03",
+      "titulo": "Trenza con *cinta*",
+      "texto": "Una cinta roja, verde o dorada entre la trenza y ya tienes el toque navideño.",
+      "fuente": "Grazia"
+    },
+    {
+      "tipo": "punto",
+      "numero": "04",
+      "titulo": "Coleta alta con *volumen*",
+      "texto": "Pulida, alta y con cuerpo. Elegante de principio a fin.",
+      "fuente": "Grazia"
+    },
+    {
+      "tipo": "cierre",
+      "titulo": "¿Cuál te *hacemos*?",
+      "texto": "Pide tu peinado de fiesta con tiempo y llega a la cena como quieres."
+    }
+  ],
+  "copy": "Temporada de cenas ✨ Moño bajo con brillo, ondas suaves, trenza con cinta o coleta alta con volumen: ¿cuál te hacemos?\n\nPide tu peinado de fiesta con tiempo en cualquiera de nuestros dos salones.\n\nPide tu cita por teléfono: los números están en la bio 📞",
+  "hashtags": "#peinadosdefiesta #peinadosnavidad #recogidos #ondassuaves #peluquerialaspalmas #laspalmasdegrancanaria #grancanaria #zspeluqueros",
+  "fuentes": "Grazia, recogidos de fiesta para Navidad y Nochevieja (moño bajo con detalles brillantes, ondas suaves, trenza con cinta, coleta alta con volumen).",
+  "alt": "Carrusel de seis diapositivas en tonos crema y negro con cuatro peinados para las cenas de Navidad."
+}

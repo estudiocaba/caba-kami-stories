@@ -32,6 +32,7 @@ jobs:
         with:
           node-version: 22
       - run: npm install --omit=dev --no-audit --no-fund
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
 
       - name: Generar las stories
         env:
@@ -57,6 +58,7 @@ jobs:
             fi
             mkdir -p "$DEST/stories/${{ inputs.cuenta }}"
             cp "$SRC"/*.jpg "$DEST/stories/${{ inputs.cuenta }}/"
+            cp "$SRC"/*.mp4 "$DEST/stories/${{ inputs.cuenta }}/" 2>/dev/null || true
             cp "$SRC/semana.json" "$DEST/stories/${{ inputs.cuenta }}/semana-$(node -p "require('$SRC/semana.json').semana").json"
             git -C "$DEST" add -A
             git -C "$DEST" -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -q -m "Stories ${{ inputs.cuenta }}" || { echo "Sin cambios"; break; }
