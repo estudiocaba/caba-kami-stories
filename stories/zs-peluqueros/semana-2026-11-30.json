@@ -5,39 +5,45 @@
   "stories": [
     {
       "fecha": "2026-12-01",
-      "plantilla": "frase",
+      "plantilla": "tip",
       "archivo": "zs-peluqueros-story-2026-12-01.mp4",
-      "portada": "zs-peluqueros-story-2026-12-01.jpg"
+      "portada": "zs-peluqueros-story-2026-12-01.jpg",
+      "creditos": "Fotos: Pexels"
     },
     {
       "fecha": "2026-12-02",
       "plantilla": "pregunta",
       "archivo": "zs-peluqueros-story-2026-12-02.mp4",
-      "portada": "zs-peluqueros-story-2026-12-02.jpg"
+      "portada": "zs-peluqueros-story-2026-12-02.jpg",
+      "creditos": "Fotos: Pexels"
     },
     {
       "fecha": "2026-12-03",
-      "plantilla": "cuentaatras",
+      "plantilla": "portada",
       "archivo": "zs-peluqueros-story-2026-12-03.mp4",
-      "portada": "zs-peluqueros-story-2026-12-03.jpg"
+      "portada": "zs-peluqueros-story-2026-12-03.jpg",
+      "creditos": "Fotos: Pexels"
     },
     {
       "fecha": "2026-12-04",
-      "plantilla": "frase",
+      "plantilla": "tip",
       "archivo": "zs-peluqueros-story-2026-12-04.mp4",
-      "portada": "zs-peluqueros-story-2026-12-04.jpg"
+      "portada": "zs-peluqueros-story-2026-12-04.jpg",
+      "creditos": "Fotos: Pexels"
     },
     {
       "fecha": "2026-12-05",
-      "plantilla": "promo",
+      "plantilla": "cierre",
       "archivo": "zs-peluqueros-story-2026-12-05.mp4",
-      "portada": "zs-peluqueros-story-2026-12-05.jpg"
+      "portada": "zs-peluqueros-story-2026-12-05.jpg",
+      "creditos": "Fotos: Pexels"
     },
     {
       "fecha": "2026-12-06",
       "plantilla": "pregunta",
       "archivo": "zs-peluqueros-story-2026-12-06.mp4",
-      "portada": "zs-peluqueros-story-2026-12-06.jpg"
+      "portada": "zs-peluqueros-story-2026-12-06.jpg",
+      "creditos": "Fotos: Pexels"
     }
   ]
 }
