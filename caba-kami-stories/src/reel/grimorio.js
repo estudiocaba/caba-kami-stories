@@ -30,6 +30,7 @@ canvas.px{position:absolute;left:0;top:0;width:1080px;height:1920px;image-render
 .cab .num{display:inline-block;font-family:var(--dato);font-size:26px;letter-spacing:.12em;color:var(--luna);background:var(--vino);padding:8px 16px 6px;}
 .cab h2{margin:16px 0 0;font-family:var(--display);font-weight:400;font-size:84px;line-height:1;color:var(--luna);}
 .cab h2 em{font-style:italic;color:var(--plata);}
+.etq.izq{transform-origin:0 50%;text-align:left;}
 .etq{position:absolute;transform:translate(-50%,-50%);font-family:var(--dato);color:var(--luna);white-space:nowrap;text-align:center;letter-spacing:.04em;opacity:0;}
 .sticker{position:absolute;left:50%;top:1290px;transform:translateX(-50%) rotate(-3deg);background:var(--luna);color:var(--noche);font-family:var(--display);font-size:62px;line-height:1;padding:16px 34px 14px;white-space:nowrap;box-shadow:8px 8px 0 var(--vino);opacity:0;}
 .sticker em{font-style:italic;color:var(--vino);}
@@ -127,7 +128,7 @@ export function buildReelGrimorio(spec, imgs = {}, bpm = 96, voces = {}) {
       ${subs}</div>`;
     const e = p.e;
     const etqs = etiquetasObjeto(e.objeto).map(x =>
-      `<div class="etq" data-golpe="${p.conjuro + .3 + (x.retraso ?? 0)}" style="left:${x.x * ESCALA}px;top:${x.y * ESCALA}px;font-size:${x.size ?? 24}px${x.color ? `;color:${x.color}` : ''}">${x.texto}</div>`).join('');
+      `<div class="etq${x.izq ? ' izq' : ''}" data-golpe="${p.conjuro + .3 + (x.retraso ?? 0)}" style="left:${x.x * ESCALA}px;top:${x.y * ESCALA}px;font-size:${x.size ?? 24}px${x.color ? `;color:${x.color}` : ''}">${x.texto}</div>`).join('');
     const ono = e.onomatopeya ?? ONOMATOPEYAS[p.i % ONOMATOPEYAS.length];
     return `<div class="esc" data-in="${p.t0}" data-out="${p.t1}">
       <div class="cab" data-golpe="${p.t0 + .02}"><div class="num">LECCIÓN ${String(p.i + 1).padStart(2, '0')}${spec.tema ? ` · ${spec.tema}` : ''}</div><h2>${enfasis(e.titulo ?? '')}</h2></div>
@@ -175,7 +176,7 @@ function etiquetasObjeto(o) {
   const cx = 90, cy = 96;
   switch (o.tipo) {
     case 'calendario': return (o.etiquetas ?? ['ENE–MAR', 'ABR–JUN', 'JUL–SEP', 'OCT–DIC']).map((n, i) => ({ texto: n, x: cx - 51 + i * 34, y: cy - 22, size: 21, retraso: i * .08 }))
-      .concat([0, 1, 2, 3].map(i => ({ texto: String(i + 1), x: cx - 51 + i * 34, y: cy + 4, size: 64, retraso: .15 + i * .08 })));
+      .concat(o.numeros === false ? [] : (o.numeros ?? ['1', '2', '3', '4']).map((n, i) => ({ texto: n, x: cx - 51 + i * 34, y: cy + 4, size: 64, retraso: .15 + i * .08 })));
     case 'tira': { const n = o.episodios ?? 12, cols = Math.min(n, 6);
       return Array.from({ length: n }, (_, i) => ({ texto: String(i + 1), x: cx - 50 + (i % cols) * 20, y: cy - 10 + Math.floor(i / cols) * 22, size: 34, retraso: i * .06 })); }
     case 'tijeras': return [{ texto: o.izquierda ?? 'PARTE 1', x: cx - 33, y: cy - 2, size: 26 }, { texto: o.derecha ?? 'PARTE 2', x: cx + 33, y: cy - 2, size: 26 },
@@ -183,6 +184,9 @@ function etiquetasObjeto(o) {
     case 'tele': return o.pantalla ? [{ texto: o.pantalla, x: cx - 7, y: cy + 21, size: 24, retraso: .3 }] : [];
     case 'reloj': return o.texto ? [{ texto: o.texto, x: cx, y: cy + 36, size: 30, retraso: .3 }] : [];
     case 'estudio': return [{ texto: o.letrero ?? 'ESTUDIO', x: cx, y: cy - 18, size: 26 }];
+    case 'ranking': { const fs = o.filas ?? [], n = fs.length, alto = Math.min(16, 70 / Math.max(1, n));
+      return fs.map((f, i) => ({ texto: f.texto, izq: true, x: cx - 54, y: cy - 30 + alto * i + alto / 2 + 6, size: f.size ?? 26, retraso: i * .15,
+        color: f.destacado ? 'var(--luna)' : 'var(--plata)' })).concat(o.titulo ? [{ texto: o.titulo, x: cx, y: cy - 37, size: 20, color: 'var(--niebla)' }] : []); }
     default: return [];
   }
 }
@@ -402,6 +406,15 @@ function objeto(o, t, p, tc, fotoClave) {
       for (let y = 0; y < 26 * fl; y++) { const w = Math.round((26 - y) * .9); px(cx - w, cy + 27 - y, 2 * w, 1, C.vino); }
       break;
     }
+    case 'ranking': {
+      const fs = o.filas ?? [], n = fs.length, alto = Math.min(16, 70 / Math.max(1, n));
+      px(cx - 62, cy - 42, 124, 84, C.plata); px(cx - 61, cy - 41, 122, 82, C.negro); px(cx - 61, cy - 41, 122, 8, C.filete);
+      for (let k = 0; k < 3; k++) px(cx - 58 + k * 4, cy - 38, 2, 2, k ? C.niebla : C.vivo);
+      fs.forEach((f, i) => { if (tc - .3 - i * .15 < 0) return;
+        const y = cy - 30 + alto * i + 6, w = Math.round(112 * Math.min(1, f.largo ?? .6) * clamp((tc - .3 - i * .15) / .5));
+        px(cx - 56, y, w, alto - 3, f.destacado ? C.vino : C.alto); });
+      break;
+    }
     case 'estudio': {
       for (let y = 0; y < 18; y++) px(cx - y * 2.4, cy - 34 + y, y * 4.8, 1, C.alto);
       px(cx - 44, cy - 16, 88, 50, C.alto); px(cx - 44, cy - 16, 88, 1, C.plata); px(cx - 26, cy - 24, 52, 12, C.vino);
@@ -471,7 +484,7 @@ window.render = tReal => {
   // Textos: entran de golpe, con rebote
   document.querySelectorAll('[data-golpe]').forEach(el => { const a = clamp((t - (+el.dataset.golpe)) / .17), s = .6 + .4 * outBack(a);
     el.style.opacity = a;
-    const base = el.classList.contains('etq') ? 'translate(-50%,-50%) ' : el.classList.contains('sticker') ? 'translateX(-50%) rotate(' + (-3 + Math.sin(t * 4) * 1.5).toFixed(2) + 'deg) ' : '';
+    const base = el.classList.contains('izq') ? 'translate(0,-50%) ' : el.classList.contains('etq') ? 'translate(-50%,-50%) ' : el.classList.contains('sticker') ? 'translateX(-50%) rotate(' + (-3 + Math.sin(t * 4) * 1.5).toFixed(2) + 'deg) ' : '';
     el.style.transform = base + 'scale(' + s.toFixed(3) + ')'; });
   document.querySelectorAll('[data-ono]').forEach(el => { const x = t - (+el.dataset.ono), a = x < 0 ? 0 : x < .08 ? x / .08 : x < .6 ? 1 : clamp(1 - (x - .6) / .2);
     el.style.opacity = a; el.style.scale = String(1 + .7 * Math.exp(-Math.max(0, x) * 14)); });

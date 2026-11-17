@@ -1,0 +1,115 @@
+{
+  "pieza": "Entrega: Sakamoto Days (ponte al día antes de enero)",
+  "fecha": "2026-12-16",
+  "plantilla": "entrega",
+  "numero": "03",
+  "anime": {
+    "busqueda": "SAKAMOTO DAYS",
+    "anio": 2025
+  },
+  "imagenes": {
+    "portada": {
+      "de": "portada"
+    },
+    "prota": {
+      "personaje": "Sakamoto"
+    },
+    "husbando": {
+      "personaje": "Nagumo"
+    }
+  },
+  "portada": {
+    "kanji": "殺",
+    "romaji": "SAKAMOTO DAYS",
+    "titulo": [
+      "Sakamoto",
+      "Days"
+    ],
+    "bajada": "el asesino más temido se jubiló, engordó y abrió una tienda"
+  },
+  "ficha": {
+    "cifraArriba": "PARA LLEGAR A ENERO",
+    "cifra": "9",
+    "cifraUnidad": "HORAS",
+    "cifraAbajo": [
+      "TEMPORADA 1 = 22 EPISODIOS",
+      "DE 24 MINUTOS"
+    ],
+    "filas": [
+      [
+        "ESTUDIO",
+        "TMS Entertainment"
+      ],
+      [
+        "MANGA",
+        "Yuto Suzuki · Shonen Jump"
+      ],
+      [
+        "NOTA ANILIST",
+        "{nota}"
+      ],
+      [
+        "TEMPORADA 2",
+        "Enero 2027"
+      ],
+      [
+        "DÓNDE VERLA",
+        "Netflix"
+      ]
+    ],
+    "frase": "Acción coreografiada como un videojuego y comedia de barrio en el mismo paquete. <b>Y un señor con delantal que esquiva balas.</b>",
+    "fuente": "FUENTES: ANILIST · NETFLIX"
+  },
+  "deQueVa": {
+    "kanji": "店",
+    "etiquetaProta": "EL PROTA · TARO SAKAMOTO",
+    "parrafo": "Taro Sakamoto era el mejor asesino a sueldo de Japón. Se enamoró, se retiró, engordó y ahora atiende una tienda de barrio con su mujer y su hija.",
+    "remate": "<b>El problema: su pasado no se jubiló.</b> Le ponen precio a su cabeza y medio gremio viene a cobrarlo."
+  },
+  "porQue": {
+    "items": [
+      "Peleas con lo que haya a mano: en esta serie cualquier cosa de la tienda puede ser un arma.",
+      "Un prota que arregla todo sin matar a nadie, porque se lo prometió a su mujer. <b>Romántico y letal.</b>",
+      "Pasó <b>14 semanas</b> en el top 10 mundial de Netflix en 2025."
+    ],
+    "fuente": "FUENTE (03): WHAT'S ON NETFLIX"
+  },
+  "husbando": {
+    "nombre": "Nagumo",
+    "bajada": "el excompañero que nadie pidió (todas lo pedimos)",
+    "filas": [
+      [
+        "OFICIO",
+        "Asesino de élite"
+      ],
+      [
+        "NIVEL DE GUAPURA",
+        "Ilegal",
+        "vino-vivo"
+      ],
+      [
+        "GREEN FLAG",
+        "Leal a Sakamoto, a su manera"
+      ],
+      [
+        "RED FLAG",
+        "Miente por deporte"
+      ],
+      [
+        "CÓMO LO MIRA SAKAMOTO",
+        "Como a una molestia"
+      ]
+    ]
+  },
+  "cierre": {
+    "pregunta": [
+      "¿Team Sakamoto",
+      "o team Nagumo?"
+    ],
+    "texto": "Guárdalo para tu maratón: la temporada 2 llega a Netflix en enero de 2027 y en 9 horas estás al día."
+  },
+  "copy": "Entrega Nº 03: Sakamoto Days 🌙\n\nEl mejor asesino a sueldo de Japón se enamoró, se retiró, engordó y abrió una tienda de barrio. Su pasado, en cambio, no se jubiló: le ponen precio a su cabeza y medio gremio viene a cobrarlo.\n\nPeleas con lo que haya a mano, un prota que no mata a nadie porque se lo prometió a su mujer y un Nagumo que miente por deporte. En 2025 pasó 14 semanas en el top 10 mundial de Netflix.\n\nLa temporada 2 llega a Netflix en enero de 2027. Te faltan 9 horas para ponerte al día.\n\n¿Team Sakamoto o team Nagumo?",
+  "hashtags": "#anime #animeespañol #animelatino #otaku #recomendacionesanime #animerecomendaciones #husbando #sakamotodays #nagumo #shonenjump #netflixanime",
+  "fuentes": "Temporada 2 en enero de 2027, solo en Netflix: Netflix (about.netflix.com, Tudum). Temporada 1 en dos partes de 11 episodios (enero y julio de 2025): Netflix Tudum. 14 semanas en el top 10 mundial de Netflix en 2025: What's on Netflix. Estudio y nota: AniList. 9 horas = 22 episodios × 24 minutos (cálculo propio).",
+  "alt": "Carrusel de seis diapositivas en tonos negro, gris humo y vino sobre Sakamoto Days: portada con el póster oficial dentro de un arco gótico, ficha técnica con las 9 horas para ponerse al día, de qué va con Taro Sakamoto, tres motivos para verla, ficha de husbando de Nagumo y la pregunta final ¿Team Sakamoto o team Nagumo?"
+}
