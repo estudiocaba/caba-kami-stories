@@ -16,6 +16,7 @@ import path from 'node:path';
 import { chromium } from 'playwright-core';
 import { htmlStory, htmlStoryEditorial } from './plantillas.js';
 import { resolverFotos } from '../clientes/fotos.js';
+import { fetchConReintento } from '../telegram.js';
 import { cargarMarca, fotoSrc, revisar, RAIZ } from '../clientes/marca.js';
 import { sendDocumentGroup, sendText } from '../telegram.js';
 
@@ -114,7 +115,7 @@ if (!args.includes('--sin-telegram') && api && env.TELEGRAM_CHAT_ID && hechas.le
       form.append('video', new Blob([readFileSync(path.join(OUT, h.archivo))], { type: 'video/mp4' }), h.archivo);
       form.append('width', '1080'); form.append('height', '1920'); form.append('duration', String(video)); form.append('supports_streaming', 'true');
       form.append('caption', `${marca.nombre} · ${dias(h.fecha)} · ${h.plantilla}${i === hechas.length - 1 ? `\n\n${pie}` : ''}`.slice(0, 1000));
-      const r = await fetch(`${api}/sendVideo`, { method: 'POST', body: form });
+      const r = await fetchConReintento(`${api}/sendVideo`, { method: 'POST', body: form });
       if (!r.ok) console.log(`Telegram: ${r.status} ${await r.text()}`);
     }
   } else {
