@@ -1,5 +1,5 @@
 {
-  "pieza": "Explicativo: ¿qué es un cour y por qué tu anime se corta a la mitad?",
+  "pieza": "Explicativo: ¿qué es un cour y por qué tu anime se corta en el capítulo 12?",
   "fecha": "2026-12-03",
   "plantilla": "explicativo",
   "musica": "caldero",
@@ -7,139 +7,81 @@
   "voz": {
     "motor": "edge",
     "voz": "es-MX-DaliaNeural",
-    "velocidad": "-4%"
+    "velocidad": "+12%",
+    "tono": "+6Hz"
   },
   "pronunciacion": {
     "split-cour": "split cur",
-    "cours": "curs",
+    "Spy x Family": "spái fámili",
     "cour": "cur"
   },
   "tema": "EL COUR",
   "etiqueta": "EL GRIMORIO DEL AQUELARRE",
-  "titulo": [
-    "¿Qué es",
-    "un *cour*?"
-  ],
-  "subtitulo": "y por qué tu anime se corta justo cuando se pone bueno",
+  "titulo": ["¿Qué es un *cour*?"],
   "intro": {
-    "voz": "Abran el grimorio. Hoy toca un hechizo que nos arruina la vida a todas: el cour."
+    "voz": "¿Tu anime se cortó en el capítulo 12, justo en lo mejor? No es mala suerte. Tiene nombre: cour.",
+    "fotos": ["titan", "spy", "mushoku", "boticaria"],
+    "onomatopeya": "ゴゴゴ",
+    "brujas": [{ "id": "vidente", "poses": ["varita", "enfado"] }]
   },
   "fotos": {
-    "boticaria": {
-      "anime": {
-        "busqueda": "Kusuriya no Hitorigoto",
-        "anio": 2026
-      }
-    }
+    "titan": { "anime": { "busqueda": "Shingeki no Kyojin: The Final Season", "anio": 2020 } },
+    "spy": { "anime": { "busqueda": "SPY×FAMILY", "anio": 2022 } },
+    "mushoku": { "anime": { "busqueda": "Mushoku Tensei", "anio": 2021 } },
+    "boticaria": { "anime": { "busqueda": "Kusuriya no Hitorigoto", "anio": 2026 } }
   },
   "escenas": [
     {
       "titulo": "La tele japonesa",
-      "objeto": {
-        "tipo": "calendario",
-        "marca": "todas"
-      },
-      "brujas": [
-        {
-          "id": "vidente",
-          "poses": [
-            "varita",
-            "senala"
-          ]
-        }
-      ],
+      "objeto": { "tipo": "calendario", "marca": "todas" },
+      "onomatopeya": "ドン！",
+      "brujas": [{ "id": "vidente", "poses": ["varita", "senala"] }],
       "dato": "1 *cour* = 3 meses",
-      "voz": "En Japón, la tele reparte el año en cuatro bloques de tres meses. Cada bloque es un cour."
+      "voz": "En Japón, la tele divide el año en cuatro bloques de tres meses. Cada bloque es un cour. Así de simple."
     },
     {
       "titulo": "¿Cuántos episodios?",
-      "objeto": {
-        "tipo": "tira",
-        "episodios": 12
-      },
+      "objeto": { "tipo": "tira", "episodios": 12 },
+      "onomatopeya": "ジャーン",
       "brujas": [
-        {
-          "id": "vidente",
-          "poses": [
-            "varita",
-            "senala"
-          ]
-        },
-        {
-          "id": "mensajera",
-          "poses": [
-            "parado",
-            "sorpresa"
-          ]
-        }
+        { "id": "vidente", "poses": ["varita", "senala"] },
+        { "id": "mensajera", "poses": ["pensar", "sorpresa"] }
       ],
       "dato": "12 o 13 episodios",
-      "voz": "Con un episodio por semana, en tres meses salen 12 o 13. Por eso tantas temporadas terminan en el capítulo 12."
+      "voz": "Un episodio por semana durante tres meses: salen 12 o 13. Por eso tantos animes mueren en el capítulo 12."
     },
     {
       "titulo": "El *split-cour*",
-      "objeto": {
-        "tipo": "tijeras",
-        "izquierda": "CAP. 1–12",
-        "derecha": "CAP. 13–24",
-        "pausa": "MESES DE PAUSA"
-      },
+      "objeto": { "tipo": "tijeras", "izquierda": "CAP. 1–12", "derecha": "CAP. 13–24", "pausa": "MESES DE PAUSA" },
+      "onomatopeya": "ガーン",
       "brujas": [
-        {
-          "id": "vidente",
-          "poses": [
-            "varita",
-            "encoge"
-          ]
-        },
-        {
-          "id": "cronista",
-          "poses": [
-            "parado",
-            "llora"
-          ]
-        }
+        { "id": "vidente", "poses": ["varita", "encoge"] },
+        { "id": "cronista", "poses": ["enfado", "llora"] }
       ],
       "dato": "2 *cours* con pausa",
-      "voz": "El split-cour parte la temporada en dos y deja meses de pausa en medio. Así el estudio anima sin ir con prisas. Y nosotras, a esperar."
+      "voz": "Y el split-cour es peor: parten la temporada en dos y te dejan meses esperando. El estudio respira. Nosotras sufrimos."
     },
     {
-      "titulo": "Un ejemplo de ahora",
+      "titulo": "Ejemplo *fresquito*",
       "foto": "boticaria",
-      "objeto": {
-        "tipo": "tele",
-        "pantalla": "PARTE 2: ABRIL 2027"
-      },
+      "objeto": { "tipo": "tele", "pantalla": "PARTE 2: ABRIL 2027" },
+      "onomatopeya": "キラッ",
       "brujas": [
-        {
-          "id": "vidente",
-          "poses": [
-            "varita",
-            "pensar"
-          ]
-        },
-        {
-          "id": "escriba",
-          "poses": [
-            "parado",
-            "triste"
-          ]
-        }
+        { "id": "vidente", "poses": ["senala", "pensar"] },
+        { "id": "escriba", "poses": ["sorpresa", "triste"] }
       ],
       "dato": "24 episodios en *dos partes*",
-      "voz": "La temporada 3 de Los diarios de la boticaria empezó en octubre, y su segunda parte llega en abril de 2027."
+      "voz": "Los diarios de la boticaria: la temporada 3 arrancó en octubre y la segunda parte llega en abril de 2027. A esperar."
     }
   ],
   "cierre": {
-    "pregunta": [
-      "¿Qué split-cour",
-      "te dolió *más*?"
-    ],
+    "etiqueta": "¿QUÉ ESPERA DOLIÓ MÁS?",
+    "pregunta": ["¿Boticaria o", "*Spy x Family*?"],
     "cta": "GUÁRDALO PARA EL PRÓXIMO PARÓN",
-    "voz": "Y a ti, ¿qué split-cour te dolió más?"
+    "voz": "Ahora tú: ¿qué espera te dolió más, la de la boticaria o la de Spy x Family?"
   },
-  "copy": "¿Qué es un cour y por qué tu anime se corta a la mitad? Lo explica la Vidente desde el grimorio 🌙\n\nEn Japón la tele se organiza en cuatro bloques de tres meses: cada uno es un cour. Con un episodio por semana salen 12 o 13 capítulos, y por eso tantas temporadas acaban en el 12.\n\nEl split-cour es la temporada partida en dos, con una pausa en medio para que el estudio respire. Ejemplo de ahora: la temporada 3 de Los diarios de la boticaria empezó en octubre y la segunda parte llega en abril de 2027.\n\n¿Qué split-cour te dolió más?",
-  "hashtags": "#anime #animeespañol #animelatino #otaku #cour #splitcour #datosanime #curiosidadesanime #kusuriyanohitorigoto #theapothecarydiaries #animereels",
-  "fuentes": "Duración de un cour (tres meses, 12-13 episodios): Anime Corner, Epicstream, Anime News Network. Temporada 3 de Los diarios de la boticaria: octubre de 2026 en Crunchyroll, parte 2 en abril de 2027 (Final Weapon, ANN, fun-japan.jp).",
-  "alt": "Reel en pixel art: brujitas en una torre con un caldero explican qué es un cour. La Vidente conjura con su varita un calendario de cuatro bloques de tres meses, una tira de 12 episodios, unas tijeras que parten una temporada en dos y una tele con la portada de Los diarios de la boticaria."
+  "copy": "¿Tu anime se cortó en el capítulo 12, justo en lo mejor? No es mala suerte: es el cour 🌙\n\nEn Japón la tele divide el año en cuatro bloques de tres meses. Cada bloque es un cour. Con un episodio por semana salen 12 o 13 capítulos, y por eso tantas temporadas mueren en el 12.\n\nEl split-cour es peor: la temporada se parte en dos con meses de pausa en medio. El estudio respira. Nosotras sufrimos. Ejemplo fresquito: la temporada 3 de Los diarios de la boticaria arrancó en octubre y la segunda parte llega en abril de 2027.\n\n¿Qué espera te dolió más: la de la boticaria o la de Spy x Family?",
+  "hashtags": "#anime #animeespañol #animelatino #otaku #cour #splitcour #datosanime #curiosidadesanime #kusuriyanohitorigoto #spyxfamily #animereels",
+  "fuentes": "Duración de un cour (tres meses, 12-13 episodios): Anime Corner, Epicstream, Anime News Network. Temporada 3 de Los diarios de la boticaria: octubre de 2026 en Crunchyroll, parte 2 en abril de 2027 (Final Weapon, ANN, fun-japan.jp). Spy x Family, temporada 1 en dos partes (abril y octubre de 2022): ANN.",
+  "alt": "Reel en pixel art: brujitas de anime en una torre con un caldero explican qué es un cour. Un espejo mágico pasa portadas de Shingeki no Kyojin, Spy x Family, Mushoku Tensei y Los diarios de la boticaria; luego la Vidente conjura un calendario de cuatro bloques de tres meses, una tira de 12 episodios, unas tijeras que parten una temporada en dos y una tele con la portada de Los diarios de la boticaria. Subtítulos grandes acompañan la voz."
 }
