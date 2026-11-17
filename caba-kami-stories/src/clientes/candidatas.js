@@ -55,7 +55,9 @@ async function pexels(q, cuantas) {
   const fotos = [], vistas = new Set();
   const palabras = q.toLowerCase().split(/\s+/);
   for (const ds of INDICES) {
-    const r = await fetch(`https://datasets-server.huggingface.co/search?dataset=${ds}&config=default&split=train&query=${encodeURIComponent(q)}&length=100`);
+    let r;
+    try { r = await fetch(`https://datasets-server.huggingface.co/search?dataset=${ds}&config=default&split=train&query=${encodeURIComponent(q)}&length=100`, { signal: AbortSignal.timeout(45000) }); }
+    catch (e) { console.log(`  ${ds}: ${e.message}`); continue; }
     if (!r.ok) { console.log(`  ${ds}: ${r.status}`); continue; }
     const j = await r.json();
     const filas = (j.rows ?? []).map(x => x.row)
@@ -108,6 +110,7 @@ const page = await browser.newPage({ viewport: { width: 1000, height: 600 } });
 const todas = {};
 for (const p of pedidos) {
   const cuantas = p.n > 1 ? Math.max(14, p.n * 2 + 2) : 10;
+  console.log(`… ${p.pieza} ${p.hueco} «${p.q}»`);
   const fotos = await pexels(p.q, cuantas);
   const clave = `${p.pieza}__${String(p.hueco).padStart(2, '0')}`;
   todas[clave] = { q: p.q, n: p.n, fotos };
@@ -119,7 +122,7 @@ for (const p of pedidos) {
     ${fotos.map((f, i) => `<div style="position:relative;width:${ancho}px;height:${alto}px;background:url('${f.mini}') center/cover">
       <span style="position:absolute;left:4px;top:4px;background:#e33;padding:1px 7px;border-radius:4px">${i + 1}</span></div>`).join('')}
     </div></body>`;
-  await page.setContent(html, { waitUntil: 'networkidle' });
+  try { await page.setContent(html, { waitUntil: 'networkidle', timeout: 40000 }); } catch { console.log('  (miniaturas lentas)'); }
   const h = 36 + Math.ceil(fotos.length / cols) * (alto + 6);
   await page.setViewportSize({ width: cols * (ancho + 6) + 6, height: h });
   await page.screenshot({ path: path.join(OUT, `${clave}.jpg`), type: 'jpeg', quality: 70 });
