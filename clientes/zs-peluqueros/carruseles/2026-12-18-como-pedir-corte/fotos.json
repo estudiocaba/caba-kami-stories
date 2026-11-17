@@ -1,0 +1,32 @@
+{
+  "f0": {
+    "url": "https://images.pexels.com/photos/8834047/pexels-photo-8834047.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/8834047/",
+    "alt": "Hairdresser Fixing the Hair of an Elderly Client"
+  },
+  "f1": {
+    "url": "https://images.pexels.com/photos/17724747/pexels-photo-17724747.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/17724747/",
+    "alt": "A woman showing her coworker a social media post on her phone"
+  },
+  "f2": {
+    "url": "https://images.pexels.com/photos/4792667/pexels-photo-4792667.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/4792667/",
+    "alt": "Fabric bag near wooden comb on tiled floor"
+  },
+  "f3": {
+    "url": "https://images.pexels.com/photos/1586999/pexels-photo-1586999.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/1586999/",
+    "alt": "Side profile of an elegant woman with long hair wrapped in a towel, capturing natural beauty."
+  },
+  "f4": {
+    "url": "https://images.pexels.com/photos/6567418/pexels-photo-6567418.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "credito": "Pexels",
+    "pagina": "https://www.pexels.com/photo/6567418/",
+    "alt": "Side view of cheerful ethnic young female shopper with flying curly hair carrying paper shopping bags running on city road"
+  }
+}
