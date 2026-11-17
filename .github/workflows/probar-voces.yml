@@ -1,0 +1,34 @@
+name: Probar voces
+
+# Genera muestras de voces de narradora y las guarda en la rama "publico" (carpeta voces/).
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  voces:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: caba-kami-stories
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - run: pip install -q piper-tts edge-tts
+      - run: python3 src/voz/probar.py out/voces
+      - name: Guardar en la rama publico
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          REPO_URL="https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git"
+          SRC="$PWD"; DEST="$RUNNER_TEMP/publico"
+          for i in 1 2 3 4 5 6; do
+            rm -rf "$DEST"; git clone -q --depth 1 --branch publico "$REPO_URL" "$DEST"
+            mkdir -p "$DEST/voces" && cp "$SRC"/out/voces/* "$DEST/voces/"
+            git -C "$DEST" add -A
+            git -C "$DEST" -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -q -m "Muestras de voces" || break
+            git -C "$DEST" push -q origin publico && break
+            sleep $((RANDOM % 8 + 3))
+          done
