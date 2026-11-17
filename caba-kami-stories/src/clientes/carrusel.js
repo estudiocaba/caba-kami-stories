@@ -16,6 +16,8 @@ import path from 'node:path';
 import { chromium } from 'playwright-core';
 import { cargarMarca, fotoSrc, revisar, RAIZ } from './marca.js';
 import { fuenteCss } from '../stories/plantillas.js';
+import { cssEditorial, seccionEditorial } from './editorial.js';
+import { resolverFotos } from './fotos.js';
 import { sendDocumentGroup, sendText } from '../telegram.js';
 
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -87,7 +89,13 @@ const DIAS = {
 
 export function htmlCarrusel(ficha, marca, dir) {
   const n = ficha.diapositivas.length;
-  const fuentes = [...new Set([marca.fuentes.titulo, marca.fuentes.texto])].flatMap(f => fuenteCss(f));
+  const fuentes = [...new Set([marca.fuentes.titulo, marca.fuentes.texto])].flatMap(f => fuenteCss(f, [300, 400, 500, 600, 700, 800, 900]));
+  if (marca.estilo === 'editorial') {
+    return `<!doctype html><html lang="es"><head><meta charset="utf-8">
+${fuentes.map(u => `<link rel="stylesheet" href="${u}">`).join('\n')}
+<style>${cssEditorial(marca, 1350)}</style></head><body>${ficha.diapositivas.map(d => `<section class="dia ed">${seccionEditorial(d, marca, 1350)}</section>`).join('\n')}</body></html>`
+      .replace(/url\('(fotos\/[^']+)'\)/g, (_, ref) => `url('${fotoSrc(ref, dir)}')`);
+  }
   const dias = ficha.diapositivas.map((d, i) => {
     const f = DIAS[d.tipo];
     if (!f) throw new Error(`Tipo de diapositiva desconocido: ${d.tipo}. Hay: ${Object.keys(DIAS).join(', ')}`);
@@ -115,6 +123,8 @@ if (import.meta.url === `file://${process.argv[1]}`) {
 
   const OUT = path.join(RAIZ, 'out', 'clientes', cuenta, 'carruseles', nombre.replace(/\.json$/, ''));
   mkdirSync(OUT, { recursive: true });
+  const { textoCreditos } = await resolverFotos(ficha, OUT);
+  if (textoCreditos) ficha.copy = `${ficha.copy ?? ''}\n\n📷 ${textoCreditos}`;
   const tmp = path.join(OUT, 'carrusel.html');
   writeFileSync(tmp, htmlCarrusel(ficha, marca, dir));
   const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH || '/usr/bin/google-chrome' });

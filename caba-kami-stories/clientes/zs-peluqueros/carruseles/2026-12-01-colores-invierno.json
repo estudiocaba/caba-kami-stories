@@ -1,81 +1,87 @@
 {
   "fecha": "2026-12-01",
-  "pieza": "Los colores de cabello de este invierno",
+  "pieza": "Tendencia color invierno: chocolate, bronde y cobre",
   "diapositivas": [
     {
       "tipo": "portada",
-      "etiqueta": "Tendencias de color",
-      "titulo": "Los colores de cabello que se *llevan* este invierno",
-      "bajada": "Cálidos, con brillo y sin extremos. ¿Cuál es el tuyo?"
+      "foto": {
+        "buscar": "chocolate brown hair woman"
+      },
+      "titulo": [
+        "*Tendencia*",
+        "Color *invierno*"
+      ],
+      "etiqueta": "Cálidos y con brillo"
     },
     {
-      "tipo": "color",
-      "numero": "01",
-      "nombre": "Chocolate y *moka*",
-      "tonos": [
-        "#3B2418",
-        "#5C3A27",
-        "#7A5038"
+      "tipo": "tira",
+      "fotos": [
+        {
+          "buscar": "dark chocolate brown hair"
+        },
+        {
+          "buscar": "espresso dark brown hair woman"
+        },
+        {
+          "buscar": "bronde balayage hair"
+        },
+        {
+          "buscar": "honey blonde hair woman"
+        },
+        {
+          "buscar": "copper hair woman"
+        }
       ],
-      "texto": "El castaño oscuro con matices cálidos es de los más pedidos de la temporada.",
-      "fuente": "Marie Claire"
+      "nombres": [
+        "Chocolate",
+        "Espresso",
+        "Bronde",
+        "Rubio cremoso",
+        "Cobre suave"
+      ],
+      "texto": [
+        "Chocolate y moka: castaño oscuro con matices cálidos.",
+        "Espresso: casi negro, con reflejos de café.",
+        "Bronde: ni castaño ni rubio, el punto medio que ilumina.",
+        "Rubio cremoso y cobre suave: luz cálida, nada de extremos."
+      ]
     },
     {
-      "tipo": "color",
-      "numero": "02",
-      "nombre": "*Espresso*",
-      "tonos": [
-        "#1E140E",
-        "#36261B",
-        "#4A3424"
-      ],
-      "texto": "Casi negro, con reflejos de café. Elegante y fácil de llevar.",
-      "fuente": "Marie Claire"
+      "tipo": "collage",
+      "fotos": {
+        "buscar": "chocolate brown hair",
+        "n": 6
+      },
+      "titulo": "Mechas *chocolate*"
     },
     {
-      "tipo": "color",
-      "numero": "03",
-      "nombre": "*Bronde*",
-      "tonos": [
-        "#6E5137",
-        "#A88358",
-        "#C9A77A"
-      ],
-      "texto": "Ni castaño ni rubio: el punto medio que ilumina sin cambiar de golpe.",
-      "fuente": "Marie Claire"
+      "tipo": "collage",
+      "fotos": {
+        "buscar": "copper red hair",
+        "n": 6
+      },
+      "titulo": "Cobre *suave*"
     },
     {
-      "tipo": "color",
-      "numero": "04",
-      "nombre": "Rubio *cremoso*",
-      "tonos": [
-        "#C9A77A",
-        "#E2CBA0",
-        "#EFDDBB"
-      ],
-      "texto": "Los rubios muy fríos se despiden: ahora se lleva el rubio con matiz de mantequilla.",
-      "fuente": "Marie Claire"
-    },
-    {
-      "tipo": "color",
-      "numero": "05",
-      "nombre": "Cobre *suave*",
-      "tonos": [
-        "#7A3B22",
-        "#A55A34",
-        "#C47B4E"
-      ],
-      "texto": "Cobrizos con matices y movimiento, para un cambio con personalidad.",
-      "fuente": "Marie Claire"
+      "tipo": "fototexto",
+      "foto": {
+        "buscar": "creamy blonde hair woman"
+      },
+      "texto": [
+        "Los rubios muy fríos se despiden: este invierno se lleva el rubio con matiz de mantequilla.",
+        "En ZS valoramos cuál es el tuyo según tu base natural y tu piel."
+      ]
     },
     {
       "tipo": "cierre",
-      "titulo": "¿Con cuál te ves este *invierno*?",
-      "texto": "Te asesoramos en cualquiera de nuestros dos salones."
+      "foto": {
+        "buscar": "brown hair woman portrait"
+      },
+      "pregunta": "¿Te animas con el color más cálido del invierno?"
     }
   ],
-  "copy": "Este invierno el color viene cálido, con brillo y sin extremos ✨\n\nChocolate, espresso, bronde, rubio cremoso o cobre suave: ¿con cuál te ves? En nuestros dos salones te asesoramos para elegir el que mejor te queda.\n\nPide tu cita por teléfono: los números están en la bio 📞",
+  "copy": "Este invierno el color viene cálido, con brillo y sin extremos ✨\n\nChocolate, espresso, bronde, rubio cremoso o cobre suave: ¿con cuál te ves? En nuestros dos salones valoramos cuál es el tuyo según tu base natural y tu piel.\n\nPide tu cita por teléfono: los números están en la bio 📞",
   "hashtags": "#coloresdecabello #tendenciascabello #castañochocolate #bronde #rubiocremoso #cobrizo #peluquerialaspalmas #laspalmasdegrancanaria #grancanaria #zspeluqueros",
-  "fuentes": "Marie Claire, colores de cabello tendencia otoño-invierno 2026/27 (chocolate y moka, espresso hair, bronde, rubios cremosos, cobres suaves); Goldwell (cobrizos vibrantes, en Marie Claire).",
-  "alt": "Carrusel de siete diapositivas en tonos crema y negro con muestras de color: chocolate y moka, espresso, bronde, rubio cremoso y cobre suave."
+  "fuentes": "Marie Claire, colores de cabello tendencia otoño-invierno 2026/27 (chocolate y moka, espresso, bronde, rubios cremosos, cobres suaves).",
+  "alt": "Carrusel de seis diapositivas con fotos de cabellos en tonos chocolate, espresso, bronde, rubio cremoso y cobre, y cierre con la invitación a pedir cita."
 }

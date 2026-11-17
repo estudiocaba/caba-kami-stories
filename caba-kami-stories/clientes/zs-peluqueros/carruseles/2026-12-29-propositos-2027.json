@@ -4,28 +4,49 @@
   "diapositivas": [
     {
       "tipo": "portada",
-      "etiqueta": "Año nuevo",
-      "titulo": "Propósitos *capilares* para 2027",
-      "bajada": "Los que sí se pueden cumplir."
+      "foto": {
+        "buscar": "woman new year celebration hair"
+      },
+      "titulo": [
+        "*Propósitos*",
+        "2027"
+      ],
+      "etiqueta": "Para tu cabello"
     },
     {
-      "tipo": "lista",
-      "titulo": "En 2027, *prometo*…",
-      "items": [
-        "Usar protector térmico de verdad (no a veces)",
-        "Dejar de cortarme el flequillo en casa",
-        "Probar ese color que llevo un año guardando en el móvil",
-        "Sanear las puntas antes de que sea tarde"
-      ]
+      "tipo": "tip",
+      "foto": {
+        "buscar": "woman hair dryer"
+      },
+      "titulo": "Protector térmico",
+      "texto": "De verdad. No a veces."
+    },
+    {
+      "tipo": "tip",
+      "foto": {
+        "buscar": "bangs hairstyle woman"
+      },
+      "titulo": "Adiós al flequillo casero",
+      "texto": "Ese flequillo te lo dejamos perfecto nosotros."
+    },
+    {
+      "tipo": "tip",
+      "foto": {
+        "buscar": "hair color woman"
+      },
+      "titulo": "Ese color guardado",
+      "texto": "El que llevas un año guardando en el móvil: este es el año."
     },
     {
       "tipo": "cierre",
-      "titulo": "¿Cuál cumples *sí o sí*?",
-      "texto": "Gracias por este año con nosotros. Nos vemos en 2027 en los dos salones."
+      "foto": {
+        "buscar": "woman beautiful hair smile"
+      },
+      "pregunta": "¿Cuál cumples sí o sí?"
     }
   ],
   "copy": "Propósitos capilares para 2027 que sí se pueden cumplir 🥂 ¿Cuál te apuntas sí o sí? Gracias por un año precioso en nuestros dos salones.\n\nPide tu cita por teléfono: los números están en la bio 📞",
   "hashtags": "#propositos2027 #añonuevo #cuidadodelcabello #peluquerialaspalmas #laspalmasdegrancanaria #grancanaria #zspeluqueros",
   "fuentes": "Ideas del equipo de ZS Peluqueros.",
-  "alt": "Carrusel de tres diapositivas en tonos crema y negro con cuatro propósitos para cuidar el cabello en 2027."
+  "alt": "Carrusel de cinco diapositivas con fotos y tres propósitos para el cabello en 2027."
 }

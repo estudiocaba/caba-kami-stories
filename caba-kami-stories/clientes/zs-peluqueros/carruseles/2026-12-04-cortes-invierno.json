@@ -1,49 +1,66 @@
 {
   "fecha": "2026-12-04",
-  "pieza": "Los cortes que más se van a pedir este invierno",
+  "pieza": "Tendencia cortes invierno: scandi bob, clavicut, butterfly",
   "diapositivas": [
     {
       "tipo": "portada",
-      "etiqueta": "Cortes de temporada",
-      "titulo": "Los cortes que más se van a *pedir* este invierno",
-      "bajada": "Para ellas. (Para ellos, el martes.)"
+      "foto": {
+        "buscar": "bob haircut woman"
+      },
+      "titulo": [
+        "*Tendencia*",
+        "Cortes *invierno*"
+      ],
+      "etiqueta": "Para ellas"
     },
     {
-      "tipo": "punto",
-      "numero": "01",
-      "titulo": "Scandi *bob*",
-      "texto": "Un bob limpio y ligero, a la altura de la mandíbula. Elegante sin esfuerzo.",
-      "fuente": "Marie Claire"
+      "tipo": "fototexto",
+      "foto": {
+        "buscar": "short bob haircut woman"
+      },
+      "texto": [
+        "Scandi bob: un bob limpio y ligero, a la altura de la mandíbula.",
+        "Elegante sin esfuerzo y fácil de peinar."
+      ]
     },
     {
-      "tipo": "punto",
-      "numero": "02",
-      "titulo": "Soft *clavicut*",
-      "texto": "La melena por la clavícula, con las puntas suaves. El largo medio que favorece a casi todas.",
-      "fuente": "Marie Claire"
+      "tipo": "fototexto",
+      "foto": {
+        "buscar": "shoulder length haircut woman"
+      },
+      "texto": [
+        "Soft clavicut: la melena por la clavícula, con las puntas suaves.",
+        "El largo medio que favorece a casi todas."
+      ]
     },
     {
-      "tipo": "punto",
-      "numero": "03",
-      "titulo": "*Butterfly*",
-      "texto": "Capas largas que dan movimiento y volumen sin perder largo.",
-      "fuente": "¡Hola!"
+      "tipo": "collage",
+      "fotos": {
+        "buscar": "long layered haircut",
+        "n": 6
+      },
+      "titulo": "*Butterfly*"
     },
     {
-      "tipo": "punto",
-      "numero": "04",
-      "titulo": "Corto y *cómodo*",
-      "texto": "El cabello corto vuelve con fuerza: práctico y fácil de peinar.",
-      "fuente": "Marie Claire"
+      "tipo": "fototexto",
+      "foto": {
+        "buscar": "pixie haircut woman"
+      },
+      "texto": [
+        "Corto y cómodo: el cabello corto vuelve con fuerza este invierno.",
+        "Práctico, con carácter y sin complicaciones."
+      ]
     },
     {
       "tipo": "cierre",
-      "titulo": "¿Te animas a *cambiar*?",
-      "texto": "Tráenos una foto de referencia y lo vemos juntos."
+      "foto": {
+        "buscar": "woman haircut salon"
+      },
+      "pregunta": "¿Te atreves con el corte del invierno?"
     }
   ],
   "copy": "Scandi bob, soft clavicut, butterfly o corto y cómodo: estos son los cortes que más se van a pedir este invierno ✂️\n\n¿Cuál te pega más? Tráenos una foto de referencia y lo vemos juntos en cualquiera de nuestros dos salones.\n\nPide tu cita por teléfono: los números están en la bio 📞",
   "hashtags": "#cortesdecabello #scandibob #clavicut #butterflycut #cabellocorto #peluquerialaspalmas #laspalmasdegrancanaria #grancanaria #zspeluqueros",
-  "fuentes": "Marie Claire (scandi bob, soft clavicut y cabello corto, otoño-invierno 2026/27); ¡Hola! (corte butterfly, oct. 2026).",
-  "alt": "Carrusel de seis diapositivas en tonos crema y negro con cuatro cortes de temporada: scandi bob, soft clavicut, butterfly y corto."
+  "fuentes": "Marie Claire (scandi bob, soft clavicut y cabello corto, otoño-invierno 2026/27); ¡Hola! (corte butterfly).",
+  "alt": "Carrusel de seis diapositivas con fotos de cortes de temporada: scandi bob, clavicut, butterfly y corto."
 }
