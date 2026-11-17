@@ -2,58 +2,144 @@
   "pieza": "Explicativo: ¿qué es un cour y por qué tu anime se corta a la mitad?",
   "fecha": "2026-12-03",
   "plantilla": "explicativo",
-  "musica": "niebla",
-  "etiqueta": "EXPLICADO CON MONIGOTES",
-  "titulo": ["¿Qué es", "un *cour*?"],
+  "musica": "caldero",
+  "narradora": "VIDENTE",
+  "voz": {
+    "motor": "edge",
+    "voz": "es-MX-DaliaNeural",
+    "velocidad": "-4%"
+  },
+  "pronunciacion": {
+    "split-cour": "split cur",
+    "cours": "curs",
+    "cour": "cur"
+  },
+  "tema": "EL COUR",
+  "etiqueta": "EL GRIMORIO DEL AQUELARRE",
+  "titulo": [
+    "¿Qué es",
+    "un *cour*?"
+  ],
   "subtitulo": "y por qué tu anime se corta justo cuando se pone bueno",
-  "anfitriona": "fan",
+  "intro": {
+    "voz": "Abran el grimorio. Hoy toca un hechizo que nos arruina la vida a todas: el cour."
+  },
   "fotos": {
-    "boticaria": { "anime": { "busqueda": "Kusuriya no Hitorigoto", "anio": 2026 } }
+    "boticaria": {
+      "anime": {
+        "busqueda": "Kusuriya no Hitorigoto",
+        "anio": 2026
+      }
+    }
   },
   "escenas": [
     {
-      "rotulo": "LA TELE JAPONESA",
-      "objeto": { "tipo": "calendario", "marca": "todas" },
-      "monigotes": [{ "rol": "cadena", "x": 300, "poses": ["parado", "senala"] }],
-      "bocadillo": { "de": 0, "texto": "Cuatro bloques al año. Ni uno más." },
-      "dato": "1 *cour* = 3 meses",
-      "texto": "En Japón la tele reparte el año en cuatro bloques de tres meses. Cada bloque es un cour."
-    },
-    {
-      "rotulo": "¿CUÁNTOS EPISODIOS?",
-      "objeto": { "tipo": "tira", "episodios": 12 },
-      "monigotes": [{ "rol": "fan", "x": 800, "camina": 1100, "poses": ["parado", "sorpresa", "pensar"] }],
-      "bocadillo": { "de": 0, "texto": "¿Doce y ya está?" },
-      "dato": "12 o 13 episodios",
-      "texto": "Un episodio por semana durante tres meses. Por eso tantas temporadas terminan en el capítulo 12."
-    },
-    {
-      "rotulo": "EL SPLIT-COUR",
-      "objeto": { "tipo": "tijeras", "izquierda": "CAP. 1–12", "derecha": "CAP. 13–24", "pausa": "UNA TEMPORADA DE PAUSA" },
-      "monigotes": [
-        { "rol": "estudio", "x": 280, "poses": ["parado", "encoge"] },
-        { "rol": "fan", "x": 800, "mira": "izq", "poses": ["parado", "llora"] }
+      "titulo": "La tele japonesa",
+      "objeto": {
+        "tipo": "calendario",
+        "marca": "todas"
+      },
+      "brujas": [
+        {
+          "id": "vidente",
+          "poses": [
+            "varita",
+            "senala"
+          ]
+        }
       ],
-      "bocadillo": { "de": 0, "texto": "Es por la calidad. Lo prometo." },
-      "dato": "2 *cours* con pausa",
-      "texto": "El split-cour parte la temporada en dos y deja meses de pausa en medio. El estudio gana tiempo para animar sin ir con prisas."
+      "dato": "1 *cour* = 3 meses",
+      "voz": "En Japón, la tele reparte el año en cuatro bloques de tres meses. Cada bloque es un cour."
     },
     {
-      "rotulo": "UN EJEMPLO DE AHORA",
+      "titulo": "¿Cuántos episodios?",
+      "objeto": {
+        "tipo": "tira",
+        "episodios": 12
+      },
+      "brujas": [
+        {
+          "id": "vidente",
+          "poses": [
+            "varita",
+            "senala"
+          ]
+        },
+        {
+          "id": "mensajera",
+          "poses": [
+            "parado",
+            "sorpresa"
+          ]
+        }
+      ],
+      "dato": "12 o 13 episodios",
+      "voz": "Con un episodio por semana, en tres meses salen doce o trece. Por eso tantas temporadas terminan en el capítulo doce."
+    },
+    {
+      "titulo": "El *split-cour*",
+      "objeto": {
+        "tipo": "tijeras",
+        "izquierda": "CAP. 1–12",
+        "derecha": "CAP. 13–24",
+        "pausa": "MESES DE PAUSA"
+      },
+      "brujas": [
+        {
+          "id": "vidente",
+          "poses": [
+            "varita",
+            "encoge"
+          ]
+        },
+        {
+          "id": "cronista",
+          "poses": [
+            "parado",
+            "llora"
+          ]
+        }
+      ],
+      "dato": "2 *cours* con pausa",
+      "voz": "El split-cour parte la temporada en dos y deja meses de pausa en medio. Así el estudio anima sin ir con prisas. Y nosotras, a esperar."
+    },
+    {
+      "titulo": "Un ejemplo de ahora",
       "foto": "boticaria",
-      "objeto": { "tipo": "tele", "pantalla": "PARTE 2: ABRIL 2027" },
-      "monigotes": [{ "rol": "fan", "x": 780, "poses": ["espera", "triste"] }],
-      "bocadillo": { "de": 0, "texto": "¿Y qué hago yo hasta abril?" },
+      "objeto": {
+        "tipo": "tele",
+        "pantalla": "PARTE 2: ABRIL 2027"
+      },
+      "brujas": [
+        {
+          "id": "vidente",
+          "poses": [
+            "varita",
+            "pensar"
+          ]
+        },
+        {
+          "id": "escriba",
+          "poses": [
+            "parado",
+            "triste"
+          ]
+        }
+      ],
       "dato": "24 episodios en *dos partes*",
-      "texto": "La temporada 3 de Los diarios de la boticaria empezó en octubre y su segunda parte llega en abril de 2027."
+      "voz": "La temporada tres de Los diarios de la boticaria empezó en octubre, y su segunda parte llega en abril de dos mil veintisiete."
     }
   ],
   "cierre": {
-    "pregunta": ["¿Qué split-cour", "te dolió *más*?"],
-    "cta": "GUÁRDALO PARA EL PRÓXIMO PARÓN"
+    "pregunta": [
+      "¿Qué split-cour",
+      "te dolió *más*?"
+    ],
+    "cta": "GUÁRDALO PARA EL PRÓXIMO PARÓN",
+    "voz": "Y a ti, ¿qué split-cour te dolió más?"
   },
-  "copy": "¿Qué es un cour y por qué tu anime se corta a la mitad? Explicado con monigotes 🌙\n\nEn Japón la tele se organiza en cuatro bloques de tres meses: cada uno es un cour. Con un episodio por semana salen 12 o 13 capítulos, y por eso tantas temporadas acaban en el 12.\n\nEl split-cour es la temporada partida en dos, con una pausa en medio para que el estudio respire. Ejemplo de ahora: la temporada 3 de Los diarios de la boticaria empezó en octubre y la segunda parte llega en abril de 2027.\n\n¿Qué split-cour te dolió más?",
+  "copy": "¿Qué es un cour y por qué tu anime se corta a la mitad? Lo explica la Vidente desde el grimorio 🌙\n\nEn Japón la tele se organiza en cuatro bloques de tres meses: cada uno es un cour. Con un episodio por semana salen 12 o 13 capítulos, y por eso tantas temporadas acaban en el 12.\n\nEl split-cour es la temporada partida en dos, con una pausa en medio para que el estudio respire. Ejemplo de ahora: la temporada 3 de Los diarios de la boticaria empezó en octubre y la segunda parte llega en abril de 2027.\n\n¿Qué split-cour te dolió más?",
   "hashtags": "#anime #animeespañol #animelatino #otaku #cour #splitcour #datosanime #curiosidadesanime #kusuriyanohitorigoto #theapothecarydiaries #animereels",
   "fuentes": "Duración de un cour (tres meses, 12-13 episodios): Anime Corner, Epicstream, Anime News Network. Temporada 3 de Los diarios de la boticaria: octubre de 2026 en Crunchyroll, parte 2 en abril de 2027 (Final Weapon, ANN, fun-japan.jp).",
-  "alt": "Reel animado con monigotes blancos sobre fondo negro que explica qué es un cour: un calendario con cuatro bloques de tres meses, una tira de 12 episodios, unas tijeras que parten una temporada en dos y una tele con la portada de Los diarios de la boticaria."
+  "alt": "Reel en pixel art: brujitas en una torre con un caldero explican qué es un cour. La Vidente conjura con su varita un calendario de cuatro bloques de tres meses, una tira de 12 episodios, unas tijeras que parten una temporada en dos y una tele con la portada de Los diarios de la boticaria."
 }
