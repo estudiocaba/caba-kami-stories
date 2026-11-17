@@ -123,7 +123,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
 
   const OUT = path.join(RAIZ, 'out', 'clientes', cuenta, 'carruseles', nombre.replace(/\.json$/, ''));
   mkdirSync(OUT, { recursive: true });
-  const { textoCreditos } = await resolverFotos(ficha, OUT);
+  const { textoCreditos } = await resolverFotos(ficha, OUT, { dirLocal: path.join(dir, 'fotos', nombre.replace(/\.json$/, '')) });
   if (textoCreditos) ficha.copy = `${ficha.copy ?? ''}\n\n📷 ${textoCreditos}`;
   const tmp = path.join(OUT, 'carrusel.html');
   writeFileSync(tmp, htmlCarrusel(ficha, marca, dir));
