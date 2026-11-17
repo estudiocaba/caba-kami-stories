@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aquelarre · Panel de la agencia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=IM+Fell+English:ital@0;1&family=Zen+Kaku+Gothic+New:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--noche:#0e0d0f;--humo:#201e21;--humo-alto:#2e2b2f;--vino:#6b1528;--vino-vivo:#b8304d;--plata:#c9c7cb;--luna:#ecebee;--niebla:#8c8a90;--filete:#3d3a3f;
+--display:"IM Fell English",Georgia,serif;--dato:"DotGothic16",monospace;--texto:"Zen Kaku Gothic New",system-ui,sans-serif;}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--noche);color:var(--luna);font-family:var(--texto);}
+.marco{max-width:1080px;margin:0 auto;padding:40px 24px 64px;}
+header{display:grid;grid-template-columns:1fr auto;align-items:end;gap:16px;border-bottom:1px solid var(--filete);padding-bottom:20px;}
+h1{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(44px,7vw,72px);line-height:.9;}
+h1 em{font-style:italic;color:var(--plata);}
+.sub{font-family:var(--dato);font-size:14px;letter-spacing:.06em;color:var(--niebla);margin-top:12px;}
+.fresco{font-family:var(--dato);font-size:13px;letter-spacing:.05em;color:var(--niebla);text-align:right;line-height:1.5;}
+.fresco b{color:var(--plata);font-weight:400;}
+.aviso{margin-top:16px;display:none;align-items:center;justify-content:space-between;gap:16px;border:1px solid var(--filete);padding:12px 16px;font-family:var(--dato);font-size:13px;letter-spacing:.04em;color:var(--plata);}
+.aviso.on{display:flex;}
+button{font-family:var(--dato);font-size:13px;letter-spacing:.06em;background:var(--plata);color:var(--noche);border:0;padding:9px 14px;cursor:pointer;}
+button:disabled{opacity:.5;cursor:default;}
+.escena{position:relative;margin-top:28px;border:1px solid var(--filete);background:#000;}
+canvas{display:block;width:100%;height:auto;image-rendering:pixelated;image-rendering:crisp-edges;cursor:pointer;}
+.etiqueta{position:absolute;transform:translate(-50%,0);font-family:var(--dato);font-size:clamp(9px,1.25vw,13px);letter-spacing:.04em;color:var(--luna);text-align:center;white-space:nowrap;pointer-events:none;text-shadow:0 1px 0 #000,0 0 6px #000;}
+.etiqueta i{display:block;font-style:normal;color:var(--niebla);font-size:.85em;}
+.etiqueta.problema i{color:var(--vino-vivo);}
+.etiqueta.sel{color:var(--plata);}
+h2{font-family:var(--display);font-weight:400;font-size:40px;margin:48px 0 20px;line-height:1;}
+h2 em{font-style:italic;color:var(--plata);}
+.rotulo{font-family:var(--dato);font-size:13px;letter-spacing:.08em;color:var(--niebla);}
+.brujas{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.carta{border:1px solid var(--filete);background:var(--humo);padding:18px 18px 20px;cursor:pointer;position:relative;min-height:220px;}
+.carta.sel{border-color:var(--plata);}
+.carta::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--niebla);}
+.carta.Trabajando::before{background:var(--plata);}
+.carta.Hecho::before{background:var(--luna);}
+.carta.Problema::before{background:var(--vino-vivo);}
+.carta h3{margin:8px 0 6px;font-family:var(--display);font-weight:400;font-size:28px;line-height:1;}
+.carta .rol{font-size:14px;color:var(--plata);line-height:1.45;}
+.carta dl{margin:14px 0 0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:13px;}
+.carta dt{font-family:var(--dato);color:var(--niebla);letter-spacing:.04em;}
+.carta dd{margin:0;}
+.carta .hizo{margin-top:12px;font-size:14px;line-height:1.5;}
+.carta .alerta{margin-top:10px;font-size:13px;line-height:1.45;color:var(--luna);border-left:2px solid var(--vino-vivo);padding-left:10px;}
+.chip{font-family:var(--dato);font-size:12px;letter-spacing:.06em;}
+.chip.Problema{color:var(--vino-vivo);} .chip.Trabajando{color:var(--plata);} .chip.Hecho{color:var(--luna);} .chip.Descansando{color:var(--niebla);}
+.caldero{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;}
+.cifra{border:1px solid var(--filete);padding:16px;text-align:center;}
+.cifra b{display:block;font-family:var(--display);font-weight:400;font-size:52px;line-height:1;color:var(--luna);}
+.cifra.revisar b{color:var(--vino-vivo);}
+.cifra span{font-family:var(--dato);font-size:12px;letter-spacing:.06em;color:var(--niebla);}
+.lista{margin-top:16px;border-top:1px solid var(--filete);}
+.pieza{display:grid;grid-template-columns:120px 1fr 160px 130px;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--filete);font-size:15px;}
+.pieza .f{font-family:var(--dato);font-size:13px;color:var(--niebla);letter-spacing:.04em;}
+.pieza .fmt{font-family:var(--dato);font-size:12px;color:var(--niebla);}
+.pieza .est{font-family:var(--dato);font-size:12px;text-align:right;color:var(--plata);}
+.pieza .est.revisar{color:var(--vino-vivo);}
+.seccion-error{font-family:var(--dato);font-size:13px;color:var(--niebla);margin-top:8px;}
+footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--filete);font-family:var(--dato);font-size:12px;color:var(--niebla);letter-spacing:.04em;display:flex;justify-content:space-between;gap:16px;}
+@media (max-width:760px){.brujas{grid-template-columns:1fr}.caldero{grid-template-columns:repeat(2,1fr)}.pieza{grid-template-columns:90px 1fr;}.pieza .fmt,.pieza .est{grid-column:2;text-align:left}header{grid-template-columns:1fr}.fresco{text-align:left}}
+</style>
+</head>
+<body>
+<div class="marco">
+  <header>
+    <div>
+      <h1>El <em>Aquelarre</em></h1>
+      <div class="sub">AGENCIA ESTUDIO CABA · CUENTA DE PRUEBA @CABA.KAMI</div>
+    </div>
+    <div class="fresco" id="fresco">Datos de ejemplo<br>del 17 de noviembre</div>
+  </header>
+  <div class="aviso" id="aviso"><span id="avisoTxt"></span><button id="btnVivo">Ver en vivo</button></div>
+
+  <div class="escena" id="escena">
+    <canvas id="lienzo" width="320" height="180" aria-label="Escena del aquelarre: las brujas alrededor del caldero"></canvas>
+  </div>
+
+  <h2>Las <em>brujas</em></h2>
+  <div class="brujas" id="brujas"></div>
+  <div class="seccion-error" id="errBrujas"></div>
+
+  <h2>El <em>caldero</em></h2>
+  <div class="rotulo">PIEZAS DE @CABA.KAMI EN EL CALENDARIO</div>
+  <div class="caldero" id="cifras" style="margin-top:12px"></div>
+  <div class="lista" id="proximas"></div>
+  <div class="seccion-error" id="errCal"></div>
+
+  <footer><span>Las brujas actualizan su estado en Notion al terminar cada tarea.</span><span>Solo se publica lo que está en «Programado».</span></footer>
+</div>
+
+<script>
+// ── Datos ─────────────────────────────────────────────────────────────────
+const NOTION = "Notion", TOOL = "notion-query-data-sources";
+const DS_BRUJAS = "collection://41b6541a-381b-816d-9f2e-000bc3a65976";
+const DS_CAL = "collection://41a6541a-381b-812e-9184-000bed1b4d78";
+const Q_BRUJAS = { data: { mode: "rows", data_source_url: DS_BRUJAS, limit: 20 } };
+const Q_CAL = { data: { mode: "rows", data_source_url: DS_CAL, limit: 100,
+  filter: { type: "group", operator: "and", filters: [{ type: "property", property: "Cuenta", propertyType: "select", operator: "enum_is", value: { type: "exact", value: "caba.kami" } }] },
+  sort: [{ property: "Fecha", direction: "ascending" }] } };
+
+// Foto fija del 17/11/2026, para que el panel se vea aunque Notion no esté conectado.
+let BRUJAS = [
+  { Bruja: "La Vidente", Rol: "Tendencias: estrenos, anuncios, fechas clave y temas en conversación", Estado: "Descansando", proxima: "2026-11-22T18:41:00Z", que: "Recién llegada al aquelarre: su primera lectura es el domingo.", Orden: 1 },
+  { Bruja: "La Escriba", Rol: "Plan, guiones y copys; encarga las piezas a la Fábrica y las revisa", Estado: "Descansando", proxima: "2026-11-23T10:13:00Z", que: "Todavía no se estrenó: los carruseles y el reel de diciembre se prepararon a mano el 16 de noviembre.", Orden: 2 },
+  { Bruja: "La Fábrica", Rol: "Genera carruseles y reels en GitHub (diseño, fotos de AniList, música y sonido)", Estado: "Hecho", ultima: "2026-11-16T23:25:00Z", que: "Regeneró los 4 carruseles y el reel de diciembre con el diseño de cuadrícula.", Orden: 3 },
+  { Bruja: "La Mensajera", Rol: "Publica en Instagram solo lo que Camila marca como Programado", Estado: "Problema", proxima: "2026-11-17T19:37:00Z", que: "Aún no hay piezas en Programado.", aviso: "Meta tiene bloqueado el acceso a la API: no podrá publicar hasta que se resuelva.", Orden: 4 },
+  { Bruja: "La Guardiana", Rol: "Vigila que todo funcione y avisa solo si algo falla", Estado: "Descansando", proxima: "2026-11-17T21:23:00Z", que: "Recién llegada al aquelarre: su primera ronda es esta noche.", Orden: 5 },
+  { Bruja: "La Cronista", Rol: "Informe mensual: qué se publicó, qué funcionó y qué hacer el mes siguiente", Estado: "Descansando", proxima: "2026-12-01T09:47:00Z", que: "Recién llegada al aquelarre: su primer informe es el 1 de diciembre.", Orden: 6 },
+];
+let PIEZAS = [
+  ["2026-12-02","Entrega: Los diarios de la boticaria","Carrusel","Para revisar"],["2026-12-03","Explicativo: ¿qué es un cour y por qué tu anime se corta a la mitad?","Reel explicativo","Idea"],
+  ["2026-12-04","Green flags y red flags de husbandos (con pruebas)","Carrusel","Para revisar"],["2026-12-06","3 animes para diciembre según tu mood","Reel plantilla","Para revisar"],
+  ["2026-12-07","El otoño 2026 en cifras","Carrusel","Idea"],["2026-12-09","Entrega: Akatsuki no Yona","Carrusel","Para revisar"],
+  ["2026-12-11","Jump Festa 2027: qué series estarán y qué esperar","Carrusel","Para revisar"],["2026-12-13","Jump Festa en 30 segundos","Reel plantilla","Idea"],
+  ["2026-12-14","Top husbandos de 2026 según los datos","Carrusel","Idea"],["2026-12-16","Entrega: Sakamoto Days (ponte al día antes de enero)","Carrusel","Idea"],
+  ["2026-12-17","Explicativo: ¿por qué los isekai tienen títulos tan largos?","Reel explicativo","Idea"],["2026-12-18","Los 10 animes mejor puntuados de 2026","Carrusel","Idea"],
+  ["2026-12-20","Anime Wrapped 2026","Reel plantilla","Idea"],["2026-12-21","Todo lo que anunció la Jump Festa","Carrusel","Idea"],
+  ["2026-12-23","Maratones para las vacaciones (con las horas exactas)","Carrusel","Idea"],["2026-12-25","Si los husbandos te hicieran un regalo de Navidad","Carrusel","Idea"],
+  ["2026-12-27","Calendario de estrenos de enero 2027","Reel plantilla","Idea"],["2026-12-28","Tu 2026 en anime: el año en cifras","Carrusel","Idea"],
+  ["2026-12-30","Estrenos de enero que tienen que estar en tu lista","Carrusel","Idea"],
+].map(([fecha, pieza, formato, estado]) => ({ fecha, pieza, formato, estado }));
+
+const rowsDe = payload => {
+  let p = payload;
+  if (typeof p === "string") { try { p = JSON.parse(p); } catch { return null; } }
+  if (p && Array.isArray(p.results)) return p.results;
+  return null;
+};
+const normBruja = r => ({ Bruja: r["Bruja"], Rol: r["Rol"] || "", Estado: r["Estado"] || "Descansando", ultima: r["date:Última vez:start"] || null,
+  proxima: r["date:Próxima vez:start"] || null, que: r["Qué hizo"] || "", aviso: r["Aviso"] || "", Orden: r["Orden"] ?? 99 });
+const normPieza = r => ({ fecha: r["date:Fecha:start"] || "", pieza: r["Pieza"] || "", formato: r["Formato"] || "", estado: r["Estado"] || "" });
+
+// ── Fechas ────────────────────────────────────────────────────────────────
+const TZ = "Atlantic/Canary";
+const fmtFecha = iso => { if (!iso) return "—"; const d = new Date(iso);
+  return d.toLocaleString("es-ES", { timeZone: TZ, weekday: "short", day: "numeric", month: "short", hour: iso.length > 10 ? "2-digit" : undefined, minute: iso.length > 10 ? "2-digit" : undefined }); };
+const fmtDia = iso => { const [y, m, d] = iso.split("-").map(Number); return new Date(Date.UTC(y, m - 1, d, 12)).toLocaleDateString("es-ES", { timeZone: TZ, weekday: "short", day: "numeric", month: "short" }); };
+const relativo = iso => { if (!iso) return ""; const s = (new Date(iso) - Date.now()) / 1000, a = Math.abs(s);
+  const t = a < 3600 ? `${Math.max(1, Math.round(a / 60))} min` : a < 86400 ? `${Math.round(a / 3600)} h` : `${Math.round(a / 86400)} d`;
+  return s < 0 ? `hace ${t}` : `en ${t}`; };
+const hoyISO = () => new Date().toLocaleDateString("en-CA", { timeZone: TZ });
+
+// ── Escena pixelada ───────────────────────────────────────────────────────
+const C = { noche:"#0e0d0f", humo:"#201e21", alto:"#2e2b2f", vino:"#6b1528", vivo:"#b8304d", plata:"#c9c7cb", luna:"#ecebee", niebla:"#8c8a90", filete:"#3d3a3f",
+  sombrero:"#141216", muro:"#17151a", muro2:"#1c1a20", suelo:"#111013", piel:"#e8dcd6", negro:"#08070a" };
+const cv = document.getElementById("lienzo"), ctx = cv.getContext("2d");
+ctx.imageSmoothingEnabled = false;
+const px = (x, y, w = 1, h = 1, c) => { ctx.fillStyle = c; ctx.fillRect(Math.round(x), Math.round(y), w, h); };
+
+// Cada bruja: casa (x, línea de los pies), ropa, pelo y objeto que lleva.
+const PERSONAJES = {
+  "La Vidente":   { x: 44,  y: 164, tunica: C.vino, pelo: C.plata, objeto: "bola" },
+  "La Escriba":   { x: 98,  y: 150, tunica: C.alto, pelo: "#2a2226", objeto: "pluma" },
+  "La Guardiana": { x: 160, y: 118, tunica: "#2a2430", pelo: C.luna, objeto: "farol" },
+  "La Cronista":  { x: 222, y: 150, tunica: "#3d0f1b", pelo: C.niebla, objeto: "libro" },
+  "La Mensajera": { x: 276, y: 164, tunica: "#1b181e", pelo: C.vivo, objeto: "carta" },
+};
+const CALDERO = { x: 160, y: 168 };
+
+let seleccion = "La Escriba";
+const estadoDe = nombre => (BRUJAS.find(b => b.Bruja === nombre) || {}).Estado || "Descansando";
+
+// Estrellas fijas dentro de la ventana.
+const ESTRELLAS = Array.from({ length: 26 }, (_, i) => ({ x: 128 + ((i * 37) % 64), y: 18 + ((i * 53) % 66), f: i * .7 }));
+
+function fondo(t) {
+  px(0, 0, 320, 124, C.muro);
+  for (let y = 4; y < 124; y += 8) for (let x = (y / 8) % 2 ? 0 : 8; x < 320; x += 16) px(x, y, 1, 7, C.muro2), px(x, y + 7, 15, 1, C.muro2);
+  // Ventana ojival centrada con cielo, luna y estrellas.
+  const vx = 124, vw = 72, vy = 12, vh = 84;
+  const r = .75 * vw, rise = Math.sqrt(r * r - (r - vw / 2) ** 2);
+  for (let y = 0; y < vh; y++) {
+    const x0 = y < rise ? r - Math.sqrt(Math.max(0, r * r - (rise - y) ** 2)) : 0, x1 = vw - x0;
+    if (x1 > x0) { px(vx + x0, vy + y, x1 - x0, 1, "#0a0910"); px(vx + x0 - 1, vy + y, 1, 1, C.plata); px(vx + x1, vy + y, 1, 1, C.plata); }
+  }
+  ESTRELLAS.forEach(s => { const b = .5 + .5 * Math.sin(t * 2 + s.f); if (b > .35) px(s.x, s.y, 1, 1, b > .8 ? C.luna : C.niebla); });
+  // Luna creciente
+  for (let y = -7; y <= 7; y++) for (let x = -7; x <= 7; x++) { if (x * x + y * y <= 49 && (x - 3) * (x - 3) + (y + 1) * (y + 1) > 30) px(168 + x, 34 + y, 1, 1, C.luna); }
+  px(vx + vw / 2, vy + 24, 1, vh - 24, C.plata); px(vx, vy + 54, vw, 1, C.plata);
+  // Repisa bajo la ventana
+  px(vx - 6, vy + vh, vw + 12, 3, C.alto); px(vx - 6, vy + vh + 3, vw + 12, 1, C.negro);
+  // Velas en apliques, simétricas
+  [60, 260].forEach((x, i) => { px(x - 3, 70, 7, 2, C.filete); px(x - 1, 60, 3, 10, C.luna); const f = Math.sin(t * 9 + i) > 0 ? 1 : 0;
+    px(x - f, 55, 2, 4, C.vivo); px(x, 54 - f, 1, 2, C.plata); });
+  // Suelo de losas
+  px(0, 124, 320, 56, C.suelo);
+  for (let y = 124; y < 180; y += 9) px(0, y, 320, 1, "#19171c");
+  for (let y = 124, k = 0; y < 180; y += 9, k++) for (let x = k % 2 ? 0 : 20; x < 320; x += 40) px(x, y, 1, 9, "#19171c");
+  // Encaje fino en el borde superior
+  for (let x = 0; x < 320; x += 6) { px(x, 0, 6, 1, C.filete); px(x + 2, 1, 2, 1, C.filete); px(x + 3, 2, 1, 1, C.filete); }
+}
+
+function caldero(t) {
+  const { x, y } = CALDERO;
+  // Fuego
+  for (let i = 0; i < 9; i++) { const h = 3 + ((Math.sin(t * 10 + i * 1.7) + 1) * 2.2); px(x - 13 + i * 3, y - h + 1, 2, h, i % 2 ? C.vivo : C.vino); }
+  px(x - 15, y, 30, 2, "#2a1e18");
+  // Olla
+  for (let r = 0; r < 20; r++) { const w = Math.round(34 - Math.pow(Math.abs(r - 8) / 10, 2) * 14); px(x - w / 2, y - 22 + r, w, 1, r < 3 ? "#1d1b20" : C.sombrero); }
+  px(x - 18, y - 24, 36, 2, C.filete); px(x - 17, y - 25, 34, 1, C.plata);
+  // Brebaje con burbujas
+  px(x - 15, y - 27, 30, 2, C.vino); px(x - 13, y - 28, 26, 1, C.vivo);
+  for (let i = 0; i < 6; i++) { const ph = (t * .9 + i * .37) % 1; const bx = x - 10 + ((i * 7) % 21); const by = y - 28 - ph * 26;
+    if (ph < .15) px(bx, y - 29, 2, 1, C.vivo); else px(bx + Math.sin(ph * 9) * 2, by, 1, 1, ph > .7 ? C.niebla : C.plata); }
+  // Humo
+  for (let i = 0; i < 8; i++) { const ph = (t * .25 + i / 8) % 1; px(x - 4 + Math.sin(ph * 6 + i) * 6, y - 34 - ph * 50, 2, 2, `rgba(201,199,203,${.35 * (1 - ph)})`); }
+}
+
+function bruja(nombre, t) {
+  const P = PERSONAJES[nombre]; if (!P) return;
+  const est = estadoDe(nombre);
+  let dx = 0, paso = 0;
+  if (est === "Trabajando") { dx = Math.round(Math.sin(t * .9) * 10); paso = Math.floor(t * 6) % 2; }
+  const bob = est === "Descansando" ? 0 : (Math.floor(t * 2) % 2);
+  // Sprite de 14×26 «píxeles» dibujado a doble tamaño.
+  const ox = P.x + dx - 14, oy = P.y - 52 + bob * 2;
+  const q = (x, y, w, h, c) => px(ox + x * 2, oy + y * 2, (w || 1) * 2, (h || 1) * 2, c);
+  px(P.x + dx - 12, P.y + 1, 24, 2, "rgba(0,0,0,.55)");
+  // Sombrero puntiagudo con borde, banda plata y ala
+  const filas = [[8, 8], [7, 8], [6, 8], [6, 9], [5, 9], [5, 10]];
+  filas.forEach(([a, b], r) => { q(a, r, b - a + 1, 1, "#2a2530"); q(a, r, 1, 1, "#463f4c"); });
+  q(4, 6, 7, 1, nombre === seleccion ? C.luna : C.plata);
+  q(1, 7, 13, 1, "#2a2530"); q(1, 7, 13, 1, "#2a2530"); px(ox + 2, oy + 14, 26, 1, "#463f4c");
+  // Pelo y cara
+  q(3, 8, 9, 1, P.pelo);
+  for (let r = 9; r <= 13; r++) { q(3, r, 2, 1, P.pelo); q(10, r, 2, 1, P.pelo); q(5, r, 5, 1, C.piel); }
+  const parpadeo = (t * 1.3 + P.x) % 4 < .12;
+  const ojos = est === "Descansando" || parpadeo ? C.niebla : C.negro;
+  q(6, 11, 1, 1, ojos); q(8, 11, 1, 1, ojos);
+  q(5, 12, 1, 1, "#d9a6ae"); q(9, 12, 1, 1, "#d9a6ae");
+  // Túnica que se abre hacia abajo, con cuello plata
+  q(4, 14, 7, 1, P.tunica); q(6, 14, 3, 1, C.plata);
+  for (let r = 15; r <= 22; r++) { const e = Math.floor((r - 15) / 3); q(4 - e, r, 7 + 2 * e, 1, P.tunica); }
+  for (let x = 3; x < 12; x += 2) q(x, 22, 1, 1, C.plata);
+  q(2, 15, 2, 4, P.tunica); q(11, 15, 2, 4, P.tunica);
+  q(2, 19, 1, 1, C.piel); q(12, 19, 1, 1, C.piel);
+  q(5, 23 - (paso ? 1 : 0), 2, 2, C.negro); q(8, 23 - (paso ? 0 : 1), 2, 2, C.negro);
+  // Objeto en la mano
+  const H = 13, V = 17;
+  if (P.objeto === "bola") { const g = .5 + .5 * Math.sin(t * 3); q(H, V, 3, 3, C.plata); q(H + 1, V + 1, 1, 1, g > .5 ? C.luna : C.vivo); q(H, V + 3, 3, 1, C.filete); }
+  if (P.objeto === "pluma") { q(H, V - 4, 1, 5, C.luna); q(H + 1, V - 4, 1, 2, C.plata); q(-2, V + 1, 4, 3, "#d8cfc4"); q(-2, V + 2, 4, 1, C.niebla); }
+  if (P.objeto === "farol") { const rojo = est === "Problema"; const on = Math.floor(t * 3) % 2 || !rojo;
+    q(H, V - 1, 3, 1, C.filete); q(H, V, 3, 4, on ? (rojo ? C.vivo : C.plata) : C.vino); q(H, V + 4, 3, 1, C.filete); }
+  if (P.objeto === "libro") { q(H - 1, V, 4, 4, C.vino); q(H - 1, V, 1, 4, C.plata); q(H + 1, V + 1, 1, 2, C.luna); }
+  if (P.objeto === "carta") { q(H, V, 4, 3, C.luna); q(H + 1, V + 1, 2, 1, C.niebla); q(H + 1, V + 2, 1, 1, C.vivo);
+    q(11, 11, 3, 2, C.negro); q(13, 11, 1, 1, C.niebla); q(14, 12, 1, 1, "#4a4048"); }
+  // Señales de estado sobre la cabeza
+  const sx = P.x + dx, sy = oy - 6;
+  if (est === "Descansando") { const ph = (t * .5 + P.x / 50) % 1, a = 1 - ph, zx = sx + 8 + ph * 6, zy = sy - ph * 12;
+    const c = `rgba(140,138,144,${a})`; px(zx, zy, 4, 1, c); px(zx + 2, zy + 1, 1, 1, c); px(zx + 1, zy + 2, 1, 1, c); px(zx, zy + 3, 4, 1, c); }
+  if (est === "Trabajando") { const on = Math.floor(t * 4) % 2; px(sx, sy - 4 - on, 1, 5, C.plata); px(sx - 2, sy - 2 - on, 5, 1, C.plata); }
+  if (est === "Hecho") { px(sx, sy - 5, 1, 1, C.luna); px(sx - 1, sy - 4, 3, 1, C.plata); px(sx, sy - 3, 1, 1, C.luna); }
+  if (est === "Problema" && Math.floor(t * 2) % 2) { px(sx - 1, sy - 10, 3, 6, C.vivo); px(sx - 1, sy - 2, 3, 2, C.vivo); }
+}
+
+// Etiquetas HTML sobre la escena (texto nítido).
+const escena = document.getElementById("escena");
+function etiquetas() {
+  escena.querySelectorAll(".etiqueta").forEach(e => e.remove());
+  const add = (nombre, x, y, estado, extra = "") => {
+    const d = document.createElement("div");
+    d.className = "etiqueta" + (estado === "Problema" ? " problema" : "") + (nombre === seleccion ? " sel" : "");
+    d.style.left = (x / 320 * 100) + "%"; d.style.top = (y / 180 * 100) + "%";
+    d.innerHTML = `${nombre.replace("La ", "")}<i>${extra || estado.toLowerCase()}</i>`;
+    escena.appendChild(d);
+  };
+  Object.entries(PERSONAJES).forEach(([n, P]) => add(n, P.x, P.y + (n === "La Guardiana" ? 1 : 3), estadoDe(n)));
+  add("La Fábrica", CALDERO.x, CALDERO.y + 4, estadoDe("La Fábrica"), "el caldero · " + estadoDe("La Fábrica").toLowerCase());
+}
+
+let t0 = performance.now(), ultimoCuadro = 0;
+function bucle(ahora) {
+  // Animación de a dos, como el anime: 12 cuadros por segundo.
+  if (ahora - ultimoCuadro > 1000 / 12) {
+    ultimoCuadro = ahora;
+    const t = (ahora - t0) / 1000;
+    fondo(t);
+    bruja("La Guardiana", t); caldero(t);
+    ["La Vidente", "La Escriba", "La Cronista", "La Mensajera"].forEach(n => bruja(n, t));
+  }
+  requestAnimationFrame(bucle);
+}
+requestAnimationFrame(bucle);
+
+cv.addEventListener("click", ev => {
+  const r = cv.getBoundingClientRect(); const x = (ev.clientX - r.left) / r.width * 320, y = (ev.clientY - r.top) / r.height * 180;
+  let mejor = null, dmin = 30;
+  Object.entries(PERSONAJES).forEach(([n, P]) => { const d = Math.hypot(x - P.x, y - (P.y - 24)); if (d < dmin) { dmin = d; mejor = n; } });
+  if (!mejor && Math.hypot(x - CALDERO.x, y - (CALDERO.y - 14)) < 24) mejor = "La Fábrica";
+  if (mejor) elegir(mejor, true);
+});
+
+// ── Cartas y caldero ──────────────────────────────────────────────────────
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+function pintarBrujas() {
+  const cont = document.getElementById("brujas");
+  cont.innerHTML = [...BRUJAS].sort((a, b) => a.Orden - b.Orden).map(b => `
+    <div class="carta ${esc(b.Estado)}${b.Bruja === seleccion ? " sel" : ""}" data-n="${esc(b.Bruja)}">
+      <span class="chip ${esc(b.Estado)}">● ${esc(b.Estado).toUpperCase()}</span>
+      <h3>${esc(b.Bruja)}</h3>
+      <div class="rol">${esc(b.Rol)}</div>
+      <dl>
+        <dt>ÚLTIMA VEZ</dt><dd>${b.ultima ? `${esc(fmtFecha(b.ultima))} <span style="color:var(--niebla)">· ${relativo(b.ultima)}</span>` : "—"}</dd>
+        <dt>PRÓXIMA</dt><dd>${b.proxima ? `${esc(fmtFecha(b.proxima))} <span style="color:var(--niebla)">· ${relativo(b.proxima)}</span>` : "—"}</dd>
+      </dl>
+      ${b.que ? `<div class="hizo">${esc(b.que)}</div>` : ""}
+      ${b.aviso ? `<div class="alerta">${esc(b.aviso)}</div>` : ""}
+    </div>`).join("");
+  cont.querySelectorAll(".carta").forEach(c => c.addEventListener("click", () => elegir(c.dataset.n, false)));
+  etiquetas();
+}
+function elegir(n, desplazar) {
+  seleccion = n; pintarBrujas();
+  if (desplazar) { const c = document.querySelector(`.carta[data-n="${CSS.escape(n)}"]`); c && c.scrollIntoView({ behavior: "smooth", block: "center" }); }
+}
+
+function pintarCaldero() {
+  const orden = ["Idea", "En producción", "Para revisar", "Programado", "Publicado"];
+  const cuenta = Object.fromEntries(orden.map(e => [e, 0]));
+  PIEZAS.forEach(p => { if (p.estado in cuenta) cuenta[p.estado]++; });
+  const nombres = { "Idea": "IDEAS", "En producción": "EN PRODUCCIÓN", "Para revisar": "PARA REVISAR", "Programado": "PROGRAMADAS", "Publicado": "PUBLICADAS" };
+  document.getElementById("cifras").innerHTML = orden.map(e => `<div class="cifra${e === "Para revisar" ? " revisar" : ""}"><b>${cuenta[e]}</b><span>${nombres[e]}</span></div>`).join("");
+  const hoy = hoyISO();
+  const prox = PIEZAS.filter(p => p.fecha >= hoy && p.estado !== "Publicado").slice(0, 8);
+  document.getElementById("proximas").innerHTML = prox.length ? prox.map(p => `
+    <div class="pieza"><span class="f">${esc(fmtDia(p.fecha.slice(0, 10)))}</span><span>${esc(p.pieza)}</span><span class="fmt">${esc(p.formato).toUpperCase()}</span><span class="est${p.estado === "Para revisar" ? " revisar" : ""}">${esc(p.estado).toUpperCase()}</span></div>`).join("")
+    : `<div class="pieza"><span class="f">—</span><span>No hay piezas próximas en el calendario.</span></div>`;
+}
+
+pintarBrujas(); pintarCaldero();
+
+// ── Conexión con Notion (en vivo) ─────────────────────────────────────────
+const aviso = document.getElementById("aviso"), avisoTxt = document.getElementById("avisoTxt"), btn = document.getElementById("btnVivo");
+const fresco = document.getElementById("fresco");
+let mcp = null, enVivo = false;
+const COPIA = {
+  needs_reauth: "Hay que volver a conectar Notion en claude.ai → Configuración → Conectores.",
+  server_not_connected: "Notion no está conectado. Añádelo en claude.ai → Configuración → Conectores.",
+  selection_required: "Hay más de un Notion conectado: elige uno cuando claude.ai lo pregunte.",
+  approval_required: "Para ver el estado en vivo, el panel necesita tu permiso para leer Notion.",
+  not_in_manifest: "Este panel no tiene permiso para leer Notion en esta vista.",
+  blocked_by_policy: "La política de tu organización no deja a este panel leer Notion.",
+  not_granted: "Esta vista no permite conectar con Notion.",
+  capability_disabled: "Esta vista no permite conectar con Notion.",
+};
+function mostrarAviso(codigo) {
+  avisoTxt.textContent = (COPIA[codigo] || "No se pudo leer Notion ahora mismo.") + " Mientras tanto ves los datos del 17 de noviembre.";
+  btn.style.display = ["approval_required", "server_unavailable", "upstream_error", "tool_error", "rate_limited", undefined].includes(codigo) ? "" : "none";
+  aviso.classList.add("on");
+}
+function marcarFresco(result) {
+  const t = result && result.cache ? result.cache.storedAt : Date.now();
+  fresco.innerHTML = `<b>En vivo desde Notion</b><br>actualizado ${new Date(t).toLocaleTimeString("es-ES", { timeZone: TZ, hour: "2-digit", minute: "2-digit" })}`;
+}
+function aplicarBrujas(result) { const rows = rowsDe(result.payload); if (!rows) return false; BRUJAS = rows.map(normBruja); enVivo = true; aviso.classList.remove("on"); marcarFresco(result); pintarBrujas(); return true; }
+function aplicarCal(result) { const rows = rowsDe(result.payload); if (!rows) return false; PIEZAS = rows.map(normPieza); document.getElementById("errCal").textContent = ""; pintarCaldero(); return true; }
+
+const DENEGADO = ["needs_reauth", "server_not_connected", "blocked_by_policy", "approval_required", "not_in_manifest", "selection_required", "not_granted", "capability_disabled"];
+function vigilar() {
+  mcp.watchTool(NOTION, TOOL, Q_BRUJAS, ev => {
+    if (ev.type === "data") aplicarBrujas(ev.result) || mostrarAviso("tool_error");
+    else if (!enVivo || DENEGADO.includes(ev.error.code)) mostrarAviso(ev.error.code);
+  }, { refetchInterval: 300000 });
+  mcp.watchTool(NOTION, TOOL, Q_CAL, ev => {
+    if (ev.type === "data") aplicarCal(ev.result);
+    else if (DENEGADO.includes(ev.error.code)) document.getElementById("errCal").textContent = "El calendario muestra los datos del 17 de noviembre.";
+  }, { refetchInterval: 600000 });
+}
+btn.addEventListener("click", async () => {
+  if (!mcp) return;
+  btn.disabled = true;
+  try {
+    const r = await mcp.callTool(NOTION, TOOL, Q_BRUJAS);
+    aplicarBrujas(r);
+    const c = await mcp.callTool(NOTION, TOOL, Q_CAL).catch(() => null);
+    if (c) aplicarCal(c);
+  } catch (e) { mostrarAviso(e && e.code); }
+  btn.disabled = false;
+});
+
+(async () => {
+  try { mcp = window.claude && await window.claude.use("mcp"); } catch { mcp = null; }
+  if (!mcp) { avisoTxt.textContent = "Este panel se conecta a Notion cuando lo abres en claude.ai. Ahora ves los datos del 17 de noviembre."; btn.style.display = "none"; aviso.classList.add("on"); return; }
+  vigilar();
+})();
+</script>
+</body>
+</html>
