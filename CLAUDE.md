@@ -17,5 +17,7 @@
 - **La Fábrica**: los workflows carrusel.yml y reel.yml (no es un agente; su estado lo actualizan la Escriba y la Guardiana).
 - **La Mensajera** (cada día 19:37): publica solo lo que está en «Programado» con fecha de hoy.
 - **La Guardiana** (cada día 21:23): revisa fallos y avisa solo si hay algo nuevo.
+- **La Recolectora** (cada día 08:07 y 15:07): pedidos de la tabla Notion «Rodajes» (collection://41b6541a-381b-810a-a19b-000b2e6ebc3b) → 5 videos con guion, orden de grabación y lista para llevar, dentro de la misma fila.
+- **Stories de clientes**: plantillas por marca en `caba-kami-stories/clientes/` (ver su README). La Escriba escribe la semana, `stories.yml` las genera, La Mensajera anota las aprobadas y `publicar-stories.yml` las publica cada mañana.
 - **La Cronista** (día 1, 09:47): informe mensual en la página Notion «Informes de la Cronista».
 - Cada bruja actualiza su fila en «Brujas del Aquelarre» (collection://41b6541a-381b-816d-9f2e-000bc3a65976) al terminar. El panel `aquelarre/panel.html` (publicado como artefacto) lee esa tabla y el calendario.
