@@ -14,7 +14,7 @@ import { pathToFileURL } from 'node:url';
 import { chromium } from 'playwright-core';
 import { fetchAnime, fetchCharacterByName, imageAsDataUri } from '../carrusel/anilist-media.js';
 import { buildReelLista, PULSOS } from './plantilla.js';
-import { buildReelExplicativo, PULSOS_EXP } from './explicativo.js';
+import { buildReelGrimorio } from './grimorio.js';
 import { renderSfx } from './sfx.js';
 import { sendText } from '../telegram.js';
 
@@ -87,8 +87,10 @@ async function main() {
   // Música: lofi oscuro propio (musica/*.m4a, compuesto por musica/componer.py, sin derechos de terceros).
   // La ficha puede elegir pista con "musica"; si no, se elige una fija según el nombre de la ficha.
   // El montaje se cuenta en pulsos de esa pista para que los cortes caigan en el golpe.
-  const BPM = { medianoche: 72, 'luna-roja': 68, niebla: 76, vela: 70 };
-  const pista = spec.musica ?? Object.keys(BPM)[[...slug].reduce((a, c) => a + c.charCodeAt(0), 0) % 4];
+  // Los explicativos (grimorio) llevan su propia música: vals de bruja (musica/grimorio.py).
+  const BPM = { medianoche: 72, 'luna-roja': 68, niebla: 76, vela: 70, caldero: 96, hechizo: 88 };
+  const LOFI = ['medianoche', 'luna-roja', 'niebla', 'vela'];
+  const pista = spec.musica ?? (explicativo ? 'caldero' : LOFI[[...slug].reduce((a, c) => a + c.charCodeAt(0), 0) % 4]);
   const bpm = BPM[pista] ?? 72;
 
   const outDir = path.resolve('out', `reel-${slug}`);
@@ -98,7 +100,39 @@ async function main() {
   rmSync(frames, { recursive: true, force: true });
   mkdirSync(frames, { recursive: true });
   const htmlPath = path.join(outDir, 'reel.html');
-  const { html, eventos, cortes, duracion: dur } = explicativo ? buildReelExplicativo(spec, imgs, bpm) : buildReelLista(spec, imgs, bpm);
+
+  // Voz en off del grimorio: un clip por parte (intro, cada escena y cierre).
+  let voces = {}, vozWav = null;
+  if (explicativo) {
+    const textos = [{ clave: 'intro', texto: spec.intro?.voz }, ...spec.escenas.map((e, i) => ({ clave: `escena-${i}`, texto: e.voz })),
+      { clave: 'cierre', texto: spec.cierre?.voz }].filter(x => x.texto);
+    const vozDir = path.join(outDir, 'voz');
+    const conf = path.join(outDir, 'voz.json');
+    writeFileSync(conf, JSON.stringify({ ...(spec.voz ?? {}), pronunciacion: spec.pronunciacion ?? {}, textos }));
+    try {
+      execFileSync('python3', [path.resolve('src/voz/narrar.py'), conf, vozDir], { stdio: 'inherit' });
+      const { clips, motor, voz } = JSON.parse(readFileSync(path.join(vozDir, 'voces.json'), 'utf8'));
+      console.log(`Voz: ${voz} (${motor})`);
+      voces = { intro: clips.intro, escenas: spec.escenas.map((e, i) => clips[`escena-${i}`]), cierre: clips.cierre };
+    } catch (e) { console.warn(`  ⚠ Sin voz en off: ${e.message}`); }
+  }
+  const { html, eventos, cortes, duracion: dur, colocacion } = explicativo ? buildReelGrimorio(spec, imgs, bpm, voces) : buildReelLista(spec, imgs, bpm);
+  if (colocacion?.length) {
+    // Pista de voz completa: cada clip en su sitio (WAV mono de 44,1 kHz y 16 bits).
+    const SRV = 44100, pista16 = new Int16Array(Math.ceil((dur + 1) * SRV));
+    for (const { clave, t } of colocacion) {
+      const b = readFileSync(path.join(outDir, 'voz', `${clave}.wav`));
+      let o = 12; while (b.toString('ascii', o, o + 4) !== 'data') o += 8 + b.readUInt32LE(o + 4);
+      const datos = new Int16Array(b.buffer.slice(b.byteOffset + o + 8, b.byteOffset + o + 8 + b.readUInt32LE(o + 4)));
+      pista16.set(datos.subarray(0, Math.max(0, pista16.length - Math.round(t * SRV))), Math.round(t * SRV));
+    }
+    const cab = Buffer.alloc(44), cuerpo = Buffer.from(pista16.buffer);
+    cab.write('RIFF', 0); cab.writeUInt32LE(36 + cuerpo.length, 4); cab.write('WAVE', 8); cab.write('fmt ', 12);
+    cab.writeUInt32LE(16, 16); cab.writeUInt16LE(1, 20); cab.writeUInt16LE(1, 22); cab.writeUInt32LE(SRV, 24);
+    cab.writeUInt32LE(SRV * 2, 28); cab.writeUInt16LE(2, 32); cab.writeUInt16LE(16, 34); cab.write('data', 36); cab.writeUInt32LE(cuerpo.length, 40);
+    vozWav = path.join(outDir, 'voz-completa.wav');
+    writeFileSync(vozWav, Buffer.concat([cab, cuerpo]));
+  }
   writeFileSync(htmlPath, html);
 
   const n = Math.round(dur * FPS);
@@ -114,7 +148,7 @@ async function main() {
   }
   // Portada del reel: el fotograma del primer elemento ya visible.
   // (explicativo: la primera escena ya con su objeto dibujado y el bocadillo a la vista)
-  await page.evaluate(t => window.render(t), (explicativo ? PULSOS_EXP.intro + 3.5 : PULSOS.intro + 3) * 60 / bpm);
+  await page.evaluate(t => window.render(t), explicativo ? cortes[0] + 4 : (PULSOS.intro + 3) * 60 / bpm);
   await reel.screenshot({ path: path.join(outDir, `cabakami-${slug}-portada.jpg`), type: 'jpeg', quality: 92 });
   await browser.close();
 
@@ -126,11 +160,16 @@ async function main() {
   // Bajada suave (curva, no escalón) de la música en cada corte, para que no suene a salto.
   const duck = cortes.map(c => `exp(-pow((t-${c.toFixed(2)})/0.14,2))`).join('+') || '0';
   const mp4 = path.join(outDir, `cabakami-${slug}.mp4`);
+  // Con voz en off: la música baja sola cuando habla la narradora (compresión por la voz).
+  const mezcla = vozWav
+    ? `[1:a]atrim=0:${dur.toFixed(2)},asetpts=PTS-STARTPTS,afade=t=in:d=0.6,afade=t=out:st=${(dur - 2).toFixed(2)}:d=2,volume=0.7[m0];` +
+      `[3:a]aformat=channel_layouts=stereo,asplit=2[vk][v];[m0][vk]sidechaincompress=threshold=0.02:ratio=7:attack=30:release=450:makeup=1[m];` +
+      `[2:a]aformat=channel_layouts=stereo,volume=0.8[s];[m][v][s]amix=inputs=3:normalize=0:duration=first:weights=1 1.15 1,alimiter=limit=0.95[a]`
+    : `[1:a]atrim=0:${dur.toFixed(2)},asetpts=PTS-STARTPTS,afade=t=in:d=0.4,afade=t=out:st=${(dur - 1.6).toFixed(2)}:d=1.6,volume='1-0.3*min(1,${duck})':eval=frame[m];` +
+      `[2:a]aformat=channel_layouts=stereo,volume=1.1[s];[m][s]amix=inputs=2:normalize=0:duration=first,alimiter=limit=0.95[a]`;
   execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-framerate', String(FPS), '-i', path.join(frames, '%05d.jpg'),
-    '-i', audio, '-i', wav,
-    '-filter_complex',
-    `[1:a]atrim=0:${dur.toFixed(2)},asetpts=PTS-STARTPTS,afade=t=in:d=0.4,afade=t=out:st=${(dur - 1.6).toFixed(2)}:d=1.6,volume='1-0.3*min(1,${duck})':eval=frame[m];` +
-    `[2:a]aformat=channel_layouts=stereo,volume=1.1[s];[m][s]amix=inputs=2:normalize=0:duration=first,alimiter=limit=0.95[a]`,
+    '-stream_loop', '-1', '-i', audio, '-i', wav, ...(vozWav ? ['-i', vozWav] : []),
+    '-filter_complex', mezcla,
     '-map', '0:v', '-map', '[a]', '-t', dur.toFixed(2),
     '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '20', '-pix_fmt', 'yuv420p', '-r', String(FPS),
     '-c:a', 'aac', '-b:a', '160k', '-movflags', '+faststart', mp4]);
@@ -138,7 +177,7 @@ async function main() {
   rmSync(frames, { recursive: true, force: true });
 
   const caption = `${spec.copy}\n\n${spec.hashtags}`;
-  writeFileSync(path.join(outDir, 'copy.txt'), `${caption}\n\n— AUDIO —\nLofi propio de caba.kami: ${pista}\n`);
+  writeFileSync(path.join(outDir, 'copy.txt'), `${caption}\n\n— AUDIO —\n${explicativo ? 'Vals propio de caba.kami' : 'Lofi propio de caba.kami'}: ${pista}${explicativo ? ' · voz en off sintetizada' : ''}\n`);
   console.log(`Reel de ${dur.toFixed(1)} s en ${mp4}`);
 
   const { TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID } = process.env;

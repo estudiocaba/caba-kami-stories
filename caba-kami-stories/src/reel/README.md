@@ -43,23 +43,24 @@ Para crear más pistas: añadir una entrada en `PISTAS` dentro de `componer.py` 
 
 `src/reel/sfx.js` sintetiza desde cero un efecto para cada gesto del motion graphics y los coloca en el tiempo exacto: play de VHS al empezar, fallo de cinta en cada corte (con la música bajando un instante), soplido cuando sube la foto, teclas de máquina en las etiquetas, campanitas en los destellos, brillo en los títulos, tic-tic de los contadores, golpe con campana en el eyecatch, golpe seco del sello y stop de cinta al final.
 
-## Plantilla «explicativo»
+## Plantilla «explicativo»: el grimorio del Aquelarre
 
-Monigotes que explican un concepto de anime, en unos 30-40 segundos: intro con una fan que saluda → 3 a 5 escenas → el mismo cierre con sello 神. Código en `src/reel/explicativo.js`.
+Los reels explicativos tienen su propio mundo, distinto del de las listas: **pixel art** de juego de los 90 (escena de 180×320 píxeles ampliada a 1080×1920), las **brujitas del Aquelarre** en una torre con caldero, **voz en off** de la Vidente, **vals de bruja** en lugar de lofi y cortes con **cierre de iris** en lugar de fallo de VHS. Código en `src/reel/grimorio.js`; la voz, en `src/voz/narrar.py`.
+
+En cada escena la Vidente conjura con la varita la idea que explica (círculo mágico, chispas y el objeto que aparece en el humo), su boca se mueve con la voz y lo que dice sale en una caja de diálogo al ritmo de la voz. Debajo, el dato en un pergamino. La duración de cada escena sale de la voz y se redondea al pulso de la música.
 
 Ficha de ejemplo: `reeles/2026-12-03-cour.json`.
 
 | Campo | Qué es |
 |---|---|
 | `plantilla` | `explicativo`. |
-| `etiqueta`, `titulo` (2 líneas), `subtitulo` | La intro. `anfitriona`: papel del monigote que saluda (por defecto `fan`). |
-| `fotos` | Opcional: `{clave: {anime: {busqueda, anio}}}`. La portada oficial de AniList, para mostrarla en una tele. |
-| `escenas[]` | Cada una: `rotulo` (MAYÚSCULAS, corto), `objeto`, `monigotes`, `bocadillo`, `dato` y `texto`. `pulsos` opcional (8 por defecto). |
-| `objeto.tipo` | `calendario` (`marca`: 0-3 o `todas`), `tira` (`episodios`, `corte`), `tele` (`pantalla` y, con `foto` en la escena, la portada), `tijeras` (`izquierda`, `derecha`, `pausa`), `reloj` (`texto`), `estudio` (`letrero`). |
-| `monigotes[]` | 1 o 2: `rol` (`fan`, `estudio`, `cadena`, `autor`), `x` (200-880), `poses` (se reparten en la escena), `mira: "izq"` para girarlo y `camina` (x desde la que entra andando). |
-| poses | `parado`, `saluda`, `senala`, `senalaIzq`, `pensar`, `encoge`, `sorpresa`, `celebra`, `llora`, `triste`, `espera`. |
-| `bocadillo` | `{de: índice del monigote, texto}`. Máximo unas 45 letras: dos líneas. |
-| `dato` | Cifra o idea en grande (admite `*énfasis*`). |
-| `texto` | Lo que se explica, 25 palabras como máximo. |
-
-Reglas de composición fijas: rótulo arriba, objeto en la franja de 400 a 670 px, bocadillo al lado de la cabeza del monigote, suelo a 1240 px y debajo el dato y el texto centrados. Los monigotes se animan de a dos, como el resto del reel.
+| `musica` | `caldero` (vals en re menor, 96 bpm) o `hechizo` (la menor, 88 bpm), de `musica/grimorio.py`. |
+| `voz` | `{motor, voz, velocidad}`. Motor `azure` (oficial, con `AZURE_SPEECH_KEY` y `AZURE_SPEECH_REGION` en los secretos), `edge` (las mismas voces, para pruebas) o `piper` (Daniela, libre). |
+| `pronunciacion` | Palabras que la voz debe leer distinto: `{"cour": "cur"}`. Solo cambia el audio, no el texto. |
+| `narradora`, `tema` | Nombre en la caja de diálogo y tema que sale en la cabecera de cada lección. |
+| `etiqueta`, `titulo` (2 líneas), `subtitulo`, `intro.voz` | La portada con la bruja en escoba cruzando la luna. |
+| `fotos` | Opcional: `{clave: {anime: {busqueda, anio}}}`, para la tele (la portada sale pixelada). |
+| `escenas[]` | 3 a 5: `titulo`, `objeto`, `brujas`, `dato`, `voz` (lo que dice la narradora, 30 palabras como máximo) y `foto` opcional. |
+| `objeto.tipo` | `calendario` (`marca`: 0-3 o `todas`, `etiquetas`), `tira` (`episodios`, `corte`), `tele` (`pantalla`), `tijeras` (`izquierda`, `derecha`, `pausa`), `reloj` (`texto`), `estudio` (`letrero`). |
+| `brujas[]` | 1 o 2. La primera narra (izquierda); la segunda reacciona (derecha). `id`: `vidente`, `escriba`, `mensajera`, `guardiana`, `cronista`. `poses`: `varita`, `senala`, `parado`, `sorpresa`, `celebra`, `pensar`, `llora`, `triste`, `encoge`, `camina`. |
+| `cierre` | `pregunta` (2 líneas), `cta` y `voz`. |

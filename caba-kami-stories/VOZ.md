@@ -21,3 +21,8 @@ Fan que sabe, con datos, humor, ironía y un poco de sarcasmo. Castellano neutro
 - Fondo de brocado y papel viejo reales (texturas/, ver LICENCIAS.md); nada de degradados ni brillos genéricos.
 - Cuadrícula estricta: márgenes de 72 px, 12 columnas, filas fijas; portada y cierre simétricos. Pocos elementos: puntilla, un arco y destellos en espejo. Nada de kanji gigante de fondo.
 - Ningún anime ni personaje se deja fuera por cómo es su imagen: la foto se integra con el tratamiento de la plantilla.
+
+## Voz en off (reels del grimorio)
+- La Vidente habla como la cuenta: cercana, con un punto irónico, frases cortas que se entienden al oído.
+- Una idea por escena, 30 palabras como máximo. Los números, escritos con letras si la voz los lee mal.
+- Las palabras japonesas o inventadas van en `pronunciacion` para que la voz no las lea en inglés.
