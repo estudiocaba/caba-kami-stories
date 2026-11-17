@@ -70,6 +70,6 @@ Ficha de ejemplo: `reeles/2026-12-03-cour.json`.
 | `etiqueta`, `titulo` (1 línea corta), `intro` | El gancho: `voz` (una pregunta o una queja, nunca un saludo), `fotos` (claves de `fotos` que pasan por el espejo), `onomatopeya` y `brujas`. |
 | `fotos` | Opcional: `{clave: {anime: {busqueda, anio}}}`, para el espejo del gancho y para la tele. |
 | `escenas[]` | 3 a 5: `titulo`, `objeto`, `brujas`, `dato` (pegatina), `voz` (30 palabras como máximo), `onomatopeya` (ドン！, ジャーン, ガーン, キラッ…) y `foto` opcional. |
-| `objeto.tipo` | `calendario` (`marca`: 0-3 o `todas`, `etiquetas`), `tira` (`episodios`, `corte`), `tele` (`pantalla`), `tijeras` (`izquierda`, `derecha`, `pausa`), `reloj` (`texto`), `estudio` (`letrero`). |
+| `objeto.tipo` | `calendario` (`marca`: 0-3 o `todas`, `etiquetas`), `tira` (`episodios`, `corte`), `tele` (`pantalla`), `tijeras` (`izquierda`, `derecha`, `pausa`), `reloj` (`texto`), `estudio` (`letrero`), `ranking` (`titulo`, `filas`: `[{texto, largo 0-1, destacado}]`: una lista tipo web o barras para comparar). En `calendario`, `numeros` cambia o quita (`false`) los números grandes. |
 | `brujas[]` | 1 o 2. La primera narra (izquierda); la segunda reacciona (derecha). `id`: `vidente`, `escriba`, `mensajera`, `guardiana`, `cronista`. `poses`: `varita`, `senala`, `parado`, `sorpresa`, `celebra`, `pensar`, `llora`, `triste`, `encoge`, `enfado`. |
 | `cierre` | `etiqueta`, `pregunta` (2 líneas, elegible: «¿A o B?»), `cta` y `voz`. |

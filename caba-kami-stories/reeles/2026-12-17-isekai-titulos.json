@@ -1,0 +1,107 @@
+{
+  "pieza": "Explicativo: ¿por qué los isekai tienen títulos tan largos?",
+  "fecha": "2026-12-17",
+  "plantilla": "explicativo",
+  "musica": "hechizo",
+  "voz": {
+    "motor": "edge",
+    "voz": "es-MX-DaliaNeural",
+    "velocidad": "+4%",
+    "tono": "+2Hz"
+  },
+  "pronunciacion": {
+    "Shōsetsuka ni Narō": "shosetsuka ni naró",
+    "isekai": "isekái",
+    "web": "güeb",
+    "ranking": "ránkin",
+    "Konosuba": "konosúba",
+    "Kino no Tabi": "kino no tabi"
+  },
+  "tema": "TÍTULOS ISEKAI",
+  "etiqueta": "EL GRIMORIO DEL AQUELARRE",
+  "titulo": ["¿Por qué tan *largos*?"],
+  "intro": {
+    "voz": "¿Por qué el título de tu isekai ya te cuenta toda la trama? No es pereza. Es estrategia.",
+    "fotos": ["slime", "escudo", "konosuba", "librera"],
+    "onomatopeya": "ゴゴゴ",
+    "brujas": [{ "id": "vidente", "poses": ["varita", "pensar"] }]
+  },
+  "fotos": {
+    "slime": { "anime": { "busqueda": "Tensei shitara Slime Datta Ken", "anio": 2018 } },
+    "escudo": { "anime": { "busqueda": "Tate no Yuusha no Nariagari", "anio": 2019 } },
+    "konosuba": { "anime": { "busqueda": "Kono Subarashii Sekai ni Shukufuku wo!", "anio": 2016 } },
+    "librera": { "anime": { "busqueda": "Honzuki no Gekokujou", "anio": 2019 } }
+  },
+  "escenas": [
+    {
+      "titulo": "Nacen en *internet*",
+      "objeto": {
+        "tipo": "ranking",
+        "titulo": "NOVELAS WEB · HOY",
+        "filas": [
+          { "texto": "1. ME REENCARNÉ EN…", "largo": 0.95, "destacado": true },
+          { "texto": "2. ME ECHARON DEL…", "largo": 0.85 },
+          { "texto": "3. MI HABILIDAD…", "largo": 0.75 },
+          { "texto": "4. LA VILLANA…", "largo": 0.65 }
+        ]
+      },
+      "onomatopeya": "ドン！",
+      "brujas": [
+        { "id": "vidente", "poses": ["varita", "senala"] },
+        { "id": "escriba", "poses": ["parado", "sorpresa"] }
+      ],
+      "dato": "Nacen como *novelas web*",
+      "voz": "Muchos isekai nacen como novelas web en Shōsetsuka ni Narō, una web japonesa donde cualquiera publica gratis. Miles de historias pelean por el ranking."
+    },
+    {
+      "titulo": "Solo se ve *el título*",
+      "objeto": { "tipo": "tele", "pantalla": "SIN PORTADA · 0 CLICS" },
+      "onomatopeya": "ガーン",
+      "brujas": [
+        { "id": "vidente", "poses": ["senala", "encoge"] },
+        { "id": "escriba", "poses": ["pensar", "llora"] }
+      ],
+      "dato": "Título = *resumen*",
+      "voz": "Y en esas listas solo se ve el título. Sin portada, sin dibujos. Si el título no cuenta la historia, nadie hace clic."
+    },
+    {
+      "titulo": "La guerra de *títulos*",
+      "objeto": { "tipo": "calendario", "etiquetas": ["2009", "2011", "2014", "HOY"], "marca": 2, "numeros": false },
+      "onomatopeya": "バーン！",
+      "brujas": [
+        { "id": "vidente", "poses": ["varita", "enfado"] },
+        { "id": "cronista", "poses": ["parado", "sorpresa"] }
+      ],
+      "dato": "La moda explota en *2014*",
+      "voz": "Así empezó la guerra de títulos: cada uno más largo que el anterior. La moda explotó hacia 2014 y ya no hubo vuelta atrás."
+    },
+    {
+      "titulo": "El *récord*",
+      "objeto": {
+        "tipo": "ranking",
+        "titulo": "CARACTERES EN JAPONÉS",
+        "filas": [
+          { "texto": "RÉCORD 2017 · 69", "largo": 1, "destacado": true },
+          { "texto": "KINO NO TABI · 4", "largo": 0.12 }
+        ]
+      },
+      "onomatopeya": "キラッ",
+      "brujas": [
+        { "id": "vidente", "poses": ["senala", "celebra"] },
+        { "id": "mensajera", "poses": ["sorpresa", "celebra"] }
+      ],
+      "dato": "*69* caracteres",
+      "voz": "Un récord de 2017: un título de 69 caracteres en japonés. Kino no Tabi tiene 4. Ganó el resumen."
+    }
+  ],
+  "cierre": {
+    "etiqueta": "¿QUÉ TÍTULO TE SABES ENTERO?",
+    "pregunta": ["¿Slime o", "*Konosuba*?"],
+    "cta": "GUÁRDALO PARA CUANDO TE LO PREGUNTEN",
+    "voz": "Ahora tú: ¿qué título largo te sabes entero? ¿El de la slime o el de Konosuba?"
+  },
+  "copy": "¿Por qué el título de tu isekai ya te cuenta toda la trama? No es pereza: es estrategia 🌙\n\nMuchos isekai nacen como novelas web en Shōsetsuka ni Narō, una web japonesa donde cualquiera publica gratis. En sus listas solo se ve el título: sin portada, sin dibujos. Si el título no cuenta la historia, nadie hace clic.\n\nAsí empezó la guerra de títulos, y la moda explotó hacia 2014. En 2017 uno llegó a 69 caracteres en japonés. Kino no Tabi tiene 4.\n\n¿Qué título largo te sabes entero: el de la slime o el de Konosuba?",
+  "hashtags": "#anime #animeespañol #animelatino #otaku #isekai #lightnovel #novelasligeras #curiosidadesanime #datosanime #tenseishitaraslimedattaken #konosuba #animereels",
+  "fuentes": "Shōsetsuka ni Narō y sus títulos largos: Wikipedia; títulos como resumen para conseguir clics en las listas: School Library Journal (entrevista a Samuel Pinarsky). Auge desde 2014: J. Geek Studies (Tomotani, 2020). Récord de 69 caracteres en 2017: Anime News Network. Kino no Tabi, 4 caracteres: Anime News Network.",
+  "alt": "Reel en pixel art: brujitas de anime en una torre con un caldero explican por qué los isekai tienen títulos tan largos. Un espejo mágico pasa portadas de La slime, Shield Hero, Konosuba y Ascendance of a Bookworm; luego aparecen una lista de novelas web, una tele sin portada, un calendario que marca 2014 y una barra con el récord de 69 caracteres. Subtítulos grandes acompañan la voz."
+}
