@@ -1,0 +1,12 @@
+{
+  "nombre": "Salón Ejemplo",
+  "handle": "@salon.ejemplo",
+  "colores": { "fondo": "#F4EFE8", "texto": "#1F1B18", "acento": "#B4553A", "suave": "#7A6E66", "linea": "#DDD3C8" },
+  "fuentes": { "titulo": "Fraunces", "texto": "Poppins" },
+  "pesoTitulo": 500,
+  "esquinas": 28,
+  "logo": null,
+  "stories": { "activo": false, "hora": "09:30" },
+  "instagram": { "secretoToken": "IG_TOKEN_EJEMPLO_SALON", "secretoUsuario": "IG_USER_EJEMPLO_SALON" },
+  "nota": "Cliente de ejemplo para enseñar las plantillas. No existe: no se publica."
+}

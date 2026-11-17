@@ -1,0 +1,12 @@
+{
+  "nombre": "caba.kami",
+  "handle": "@caba.kami",
+  "colores": { "fondo": "#0E0D0F", "texto": "#ECEBEE", "acento": "#B8304D", "suave": "#8C8A90", "linea": "#3D3A3F" },
+  "fuentes": { "titulo": "IM Fell English", "texto": "Zen Kaku Gothic New" },
+  "pesoTitulo": 400,
+  "esquinas": 0,
+  "logo": null,
+  "stories": { "activo": false, "hora": "09:30" },
+  "instagram": { "secretoToken": "INSTAGRAM_ACCESS_TOKEN", "secretoUsuario": "INSTAGRAM_USER_ID" },
+  "nota": "La story diaria de estrenos sigue en story-diaria.yml. Estas plantillas son para stories extra."
+}

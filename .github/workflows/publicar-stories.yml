@@ -1,0 +1,50 @@
+name: Stories de clientes (publicar)
+
+# Cada mañana publica la story del día de cada cliente con "stories.activo" en su marca.json,
+# solo si La Mensajera la dejó aprobada (stories/<cuenta>/aprobadas.txt en la rama publico).
+# No toca la story diaria de anime de caba.kami (story-diaria.yml).
+on:
+  schedule:
+    - cron: "43 8 * * *"   # 08:43 UTC = 08:43 en Canarias en invierno (09:43 en verano)
+  workflow_dispatch:
+    inputs:
+      fecha:
+        description: "Fecha (AAAA-MM-DD). Vacío = hoy"
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: caba-kami-stories
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Publicar y anotar
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SECRETOS: ${{ toJSON(secrets) }}
+          PUBLIC_BASE_URL: https://raw.githubusercontent.com/${{ github.repository }}/publico
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          npm install --omit=dev --no-audit --no-fund
+          REPO_URL="https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git"
+          DEST="$RUNNER_TEMP/publico"
+          git clone -q --depth 1 --branch publico "$REPO_URL" "$DEST"
+          ARGS="$DEST"
+          [ -n "${{ inputs.fecha }}" ] && ARGS="$ARGS --fecha ${{ inputs.fecha }}"
+          node src/stories/publicar.js $ARGS
+          cd "$DEST"
+          for i in 1 2 3 4 5; do
+            git add -A
+            git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -q -m "Stories publicadas" || break
+            git push -q origin publico && break
+            git pull -q --rebase origin publico || true
+          done
