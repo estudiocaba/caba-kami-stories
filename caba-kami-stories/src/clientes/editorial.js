@@ -25,17 +25,18 @@ body{background:#000}
 .ed{width:1080px;height:${alto}px;position:relative;overflow:hidden;background:${c.fondo};color:#fff;font-family:'${X}',sans-serif}
 .foto{position:absolute;background-size:cover;background-position:center}
 .llena{inset:0}
-.franja{position:absolute;left:48px;right:48px;display:flex;align-items:center;justify-content:space-between;z-index:5;
+.franja{position:absolute;left:${s ? 96 : 48}px;right:${s ? 96 : 48}px;display:flex;align-items:center;justify-content:space-between;z-index:5;
   font:600 ${s ? 22 : 17}px '${X}',sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.35)}
 .franja i{flex:0 0 ${s ? 150 : 120}px;height:2px;background:rgba(255,255,255,.75);display:block}
-.franja.arriba{top:${s ? 250 : 40}px}.franja.abajo{bottom:${s ? 330 : 40}px}
+/* stories: todo dentro de la zona segura (arriba la barra de Instagram ~250 px, abajo la de respuesta ~340 px) */
+.franja.arriba{top:${s ? 290 : 40}px}.franja.abajo{bottom:${s ? 400 : 40}px}
 .serif{font-family:'${T}',serif;font-weight:400;text-transform:uppercase;line-height:.86;letter-spacing:-.01em}
 .serif em{font-style:italic}
 .caja{position:absolute;left:0;right:0;background:rgba(18,14,12,.93);color:#fff;font-size:${s ? 38 : 31}px;line-height:1.32;padding:36px 56px}
 .caja p+p{margin-top:12px}
 .sombra{position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,.28), rgba(0,0,0,0) 25%, rgba(0,0,0,0) 55%, rgba(0,0,0,.45))}
 .oscuro{position:absolute;inset:0;background:rgba(20,16,14,.48)}
-.centro{position:absolute;left:80px;right:80px;top:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:${s ? 40 : 30}px}
+.centro{position:absolute;left:${s ? 96 : 80}px;right:${s ? 96 : 80}px;top:${s ? 340 : 0}px;bottom:${s ? 470 : 0}px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:${s ? 40 : 30}px}
 .tit-tip{font:800 ${s ? 68 : 54}px/1.08 '${X}',sans-serif;text-transform:uppercase;text-shadow:0 2px 12px rgba(0,0,0,.45)}
 .txt{font-size:${s ? 42 : 32}px;line-height:1.35;text-shadow:0 2px 10px rgba(0,0,0,.5)}
 .consejo{font-style:italic;font-size:${s ? 36 : 28}px;line-height:1.35;text-shadow:0 2px 10px rgba(0,0,0,.5);max-width:820px}
@@ -64,9 +65,9 @@ export const TIPOS = {
   portada: (d, m, H) => {
     const lineas = Array.isArray(d.titulo) ? d.titulo : [d.titulo];
     const largo = Math.max(...lineas.map(l => l.replace(/\*/g, '').length));
-    const t = Math.min(H > 1500 ? 220 : 190, Math.round(980 / (0.42 * Math.max(6, largo))));
+    const t = Math.min(H > 1500 ? 200 : 190, Math.round((H > 1500 ? 860 : 980) / (0.42 * Math.max(6, largo))));
     return `<div class="foto llena" style="${bg(d.foto)}"></div><div class="sombra"></div>
-    <div class="zona" style="position:absolute;left:56px;right:56px;top:${H > 1500 ? 560 : 300}px;bottom:${H > 1500 ? 420 : 110}px;display:flex;flex-direction:column;justify-content:space-between">
+    <div class="zona" style="position:absolute;left:${H > 1500 ? 96 : 56}px;right:${H > 1500 ? 96 : 56}px;top:${H > 1500 ? 560 : 300}px;bottom:${H > 1500 ? 470 : 110}px;display:flex;flex-direction:column;justify-content:space-between">
       <div class="serif" style="font-size:${t}px;text-shadow:0 4px 20px rgba(0,0,0,.25)">${lineas.map(l => `<div>${enf(l)}</div>`).join('')}</div>
       <div>${d.etiqueta ? `<div class="serif" style="font-size:${H > 1500 ? 120 : 100}px;border-top:2px solid rgba(255,255,255,.8);padding-top:20px">${enf(d.etiqueta)}</div>` : ''}
       ${d.bajada ? `<div class="txt" style="margin-top:24px">${enf(d.bajada)}</div>` : ''}</div>
