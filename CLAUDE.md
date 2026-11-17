@@ -7,6 +7,10 @@
 - Para retocar el diseño sin volver a consultar AniList: `node src/carrusel/index.js <ficha> --sin-telegram --datos <datos.json de la rama publico>` (igual para `src/reel/index.js`).
 - Solo se publica lo que Camila marca como «Programado» en Notion.
 
+## Clientes
+- Tabla Notion «Clientes del Aquelarre» (collection://41b6541a-381b-81ff-b30a-000b85b97763): una fila por cuenta, con su ficha de marca, reparto y quién aprueba. caba.kami está en Prueba.
+- Para sumar un cliente: página Notion «Cómo sumar un cliente al Aquelarre» (41b6541a-381b-8156-862b-c603659e3f4b) y «Plantilla · Ficha de marca de un cliente» (41b6541a-381b-817b-8327-ec6759f68bcc).
+
 ## Las brujas (agentes programados)
 - **La Vidente** (domingos 18:41): tendencias → tabla Notion «Tendencias» (collection://41b6541a-381b-811b-8040-000b63f7b735).
 - **La Escriba** (lunes 10:13): guiones, copys y generación de las piezas en Idea de los próximos 9 días → «Para revisar».
