@@ -1,0 +1,15 @@
+{
+  "nombre": "ZS Peluqueros",
+  "handle": "PENDIENTE",
+  "colores": { "fondo": "#F5F3F0", "texto": "#1C1C1C", "acento": "#1C1C1C", "suave": "#6E6A66", "linea": "#DAD5CF" },
+  "fuentes": { "titulo": "Fraunces", "texto": "Poppins" },
+  "pesoTitulo": 500,
+  "esquinas": 16,
+  "logo": null,
+  "plantillas": ["frase", "dato", "pregunta", "foto", "antesdespues", "cuentaatras"],
+  "prohibido": ["Precios de servicios o productos", "Agenda: horarios, huecos libres o disponibilidad", "Ofertas o promociones con precio"],
+  "voz": "Español de Canarias, cercano",
+  "stories": { "activo": false, "hora": "09:30" },
+  "instagram": { "secretoToken": "IG_TOKEN_ZS_PELUQUEROS", "secretoUsuario": "IG_USER_ZS_PELUQUEROS" },
+  "nota": "BORRADOR: colores, tipografías, logo y handle provisionales hasta tener los de la marca. Ficha completa en Notion: Ficha de marca · ZS Peluqueros."
+}

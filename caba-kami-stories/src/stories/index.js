@@ -33,6 +33,12 @@ if (fecha) archivo = semanas.filter(f => f.slice(0, 10) <= fecha).at(-1);
 if (!archivo) { console.log(`${cuenta}: no hay semanas de stories.`); process.exit(0); }
 const semana = JSON.parse(readFileSync(path.join(dirSemanas, archivo), 'utf8'));
 const stories = semana.stories.filter(s => !fecha || s.fecha === fecha);
+// Reglas del cliente: plantillas permitidas (por ejemplo, ZS no publica precios ni agenda)
+const prohibidas = stories.filter(s => marca.plantillas && !marca.plantillas.includes(s.plantilla));
+if (prohibidas.length) {
+  console.error(`${cuenta} no usa estas plantillas: ${[...new Set(prohibidas.map(s => s.plantilla))].join(', ')} (${prohibidas.map(s => s.fecha).join(', ')}). Permitidas: ${marca.plantillas.join(', ')}.`);
+  process.exit(1);
+}
 
 const OUT = path.join(RAIZ, 'out', 'stories', cuenta);
 mkdirSync(OUT, { recursive: true });
