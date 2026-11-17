@@ -5,7 +5,7 @@
     {
       "tipo": "portada",
       "foto": {
-        "buscar": "bob haircut woman"
+        "buscar": "woman bob haircut"
       },
       "titulo": [
         "*Tendencia*",
@@ -16,7 +16,7 @@
     {
       "tipo": "fototexto",
       "foto": {
-        "buscar": "short bob haircut woman"
+        "buscar": "woman short hair"
       },
       "texto": [
         "Scandi bob: un bob limpio y ligero, a la altura de la mandíbula.",
@@ -26,7 +26,7 @@
     {
       "tipo": "fototexto",
       "foto": {
-        "buscar": "shoulder length haircut woman"
+        "buscar": "woman shoulder length hair"
       },
       "texto": [
         "Soft clavicut: la melena por la clavícula, con las puntas suaves.",
@@ -36,7 +36,7 @@
     {
       "tipo": "collage",
       "fotos": {
-        "buscar": "long layered haircut",
+        "buscar": "woman long hair",
         "n": 6
       },
       "titulo": "*Butterfly*"
@@ -44,7 +44,7 @@
     {
       "tipo": "fototexto",
       "foto": {
-        "buscar": "pixie haircut woman"
+        "buscar": "woman pixie"
       },
       "texto": [
         "Corto y cómodo: el cabello corto vuelve con fuerza este invierno.",
@@ -54,7 +54,7 @@
     {
       "tipo": "cierre",
       "foto": {
-        "buscar": "woman haircut salon"
+        "buscar": "hairdresser woman"
       },
       "pregunta": "¿Te atreves con el corte del invierno?"
     }

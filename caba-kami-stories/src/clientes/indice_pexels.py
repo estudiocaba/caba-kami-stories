@@ -32,11 +32,15 @@ print(con.execute("SELECT count(*) FROM t").fetchone()[0], 'fotos verticales', f
 
 GENERICAS = {'woman', 'man', 'portrait', 'girl', 'women', 'men', 'photo', 'with'}
 
-def buscar(palabras, cuantas):
+def buscar(palabras, cuantas, campos):
+    # campos: 'descr' (solo la descripción de la foto) o 'ambos' (descripción o etiquetas)
     conds, nota, args_c, args_n = [], [], [], []
     for w in palabras:
         rx = r'\b' + w
-        conds.append("(regexp_matches(descr, ?) OR regexp_matches(etiq, ?))"); args_c += [rx, rx]
+        if campos == 'descr':
+            conds.append("regexp_matches(descr, ?)"); args_c += [rx]
+        else:
+            conds.append("(regexp_matches(descr, ?) OR regexp_matches(etiq, ?))"); args_c += [rx, rx]
         nota.append("(CASE WHEN regexp_matches(descr, ?) THEN 2 ELSE 0 END + CASE WHEN regexp_matches(etiq, ?) THEN 1 ELSE 0 END)"); args_n += [rx, rx]
     sql = f"SELECT id, alt, width, height, {' + '.join(nota)} AS n FROM t WHERE {' AND '.join(conds)} ORDER BY n DESC, hash(id) LIMIT ?"
     return con.execute(sql, args_n + args_c + [cuantas * 3]).fetchall()
@@ -46,15 +50,16 @@ for p in pedidos:
     q, cuantas = p['q'], p.get('cuantas', 10)
     palabras = [w for w in q.lower().split() if len(w) > 2 and w != 'with']
     vistos, lista = set(), []
-    intento = palabras
-    while intento and len(lista) < cuantas:
-        for i, alt, w, h, n in buscar(intento, cuantas):
-            if i in vistos: continue
-            vistos.add(i); lista.append({'id': int(i), 'alt': alt, 'ancho': w, 'alto': h})
-            if len(lista) >= cuantas: break
-        # se relaja la búsqueda quitando primero las palabras genéricas, luego la primera
-        genericas = [w for w in intento if w in GENERICAS]
-        intento = [w for w in intento if w != (genericas[-1] if genericas else intento[0])] if len(intento) > 1 else []
+    for campos in ('descr', 'ambos'):
+        intento = palabras
+        while intento and len(lista) < cuantas:
+            for i, alt, w, h, n in buscar(intento, cuantas, campos):
+                if i in vistos: continue
+                vistos.add(i); lista.append({'id': int(i), 'alt': alt, 'ancho': w, 'alto': h})
+                if len(lista) >= cuantas: break
+            # se relaja quitando solo palabras genéricas (woman, man…); si no quedan, se pasa a las etiquetas
+            genericas = [w for w in intento if w in GENERICAS]
+            intento = [w for w in intento if w != genericas[-1]] if genericas and len(intento) > 1 else []
     salida[q] = lista
     print(f'  «{q}»: {len(lista)}', flush=True)
 json.dump(salida, open(sys.argv[2], 'w'))

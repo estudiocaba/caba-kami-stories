@@ -5,7 +5,7 @@
     {
       "tipo": "portada",
       "foto": {
-        "buscar": "elegant updo hairstyle"
+        "buscar": "woman updo"
       },
       "titulo": [
         "*Peinados*",
@@ -16,7 +16,7 @@
     {
       "tipo": "collage",
       "fotos": {
-        "buscar": "low bun hairstyle",
+        "buscar": "woman bun",
         "n": 6
       },
       "titulo": "Moño *bajo*"
@@ -24,7 +24,7 @@
     {
       "tipo": "collage",
       "fotos": {
-        "buscar": "soft waves hairstyle",
+        "buscar": "woman wavy hair",
         "n": 6
       },
       "titulo": "Ondas *suaves*"
@@ -32,7 +32,7 @@
     {
       "tipo": "fototexto",
       "foto": {
-        "buscar": "braid with ribbon hairstyle"
+        "buscar": "woman braid"
       },
       "texto": [
         "Trenza con cinta: una cinta roja, verde o dorada entre la trenza y ya tienes el toque navideño."
@@ -41,7 +41,7 @@
     {
       "tipo": "fototexto",
       "foto": {
-        "buscar": "high ponytail hairstyle"
+        "buscar": "woman ponytail"
       },
       "texto": [
         "Coleta alta con volumen: pulida, alta y con cuerpo. Elegante de principio a fin."
@@ -50,7 +50,7 @@
     {
       "tipo": "cierre",
       "foto": {
-        "buscar": "woman elegant hairstyle evening"
+        "buscar": "woman elegant evening dress"
       },
       "pregunta": "¿Cuál te hacemos para la cena?"
     }

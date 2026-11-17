@@ -5,7 +5,7 @@
     {
       "tipo": "portada",
       "foto": {
-        "buscar": "men quiff hairstyle"
+        "buscar": "man hairstyle"
       },
       "titulo": [
         "*Tendencia*",
@@ -17,10 +17,10 @@
       "tipo": "duo",
       "fotos": [
         {
-          "buscar": "quiff haircut man"
+          "buscar": "man haircut"
         },
         {
-          "buscar": "pompadour haircut man"
+          "buscar": "man slicked hair"
         }
       ],
       "texto": [
@@ -31,7 +31,7 @@
     {
       "tipo": "tip",
       "foto": {
-        "buscar": "man styling hair mirror"
+        "buscar": "man mirror hair"
       },
       "titulo": "Para que te dure",
       "texto": "Repasa el corte con frecuencia, seca dando forma con los dedos y usa poco fijador.",
@@ -40,7 +40,7 @@
     {
       "tipo": "cierre",
       "foto": {
-        "buscar": "barber haircut man"
+        "buscar": "barber"
       },
       "pregunta": "¿Quiff o pompadour?"
     }

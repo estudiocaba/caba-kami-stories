@@ -5,7 +5,7 @@
     {
       "tipo": "portada",
       "foto": {
-        "buscar": "woman tired hair morning"
+        "buscar": "woman tired bed"
       },
       "titulo": [
         "Después de",
@@ -16,7 +16,7 @@
     {
       "tipo": "tip",
       "foto": {
-        "buscar": "gentle shampoo washing hair"
+        "buscar": "shampoo hair"
       },
       "titulo": "Lavado suave",
       "texto": "Agua tibia y un champú suave para quitar restos de laca y producto."
@@ -24,7 +24,7 @@
     {
       "tipo": "tip",
       "foto": {
-        "buscar": "hair mask woman"
+        "buscar": "woman hair care"
       },
       "titulo": "Mascarilla con calma",
       "texto": "Unos minutos más de lo normal: tu cabello lo agradece."
@@ -32,7 +32,7 @@
     {
       "tipo": "tip",
       "foto": {
-        "buscar": "hair straightener flat iron"
+        "buscar": "hair straightener"
       },
       "titulo": "Descanso de calor",
       "texto": "Unos días sin plancha ni tenacillas.",
@@ -41,7 +41,7 @@
     {
       "tipo": "cierre",
       "foto": {
-        "buscar": "shiny healthy hair"
+        "buscar": "woman long shiny hair"
       },
       "pregunta": "¿Tu cabello pide un rescate?"
     }

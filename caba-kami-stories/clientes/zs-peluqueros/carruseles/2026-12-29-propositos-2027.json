@@ -5,7 +5,7 @@
     {
       "tipo": "portada",
       "foto": {
-        "buscar": "woman new year celebration hair"
+        "buscar": "woman new year"
       },
       "titulo": [
         "*Propósitos*",
@@ -16,7 +16,7 @@
     {
       "tipo": "tip",
       "foto": {
-        "buscar": "woman hair dryer"
+        "buscar": "hair dryer"
       },
       "titulo": "Protector térmico",
       "texto": "De verdad. No a veces."
@@ -24,7 +24,7 @@
     {
       "tipo": "tip",
       "foto": {
-        "buscar": "bangs hairstyle woman"
+        "buscar": "woman bangs"
       },
       "titulo": "Adiós al flequillo casero",
       "texto": "Ese flequillo te lo dejamos perfecto nosotros."
@@ -32,7 +32,7 @@
     {
       "tipo": "tip",
       "foto": {
-        "buscar": "hair color woman"
+        "buscar": "woman dyed hair"
       },
       "titulo": "Ese color guardado",
       "texto": "El que llevas un año guardando en el móvil: este es el año."
@@ -40,7 +40,7 @@
     {
       "tipo": "cierre",
       "foto": {
-        "buscar": "woman beautiful hair smile"
+        "buscar": "smiling woman long hair"
       },
       "pregunta": "¿Cuál cumples sí o sí?"
     }

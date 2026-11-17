@@ -5,7 +5,7 @@
     {
       "tipo": "portada",
       "foto": {
-        "buscar": "hairdresser talking client salon"
+        "buscar": "hair salon client"
       },
       "titulo": [
         "Cómo *pedir*",
@@ -16,7 +16,7 @@
     {
       "tipo": "tip",
       "foto": {
-        "buscar": "woman showing phone photo"
+        "buscar": "woman showing phone"
       },
       "titulo": "1. Trae una foto",
       "texto": "De lo que te gusta y, si puedes, de lo que no.",
@@ -25,7 +25,7 @@
     {
       "tipo": "tip",
       "foto": {
-        "buscar": "hair cutting scissors comb"
+        "buscar": "scissors comb"
       },
       "titulo": "2. Habla en centímetros",
       "texto": "«Un poquito» no es lo mismo para todo el mundo.",
@@ -34,7 +34,7 @@
     {
       "tipo": "tip",
       "foto": {
-        "buscar": "woman drying hair towel"
+        "buscar": "woman towel hair"
       },
       "titulo": "3. Cuéntanos tu rutina",
       "texto": "Si te secas al aire o con secador, si te peinas cada día o nunca.",
@@ -43,7 +43,7 @@
     {
       "tipo": "cierre",
       "foto": {
-        "buscar": "happy woman new haircut"
+        "buscar": "happy woman hair"
       },
       "pregunta": "¿Eres de foto o de «un poquito»?"
     }
