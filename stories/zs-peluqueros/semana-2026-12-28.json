@@ -1,0 +1,31 @@
+{
+  "cuenta": "zs-peluqueros",
+  "semana": "2026-12-28",
+  "video": true,
+  "stories": [
+    {
+      "fecha": "2026-12-28",
+      "plantilla": "cuentaatras",
+      "archivo": "zs-peluqueros-story-2026-12-28.mp4",
+      "portada": "zs-peluqueros-story-2026-12-28.jpg"
+    },
+    {
+      "fecha": "2026-12-29",
+      "plantilla": "frase",
+      "archivo": "zs-peluqueros-story-2026-12-29.mp4",
+      "portada": "zs-peluqueros-story-2026-12-29.jpg"
+    },
+    {
+      "fecha": "2026-12-30",
+      "plantilla": "promo",
+      "archivo": "zs-peluqueros-story-2026-12-30.mp4",
+      "portada": "zs-peluqueros-story-2026-12-30.jpg"
+    },
+    {
+      "fecha": "2026-12-31",
+      "plantilla": "frase",
+      "archivo": "zs-peluqueros-story-2026-12-31.mp4",
+      "portada": "zs-peluqueros-story-2026-12-31.jpg"
+    }
+  ]
+}
