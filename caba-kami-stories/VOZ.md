@@ -26,3 +26,6 @@ Fan que sabe, con datos, humor, ironía y un poco de sarcasmo. Castellano neutro
 - La Vidente habla como la cuenta: cercana, con un punto irónico, frases cortas que se entienden al oído.
 - Una idea por escena, 30 palabras como máximo. Los números, escritos con letras si la voz los lee mal.
 - Las palabras japonesas o inventadas van en `pronunciacion` para que la voz no las lea en inglés.
+- Ritmo de redes: la primera frase es el gancho (una pregunta o una queja que el público ya tuvo), nunca «Abran el grimorio» ni un saludo.
+- Si una palabra sale con el acento mal puesto, se añade en `pronunciacion` con tilde de apoyo («abran» → «ábran»). Los subtítulos siguen mostrando el texto bien escrito.
+- Cada lección lleva su onomatopeya en japonés (`onomatopeya`: ドン！, ジャーン, ガーン, キラッ…) y, cuando se pueda, la portada de un anime real.

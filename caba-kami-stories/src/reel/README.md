@@ -45,9 +45,16 @@ Para crear más pistas: añadir una entrada en `PISTAS` dentro de `componer.py` 
 
 ## Plantilla «explicativo»: el grimorio del Aquelarre
 
-Los reels explicativos tienen su propio mundo, distinto del de las listas: **pixel art** de juego de los 90 (escena de 180×320 píxeles ampliada a 1080×1920), las **brujitas del Aquelarre** en una torre con caldero, **voz en off** de la Vidente, **vals de bruja** en lugar de lofi y cortes con **cierre de iris** en lugar de fallo de VHS. Código en `src/reel/grimorio.js`; la voz, en `src/voz/narrar.py`.
+Los reels explicativos tienen su propio mundo, distinto del de las listas: **pixel art** de juego de los 90 (escena de 180×320 píxeles ampliada a 1080×1920), las **brujitas del Aquelarre** en una torre con caldero, **voz en off** de la Vidente y **vals de bruja** en lugar de lofi. Código en `src/reel/grimorio.js`; la voz, en `src/voz/narrar.py`.
 
-En cada escena la Vidente conjura con la varita la idea que explica (círculo mágico, chispas y el objeto que aparece en el humo), su boca se mueve con la voz y lo que dice sale en una caja de diálogo al ritmo de la voz. Debajo, el dato en un pergamino. La duración de cada escena sale de la voz y se redondea al pulso de la música.
+Habla el idioma del anime y de las redes a la vez:
+- **Gancho en el primer segundo**: la voz arranca enseguida y un espejo mágico pasa portadas de anime reales.
+- **Subtítulos grandes palabra por palabra**, sincronizados con la voz (el motor da el momento de cada palabra); la que suena, en vino.
+- **Brujitas con cara de anime** (ojos grandes con brillo, rubor) y gestos de anime: «!» de sorpresa, «?», gota de sudor, venita de enfado, lágrimas a chorro, rayas de bajón, chispas al celebrar.
+- **Onomatopeya en japonés** en cada revelación, con líneas de impacto de manga, zoom de golpe y temblor.
+- **Cortes que varían**: iris, barrido en diagonal y flash. El dato sale como una pegatina que se balancea.
+
+La duración de cada escena sale de la voz y se redondea al pulso de la música.
 
 Ficha de ejemplo: `reeles/2026-12-03-cour.json`.
 
@@ -55,12 +62,12 @@ Ficha de ejemplo: `reeles/2026-12-03-cour.json`.
 |---|---|
 | `plantilla` | `explicativo`. |
 | `musica` | `caldero` (vals en re menor, 96 bpm) o `hechizo` (la menor, 88 bpm), de `musica/grimorio.py`. |
-| `voz` | `{motor, voz, velocidad}`. Motor `elevenlabs` (`voz` = voice_id; necesita `ELEVENLABS_API_KEY`; en el plan gratuito el copy añade la atribución), `azure` (oficial, con `AZURE_SPEECH_KEY` y `AZURE_SPEECH_REGION`), `edge` (voces de Microsoft, para pruebas) o `piper` (Daniela, libre). |
-| `pronunciacion` | Palabras que la voz debe leer distinto: `{"cour": "cur"}`. Solo cambia el audio, no el texto. |
-| `narradora`, `tema` | Nombre en la caja de diálogo y tema que sale en la cabecera de cada lección. |
-| `etiqueta`, `titulo` (2 líneas), `subtitulo`, `intro.voz` | La portada con la bruja en escoba cruzando la luna. |
-| `fotos` | Opcional: `{clave: {anime: {busqueda, anio}}}`, para la tele (la portada sale pixelada). |
-| `escenas[]` | 3 a 5: `titulo`, `objeto`, `brujas`, `dato`, `voz` (lo que dice la narradora, 30 palabras como máximo) y `foto` opcional. |
+| `voz` | `{motor, voz, velocidad, tono}` (por defecto `+10%` y `+5Hz`, con energía). Motor `elevenlabs` (`voz` = voice_id; necesita `ELEVENLABS_API_KEY`; en el plan gratuito el copy añade la atribución), `azure` (oficial, con `AZURE_SPEECH_KEY` y `AZURE_SPEECH_REGION`), `edge` (voces de Microsoft, para pruebas) o `piper` (Daniela, libre). |
+| `pronunciacion` | Palabras que la voz debe leer distinto: `{"cour": "cur"}`. Solo cambia el audio, no el texto. Sirve también para tildes de apoyo: `{"abran": "ábran"}` (las más comunes ya vienen puestas). |
+| `tema` | Tema que sale en la cabecera de cada lección. |
+| `etiqueta`, `titulo` (1 línea corta), `intro` | El gancho: `voz` (una pregunta o una queja, nunca un saludo), `fotos` (claves de `fotos` que pasan por el espejo), `onomatopeya` y `brujas`. |
+| `fotos` | Opcional: `{clave: {anime: {busqueda, anio}}}`, para el espejo del gancho y para la tele. |
+| `escenas[]` | 3 a 5: `titulo`, `objeto`, `brujas`, `dato` (pegatina), `voz` (30 palabras como máximo), `onomatopeya` (ドン！, ジャーン, ガーン, キラッ…) y `foto` opcional. |
 | `objeto.tipo` | `calendario` (`marca`: 0-3 o `todas`, `etiquetas`), `tira` (`episodios`, `corte`), `tele` (`pantalla`), `tijeras` (`izquierda`, `derecha`, `pausa`), `reloj` (`texto`), `estudio` (`letrero`). |
-| `brujas[]` | 1 o 2. La primera narra (izquierda); la segunda reacciona (derecha). `id`: `vidente`, `escriba`, `mensajera`, `guardiana`, `cronista`. `poses`: `varita`, `senala`, `parado`, `sorpresa`, `celebra`, `pensar`, `llora`, `triste`, `encoge`, `camina`. |
-| `cierre` | `pregunta` (2 líneas), `cta` y `voz`. |
+| `brujas[]` | 1 o 2. La primera narra (izquierda); la segunda reacciona (derecha). `id`: `vidente`, `escriba`, `mensajera`, `guardiana`, `cronista`. `poses`: `varita`, `senala`, `parado`, `sorpresa`, `celebra`, `pensar`, `llora`, `triste`, `encoge`, `enfado`. |
+| `cierre` | `etiqueta`, `pregunta` (2 líneas, elegible: «¿A o B?»), `cta` y `voz`. |
