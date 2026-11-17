@@ -1,5 +1,7 @@
 // Busca fotos candidatas para las piezas de un cliente y arma hojas de contacto numeradas para elegir.
-// Solo fotos gratuitas de Unsplash (licencia Unsplash: uso comercial libre; se descartan las de Unsplash+).
+// Solo fotos de Pexels (licencia Pexels: uso comercial libre, sin atribución obligatoria). Se buscan en los
+// índices públicos de Hugging Face que copian los datos de la API de Pexels (bghira/photo-concept-bucket y
+// gaunernst/pexels-portrait) y la foto se descarga del propio Pexels.
 //
 //   node src/clientes/candidatas.js <cuenta> [prefijo]
 //
@@ -47,6 +49,37 @@ if (existsSync(dirStories)) for (const f of readdirSync(dirStories).sort()) {
 }
 
 const cache = {};
+const INDICES = ['bghira/photo-concept-bucket', 'gaunernst/pexels-portrait'];
+async function pexels(q, cuantas) {
+  if (cache[q]) return cache[q];
+  const fotos = [], vistas = new Set();
+  const palabras = q.toLowerCase().split(/\s+/);
+  for (const ds of INDICES) {
+    const r = await fetch(`https://datasets-server.huggingface.co/search?dataset=${ds}&config=default&split=train&query=${encodeURIComponent(q)}&length=100`);
+    if (!r.ok) { console.log(`  ${ds}: ${r.status}`); continue; }
+    const j = await r.json();
+    const filas = (j.rows ?? []).map(x => x.row)
+      .filter(x => x.id && !vistas.has(x.id) && (x.height ?? 1) >= (x.width ?? 0) * 1.05)
+      .map(x => ({ x, nota: palabras.filter(w => `${x.alt ?? ''} ${x.title ?? ''} ${x.tags ?? ''} ${x.slug ?? ''}`.toLowerCase().includes(w)).length }))
+      .sort((a, b) => b.nota - a.nota);
+    for (const { x } of filas) {
+      if (fotos.length >= cuantas) break;
+      vistas.add(x.id);
+      const base = `https://images.pexels.com/photos/${x.id}/pexels-photo-${x.id}.jpeg`;
+      fotos.push({
+        id: x.id,
+        url: `${base}?auto=compress&cs=tinysrgb&w=1600`,
+        mini: `${base}?auto=compress&cs=tinysrgb&w=300`,
+        credito: `${x.photographer ?? 'Pexels'}${x.photographer ? ' (Pexels)' : ''}`,
+        pagina: x.url?.startsWith('https://www.pexels.com') ? x.url : `https://www.pexels.com/photo/${x.id}/`,
+        alt: x.alt || x.title || '',
+      });
+    }
+    if (fotos.length >= cuantas) break;
+  }
+  return (cache[q] = fotos);
+}
+
 async function unsplash(q, cuantas) {
   if (cache[q]) return cache[q];
   const fotos = [];
@@ -75,7 +108,7 @@ const page = await browser.newPage({ viewport: { width: 1000, height: 600 } });
 const todas = {};
 for (const p of pedidos) {
   const cuantas = p.n > 1 ? Math.max(14, p.n * 2 + 2) : 10;
-  const fotos = await unsplash(p.q, cuantas);
+  const fotos = await pexels(p.q, cuantas);
   const clave = `${p.pieza}__${String(p.hueco).padStart(2, '0')}`;
   todas[clave] = { q: p.q, n: p.n, fotos };
   if (!fotos.length) continue;
