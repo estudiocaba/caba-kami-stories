@@ -1,0 +1,67 @@
+name: Stories de clientes (generar)
+
+# Genera la semana de stories de un cliente (caba-kami-stories/clientes/<cuenta>/stories/<lunes>.json),
+# guarda las imágenes en la rama "publico" (stories/<cuenta>/) y las manda a Telegram para revisar.
+# No publica nada: eso lo hace «Stories de clientes (publicar)», solo con lo aprobado.
+on:
+  workflow_dispatch:
+    inputs:
+      cuenta:
+        description: "Carpeta del cliente en clientes/, por ejemplo ejemplo-salon"
+        required: true
+      semana:
+        description: "Lunes de la semana (AAAA-MM-DD). Vacío = la más reciente"
+        required: false
+      telegram:
+        description: "Mandar las stories por Telegram"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+jobs:
+  stories:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: caba-kami-stories
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --omit=dev --no-audit --no-fund
+
+      - name: Generar las stories
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          ARGS="${{ inputs.cuenta }}"
+          [ -n "${{ inputs.semana }}" ] && ARGS="$ARGS --semana ${{ inputs.semana }}"
+          [ "${{ inputs.telegram }}" = "true" ] || ARGS="$ARGS --sin-telegram"
+          node src/stories/index.js $ARGS
+
+      - name: Guardar en la rama publico
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          REPO_URL="https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git"
+          SRC="$PWD/out/stories/${{ inputs.cuenta }}"
+          DEST="$RUNNER_TEMP/publico"
+          for i in 1 2 3 4 5 6 7 8; do
+            rm -rf "$DEST"
+            if ! git clone -q --depth 1 --branch publico "$REPO_URL" "$DEST" 2>/dev/null; then
+              mkdir -p "$DEST" && git -C "$DEST" init -q -b publico && git -C "$DEST" remote add origin "$REPO_URL"
+            fi
+            mkdir -p "$DEST/stories/${{ inputs.cuenta }}"
+            cp "$SRC"/*.jpg "$DEST/stories/${{ inputs.cuenta }}/"
+            cp "$SRC/semana.json" "$DEST/stories/${{ inputs.cuenta }}/semana-$(node -p "require('$SRC/semana.json').semana").json"
+            git -C "$DEST" add -A
+            git -C "$DEST" -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -q -m "Stories ${{ inputs.cuenta }}" || { echo "Sin cambios"; break; }
+            git -C "$DEST" push -q origin publico && break
+            echo "Otra ejecución guardó a la vez; reintento ($i)"
+            sleep $((RANDOM % 8 + 3))
+            [ "$i" = 8 ] && { echo "No se pudo guardar en publico"; exit 1; }
+          done

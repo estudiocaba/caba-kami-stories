@@ -1,0 +1,9 @@
+{
+  "semana": "2026-12-07",
+  "stories": [
+    { "fecha": "2026-12-07", "plantilla": "dato", "etiqueta": "Para tu maratón", "cifra": "48", "unidad": "episodios",
+      "texto": "tienen las dos primeras temporadas de *Los diarios de la boticaria*.", "fuente": "AniList" },
+    { "fecha": "2026-12-08", "plantilla": "pregunta", "etiqueta": "Tu turno",
+      "pregunta": "¿Con qué husbando pasarías la *Nochebuena*?", "opciones": ["Jinshi", "Nagumo"], "pie": "Responde por mensaje 👇" }
+  ]
+}

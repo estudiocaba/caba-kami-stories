@@ -1,0 +1,22 @@
+{
+  "semana": "2026-12-07",
+  "stories": [
+    { "fecha": "2026-12-07", "plantilla": "frase", "etiqueta": "Consejo del lunes",
+      "texto": "Lava el pelo con agua *tibia*: la muy caliente apaga el color antes de tiempo." },
+    { "fecha": "2026-12-08", "plantilla": "agenda", "etiqueta": "Hoy", "titulo": "Huecos *libres*",
+      "items": [{ "hora": "10:30", "texto": "Corte y peinado" }, { "hora": "13:00", "texto": "Color" }, { "hora": "17:45", "texto": "Tratamiento hidratante" }],
+      "pie": "Reserva respondiendo a esta story" },
+    { "fecha": "2026-12-09", "plantilla": "antesdespues", "antes": "fotos/antes.jpg", "despues": "fotos/despues.jpg",
+      "texto": "De castaño apagado a *cobre* en una sola sesión." },
+    { "fecha": "2026-12-10", "plantilla": "pregunta", "etiqueta": "Contesta sin miedo",
+      "pregunta": "¿Qué te da más *miedo* en la peluquería?",
+      "opciones": ["Que me corten de más", "Que el color no se parezca a la foto"], "pie": "Respóndenos por mensaje: leemos todo 👇" },
+    { "fecha": "2026-12-11", "plantilla": "promo", "etiqueta": "Solo en diciembre", "titulo": "Hidratación + *peinado*",
+      "precio": "25 €", "detalle": "Para llegar a las cenas con el pelo como recién salido del salón.",
+      "cta": "Pide tu cita por mensaje", "valido": "Del 11 al 20 de diciembre" },
+    { "fecha": "2026-12-12", "plantilla": "foto", "foto": "fotos/recogido.jpg", "etiqueta": "Sábado de bodas",
+      "texto": "Recogido de invitada, listo en *40 minutos*." },
+    { "fecha": "2026-12-13", "plantilla": "cuentaatras", "etiqueta": "Nochebuena", "hasta": "2026-12-24",
+      "texto": "¿Ya tienes tu cita para las fiestas?" }
+  ]
+}
