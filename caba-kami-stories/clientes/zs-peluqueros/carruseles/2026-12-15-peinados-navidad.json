@@ -22,12 +22,19 @@
       "titulo": "*Recogidos*"
     },
     {
-      "tipo": "collage",
-      "fotos": {
-        "buscar": "woman wavy hair",
-        "n": 6
-      },
-      "titulo": "Ondas *suaves*"
+      "tipo": "duo",
+      "fotos": [
+        {
+          "buscar": "wavy hair"
+        },
+        {
+          "buscar": "wavy hair"
+        }
+      ],
+      "texto": [
+        "Ondas suaves: abiertas, con movimiento y sin rizo marcado.",
+        "Van con un vestido de fiesta y también con un jersey."
+      ]
     },
     {
       "tipo": "fototexto",
@@ -35,7 +42,7 @@
         "buscar": "woman braid"
       },
       "texto": [
-        "Trenza con cinta: una cinta roja, verde o dorada entre la trenza y ya tienes el toque navideño."
+        "Trenza pulida: añádele una cinta roja, verde o dorada y ya tienes el toque navideño."
       ]
     },
     {
