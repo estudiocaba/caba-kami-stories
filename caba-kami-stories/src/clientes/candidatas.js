@@ -48,6 +48,18 @@ if (existsSync(dirStories)) for (const f of readdirSync(dirStories).sort()) {
   }
 }
 
+// Modo --busquedas: solo los huecos de fotos/busquedas.json, con varias búsquedas y 30 candidatas cada uno.
+const BUSQ = path.join(dir, 'fotos', 'busquedas.json');
+const modoBusquedas = process.argv.includes('--busquedas') && existsSync(BUSQ);
+const busquedas = modoBusquedas ? Object.fromEntries(Object.entries(JSON.parse(readFileSync(BUSQ, 'utf8'))).filter(([k]) => !k.startsWith('_'))) : {};
+if (modoBusquedas) {
+  pedidos.length = 0;
+  for (const [clave, b] of Object.entries(busquedas)) {
+    const [pieza, h] = clave.split('__');
+    pedidos.push({ pieza, hueco: Number(h), q: clave, qs: b.q, criterio: b.criterio, n: 1, clave });
+  }
+}
+
 const cache = {};
 const INDICES = ['bghira/photo-concept-bucket', 'gaunernst/pexels-portrait'];
 async function pexels(q, cuantas) {
@@ -107,11 +119,24 @@ async function unsplash(q, cuantas) {
 
 // Índice de Pexels: una sola consulta para todos los huecos
 import { execFileSync } from 'node:child_process';
-const pedidosIndice = [...new Map(pedidos.map(p => [p.q, { q: p.q, cuantas: p.n > 1 ? Math.max(14, p.n * 2 + 2) : 10 }])).values()];
+const pedidosIndice = modoBusquedas
+  ? [...new Map(pedidos.flatMap(p => p.qs).map(q => [q, { q, cuantas: 14 }])).values()]
+  : [...new Map(pedidos.map(p => [p.q, { q: p.q, cuantas: p.n > 1 ? Math.max(14, p.n * 2 + 2) : 10 }])).values()];
 writeFileSync(path.join(OUT, 'pedidos.json'), JSON.stringify(pedidosIndice));
 execFileSync('python3', ['src/clientes/indice_pexels.py', path.join(OUT, 'pedidos.json'), path.join(OUT, 'indice.json')], { stdio: 'inherit' });
 const indice = JSON.parse(readFileSync(path.join(OUT, 'indice.json'), 'utf8'));
-for (const [q, lista] of Object.entries(indice)) cache[q] = lista.map(x => {
+const aFoto = x => {
+  const base = `https://images.pexels.com/photos/${x.id}/pexels-photo-${x.id}.jpeg`;
+  return { id: x.id, url: `${base}?auto=compress&cs=tinysrgb&w=1600`, mini: `${base}?auto=compress&cs=tinysrgb&w=300`,
+    credito: 'Pexels', pagina: `https://www.pexels.com/photo/${x.id}/`, alt: x.alt };
+};
+if (modoBusquedas) for (const p of pedidos) {
+  const listas = p.qs.map(q => indice[q] ?? []), vistas = new Set(), mezcla = [];
+  for (let i = 0; mezcla.length < 30 && listas.some(l => i < l.length); i++)
+    for (const l of listas) if (l[i] && !vistas.has(l[i].id) && mezcla.length < 30) { vistas.add(l[i].id); mezcla.push(aFoto(l[i])); }
+  cache[p.q] = mezcla;
+}
+else for (const [q, lista] of Object.entries(indice)) cache[q] = lista.map(x => {
   const base = `https://images.pexels.com/photos/${x.id}/pexels-photo-${x.id}.jpeg`;
   return { id: x.id, url: `${base}?auto=compress&cs=tinysrgb&w=1600`, mini: `${base}?auto=compress&cs=tinysrgb&w=300`,
     credito: 'Pexels', pagina: `https://www.pexels.com/photo/${x.id}/`, alt: x.alt };
@@ -121,15 +146,15 @@ const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH 
 const page = await browser.newPage({ viewport: { width: 1000, height: 600 } });
 const todas = {};
 for (const p of pedidos) {
-  const cuantas = p.n > 1 ? Math.max(14, p.n * 2 + 2) : 10;
+  const cuantas = modoBusquedas ? 30 : p.n > 1 ? Math.max(14, p.n * 2 + 2) : 10;
   console.log(`… ${p.pieza} ${p.hueco} «${p.q}»`);
   const fotos = await pexels(p.q, cuantas);
-  const clave = `${p.pieza}__${String(p.hueco).padStart(2, '0')}`;
+  const clave = p.clave ?? `${p.pieza}__${String(p.hueco).padStart(2, '0')}`;
   todas[clave] = { q: p.q, n: p.n, fotos };
   if (!fotos.length) continue;
-  const cols = 5, ancho = 190, alto = 260;
+  const [cols, ancho, alto] = modoBusquedas ? [6, 150, 205] : [5, 190, 260];
   const html = `<body style="margin:0;background:#111;font:bold 22px sans-serif;color:#fff">
-    <div style="padding:6px 10px;font-size:16px">${clave} · «${p.q}» · hacen falta ${p.n}</div>
+    <div style="padding:6px 10px;font-size:16px">${clave} · ${p.criterio ? p.criterio : `«${p.q}» · hacen falta ${p.n}`}</div>
     <div style="display:grid;grid-template-columns:repeat(${cols},${ancho}px);gap:6px;padding:0 6px 6px">
     ${fotos.map((f, i) => `<div style="position:relative;width:${ancho}px;height:${alto}px;background:url('${f.mini}') center/cover">
       <span style="position:absolute;left:4px;top:4px;background:#e33;padding:1px 7px;border-radius:4px">${i + 1}</span></div>`).join('')}
