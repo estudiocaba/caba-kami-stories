@@ -12,6 +12,10 @@ on:
         description: "Prefijo de fecha de las piezas, por ejemplo 2026-12"
         required: false
         default: ""
+      busquedas:
+        description: "Solo los huecos de fotos/busquedas.json (30 candidatas cada uno)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -29,7 +33,7 @@ jobs:
           node-version: 22
       - run: npm install --omit=dev --no-audit --no-fund
       - run: pip install --quiet duckdb
-      - run: node src/clientes/candidatas.js "${{ inputs.cuenta }}" "${{ inputs.prefijo }}"
+      - run: node src/clientes/candidatas.js "${{ inputs.cuenta }}" "${{ inputs.prefijo }}" ${{ inputs.busquedas && '--busquedas' || '' }}
       - name: Guardar en la rama publico
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -37,12 +41,13 @@ jobs:
           REPO_URL="https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git"
           SRC="$PWD/out/candidatas/${{ inputs.cuenta }}"
           DEST="$RUNNER_TEMP/publico"
+          CARPETA="${{ inputs.cuenta }}${{ inputs.busquedas && '-estilos' || '' }}"
           for i in 1 2 3 4 5 6 7 8; do
             rm -rf "$DEST"
             git clone -q --depth 1 --branch publico "$REPO_URL" "$DEST"
-            rm -rf "$DEST/candidatas/${{ inputs.cuenta }}"
-            mkdir -p "$DEST/candidatas/${{ inputs.cuenta }}"
-            cp "$SRC"/* "$DEST/candidatas/${{ inputs.cuenta }}/"
+            rm -rf "$DEST/candidatas/$CARPETA"
+            mkdir -p "$DEST/candidatas/$CARPETA"
+            cp "$SRC"/* "$DEST/candidatas/$CARPETA/"
             git -C "$DEST" add -A
             git -C "$DEST" -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -q -m "Fotos candidatas ${{ inputs.cuenta }}" || { echo "Sin cambios"; break; }
             git -C "$DEST" push -q origin publico && break

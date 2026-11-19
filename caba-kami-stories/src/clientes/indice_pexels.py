@@ -36,7 +36,7 @@ def buscar(palabras, cuantas, campos):
     # campos: 'descr' (solo la descripción de la foto) o 'ambos' (descripción o etiquetas)
     conds, nota, args_c, args_n = [], [], [], []
     for w in palabras:
-        rx = r'\b' + w
+        rx = r'\b' + w + r'(s|es|ed|ing|y)?\b'
         if campos == 'descr':
             conds.append("regexp_matches(descr, ?)"); args_c += [rx]
         else:

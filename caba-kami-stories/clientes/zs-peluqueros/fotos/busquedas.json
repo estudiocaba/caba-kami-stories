@@ -1,0 +1,15 @@
+{
+ "_nota": "Huecos con un estilo concreto: varias búsquedas y 30 candidatas. La foto elegida tiene que mostrar ESE estilo (criterio entre corchetes).",
+ "2026-12-01-colores-invierno__07": {"criterio": "mechas o castaño chocolate cálido, sin negros ni rubios", "q": ["brunette woman", "woman brown hair", "chestnut hair", "woman long brown hair", "brown highlights"]},
+ "2026-12-04-cortes-invierno__03": {"criterio": "soft clavicut: media melena a la clavícula con capas suaves", "q": ["shoulder length hair", "medium length hair", "lob", "woman medium hair", "collarbone"]},
+ "2026-12-04-cortes-invierno__04": {"criterio": "butterfly: melena larga con capas que enmarcan la cara y volumen", "q": ["layered hair", "voluminous hair", "blowout", "bouncy hair", "face framing"]},
+ "2026-12-08-cortes-masculinos__02": {"criterio": "quiff: laterales cortos y volumen arriba hacia delante, textura natural", "q": ["man quiff", "man undercut", "man fade", "man styled hair", "man hairstyle"]},
+ "2026-12-08-cortes-masculinos__03": {"criterio": "pompadour: más altura, peinado hacia atrás y pulido", "q": ["pompadour", "slicked back", "rockabilly", "man slicked hair", "greaser"]},
+ "2026-12-15-peinados-navidad__02": {"criterio": "recogidos: moños y recogidos visibles", "q": ["hair bun", "woman bun", "updo", "messy bun", "chignon", "bridal hairstyle"]},
+ "2026-12-15-peinados-navidad__03": {"criterio": "ondas suaves: ondas sueltas y abiertas, NO rizos", "q": ["wavy hair", "beach waves", "loose waves", "woman long wavy hair", "hair waves"]},
+ "2026-12-15-peinados-navidad__04": {"criterio": "trenza con cinta o lazo trenzado", "q": ["braid ribbon", "ribbon hair", "braided hair", "french braid", "braid"]},
+ "2026-12-15-peinados-navidad__05": {"criterio": "coleta alta bien visible", "q": ["high ponytail", "ponytail", "woman ponytail", "sleek ponytail"]},
+ "2026-12-22-peinados-nochevieja__02": {"criterio": "semirrecogido con lazo (media coleta con lazo)", "q": ["hair bow", "bow hair", "half up", "ribbon hair", "bow ribbon woman"]},
+ "2026-12-22-peinados-nochevieja__03": {"criterio": "efecto mojado (wet look) y, si se puede, perlas", "q": ["wet hair", "wet look", "slicked back hair woman", "pearl hair", "sleek hair"]},
+ "stories__20": {"criterio": "ondas suaves, NO rizos", "q": ["wavy hair", "beach waves", "loose waves", "woman long wavy hair", "hair waves"]}
+}
