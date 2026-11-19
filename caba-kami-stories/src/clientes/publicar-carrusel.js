@@ -36,11 +36,18 @@ try {
     if (!(await fetch(url, { method: 'HEAD' }).catch(() => null))?.ok) break;
     urls.push(url);
   }
-  if (urls.length < 2) throw new Error(`no encuentro las diapositivas de ${nombre} en la rama publico`);
-  const hijos = [];
-  for (const url of urls) hijos.push((await graph('POST', `/${igUserId}/media`, { image_url: url, is_carousel_item: 'true' }, token)).id);
-  for (const id of hijos) await esperar(id, token);
-  const c = await graph('POST', `/${igUserId}/media`, { media_type: 'CAROUSEL', children: hijos.join(','), caption: `${ficha.copy}\n\n${ficha.hashtags}`.slice(0, 2200) }, token);
+  if (!urls.length) throw new Error(`no encuentro las diapositivas de ${nombre} en la rama publico`);
+  const caption = `${ficha.copy}\n\n${ficha.hashtags}`.slice(0, 2200);
+  let c;
+  if (urls.length === 1) {
+    // post de una sola imagen (por ejemplo, el de sorteo extraordinario de la lotería)
+    c = await graph('POST', `/${igUserId}/media`, { image_url: urls[0], caption }, token);
+  } else {
+    const hijos = [];
+    for (const url of urls) hijos.push((await graph('POST', `/${igUserId}/media`, { image_url: url, is_carousel_item: 'true' }, token)).id);
+    for (const id of hijos) await esperar(id, token);
+    c = await graph('POST', `/${igUserId}/media`, { media_type: 'CAROUSEL', children: hijos.join(','), caption }, token);
+  }
   await esperar(c.id, token);
   const pub = await graph('POST', `/${igUserId}/media_publish`, { creation_id: c.id }, token);
   const info = await graph('GET', `/${pub.id}`, { fields: 'permalink' }, token).catch(() => ({}));

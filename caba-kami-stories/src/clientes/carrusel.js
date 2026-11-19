@@ -17,6 +17,7 @@ import { chromium } from 'playwright-core';
 import { cargarMarca, fotoSrc, revisar, RAIZ } from './marca.js';
 import { fuenteCss } from '../stories/plantillas.js';
 import { cssEditorial, seccionEditorial } from './editorial.js';
+import { cssLoteria, seccionLoteria } from './loteria.js';
 import { resolverFotos } from './fotos.js';
 import { sendDocumentGroup, sendText } from '../telegram.js';
 
@@ -90,6 +91,11 @@ const DIAS = {
 export function htmlCarrusel(ficha, marca, dir) {
   const n = ficha.diapositivas.length;
   const fuentes = [...new Set([marca.fuentes.titulo, marca.fuentes.texto])].flatMap(f => fuenteCss(f, [300, 400, 500, 600, 700, 800, 900]));
+  if (marca.estilo === 'loteria') {
+    return `<!doctype html><html lang="es"><head><meta charset="utf-8">
+${fuentes.map(u => `<link rel="stylesheet" href="${u}">`).join('\n')}
+<style>${cssLoteria(marca)}</style></head><body>${ficha.diapositivas.map(d => `<section class="dia lt">${seccionLoteria(d, marca, ref => { const s = fotoSrc(ref, dir); return s === ref && !/^https?:/.test(ref) ? '' : s; })}</section>`).join('\n')}</body></html>`;
+  }
   if (marca.estilo === 'editorial') {
     return `<!doctype html><html lang="es"><head><meta charset="utf-8">
 ${fuentes.map(u => `<link rel="stylesheet" href="${u}">`).join('\n')}
@@ -123,6 +129,23 @@ if (import.meta.url === `file://${process.argv[1]}`) {
 
   const OUT = path.join(RAIZ, 'out', 'clientes', cuenta, 'carruseles', nombre.replace(/\.json$/, ''));
   mkdirSync(OUT, { recursive: true });
+  // Lotería y similares: imágenes sin fondo (sinFondo: ["decimo", "persona"]) y "delante": "auto" para el efecto de capas
+  const pedidosRecorte = [];
+  for (const d of ficha.diapositivas) {
+    for (const campo of d.sinFondo ?? []) if (d[campo]) pedidosRecorte.push({ ref: d[campo], modo: 'sinfondo' });
+    if (d.delante === 'auto' && d.fondo) pedidosRecorte.push({ ref: d.fondo, modo: 'sinfondo' });
+  }
+  if (pedidosRecorte.length) {
+    const { execFileSync } = await import('node:child_process');
+    const pj = path.join(OUT, 'recortes-pedidos.json'), sj = path.join(OUT, 'recortes.json');
+    writeFileSync(pj, JSON.stringify(pedidosRecorte));
+    execFileSync('python3', [path.join(RAIZ, 'src', 'clientes', 'recortar.py'), dir, pj, sj], { stdio: 'inherit' });
+    const hechos = JSON.parse(readFileSync(sj, 'utf8'));
+    for (const d of ficha.diapositivas) {
+      for (const campo of d.sinFondo ?? []) if (hechos[`${d[campo]}|sinfondo`]) d[campo] = hechos[`${d[campo]}|sinfondo`];
+      if (d.delante === 'auto') d.delante = hechos[`${d.fondo}|sinfondo`] ?? null;
+    }
+  }
   const { textoCreditos } = await resolverFotos(ficha, OUT, { dirLocal: path.join(dir, 'fotos', nombre.replace(/\.json$/, '')) });
   if (textoCreditos) ficha.copy = `${ficha.copy ?? ''}\n\n📷 ${textoCreditos}`;
   const tmp = path.join(OUT, 'carrusel.html');

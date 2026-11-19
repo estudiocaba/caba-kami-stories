@@ -1,0 +1,48 @@
+{
+  "pieza": "Demo de plantillas (no publicar)",
+  "fecha": "demo",
+  "diapositivas": [
+    {
+      "tipo": "sorteo",
+      "etiqueta": "¡Ya disponible!",
+      "juego": "Lotería Nacional",
+      "titulo": "Sorteo Extraordinario",
+      "nombre": "Día de la Hispanidad",
+      "fondo": "fotos/demo/fondo.png",
+      "decimo": "fotos/demo/decimo.png",
+      "logoJuego": "logos/loteria-nacional.png",
+      "delante": null
+    },
+    {
+      "tipo": "portada",
+      "logoJuego": "logos/loterias.png",
+      "titulo": [
+        "Eurodreams",
+        "vs",
+        "Euromillones"
+      ],
+      "llamada": "¡Mira a ver cuál te encaja mejor!",
+      "persona": "fotos/demo/persona.png",
+      "cabecera": "¡Son muy diferentes!",
+      "texto": "Desliza para aprender más de estos juegos, ¡y ven a Lotería El Pescador para jugar!"
+    },
+    {
+      "tipo": "info",
+      "logoJuego": "logos/euromillones.png",
+      "puntos": [
+        "**Bote acumulado**",
+        "Puede llegar a **cientos de millones**",
+        "**Lo cobras de golpe**"
+      ],
+      "destacado": [
+        "Martes y viernes",
+        "desde 2,50€"
+      ]
+    },
+    {
+      "tipo": "cierre"
+    }
+  ],
+  "copy": "Demo de plantillas.",
+  "hashtags": ""
+}
