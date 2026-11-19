@@ -1,0 +1,56 @@
+{
+  "nombre": "Lotería El Pescador",
+  "handle": null,
+  "estilo": "loteria",
+  "lugar": "Gran Canaria - Arguineguín",
+  "whatsapp": "649 52 68 30",
+  "ctaCorta": "Juega por WhatsApp",
+  "textoApp": "O juega desde la **APP oficial de Loterías y Apuestas del Estado**, asociando tu Punto de Venta al número **43920**",
+  "iconoWhatsapp": "logos/whatsapp.png",
+  "colores": {
+    "fondo": "#FFFFFF",
+    "texto": "#FFFFFF",
+    "acento": "#C00102",
+    "suave": "#F6E5E5",
+    "linea": "#C00102"
+  },
+  "fuentes": {
+    "titulo": "Montserrat",
+    "texto": "Montserrat"
+  },
+  "logo": "logo.png",
+  "plantillas": ["sorteo", "portada", "info", "cierre"],
+  "temas": ["Sorteos extraordinarios", "Informativo", "Educacional", "Inspirador a jugar"],
+  "reglas": {
+    "evitar": {
+      "dinero fácil": "la ilusión de jugar",
+      "hazte rico": "prueba suerte",
+      "seguro que ganas": "¿y si esta vez toca?",
+      "garantizado": "(no se garantizan premios)",
+      "sal de deudas": "(no se habla de problemas económicos)",
+      "vosotros": "ustedes"
+    },
+    "sinPrecios": false,
+    "sinHorarios": false,
+    "peninsular": false
+  },
+  "prohibido": [
+    "Presentar el juego como una forma de ganar dinero, salir de deudas o resolver problemas personales",
+    "Prometer o insinuar premios seguros",
+    "Dirigirse a menores o usar personajes o estética infantil",
+    "Décimos con el nombre de otra administración",
+    "Logos oficiales dibujados o retocados: solo los archivos oficiales de logos/"
+  ],
+  "cta": "Juega por WhatsApp al 649 52 68 30",
+  "voz": "Castellano neutro y cercano, con energía. Mayúsculas en titulares. Se habla de ilusión, tradición y compartir, nunca de dinero como solución.",
+  "musica": ["brillo", "verano"],
+  "stories": {
+    "activo": false,
+    "video": true,
+    "duracion": 8
+  },
+  "instagram": {
+    "secretoToken": "IG_TOKEN_LOTERIA_EL_PESCADOR",
+    "secretoUsuario": "IG_USER_LOTERIA_EL_PESCADOR"
+  }
+}

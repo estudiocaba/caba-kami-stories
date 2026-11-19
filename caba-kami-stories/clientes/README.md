@@ -69,3 +69,14 @@ Generar: `node src/clientes/carrusel.js <cuenta> <ficha>` o el workflow **Carrus
 Probar en local: `node src/stories/index.js ejemplo-salon --sin-telegram` (deja las imágenes en `out/stories/ejemplo-salon/`).
 
 `ejemplo-salon` es un cliente inventado para enseñar las plantillas: no se publica nunca.
+
+## Estilo «loteria» (Lotería El Pescador)
+
+`marca.estilo = "loteria"`: rojo #C00102 y blanco, Montserrat. Plantillas en `src/clientes/loteria.js`:
+
+- `sorteo` — post de una imagen del sorteo extraordinario: `fondo` (foto del lugar), `decimo` (el décimo, sin el nombre de otra administración) y `"delante": "auto"` para recortar el sujeto del fondo y ponerlo por delante del décimo. Con `"sinFondo": ["decimo"]` se le quita el fondo al décimo.
+- `portada` — portada de carrusel con la trabajadora (`persona`, con `"sinFondo": ["persona"]` si la foto tiene fondo).
+- `info` — diapositiva interior roja con puntos (`**negrita**`, `_normal_`) y una píldora blanca `destacado`.
+- `cierre` — WhatsApp y APP oficial.
+
+Los logos oficiales (Loterías y Apuestas del Estado, Lotería Nacional, Euromillones…) no se dibujan: van como archivos en `clientes/loteria-el-pescador/logos/` y se nombran en la ficha con `logoJuego`. Un post de una sola diapositiva se publica como imagen suelta.
