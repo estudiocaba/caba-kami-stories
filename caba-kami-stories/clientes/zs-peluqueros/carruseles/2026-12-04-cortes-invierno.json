@@ -34,12 +34,14 @@
       ]
     },
     {
-      "tipo": "collage",
-      "fotos": {
-        "buscar": "woman long hair",
-        "n": 6
+      "tipo": "fototexto",
+      "foto": {
+        "buscar": "layered hair"
       },
-      "titulo": "*Butterfly*"
+      "texto": [
+        "Butterfly: capas que enmarcan la cara y dan volumen sin perder largo.",
+        "Ideal si no quieres renunciar a tu melena."
+      ]
     },
     {
       "tipo": "fototexto",

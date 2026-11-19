@@ -81,6 +81,8 @@ export async function resolverFotos(pieza, salida, { orientacion = 'portrait', d
     if (numero != null && deLaPieza.length) return deArchivo(deLaPieza[0]);
     if (numero == null && locales[hueco]) return deArchivo(locales[hueco]);
     const elegida = elegidaPara(hueco);
+    // hueco reservado para una foto que elige Camila: se deja vacío (fondo liso) hasta que esté en fotos/<pieza>/N
+    if (elegida?.pendiente) { console.log(`  ⏳ foto pendiente: ${elegida.pendiente}`); return null; }
     const previa = guardado[clave];
     const prueba = elegida ? [elegida] : previa ? [previa] : [];
     for (const c of [...prueba, ...(await candidatas(q))]) {
