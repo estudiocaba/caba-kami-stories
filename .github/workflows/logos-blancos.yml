@@ -1,0 +1,55 @@
+name: Logos en blanco (cliente)
+
+# Descarga logos (por ejemplo, exportaciones de Canva), los pasa a blanco puro conservando la transparencia,
+# recorta el margen y los guarda en la rama publico (logos/<cuenta>/<nombre>-blanco.png) para subirlos a Canva.
+on:
+  workflow_dispatch:
+    inputs:
+      cuenta:
+        description: "Carpeta del cliente"
+        required: true
+      lista:
+        description: 'JSON: [{"nombre":"loteria-nacional","url":"https://..."}, ...]'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  blancos:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar y pasar a blanco
+        env:
+          LISTA: ${{ inputs.lista }}
+        run: |
+          pip install --quiet pillow
+          mkdir -p out
+          python3 - <<'P'
+          import json, os, urllib.request, io
+          from PIL import Image
+          for item in json.loads(os.environ['LISTA']):
+              data = urllib.request.urlopen(item['url'], timeout=60).read()
+              im = Image.open(io.BytesIO(data)).convert('RGBA')
+              alfa = im.getchannel('A')
+              blanco = Image.new('RGBA', im.size, (255, 255, 255, 0))
+              blanco.putalpha(alfa)
+              bb = alfa.getbbox()
+              if bb: blanco = blanco.crop(bb)
+              blanco.save(f"out/{item['nombre']}-blanco.png")
+              print(item['nombre'], blanco.size)
+          P
+      - name: Guardar en la rama publico
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          REPO_URL="https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git"
+          DEST="$RUNNER_TEMP/publico"
+          for i in 1 2 3 4 5; do
+            rm -rf "$DEST"; git clone -q --depth 1 --branch publico "$REPO_URL" "$DEST"
+            mkdir -p "$DEST/logos/${{ inputs.cuenta }}"; cp out/*.png "$DEST/logos/${{ inputs.cuenta }}/"
+            git -C "$DEST" add -A
+            git -C "$DEST" -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -q -m "Logos en blanco ${{ inputs.cuenta }}" || break
+            git -C "$DEST" push -q origin publico && break
+            sleep 5
+          done
