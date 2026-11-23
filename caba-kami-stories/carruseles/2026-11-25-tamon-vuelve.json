@@ -1,0 +1,112 @@
+{
+  "pieza": "Tamon vuelve: segunda temporada confirmada",
+  "fecha": "2026-11-25",
+  "plantilla": "lista",
+  "pilar": "husbandos",
+  "portada": {
+    "etiqueta": "TAMON'S B-SIDE · TEMPORADA 2",
+    "banda": "ALERTA HUSBANDO",
+    "sobretitulo": "CONFIRMADO",
+    "titulo": [
+      "Tamon",
+      "*vuelve*"
+    ],
+    "bajada": "y nosotras sin defensas"
+  },
+  "portadaDe": 0,
+  "items": [
+    {
+      "nombre": "Tamon Fukuhara",
+      "subtitulo": "IDOL DE F/ACE",
+      "personaje": "Tamon Fukuhara",
+      "animeDelPersonaje": "Tamon-kun Ima Docchi!?",
+      "filas": [
+        [
+          "EN EL ESCENARIO",
+          "Salvaje y sexy"
+        ],
+        [
+          "EN SU CASA",
+          "Un desastre con patas",
+          "vino-vivo"
+        ]
+      ],
+      "comentario": "Dos Tamon por el precio de uno. <b>Nos quedamos con los dos.</b>",
+      "fuente": "FUENTE: VIZ MEDIA"
+    },
+    {
+      "nombre": "Utage Kinoshita",
+      "subtitulo": "SU FAN NÚMERO UNO",
+      "personaje": "Utage Kinoshita",
+      "animeDelPersonaje": "Tamon-kun Ima Docchi!?",
+      "filas": [
+        [
+          "SU TRABAJO",
+          "Limpia casas para pagarse el fanatismo"
+        ],
+        [
+          "SU CLIENTE",
+          "Adivinen quién"
+        ]
+      ],
+      "comentario": "El trabajo la manda a casa de su idol. <b>El destino tiene favoritas.</b>",
+      "fuente": "FUENTE: VIZ MEDIA"
+    },
+    {
+      "nombre": "La temporada 1",
+      "subtitulo": "INVIERNO 2026 · J.C. STAFF",
+      "anime": {
+        "busqueda": "Tamon-kun Ima Docchi",
+        "anio": 2026
+      },
+      "filas": [
+        [
+          "EPISODIOS",
+          "13 · de enero a marzo"
+        ],
+        [
+          "NOTA ANILIST",
+          "{nota}"
+        ]
+      ],
+      "comentario": "Dirige Chika Nagaoka. Está en Crunchyroll en España y LATAM. <b>Da para un maratón de domingo.</b>",
+      "fuente": "FUENTE: WIKIPEDIA · FINAL WEAPON · ANILIST"
+    },
+    {
+      "nombre": "La temporada 2",
+      "subtitulo": "EN PRODUCCIÓN",
+      "filas": [
+        [
+          "ANUNCIO",
+          "21 de noviembre de 2026"
+        ],
+        [
+          "FECHA",
+          "Todavía ninguna",
+          "vino-vivo"
+        ]
+      ],
+      "comentario": "Se confirmó en el primer concierto de F/ACE. <b>Nosotras ya tenemos el lightstick.</b>",
+      "fuente": "FUENTE: FINAL WEAPON · CRUNCHYROLL NEWS",
+      "anime": {
+        "busqueda": "Tamon-kun Ima Docchi!? 2nd Season"
+      }
+    }
+  ],
+  "cierre": {
+    "pregunta": [
+      "¿Tamon de escenario",
+      "o Tamon de casa?"
+    ],
+    "texto": "Elige uno. Ya sabemos que vas a decir «los dos»."
+  },
+  "copy": "Tamon vuelve. Nosotras, sin defensas.\n\nLa segunda temporada de Tamon's B-Side (Tamon-kun Ima Docchi!?) se confirmó el 21 de noviembre en el primer concierto de F/ACE. Está en producción y todavía no tiene fecha.\n\nRepaso sin spoilers: Utage limpia casas para pagarse su obsesión por Tamon, el idol más salvaje de F/ACE. Un día el trabajo la manda a casa de él. Y el Tamon de verdad es un desastre.\n\nLa temporada 1 son 13 episodios de J.C. Staff, dirigidos por Chika Nagaoka, y está en Crunchyroll en España y LATAM. Hay tiempo de sobra para ponerse al día.\n\n¿Team Tamon de escenario o team Tamon de casa?",
+  "hashtags": "#anime #otaku #animeespañol #animelatino #husbando #shoujo #animerecomendaciones #recomendacionesanime #tamonsbside #tamonkunimadocchi #tamonfukuhara",
+  "fuentes": [
+    "Segunda temporada confirmada en el concierto de F/ACE, en producción y sin fecha: Final Weapon (21/11/2026) y Crunchyroll News (21/11/2026)",
+    "Temporada 1: 13 episodios del 4 de enero al 29 de marzo de 2026, J.C. Staff, dirección de Chika Nagaoka: Wikipedia y MyAnimeList",
+    "En Crunchyroll en todo el mundo salvo Japón y parte de Asia: Final Weapon (25/03/2026)",
+    "Argumento: VIZ Media (manga de Yuki Shiwasu)"
+  ],
+  "alt": "Carrusel de seis diapositivas en negro, gris humo y vino: la segunda temporada de Tamon's B-Side está confirmada. Tamon Fukuhara, idol de F/ACE, y Utage Kinoshita en arcos góticos, la ficha de la temporada 1 con su portada y el anuncio de la temporada 2, todavía sin fecha."
+}
